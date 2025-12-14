@@ -41,7 +41,8 @@ async function getBlogSlugs() {
 async function startPreviewServer() {
   return new Promise((resolve, reject) => {
     const server = spawn('npx', ['serve', '-s', distPath, '-l', '3001', '--no-clipboard'], {
-      stdio: 'pipe'
+      stdio: 'pipe',
+      detached: false
     });
     
     server.stdout.on('data', (data) => {
@@ -50,7 +51,14 @@ async function startPreviewServer() {
         resolve({ 
           server, 
           url: 'http://localhost:3001',
-          close: () => server.kill()
+          close: () => {
+            server.kill('SIGTERM');
+            setTimeout(() => {
+              if (!server.killed) {
+                server.kill('SIGKILL');
+              }
+            }, 1000);
+          }
         });
       }
     });
@@ -64,7 +72,14 @@ async function startPreviewServer() {
       resolve({ 
         server, 
         url: 'http://localhost:3001',
-        close: () => server.kill()
+        close: () => {
+          server.kill('SIGTERM');
+          setTimeout(() => {
+            if (!server.killed) {
+              server.kill('SIGKILL');
+            }
+          }, 1000);
+        }
       });
     }, 3000);
   });
@@ -156,7 +171,15 @@ async function main() {
     await browser.close();
     close();
     console.log('Cleaned up resources');
+    
+    // Force exit after a brief delay to ensure cleanup completes
+    setTimeout(() => {
+      process.exit(0);
+    }, 2000);
   }
 }
 
-main().catch(console.error);
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
