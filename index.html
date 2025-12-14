@@ -1,126 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="images/CircuitCircle.png" rel="icon">
-    <title>Chase Roohms | About Me</title>
-    <script type="text/javascript" src="js/navigation.js"></script>
-    <script src="https://kit.fontawesome.com/2b867e0957.js" crossOrigin="anonymous"></script>
-</head>
-
-<body>
-
-<div onclick="toggleNav(this)" class="container">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-    <input type="button">
-</div>
-
-<div id="mySidenav" class="sidebarMenu">
-    <ul class="sidebarMenuInner">
-        <li>Chase Roohms <span>Software Engineer</span></li>
-        <li><a id="active" class="activeLink" href="index.html">About Me</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="https://github.com/chase-roohms" target="_blank">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/chaseroohms/" target="_blank">Linkedin</a></li>
-        <li><a href="https://instagram.com/chaseroohms" target="_blank">Instagram</a></li>
-    </ul>
-</div>
-
-
-<div class="header"><h2 class="headerText">About Me</h2></div>
-
-<!-- Content to be pushed by side menu -->
-<div id="main">
-    <div class="portfolioContainer">
-        <div class="sideHeader left">
-            <div class="sideText left">My Portfolio</div>
-        </div>
-        <div class="sideHeader right">
-            <div class="sideText right">My Portfolio</div>
-        </div>
-        <div class="scroll-container">
-            <a href="projects.html#HomeLab"><img src="images/HomeLab.png" alt="My HomeLab"></a>
-            <a href="projects.html#MythicMate"><img src="images/MythicMatePortfolio.png" alt="MythicMate"></a>
-            <a href="projects.html#Featuring"><img src="images/FeaturingPortfolio.png" alt="Featuring"></a>
-            <a href="projects.html#TCReconciliation"><img src="images/TCMenu.png" alt="Travis County Reconciliation App"></a>
-        </div>
-    </div>
-
-    <div id='center' class="main center">
-        <div class="mainInner">
-            <div class="splitLeft">
-                <h1 style="text-align: left">Hi I'm Chase Roohms!</h1>
-                <hr>
-                <p>
-                    Hi! I’m Chase Roohms, a DevOps Engineer who has built his career around a passion for automation and problem solving. With a background in software development and IT security, I approach challenges from multiple perspectives and enjoy finding smarter, more efficient ways to keep systems running smoothly.
-                    <br/><br/>
-                    
-                    Whether experimenting with new tools, hosting home servers, or building side projects, I have always been a tinkerer at heart. That curiosity fuels my drive to streamline processes, reduce manual work, and create solutions that scale.
-                    <br/><br/>
-                    
-                    Let’s connect to share insights on projects, I am always looking for my next weekend project!
-                </p>
-                <br/>
-                <div class=iconContainer>
-                    <a class="icon" href="https://github.com/chase-roohms" target="_blank">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a class="icon" href="https://www.linkedin.com/in/chaseroohms/" target="_blank">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                    <a class="icon" href="https://instagram.com/chaseroohms" target="_blank">
-                        <i class="fa-brands fa-square-instagram"></i>
-                    </a>
-                    <a class="icon" href="mailto:chaseroohms@gmail.com" target="_blank">
-                        <i class="fa-solid fa-envelope"></i>
-                    </a>
-                    <a class="icon" href="tel:512-632-4232">
-                        <i class="fa-solid fa-phone"></i>
-                    </a>
-                </div>
-                <br/>
-            </div>
-            <div class="splitRight">
-                <h1 style="text-align: right">See More</h1>
-                <hr>
-                <a href="resume.html" class="bubble">
-                    <h3>My Resume</h3>
-                    Interested in working with me? See my qualifications here!
-                </a>
-                <a href="projects.html#HomeLab" class="bubble">
-                    <h3>HomeLab</h3>
-                    Self-Hosted Linux Servers with Secure Public Access
-                    <br>
-                    <div class="bubbleFooter">
-                        VPN, DNS, SSO, ICMP, Reverse-Proxy, SEO, P2P
-                    </div>
-                </a>
-                <a href="projects.html#MythicMate" class="bubble">
-                    <h3>MythicMate</h3>
-                    An AI companion for Dungeons and Dragons.
-                    <br>
-                    <div class="bubbleFooter">
-                        Java, JSoup, Java Discord API, ChatGPT API, Apache Commons
-                    </div>
-                </a>
-                <a href="projects.html#Featuring" class="bubble">
-                    <h3>Featuring</h3>
-                    A Spotify Data Analysis Project.
-                    <br>
-                    <div class="bubbleFooter">
-                        Java, JFreeChart, Java Discord API, Spotify API
-                    </div>
-                </a>
-            </div>
-
-
-        </div>
-    </div>
-</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chase Roohms - DevOps</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

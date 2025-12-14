@@ -1,1 +1,0 @@
-sips -Z 2400 -s format png resume.pdf --out resume.png 
