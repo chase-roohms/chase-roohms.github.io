@@ -71,10 +71,11 @@ export default function News() {
     },
   ];
 
-  // Format date as "MMM D" (e.g., "Dec 13")
+  // Format date as "MMM D, YYYY" (e.g., "Dec 13, 2025")
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const [year, month, day] = dateString.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   };
 
   // Sort news items by date (newest first)
