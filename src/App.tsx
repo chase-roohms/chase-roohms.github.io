@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
@@ -10,24 +9,9 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 
-function RedirectHandler() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const redirectPath = sessionStorage.getItem('redirectPath');
-    if (redirectPath) {
-      sessionStorage.removeItem('redirectPath');
-      navigate(redirectPath, { replace: true });
-    }
-  }, [navigate]);
-
-  return null;
-}
-
 function App() {
   return (
     <Router>
-      <RedirectHandler />
       <ScrollToTop />
       <Layout>
         <Routes>
