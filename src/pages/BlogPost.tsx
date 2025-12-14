@@ -102,6 +102,8 @@ export default function BlogPost() {
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.description} />
         {post.image && <meta name="twitter:image" content={post.image} />}
+        {post.image && <link rel="preload" as="image" href={post.image} />}
+        <link rel="canonical" href={`https://chaseroohms.com/blog/${post.slug}`} />
       </Helmet>
       <div className="section-container py-8 md:py-20">
         <div className="max-w-4xl mx-auto">
@@ -166,7 +168,7 @@ export default function BlogPost() {
             prose-ul:text-gray-300 prose-ol:text-gray-300
             prose-li:text-gray-300
             prose-blockquote:text-gray-400 prose-blockquote:border-primary-600
-            prose-img:rounded-lg
+            prose-img:rounded-lg prose-img:w-full prose-img:h-auto
             prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-gray-400 prose-figcaption:mt-2
           ">
             <ReactMarkdown 

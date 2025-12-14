@@ -70,7 +70,7 @@ export default function Home() {
           </p>
           <div className="flex justify-center">
             <Link to="/about" className="btn-secondary">
-              Learn More
+              Read My Full Bio
             </Link>
           </div>
         </div>
