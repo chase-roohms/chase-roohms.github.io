@@ -7,7 +7,10 @@ slug: "home-lab-setup"
 icon: "FaDollarSign"
 ---
 
-![My homelab today](/blog-images/homelab-header.webp)
+<figure class="my-6">
+  <img src="/blog-images/homelab-header.webp" alt="My homelab today" class="rounded-lg w-full" />
+  <figcaption class="text-center text-sm text-gray-400 mt-2">My homelab today</figcaption>
+</figure>
 
 Running a home lab has been one of the best investments in my technical education. Here's how I started affordably.
 

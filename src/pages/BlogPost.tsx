@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
 import { getBlogPost, type BlogPost } from '../utils/blogLoader';
 import { FaArrowLeft, FaCalendar } from 'react-icons/fa';
 import * as FaIcons from 'react-icons/fa';
@@ -138,10 +139,12 @@ export default function BlogPost() {
             prose-ul:text-gray-300 prose-ol:text-gray-300
             prose-li:text-gray-300
             prose-blockquote:text-gray-400 prose-blockquote:border-primary-600
+            prose-img:rounded-lg
+            prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-gray-400 prose-figcaption:mt-2
           ">
             <ReactMarkdown 
               remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeHighlight]}
+              rehypePlugins={[rehypeRaw, rehypeHighlight]}
             >
               {post.content}
             </ReactMarkdown>
