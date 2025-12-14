@@ -1,6 +1,6 @@
 ---
 title: "Start Self-Hosting on a Budget"
-date: "2025-12-14"
+date: "2025-11-19"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/homelab-header.webp"
 description: "How I built a functional home lab for learning and experimentation without breaking the bank."
@@ -11,7 +11,7 @@ icon: "FaDollarSign"
 
 <figure class="my-6">
   <img src="https://chaseroohms.com/blog-images/homelab-header.webp" alt="My homelab today" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
-  <figcaption class="text-center text-sm text-gray-400 mt-2">Some of my homelab today after numerous upgrades</figcaption>
+  <figcaption class="text-center text-sm text-gray-400 mt-2">My homelab today, after numerous upgrades</figcaption>
 </figure>
 
 Running a home lab has been one of the best investments in my technical education. Here's how I started affordably.
