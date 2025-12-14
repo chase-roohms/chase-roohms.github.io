@@ -1,5 +1,6 @@
 import { BsCalendar3 } from 'react-icons/bs';
 import { FaNewspaper } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 export default function News() {
   const newsItems = [
@@ -94,11 +95,20 @@ export default function News() {
   }, {} as Record<string, typeof newsItems>);
 
   return (
-    <div className="section-container py-20">
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
-        <FaNewspaper className="text-primary-400" />
-        News
-      </h1>
+    <>
+      <Helmet>
+        <title>News - Chase Roohms</title>
+        <meta name="description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />
+        <meta property="og:title" content="News - Chase Roohms" />
+        <meta property="og:description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career." />
+        <meta property="og:url" content="https://chaseroohms.com/news" />
+        <link rel="canonical" href="https://chaseroohms.com/news" />
+      </Helmet>
+      <div className="section-container py-20">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
+          <FaNewspaper className="text-primary-400" />
+          News
+        </h1>
       <p className="text-gray-400 text-lg mb-12">
         Professional updates, achievements, and milestones.
       </p>
@@ -172,6 +182,7 @@ export default function News() {
             ))}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

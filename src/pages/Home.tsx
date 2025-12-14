@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Skills from '../components/Skills';
 import headshot from '../assets/images/headshot.webp';
 
@@ -9,7 +10,26 @@ export default function Home() {
   const headline = "DevOps Engineer at SolarWinds and an Automation Evangelist";
   const biography = "I'm a DevOps Engineer at SolarWinds, where I specialize in automation and infrastructure as code. I have a passion for solving complex problems and enjoy working on projects that involve both software development and IT security.";
   return (
-    <div className="section-container py-20">
+    <>
+      <Helmet>
+        <title>Chase Roohms - DevOps Engineer & Automation Evangelist</title>
+        <meta name="description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code. Explore my projects, blog posts, and professional journey." />
+        <meta name="author" content="Chase Roohms" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://chaseroohms.com/" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:title" content="Chase Roohms - DevOps Engineer" />
+        <meta property="og:description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
+        <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Chase Roohms - DevOps Engineer" />
+        <meta name="twitter:description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
+        <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
+        <link rel="canonical" href="https://chaseroohms.com/" />
+      </Helmet>
+      <div className="section-container py-20">
       {/* Hero Section */}
       <section className="py-20">
         <div className="flex flex-col md:flex-row items-center gap-3">
@@ -60,6 +80,7 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-12 text-center">Skills & Technologies</h2>
         <Skills />
       </section>
-    </div>
+      </div>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import { FaProjectDiagram } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 import opsgenieSwirHeader from '../assets/images/opsgenie-swir-header.webp';
 import homelabHeader from '../assets/images/homelab-header.webp';
 import mythicmateHeader from '../assets/images/mythicmate-header.webp';
@@ -104,11 +105,20 @@ export default function Projects() {
   );
 
   return (
-    <div className="section-container py-20">
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
-        <FaProjectDiagram className="text-primary-400" />
-        Projects
-      </h1>
+    <>
+      <Helmet>
+        <title>Projects - Chase Roohms</title>
+        <meta name="description" content="Professional and personal projects by Chase Roohms, including DevOps automation, web applications, and infrastructure solutions." />
+        <meta property="og:title" content="Projects - Chase Roohms" />
+        <meta property="og:description" content="Professional and personal projects by Chase Roohms, including DevOps automation and infrastructure solutions." />
+        <meta property="og:url" content="https://chaseroohms.com/projects" />
+        <link rel="canonical" href="https://chaseroohms.com/projects" />
+      </Helmet>
+      <div className="section-container py-20">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
+          <FaProjectDiagram className="text-primary-400" />
+          Projects
+        </h1>
       <p className="text-gray-400 text-lg mb-12">
         Here are some of my professional and personal projects.
       </p>
@@ -130,6 +140,7 @@ export default function Projects() {
           {sortedPersonalProjects.map(renderProjectCard)}
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

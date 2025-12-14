@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaEnvelope, FaCommentDots } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 export default function Contact() {
   const contactLinks = [
@@ -26,7 +27,16 @@ export default function Contact() {
   ];
 
   return (
-    <div className="section-container py-20">
+    <>
+      <Helmet>
+        <title>Contact - Chase Roohms</title>
+        <meta name="description" content="Get in touch with Chase Roohms via email, GitHub, LinkedIn, or Discord. Let's connect!" />
+        <meta property="og:title" content="Contact - Chase Roohms" />
+        <meta property="og:description" content="Get in touch with Chase Roohms via email, GitHub, LinkedIn, or Discord." />
+        <meta property="og:url" content="https://chaseroohms.com/contact" />
+        <link rel="canonical" href="https://chaseroohms.com/contact" />
+      </Helmet>
+      <div className="section-container py-20">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center flex items-center justify-center gap-3">
           <FaCommentDots className="text-primary-400" />
@@ -57,6 +67,7 @@ export default function Contact() {
           ))}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

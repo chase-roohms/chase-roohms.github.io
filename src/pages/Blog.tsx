@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { FaBlog } from 'react-icons/fa';
 import { getAllBlogPosts, type BlogPost } from '../utils/blogLoader';
 
@@ -45,11 +46,20 @@ export default function Blog() {
   }
 
   return (
-    <div className="section-container py-20">
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
-        <FaBlog className="text-primary-400" />
-        Blog
-      </h1>
+    <>
+      <Helmet>
+        <title>Blog - Chase Roohms</title>
+        <meta name="description" content="Technical articles, tutorials, and thoughts on DevOps, automation, and software development by Chase Roohms." />
+        <meta property="og:title" content="Blog - Chase Roohms" />
+        <meta property="og:description" content="Technical articles, tutorials, and thoughts on DevOps, automation, and software development." />
+        <meta property="og:url" content="https://chaseroohms.com/blog" />
+        <link rel="canonical" href="https://chaseroohms.com/blog" />
+      </Helmet>
+      <div className="section-container py-20">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
+          <FaBlog className="text-primary-400" />
+          Blog
+        </h1>
       <p className="text-gray-400 text-lg mb-12">
         Technical articles, tutorials, and thoughts on software development.
       </p>
@@ -123,6 +133,7 @@ export default function Blog() {
           ))}
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }

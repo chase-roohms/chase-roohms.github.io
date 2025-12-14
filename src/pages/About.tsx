@@ -1,5 +1,6 @@
 import { BsBuilding } from 'react-icons/bs';
 import { FaExternalLinkAlt, FaUserCircle } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 import Skills from '../components/Skills';
 
 export default function About() {
@@ -76,13 +77,22 @@ export default function About() {
   ];
 
   return (
-    <div className="section-container py-20">
-      <div>
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-0 flex items-center gap-3">
-            <FaUserCircle className="text-primary-400" />
-            About Me
-          </h1>
+    <>
+      <Helmet>
+        <title>About - Chase Roohms</title>
+        <meta name="description" content="Learn about Chase Roohms, DevOps Engineer with a passion for automation and infrastructure as code. Background, experience, and skills." />
+        <meta property="og:title" content="About - Chase Roohms" />
+        <meta property="og:description" content="Learn about Chase Roohms, DevOps Engineer with a passion for automation and infrastructure as code." />
+        <meta property="og:url" content="https://chaseroohms.com/about" />
+        <link rel="canonical" href="https://chaseroohms.com/about" />
+      </Helmet>
+      <div className="section-container py-20">
+        <div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-0 flex items-center gap-3">
+              <FaUserCircle className="text-primary-400" />
+              About Me
+            </h1>
           <a
             href="https://raw.githubusercontent.com/chase-roohms/rendercv-resume/main/output/Chase_Roohms_CV.pdf"
             target="_blank"
@@ -188,6 +198,7 @@ export default function About() {
         </section>
       </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
