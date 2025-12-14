@@ -74,12 +74,18 @@ The primary color scheme is defined in `tailwind.config.js`. Modify the `primary
 
 ### Adding Blog Posts
 
-When creating a new blog post:
+1. Add your `.md` file to `src/content/blog/` with frontmatter (title, date, author, description, topics, slug, icon, image)
+2. The blog post will automatically appear in the blog list
 
-1. Add your `.md` file to `src/content/blog/`
-2. **Important**: Add the blog post route to `vite.config.ts` in the `routes` array for pre-rendering
-   - Example: If your post slug is `my-new-post`, add `/blog/my-new-post` to the routes
-   - This ensures social media previews and SEO work correctly
+### Social Media Previews
+
+Since this is a Single Page Application (SPA), social media crawlers won't execute JavaScript to see page-specific meta tags. Two solutions:
+
+1. **Current**: Static meta tags in `index.html` provide a general preview for the main site
+2. **Recommended for blog posts**: Use [Prerender.io](https://prerender.io/) free tier
+   - Sign up at prerender.io
+   - Add their middleware to serve pre-rendered pages to crawlers
+   - This enables proper OpenGraph previews for individual blog posts
 
 ### Styling
 
