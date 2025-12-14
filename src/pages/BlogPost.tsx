@@ -91,9 +91,20 @@ export default function BlogPost() {
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
         <meta property="og:type" content="article" />
-        {post.image && <meta property="og:image" content={post.image} />}
+        <meta property="og:url" content={`https://chaseroohms.com/blog/${post.slug}`} />
+        {post.image && (
+          <>
+            <meta property="og:image" content={post.image} />
+            <meta property="og:image:width" content="1920" />
+            <meta property="og:image:height" content="716" />
+          </>
+        )}
         <meta property="article:published_time" content={post.date} />
         <meta property="article:author" content={post.author || 'Chase Roohms'} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.description} />
+        {post.image && <meta name="twitter:image" content={post.image} />}
       </Helmet>
       <div className="section-container py-20">
         <div className="max-w-4xl mx-auto">

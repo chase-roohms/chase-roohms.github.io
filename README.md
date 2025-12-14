@@ -72,6 +72,15 @@ The primary color scheme is defined in `tailwind.config.js`. Modify the `primary
 - Showcase your projects in `src/pages/Projects.tsx`
 - Update social links in `src/components/Footer.tsx`
 
+### Adding Blog Posts
+
+When creating a new blog post:
+
+1. Add your `.md` file to `src/content/blog/`
+2. **Important**: Add the blog post route to `vite.config.ts` in the `routes` array for pre-rendering
+   - Example: If your post slug is `my-new-post`, add `/blog/my-new-post` to the routes
+   - This ensures social media previews and SEO work correctly
+
 ### Styling
 
 - Global styles and Tailwind utilities are in `src/index.css`
