@@ -10,11 +10,11 @@ export default function Home() {
     <div className="section-container py-20">
       {/* Hero Section */}
       <section className="py-20">
-        <div className="flex flex-col md:flex-row items-center gap-12">
+        <div className="flex flex-col md:flex-row items-center gap-3">
           {/* Text Content */}
-          <div className="flex-1">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 whitespace-nowrap">
-              Hi, I'm <a href="https://www.google.com/search?q=Chase+Roohms" target="_blank" rel="noopener noreferrer" className="text-[#ff6200] inline-block transition-transform duration-300 hover:scale-110 cursor-pointer">{name}</a>
+          <div className="flex-[2]">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              Hi, I'm <a href="https://www.google.com/search?q=Chase+Roohms" target="_blank" rel="noopener noreferrer" className="text-[#ff6200] cursor-pointer [&>span]:inline-block [&>span]:transition-transform [&>span]:duration-300 hover:[&>span]:scale-110"><span>Chase</span> <span>Roohms</span></a>
             </h1>
             <p className="text-xl text-gray-400 mb-8">
               {headline}
