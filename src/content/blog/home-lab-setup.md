@@ -8,7 +8,7 @@ icon: "FaDollarSign"
 ---
 
 <figure class="my-6">
-  <img src="/blog-images/homelab-header.webp" alt="My homelab today" class="rounded-lg w-full" />
+  <img src="http://chaseroohms.com/blog-images/homelab-header.webp" alt="My homelab today" class="rounded-lg w-full" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">My homelab today</figcaption>
 </figure>
 
