@@ -1,6 +1,13 @@
 import matter from 'gray-matter';
 import { Buffer } from 'buffer';
 
+// Extend Window interface to include Buffer
+declare global {
+  interface Window {
+    Buffer: typeof Buffer;
+  }
+}
+
 // Polyfill Buffer for browser
 if (typeof window !== 'undefined') {
   window.Buffer = Buffer;
