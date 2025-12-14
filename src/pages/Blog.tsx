@@ -109,38 +109,41 @@ export default function Blog() {
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map(post => (
-            <Link
+            <article
               key={post.slug}
-              to={`/blog/${post.slug}`}
-              className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-primary-500 hover:bg-gray-800 transition-all group"
+              className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-primary-500 hover:bg-gray-800 transition-all group flex flex-col min-h-[280px]"
             >
-              <div className="mb-3">
-                <span className="text-sm text-primary-400 font-semibold">
-                  {formatDate(post.date)}
-                </span>
-              </div>
+              <Link
+                to={`/blog/${post.slug}`}
+                className="flex-1 flex flex-col"
+              >
+                <div className="mb-3">
+                  <span className="text-sm text-primary-400 font-semibold">
+                    {formatDate(post.date)}
+                  </span>
+                </div>
 
-              <h3 className="text-xl font-bold mb-3 group-hover:text-primary-400 transition-colors">
-                {post.title}
-              </h3>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary-400 transition-colors">
+                  {post.title}
+                </h3>
 
-              <p className="text-gray-400 mb-4 line-clamp-3">
-                {post.description}
-              </p>
+                <p className="text-gray-400 mb-4 line-clamp-3 flex-1">
+                  {post.description}
+                </p>
+              </Link>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mt-auto">
                 {post.topics.map(topic => (
-                  <Link
+                  <button
                     key={topic}
-                    to={`/blog?topic=${encodeURIComponent(topic)}`}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={() => setSearchParams({ topic })}
                     className="text-xs bg-primary-950 text-primary-400 border border-primary-800 px-2 py-1 rounded-full hover:bg-primary-900 hover:border-primary-700 transition-colors"
                   >
                     {topic}
-                  </Link>
+                  </button>
                 ))}
               </div>
-            </Link>
+            </article>
           ))}
         </div>
       )}
