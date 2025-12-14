@@ -6,7 +6,7 @@ topics: ["Linux", "Docker"]
 slug: "home-lab-setup"
 ---
 
-![My homelab today](/src/assets/images/homelab-header.webp)
+![My homelab today](/blog-images/homelab-header.webp)
 
 Running a home lab has been one of the best investments in my technical education. Here's how I started affordably.
 
