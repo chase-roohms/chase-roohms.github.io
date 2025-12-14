@@ -37,9 +37,10 @@ Total cost: Under $300 (reusing what I had)
 ### Essential Services
 - **Pihole**: Network-wide ad blocking
 - **Nginx Proxy Manager**: Reverse proxy for all services
+- **Home Assistant**: Smart home management for lighting automation and others
 
 ### Media & Files
-- **Plex**: Media server
+- **Plex**: Media server for old movies
 - **Paperless-NGX**: Searchable document / PDF management
 
 ### Monitoring
@@ -49,7 +50,7 @@ Total cost: Under $300 (reusing what I had)
 ## Lessons Learned
 
 1. **Start small**: Add services gradually
-2. **Document everything**: Future you will thank present you - Confluence is free for individual users
+2. **Document everything**: Future you will thank present you (Confluence is free for individual users)
 3. **Security first**: Use VPNs and proper authentication
 
 ## Conclusion
