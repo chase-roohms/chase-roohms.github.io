@@ -14,13 +14,20 @@ export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (slug) {
-      getBlogPost(slug).then(loadedPost => {
-        setPost(loadedPost);
-        setLoading(false);
-      });
+      getBlogPost(slug)
+        .then(loadedPost => {
+          setPost(loadedPost);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error('Error loading blog post:', err);
+          setError('Failed to load blog post');
+          setLoading(false);
+        });
     }
   }, [slug]);
 
@@ -38,6 +45,20 @@ export default function BlogPost() {
       <div className="section-container py-20">
         <div className="max-w-4xl mx-auto">
           <p className="text-gray-400 text-lg">Loading post...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="section-container py-20">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold mb-4">Error Loading Post</h1>
+          <p className="text-gray-400 mb-6">{error}</p>
+          <Link to="/blog" className="btn-primary inline-flex items-center gap-2">
+            <FaArrowLeft /> Back to Blog
+          </Link>
         </div>
       </div>
     );
