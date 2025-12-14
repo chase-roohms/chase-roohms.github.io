@@ -47,7 +47,7 @@ export default function Contact() {
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/contact" />
       </Helmet>
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center flex items-center justify-center gap-3">
           <FaCommentDots className="text-primary-400" />

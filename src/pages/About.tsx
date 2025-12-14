@@ -97,7 +97,7 @@ export default function About() {
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/about" />
       </Helmet>
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
         <div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-0 flex items-center gap-3">

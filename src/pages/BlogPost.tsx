@@ -44,7 +44,7 @@ export default function BlogPost() {
 
   if (loading) {
     return (
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
         <div className="max-w-4xl mx-auto">
           <p className="text-gray-400 text-lg">Loading post...</p>
         </div>
@@ -54,7 +54,7 @@ export default function BlogPost() {
 
   if (error) {
     return (
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Error Loading Post</h1>
           <p className="text-gray-400 mb-6">{error}</p>
@@ -68,7 +68,7 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
           <p className="text-gray-400 mb-6">
@@ -103,7 +103,7 @@ export default function BlogPost() {
         <meta name="twitter:description" content={post.description} />
         {post.image && <meta name="twitter:image" content={post.image} />}
       </Helmet>
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
         <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <Link 

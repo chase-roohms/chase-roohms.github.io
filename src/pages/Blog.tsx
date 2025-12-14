@@ -37,7 +37,7 @@ export default function Blog() {
 
   if (loading) {
     return (
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
         <div className="flex items-center justify-center">
           <p className="text-gray-400 text-lg">Loading blog posts...</p>
         </div>
@@ -66,7 +66,7 @@ export default function Blog() {
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/blog" />
       </Helmet>
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
           <FaBlog className="text-primary-400" />
           Blog

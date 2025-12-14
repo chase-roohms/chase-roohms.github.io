@@ -115,7 +115,7 @@ export default function News() {
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/news" />
       </Helmet>
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
           <FaNewspaper className="text-primary-400" />
           News

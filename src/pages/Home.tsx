@@ -30,9 +30,9 @@ export default function Home() {
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/" />
       </Helmet>
-      <div className="section-container py-20">
+      <div className="section-container py-8 md:py-20">
       {/* Hero Section */}
-      <section className="py-20">
+      <section>
         <div className="flex flex-col md:flex-row items-center gap-3">
           {/* Text Content */}
           <div className="flex-[2]">
