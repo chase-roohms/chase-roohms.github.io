@@ -32,7 +32,7 @@ export default function Home() {
       </Helmet>
       <div className="section-container py-8 md:py-20">
       {/* Hero Section */}
-      <section>
+      <section className="pb-8 md:py-20">
         <div className="flex flex-col md:flex-row items-center gap-3">
           {/* Text Content */}
           <div className="flex-[2]">
@@ -53,8 +53,8 @@ export default function Home() {
           </div>
 
           {/* Image Placeholder */}
-          <div className="flex-1 flex justify-center md:justify-end">
-            <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-900 border-2 border-gray-800 rounded-2xl flex items-center justify-center">
+          <div className="flex-1 flex justify-center md:justify-end mt-8 md:mt-0">
+            <div className="w-48 h-48 md:w-80 md:h-80 bg-gray-900 border-2 border-gray-800 rounded-2xl flex items-center justify-center">
               <img src={headshot} alt="Headshot" loading="lazy" className="w-full h-full object-cover rounded-2xl" />
             </div>
           </div>
