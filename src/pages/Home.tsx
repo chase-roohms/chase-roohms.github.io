@@ -4,6 +4,8 @@ import headshot from '../assets/images/headshot.webp';
 
 export default function Home() {
   const name = "Chase Roohms";
+  const first_name = name.split(" ")[0];
+  const last_name = name.split(" ")[1];
   const headline = "DevOps Engineer at SolarWinds and an Automation Evangelist";
   const biography = "I'm a DevOps Engineer at SolarWinds, where I specialize in automation and infrastructure as code. I have a passion for solving complex problems and enjoy working on projects that involve both software development and IT security.";
   return (
@@ -14,7 +16,7 @@ export default function Home() {
           {/* Text Content */}
           <div className="flex-[2]">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Hi, I'm <a href="https://www.google.com/search?q=Chase+Roohms" target="_blank" rel="noopener noreferrer" className="text-[#ff6200] cursor-pointer [&>span]:inline-block [&>span]:transition-transform [&>span]:duration-300 hover:[&>span]:scale-110"><span>Chase</span> <span>Roohms</span></a>
+              Hi, I'm <a href="https://www.google.com/search?q=Chase+Roohms" target="_blank" rel="noopener noreferrer" className="text-[#ff6200] cursor-pointer [&>span]:inline-block [&>span]:transition-transform [&>span]:duration-300 hover:[&>span]:scale-110"><span>{first_name}</span> <span>{last_name}</span></a>
             </h1>
             <p className="text-xl text-gray-400 mb-8">
               {headline}
