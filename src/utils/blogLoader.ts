@@ -25,46 +25,71 @@ export interface BlogPost {
   image?: string;
 }
 
-// Import all markdown files as raw strings
+// Import all markdown files as raw strings with eager: false for lazy loading
 const blogFiles = import.meta.glob('../content/blog/*.md', { 
   query: '?raw',
   import: 'default',
+  eager: false,
 });
 
-export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  const posts: BlogPost[] = [];
+// Cache for blog post metadata (without full content)
+let metadataCache: Array<Omit<BlogPost, 'content'> & { path: string }> | null = null;
 
-  try {
-    console.log('Blog files found:', Object.keys(blogFiles));
+async function getMetadata() {
+  if (metadataCache) return metadataCache;
+  
+  const metadata: Array<Omit<BlogPost, 'content'> & { path: string }> = [];
+  
+  for (const path in blogFiles) {
+    const content = await blogFiles[path]();
+    const { data } = matter(content);
     
-    for (const path in blogFiles) {
-      console.log('Loading:', path);
-      const content = await blogFiles[path]();
-      console.log('Content type:', typeof content);
-      const { data, content: markdown } = matter(content);
-      
-      posts.push({
-        slug: data.slug,
-        title: data.title,
-        date: data.date,
-        description: data.description,
-        topics: data.topics || [],
-        content: markdown,
-        icon: data.icon,
-        author: data.author,
-        image: data.image,
-      });
-    }
-    console.log('Loaded posts:', posts.length);
-  } catch (error) {
-    console.error('Error loading blog posts:', error);
+    metadata.push({
+      path,
+      slug: data.slug,
+      title: data.title,
+      date: data.date,
+      description: data.description,
+      topics: data.topics || [],
+      icon: data.icon,
+      author: data.author,
+      image: data.image,
+    });
   }
+  
+  metadataCache = metadata.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return metadataCache;
+}
 
-  // Sort by date (newest first)
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export async function getAllBlogPosts(): Promise<BlogPost[]> {
+  const metadata = await getMetadata();
+  
+  // Return posts with empty content for listing pages
+  return metadata.map(meta => ({
+    ...meta,
+    content: '', // Don't load content for listing page
+  }));
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const posts = await getAllBlogPosts();
-  return posts.find(post => post.slug === slug) || null;
+  const metadata = await getMetadata();
+  const postMeta = metadata.find(post => post.slug === slug);
+  
+  if (!postMeta) return null;
+  
+  // Only load full content for the requested post
+  const content = await blogFiles[postMeta.path]();
+  const { data, content: markdown } = matter(content);
+  
+  return {
+    slug: data.slug,
+    title: data.title,
+    date: data.date,
+    description: data.description,
+    topics: data.topics || [],
+    content: markdown,
+    icon: data.icon,
+    author: data.author,
+    image: data.image,
+  };
 }

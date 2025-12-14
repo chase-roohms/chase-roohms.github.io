@@ -7,6 +7,17 @@ export default defineConfig({
   base: '/',
   build: {
     sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-markdown': ['react-markdown', 'rehype-highlight', 'rehype-raw', 'remark-gfm'],
+          'vendor-helmet': ['react-helmet-async'],
+          'vendor-icons': ['react-icons'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
   },
   define: {
     'global': 'globalThis',
