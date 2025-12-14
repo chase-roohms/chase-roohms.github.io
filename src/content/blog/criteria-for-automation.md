@@ -3,7 +3,7 @@ title: "The Criteria for Automation"
 date: "2025-12-14"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/clock-vs-money-scale.webp"
-description: "Is something worth automating, or if you will spend more time on it than it's worth?"
+description: "Is something really worth automating, or will you spend more time on it than it's worth?"
 topics: ["Automation"]
 slug: "criteria-for-automation"
 icon: "FaBalanceScale"
