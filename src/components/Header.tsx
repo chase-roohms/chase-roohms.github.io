@@ -22,7 +22,7 @@ export default function Header() {
         <div className="flex justify-between items-center">
           {/* Logo/Brand */}
           <Link to="/" className="text-2xl font-bold text-primary-400 font-mono">
-            ./portfolio.tsx
+            ./chase-roohms.tsx
           </Link>
 
           {/* Desktop Navigation */}
