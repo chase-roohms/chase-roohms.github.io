@@ -4,11 +4,18 @@ import { FaNewspaper } from 'react-icons/fa';
 export default function News() {
   const newsItems = [
     {
-      id: 'portfolio',
+      id: 'new-portfolio',
       fullDate: '2025-12-13',
       title: 'Built a Modern Portfolio',
-      description:
-        'Launched a new portfolio website built with Vite, React, TypeScript, and Tailwind CSS. Features include dark mode, responsive design, and array-based content management.',
+      description: 'Launched a new portfolio website built with Vite, React, TypeScript, and Tailwind CSS.',
+      link: 'https://chaseroohms.com',
+    },
+    {
+      id: 'opsgenie-swir-webcast',
+      fullDate: '2025-12-10',
+      title: 'Speaker in a Webcast',
+      description: 'Participated as a speaker in a webcast discussing the migration from Opsgenie to SolarWinds Incident Response platform, sharing insights and best practices.',
+      link: 'https://goldcast.ondemand.goldcast.io/on-demand/4ed8f693-f755-4a35-ad2f-5ccbba38de26',
     },
     {
       id: 'migration-blog-post',
