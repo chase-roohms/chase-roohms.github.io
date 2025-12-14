@@ -4,6 +4,7 @@ date: "2025-12-14"
 description: "How I built a functional home lab for learning and experimentation without breaking the bank."
 topics: ["Linux", "Docker"]
 slug: "home-lab-setup"
+icon: "FaDollarSign"
 ---
 
 ![My homelab today](/blog-images/homelab-header.webp)
