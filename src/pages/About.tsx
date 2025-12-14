@@ -79,11 +79,22 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About - Chase Roohms</title>
-        <meta name="description" content="Learn about Chase Roohms, DevOps Engineer with a passion for automation and infrastructure as code. Background, experience, and skills." />
-        <meta property="og:title" content="About - Chase Roohms" />
-        <meta property="og:description" content="Learn about Chase Roohms, DevOps Engineer with a passion for automation and infrastructure as code." />
+        <title>About - Chase Roohms - DevOps Engineer & Automation Evangelist</title>
+        <meta name="description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
+        <meta name="author" content="Chase Roohms" />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://chaseroohms.com/about" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Chase Roohms" />
+        <meta property="og:title" content="About - Chase Roohms" />
+        <meta property="og:description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
+        <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Chase Roohms" />
+        <meta name="twitter:description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
+        <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/about" />
       </Helmet>
       <div className="section-container py-20">

@@ -48,11 +48,22 @@ export default function Blog() {
   return (
     <>
       <Helmet>
-        <title>Blog - Chase Roohms</title>
+        <title>Blog - Chase Roohms - DevOps Engineer & Automation Evangelist</title>
         <meta name="description" content="Technical articles, tutorials, and thoughts on DevOps, automation, and software development by Chase Roohms." />
-        <meta property="og:title" content="Blog - Chase Roohms" />
-        <meta property="og:description" content="Technical articles, tutorials, and thoughts on DevOps, automation, and software development." />
+        <meta name="author" content="Chase Roohms" />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://chaseroohms.com/blog" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Chase Roohms" />
+        <meta property="og:title" content="Blog - Chase Roohms" />
+        <meta property="og:description" content="Technical articles, tutorials, and thoughts on DevOps, automation, and software development by Chase Roohms." />
+        <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blog - Chase Roohms" />
+        <meta name="twitter:description" content="Technical articles, tutorials, and thoughts on DevOps, automation, and software development by Chase Roohms." />
+        <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/blog" />
       </Helmet>
       <div className="section-container py-20">

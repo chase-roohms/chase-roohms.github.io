@@ -97,11 +97,22 @@ export default function News() {
   return (
     <>
       <Helmet>
-        <title>News - Chase Roohms</title>
+        <title>News - Chase Roohms - DevOps Engineer & Automation Evangelist</title>
         <meta name="description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />
-        <meta property="og:title" content="News - Chase Roohms" />
-        <meta property="og:description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career." />
+        <meta name="author" content="Chase Roohms" />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://chaseroohms.com/news" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Chase Roohms" />
+        <meta property="og:title" content="News - Chase Roohms" />
+        <meta property="og:description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />
+        <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="News - Chase Roohms" />
+        <meta name="twitter:description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />
+        <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/news" />
       </Helmet>
       <div className="section-container py-20">

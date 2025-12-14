@@ -18,6 +18,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://chaseroohms.com/" />
         <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Chase Roohms" />
         <meta property="og:title" content="Chase Roohms - DevOps Engineer" />
         <meta property="og:description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
         <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />

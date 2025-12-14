@@ -92,6 +92,7 @@ export default function BlogPost() {
         <meta property="og:description" content={post.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://chaseroohms.com/blog/${post.slug}`} />
+        <meta property="og:site_name" content="Chase Roohms" />
         {post.image && <meta property="og:image" content={post.image} />}
         {post.image && <meta property="og:image:width" content="1920" />}
         {post.image && <meta property="og:image:height" content="716" />}

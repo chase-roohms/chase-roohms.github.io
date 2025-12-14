@@ -107,11 +107,22 @@ export default function Projects() {
   return (
     <>
       <Helmet>
-        <title>Projects - Chase Roohms</title>
+        <title>Projects - Chase Roohms - DevOps Engineer & Automation Evangelist</title>
         <meta name="description" content="Professional and personal projects by Chase Roohms, including DevOps automation, web applications, and infrastructure solutions." />
-        <meta property="og:title" content="Projects - Chase Roohms" />
-        <meta property="og:description" content="Professional and personal projects by Chase Roohms, including DevOps automation and infrastructure solutions." />
+        <meta name="author" content="Chase Roohms" />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://chaseroohms.com/projects" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Chase Roohms" />
+        <meta property="og:title" content="Projects - Chase Roohms" />
+        <meta property="og:description" content="Professional and personal projects by Chase Roohms, including DevOps automation, web applications, and infrastructure solutions." />
+        <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Projects - Chase Roohms" />
+        <meta name="twitter:description" content="Professional and personal projects by Chase Roohms, including DevOps automation, web applications, and infrastructure solutions." />
+        <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/projects" />
       </Helmet>
       <div className="section-container py-20">
