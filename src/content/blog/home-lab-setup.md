@@ -11,7 +11,7 @@ icon: "FaDollarSign"
 
 <figure class="my-6">
   <img src="https://chaseroohms.com/blog-images/homelab-header.webp" alt="My homelab today" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
-  <figcaption class="text-center text-sm text-gray-400 mt-2">My homelab today</figcaption>
+  <figcaption class="text-center text-sm text-gray-400 mt-2">Some of my homelab today after numerous upgrades</figcaption>
 </figure>
 
 Running a home lab has been one of the best investments in my technical education. Here's how I started affordably.
@@ -57,4 +57,4 @@ Total cost: Under $300 (reusing what I had)
 
 ## Conclusion
 
-A home lab doesn't have to be expensive or complicated. Start with what you have, and grow as you learn.
+A home lab doesn't have to be expensive or complicated. Start with what you have, then grow and upgrade as you learn.
