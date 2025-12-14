@@ -1,6 +1,8 @@
 ---
 title: "Start Self-Hosting on a Budget"
 date: "2025-12-14"
+author: Chase Roohms
+image: "https://chaseroohms.com/blog-images/homelab-header.webp"
 description: "How I built a functional home lab for learning and experimentation without breaking the bank."
 topics: ["Linux", "Docker"]
 slug: "home-lab-setup"

@@ -21,6 +21,8 @@ export interface BlogPost {
   topics: string[];
   content: string;
   icon?: string;
+  author?: string;
+  image?: string;
 }
 
 // Import all markdown files as raw strings
@@ -49,6 +51,8 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
         topics: data.topics || [],
         content: markdown,
         icon: data.icon,
+        author: data.author,
+        image: data.image,
       });
     }
     console.log('Loaded posts:', posts.length);

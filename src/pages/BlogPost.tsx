@@ -9,6 +9,7 @@ import { FaArrowLeft, FaCalendar } from 'react-icons/fa';
 import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
 import * as BsIcons from 'react-icons/bs';
+import { Helmet } from 'react-helmet-async';
 import 'highlight.js/styles/github-dark.css';
 
 export default function BlogPost() {
@@ -82,15 +83,27 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="section-container py-20">
-      <div className="max-w-4xl mx-auto">
-        {/* Back Button */}
-        <Link 
-          to="/blog" 
-          className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 mb-8 transition-colors"
-        >
-          <FaArrowLeft /> Back to Blog
-        </Link>
+    <>
+      <Helmet>
+        <title>{post.title} - Chase Roohms</title>
+        <meta name="description" content={post.description} />
+        <meta name="author" content={post.author || 'Chase Roohms'} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.description} />
+        <meta property="og:type" content="article" />
+        {post.image && <meta property="og:image" content={post.image} />}
+        <meta property="article:published_time" content={post.date} />
+        <meta property="article:author" content={post.author || 'Chase Roohms'} />
+      </Helmet>
+      <div className="section-container py-20">
+        <div className="max-w-4xl mx-auto">
+          {/* Back Button */}
+          <Link 
+            to="/blog" 
+            className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 mb-8 transition-colors"
+          >
+            <FaArrowLeft /> Back to Blog
+          </Link>
 
         {/* Post Header */}
         <article>
@@ -109,6 +122,12 @@ export default function BlogPost() {
                 <FaCalendar className="w-4 h-4" />
                 {formatDate(post.date)}
               </span>
+              {post.author && (
+                <>
+                  <span>•</span>
+                  <span>{post.author}</span>
+                </>
+              )}
             </div>
 
             <p className="text-xl text-gray-400 mb-6">
@@ -160,7 +179,8 @@ export default function BlogPost() {
             <FaArrowLeft /> Back to Blog
           </Link>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
