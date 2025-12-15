@@ -26,16 +26,6 @@ export default function Blog() {
     ? posts 
     : posts.filter(post => post.topics.includes(selectedTopic));
 
-  // Format date as "MMM D, YYYY"
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric', 
-      year: 'numeric' 
-    });
-  };
-
   if (loading) {
     return (
       <div className="section-container py-8 md:py-20">
