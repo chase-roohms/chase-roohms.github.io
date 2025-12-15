@@ -11,8 +11,8 @@ export const newsItems: NewsItem[] = [
     id: 'new-portfolio',
     fullDate: '2025-12-13',
     title: 'Built a Modern Portfolio',
-    description: 'Launched a new portfolio website built with Vite, React, TypeScript, and Tailwind CSS.',
-    link: 'https://chaseroohms.com',
+    description: 'Launched a complete overhaul of my portfolio website with Vite, React, TypeScript, and Tailwind CSS.',
+    link: 'https://github.com/chase-roohms/chase-roohms.github.io',
   },
   {
     id: 'opsgenie-swir-webcast',
