@@ -59,7 +59,10 @@ export default function BlogPost() {
   }, [slug]);
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
+    // Parse date and assume it's noon CST (UTC-6, so 18:00 UTC)
+    // This ensures the date displays correctly regardless of user's timezone
+    const [year, month, day] = dateString.split('-').map(Number);
+    const date = new Date(Date.UTC(year, month - 1, day, 18, 0, 0));
     return date.toLocaleDateString('en-US', { 
       month: 'long', 
       day: 'numeric', 

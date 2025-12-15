@@ -26,7 +26,7 @@ export const professionalProjects: Project[] = [
   },
   {
     id: 'homelab',
-    fullDate: '2024-12-01',
+    fullDate: '2024-12-08',
     title: 'HomeLab',
     description: 'Self-hosted home lab setup for various internal and external services and applications.',
     tech: ['Linux', 'Bash', 'Docker'],
@@ -35,7 +35,7 @@ export const professionalProjects: Project[] = [
   },
   {
     id: 'mythicmate',
-    fullDate: '2023-11-01',
+    fullDate: '2023-11-14',
     title: 'MythicMate',
     description: 'Developed an AI powered Discord companion for Dungeons and Dragons, using Java and OpenAI\'s GPT-4.',
     tech: ['Java', 'Maven', 'OpenAI'],

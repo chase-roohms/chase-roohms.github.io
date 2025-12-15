@@ -8,8 +8,10 @@ export default function News() {
 
   // Format date as "MMM D, YYYY" (e.g., "Dec 13, 2025")
   const formatDate = (dateString: string) => {
+    // Parse date and assume it's noon CST (UTC-6, so 18:00 UTC)
+    // This ensures the date displays correctly regardless of user's timezone
     const [year, month, day] = dateString.split('-').map(Number);
-    const date = new Date(year, month - 1, day);
+    const date = new Date(Date.UTC(year, month - 1, day, 18, 0, 0));
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   };
 
