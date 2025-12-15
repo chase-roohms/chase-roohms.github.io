@@ -1,129 +1,116 @@
-# Portfolio Website
+# Chase Roohms' Portfolio
 
-A modern, clean portfolio website built with React, TypeScript, and Tailwind CSS.
+Static site generator for my personal portfolio with an integrated blog system and automated prerendering for SEO.
 
 ## Tech Stack
 
-- **Vite** - Fast build tool and dev server
-- **React 18** - UI library
-- **TypeScript** - Type safety
-- **React Router v6** - Client-side routing
-- **Tailwind CSS** - Utility-first CSS framework
+- Vite + React 18 + TypeScript
+- React Router v6 for client-side routing
+- Tailwind CSS for styling
+- React Helmet Async for dynamic meta tags
+- Gray Matter for markdown frontmatter parsing
+- Puppeteer for prerendering
 
-## Getting Started
+## Architecture
 
-### Prerequisites
+- Single Page Application with static prerendering
+- Markdown-based blog with automatic post discovery
+- Custom prerendering pipeline for social media crawler compatibility
+- YAML-based resume data with Typst export capability (shoutout [rendercv](https://github.com/rendercv/rendercv))
 
-- Node.js (v18 or higher)
-- npm or yarn
-
-### Installation
-
-Dependencies are already installed! Start the development server:
+## Development
 
 ```bash
+npm install
 npm run dev
 ```
 
-The site will be available at `http://localhost:5173`
+Development server runs at `http://localhost:5173`
 
-### Build for Production
+## Build
 
 ```bash
 npm run build
 ```
 
-The production files will be in the `dist/` directory.
-
-### Preview Production Build
-
-```bash
-npm run preview
-```
+Build process:
+1. Vite production build to `dist/`
+2. Puppeteer-based prerendering of all routes
+3. Static HTML generation with fully-rendered meta tags for crawler compatibility
 
 ## Project Structure
 
 ```
 src/
-├── components/       # Reusable components
-│   ├── Header.tsx   # Navigation header
-│   ├── Footer.tsx   # Site footer
-│   └── Layout.tsx   # Main layout wrapper
-├── pages/           # Page components
-│   ├── Home.tsx     # Landing page
-│   ├── About.tsx    # About page
-│   ├── Projects.tsx # Projects showcase
-│   └── Contact.tsx  # Contact form
-├── App.tsx          # Main app with routing
-├── index.css        # Global styles & Tailwind
-└── main.tsx         # Entry point
+├── components/          # Reusable UI components
+│   ├── Header.tsx      # Navigation with mobile menu
+│   ├── Footer.tsx      # Footer with social links
+│   ├── Layout.tsx      # Main layout wrapper
+│   ├── Skills.tsx      # Skills display component
+│   └── ScrollToTop.tsx # Route change scroll handler
+├── pages/              # Route pages
+│   ├── Home.tsx        # Landing page
+│   ├── About.tsx       # About/experience page
+│   ├── Projects.tsx    # Project showcase
+│   ├── Blog.tsx        # Blog post list
+│   ├── BlogPost.tsx    # Individual post viewer
+│   ├── Contact.tsx     # Contact information
+│   └── News.tsx        # News/updates page
+├── content/            # Content files
+│   ├── blog/          # Blog posts (markdown)
+│   └── resume/        # Resume data (YAML)
+├── utils/              # Utility functions
+│   └── blogLoader.ts  # Blog post loading logic
+├── App.tsx            # Main app with routing
+└── main.tsx           # Entry point
+
+scripts/
+├── prerender.js        # Prerendering script for SEO
+├── check-meta-tags.js  # Meta tag validation
+├── verify-pages.js     # Page verification
+└── optimize-image.sh   # Image optimization
 ```
 
-## Customization
+## Blog System
 
-### Colors
+Blog posts are markdown files in `src/content/blog/` with YAML frontmatter:
 
-The primary color scheme is defined in `tailwind.config.js`. Modify the `primary` color object to change the site's color theme.
+```yaml
+---
+title: "Post Title"
+date: "YYYY-MM-DD"
+author: "Author Name"
+description: "SEO description"
+topics: ["topic1", "topic2"]
+slug: "url-slug"
+icon: "FaBalanceScale" # Some React icon or other
+image: "/blog-images/image.jpg"
+---
+```
 
-### Content
+Posts are automatically discovered and rendered at build time. The prerender script generates static HTML for each post to ensure proper OpenGraph meta tags for social media crawlers.
 
-- Update your name and tagline in `src/pages/Home.tsx`
-- Add your experience in `src/pages/About.tsx`
-- Showcase your projects in `src/pages/Projects.tsx`
-- Update social links in `src/components/Footer.tsx`
+## Prerendering
 
-### Adding Blog Posts
+`scripts/prerender.js` runs post-build to generate static HTML files:
 
-1. Add your `.md` file to `src/content/blog/` with frontmatter (title, date, author, description, topics, slug, icon, image)
-2. The blog post will automatically appear in the blog list
+1. Starts local server serving the Vite build
+2. Launches headless Chromium via Puppeteer
+3. Navigates to each route (static pages + dynamically discovered blog posts)
+4. Captures fully-rendered HTML with client-side meta tags
+5. Writes static files to `dist/`
 
-### Social Media Previews
+This ensures social media crawlers receive fully-rendered pages with correct meta tags despite the SPA architecture.
 
-Since this is a Single Page Application (SPA), social media crawlers won't execute JavaScript to see page-specific meta tags. Two solutions:
+## Scripts
 
-1. **Current**: Static meta tags in `index.html` provide a general preview for the main site
-2. **Recommended for blog posts**: Use [Prerender.io](https://prerender.io/) free tier
-   - Sign up at prerender.io
-   - Add their middleware to serve pre-rendered pages to crawlers
-   - This enables proper OpenGraph previews for individual blog posts
-
-### Styling
-
-- Global styles and Tailwind utilities are in `src/index.css`
-- Component-specific styles use Tailwind classes inline
-
-## Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Lint code with ESLint
-
-## Next Steps
-
-1. **Personalize Content**: Replace placeholder text with your information
-2. **Add Images**: Add your profile photo and project screenshots
-3. **Customize Design**: Adjust colors, fonts, and spacing to your taste
-4. **Add Projects**: Update the projects array with your real projects
-5. **Connect Form**: Integrate the contact form with a backend or service
-6. **Add Analytics**: Consider adding Google Analytics or similar
-7. **Deploy**: Deploy to Vercel, Netlify, or your preferred hosting
+- `npm run dev` - Development server
+- `npm run build` - Production build with prerendering
+- `npm run preview` - Preview production build locally
+- `npm run lint` - ESLint
 
 ## Deployment
 
-### Vercel (Recommended)
+Deployed via GitHub Pages. Build command: `npm run build`, publish directory: `dist/`
 
-1. Push your code to GitHub
-2. Import your repository on [Vercel](https://vercel.com)
-3. Vercel will auto-detect Vite and deploy
-
-### Netlify
-
-1. Push your code to GitHub
-2. Import your repository on [Netlify](https://netlify.com)
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-
-## License
-
-MIT License - Feel free to use this template for your own portfolio!
+Any static host works (Vercel, Netlify, etc.) - just ensure the build command runs the full build including prerendering.
