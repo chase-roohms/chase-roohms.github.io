@@ -15,6 +15,7 @@ export default function BlogPostCard({ post, showTopics = true, onTopicClick }: 
       title={post.title}
       description={post.description}
       date={post.date}
+      readingTime={post.readingTime}
       tags={post.topics}
       showTags={showTopics}
       onTagClick={onTopicClick}

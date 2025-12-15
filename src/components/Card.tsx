@@ -6,6 +6,7 @@ interface CardProps {
   title: string;
   description: string;
   date?: string;
+  readingTime?: number;
   tags?: string[];
   showTags?: boolean;
   onTagClick?: (tag: string) => void;
@@ -21,6 +22,7 @@ export default function Card({
   title,
   description,
   date,
+  readingTime,
   tags,
   showTags = true,
   onTagClick,
@@ -71,10 +73,15 @@ export default function Card({
       )}
 
       {date && (
-        <div className="mb-3">
+        <div className="mb-3 flex items-center gap-3">
           <span className="text-sm text-primary-400 font-semibold">
             {formatDate(date)}
           </span>
+          {readingTime && (
+            <span className="text-sm text-gray-500">
+              • {readingTime} min read
+            </span>
+          )}
         </div>
       )}
 

@@ -23,6 +23,15 @@ export interface BlogPost {
   icon?: string;
   author?: string;
   image?: string;
+  readingTime?: number;
+}
+
+// Calculate reading time in minutes (average 200 words per minute)
+function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200;
+  const words = content.trim().split(/\s+/).length;
+  const readingTime = Math.ceil(words / wordsPerMinute);
+  return readingTime;
 }
 
 // Import all markdown files as raw strings with eager: false for lazy loading
@@ -64,11 +73,20 @@ async function getMetadata() {
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
   const metadata = await getMetadata();
   
-  // Return posts with empty content for listing pages
-  return metadata.map(meta => ({
-    ...meta,
-    content: '', // Don't load content for listing page
-  }));
+  // Load content to calculate reading time
+  const posts = await Promise.all(
+    metadata.map(async (meta) => {
+      const content = await blogFiles[meta.path]();
+      const { content: markdown } = matter(content);
+      return {
+        ...meta,
+        content: '', // Don't include full content for listing page
+        readingTime: calculateReadingTime(markdown),
+      };
+    })
+  );
+  
+  return posts;
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
@@ -91,5 +109,33 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     icon: data.icon,
     author: data.author,
     image: data.image,
+    readingTime: calculateReadingTime(markdown),
   };
+}
+
+// Get related posts based on shared topics (excluding the current post)
+export async function getRelatedPosts(currentSlug: string, limit: number = 3): Promise<BlogPost[]> {
+  const allPosts = await getAllBlogPosts();
+  const currentPost = allPosts.find(post => post.slug === currentSlug);
+  
+  if (!currentPost) return [];
+  
+  // Calculate similarity score based on shared topics
+  const postsWithScore = allPosts
+    .filter(post => post.slug !== currentSlug)
+    .map(post => {
+      const sharedTopics = post.topics.filter(topic => currentPost.topics.includes(topic));
+      return {
+        post,
+        score: sharedTopics.length,
+      };
+    })
+    .filter(item => item.score > 0) // Only include posts with at least one shared topic
+    .sort((a, b) => {
+      // Sort by score first, then by date
+      if (b.score !== a.score) return b.score - a.score;
+      return new Date(b.post.date).getTime() - new Date(a.post.date).getTime();
+    });
+  
+  return postsWithScore.slice(0, limit).map(item => item.post);
 }

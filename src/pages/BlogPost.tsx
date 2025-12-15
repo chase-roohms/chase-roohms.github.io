@@ -4,13 +4,14 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
-import { getBlogPost, type BlogPost } from '../utils/blogLoader';
+import { getBlogPost, getRelatedPosts, type BlogPost } from '../utils/blogLoader';
 import { formatDate } from '../utils/dateFormatter';
-import { FaArrowLeft, FaCalendar, FaCopy, FaCheck } from 'react-icons/fa';
+import { FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock } from 'react-icons/fa';
 import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
 import * as BsIcons from 'react-icons/bs';
 import { Helmet } from 'react-helmet-async';
+import BlogPostCard from '../components/BlogPostCard';
 import 'highlight.js/styles/github-dark.css';
 
 function CodeBlock({ children, className }: { children: string; className?: string }) {
@@ -41,14 +42,19 @@ function CodeBlock({ children, className }: { children: string; className?: stri
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
+  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (slug) {
-      getBlogPost(slug)
-        .then(loadedPost => {
+      Promise.all([
+        getBlogPost(slug),
+        getRelatedPosts(slug, 3)
+      ])
+        .then(([loadedPost, related]) => {
           setPost(loadedPost);
+          setRelatedPosts(related);
           setLoading(false);
         })
         .catch(err => {
@@ -177,6 +183,15 @@ export default function BlogPost() {
                 <FaCalendar className="w-4 h-4" />
                 {formatDate(post.date)}
               </span>
+              {post.readingTime && (
+                <>
+                  <span>•</span>
+                  <span className="flex items-center gap-2">
+                    <FaClock className="w-4 h-4" />
+                    {post.readingTime} min read
+                  </span>
+                </>
+              )}
               {post.author && (
                 <>
                   <span>•</span>
@@ -239,6 +254,22 @@ export default function BlogPost() {
             </ReactMarkdown>
           </div>
         </article>
+
+        {/* Related Posts */}
+        {relatedPosts.length > 0 && (
+          <div className="mt-16 pt-8 border-t border-gray-800">
+            <h2 className="text-3xl font-bold mb-8">Related Posts</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {relatedPosts.map(relatedPost => (
+                <BlogPostCard
+                  key={relatedPost.slug}
+                  post={relatedPost}
+                  showTopics={true}
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Back to Blog */}
         <div className="mt-12 pt-8 border-t border-gray-800">
