@@ -9,6 +9,7 @@ Modern portfolio website built with Vite, React, TypeScript, and Tailwind CSS.
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v3
 - **Routing**: React Router v6
+- **Hosting**: GitHub Pages
 
 ## Project Structure
 ```
