@@ -1,6 +1,6 @@
 export default function CircuitDecoration() {
   return (
-    <div className="absolute -top-32 -left-32 w-[900px] h-[700px] pointer-events-none opacity-60 z-0">
+    <div className="absolute -top-32 -left-32 w-[600px] h-[500px] md:w-[900px] md:h-[700px] pointer-events-none opacity-60 z-0">
       <svg viewBox="0 0 700 500" className="w-full h-full" style={{ transform: 'rotate(-45deg)', transformOrigin: 'center center' }}>
         {/* Circuit paths */}
         <path d="M 0 100 L 100 100 L 100 50 L 180 50" stroke="#1f2937" strokeWidth="2" fill="none" />

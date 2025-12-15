@@ -60,7 +60,7 @@ export default function Home() {
             <p className="text-xl text-gray-400 mb-8">
               {headline}
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center md:justify-start">
               <Link to="/projects" className="btn-primary">
                 My Projects
               </Link>
@@ -80,7 +80,7 @@ export default function Home() {
       </section>
 
       {/* About & Blog Post */}
-      <section className="py-20 border-t border-gray-800">
+      <section className="py-4 md:py-20 md:border-t border-gray-800">
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* About Me Section */}
           <div>
@@ -119,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* Project & Skills */}
-      <section className="py-20 border-t border-gray-800">
+      <section className="py-4 md:py-20 md:border-t border-gray-800">
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Recent Project Section */}
           <div>
