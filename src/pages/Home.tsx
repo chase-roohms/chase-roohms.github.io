@@ -1,14 +1,29 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useState, useEffect } from 'react';
 import Skills from '../components/Skills';
+import CircuitDecoration from '../components/CircuitDecoration';
+import ProjectCard from '../components/ProjectCard';
+import BlogPostCard from '../components/BlogPostCard';
+import { professionalProjects } from '../utils/projectsData';
+import { profileData } from '../utils/profileData';
+import { getAllBlogPosts, type BlogPost } from '../utils/blogLoader';
 import headshot from '../assets/images/headshot.webp';
 
 export default function Home() {
-  const name = "Chase Roohms";
+  const { name, headline, biography } = profileData;
   const first_name = name.split(" ")[0];
   const last_name = name.split(" ")[1];
-  const headline = "DevOps Engineer at SolarWinds and an Automation Evangelist";
-  const biography = "I'm a DevOps Engineer at SolarWinds, where I specialize in automation and infrastructure as code. I have a passion for solving complex problems and enjoy working on projects that involve both software development and IT security.";
+  
+  const [recentPost, setRecentPost] = useState<BlogPost | null>(null);
+
+  useEffect(() => {
+    getAllBlogPosts().then(posts => {
+      if (posts.length > 0) {
+        setRecentPost(posts[0]);
+      }
+    });
+  }, []);
   return (
     <>
       <Helmet>
@@ -30,7 +45,10 @@ export default function Home() {
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/" />
       </Helmet>
-      <div className="section-container py-8 md:py-20">
+      
+      <CircuitDecoration />
+      
+      <div className="section-container py-8 md:py-20 relative z-10">
       {/* Hero Section */}
       <section className="pb-8 md:py-20">
         <div className="flex flex-col md:flex-row items-center gap-3">
@@ -61,25 +79,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick About */}
+      {/* About & Blog Post */}
       <section className="py-20 border-t border-gray-800">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 text-center">About Me</h2>
-          <p className="text-gray-400 text-lg text-center mb-6">
-            {biography}
-          </p>
-          <div className="flex justify-center">
-            <Link to="/about" className="btn-secondary">
-              Read My Full Bio
-            </Link>
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          {/* About Me Section */}
+          <div>
+            <h2 className="text-3xl font-bold mb-6">About Me</h2>
+            <div className="space-y-4 mb-6">
+              {biography.map((paragraph, index) => (
+                <p key={index} className="text-gray-400 text-lg">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link to="/about" className="btn-secondary inline-block">
+                Learn More About Me
+              </Link>
+            </div>
+          </div>
+
+          {/* Recent Blog Post Section */}
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-3xl font-bold">Latest Blog Post</h2>
+              <Link to="/blog" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
+                View All →
+              </Link>
+            </div>
+            {recentPost ? (
+              <BlogPostCard post={recentPost} showTopics={false} />
+            ) : (
+              <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+                <p className="text-gray-400">Loading...</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Featured Skills/Tech */}
+      {/* Project & Skills */}
       <section className="py-20 border-t border-gray-800">
-        <h2 className="text-3xl font-bold mb-12 text-center">Skills & Technologies</h2>
-        <Skills />
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          {/* Recent Project Section */}
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-3xl font-bold">Latest Project</h2>
+              <Link to="/projects" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
+                View All →
+              </Link>
+            </div>
+            <ProjectCard 
+              project={[...professionalProjects].sort((a, b) => 
+                new Date(b.fullDate).getTime() - new Date(a.fullDate).getTime()
+              )[0]}
+              showTech={false}
+            />
+          </div>
+
+          {/* Skills & Technologies Section */}
+          <div>
+            <h2 className="text-3xl font-bold mb-6">Skills & Technologies</h2>
+            <Skills compact />
+          </div>
+        </div>
       </section>
       </div>
     </>

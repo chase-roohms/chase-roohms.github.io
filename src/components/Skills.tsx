@@ -1,7 +1,11 @@
 import { SiPython, SiGnubash, SiLinux, SiDocker, SiGithubactions, SiGooglecloud, SiTerraform, SiApachemaven } from 'react-icons/si';
 import { FaKey, FaJava, FaCogs, FaNetworkWired } from 'react-icons/fa';
 
-export default function Skills() {
+interface SkillsProps {
+  compact?: boolean;
+}
+
+export default function Skills({ compact = false }: SkillsProps) {
   const skills = [
     { 
       name: 'Python',
@@ -54,7 +58,7 @@ export default function Skills() {
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+    <div className={`grid gap-3 ${compact ? 'grid-cols-2' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}`}>
       {skills.map((skill) => (
         <div
           key={skill.name}

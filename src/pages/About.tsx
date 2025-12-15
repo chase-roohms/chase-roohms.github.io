@@ -2,41 +2,14 @@ import { BsBuilding } from 'react-icons/bs';
 import { FaExternalLinkAlt, FaFileDownload, FaUserCircle } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import Skills from '../components/Skills';
+import { getExperiences, getHonorsAndAwards, getEducation } from '../utils/resumeLoader';
+import { profileData } from '../utils/profileData';
 
 export default function About() {
-  const experiences = [
-    {
-      id: 3,
-      title: 'DevOps Engineer',
-      company: 'SolarWinds',
-      period: 'Oct 2025 - Present',
-      achievements: [
-        'Expedited the Developer workflow with an end to end Self-Service platform.',
-      ],
-    },
-    {
-      id: 2,
-      title: 'Associate DevOps Engineer',
-      company: 'SolarWinds',
-      period: 'Oct 2024 - Oct 2025',
-      achievements: [
-        'Increased code scanning coverage by ~400% using GitHub CodeQL.',
-        'Decreased spending on GitHub Actions runners minutes by ~45% by improving workflow efficiency.',
-        'Led the migration from OpsGenie to Squadcast (SolarWinds Incident Response).',
-        'Achieved SLSA level 2 compliance in multiple products by automating signed SBOM and provenance generation in CI/CD pipelines, ensuring software integrity and tamper-resistance.',
-      ],
-    },
-    {
-      id: 1,
-      title: 'Security Engineer Intern',
-      company: 'SolarWinds',
-      period: 'June 2024 - Oct 2024',
-      achievements: [
-        'Reduced the legal review time by ~70% with an SBOM Vex translation script written in Python.',
-        'Increased security visibility by reviewing and redesigning data-flow threat models for more than 30 products.',
-      ],
-    },
-  ];
+  const { biography } = profileData;
+  const experiences = getExperiences();
+  
+  // Certifications with links - these aren't in the YAML, so we maintain them here
   const certifications = [
     {
       id: 2,
@@ -51,30 +24,9 @@ export default function About() {
       link: 'https://learn.microsoft.com/en-us/users/chaseroohms-6404/credentials/74d82a397bfdb509',
     },
   ];
-  const honors = [
-    {
-      id: 2,
-      title: 'IT Pro Day, Rockstar of the Year',
-      institution: 'SolarWinds',
-      period: 'Sept 2025',
-      details: 'Consistently demonstrated high performance, and embodied SolarWinds values.'
-    },
-    {
-      id: 1,
-      title: 'DevOps Dynamo',
-      institution: 'SolarWinds',
-      period: 'June 2025',
-      details: 'Brought unmatched energy and precision to the DevOps workflow.'
-    },
-  ];
-  const education = [
-    {
-      id: 1,
-      title: 'Bachelor\'s in Computer Science',
-      institution: 'Texas State University, San Marcos',
-      period: 'Aug 2020 - May 2024',
-    },
-  ];
+  
+  const honors = getHonorsAndAwards();
+  const education = getEducation();
 
   return (
     <>
@@ -116,23 +68,13 @@ export default function About() {
         <div>
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Background</h2>
-          <p className="text-gray-400 leading-relaxed mb-4">
-            I've built my career around a passion for automation and problem solving.
-            With a background in software development and IT security, I approach 
-            challenges from multiple perspectives and enjoy finding smarter, more 
-            efficient ways to keep systems running smoothly.
-          </p>
-          <p className="text-gray-400 leading-relaxed">
-            A natural tinkerer, I spend my free time exploring new tools, running 
-            home servers, and building side projects. That same curiosity drives 
-            my work - streamlining processes, reducing manual efforts, and creating 
-            solutions that scale.
-          </p>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Skills & Technologies</h2>
-          <Skills />
+          <div className="space-y-4">
+            {biography.map((paragraph, index) => (
+              <p key={index} className="text-gray-400 leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </section>
 
         <section className="mb-12">
@@ -140,9 +82,12 @@ export default function About() {
           <div className="space-y-6">
             {experiences.map((experience) => (
               <div key={experience.id} className="bg-gray-900 border-l-4 border-primary-600 rounded-lg p-6 hover:bg-gray-800 transition-all hover:shadow-lg hover:shadow-primary-900/20">
-                <h3 className="text-xl font-bold mb-2 text-gray-100">{experience.title}</h3>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-gray-100">{experience.title}</h3>
+                  <p className="text-sm text-gray-400">{experience.period}</p>
+                </div>
                 <p className="text-gray-400 flex items-center gap-2 mb-3">
-                  <BsBuilding className="w-4 h-4" /> {experience.company} • {experience.period}
+                  <BsBuilding className="w-4 h-4" /> {experience.company}
                 </p>
                 <ul className="text-gray-400 list-disc list-inside space-y-2">
                   {experience.achievements.map((achievement, index) => (
@@ -152,6 +97,11 @@ export default function About() {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6">Skills & Technologies</h2>
+          <Skills />
         </section>
 
         <section className="mb-12">
@@ -166,11 +116,11 @@ export default function About() {
                 className="block bg-gray-900 border-l-4 border-primary-600 rounded-lg p-4 hover:bg-gray-800 transition-all hover:shadow-lg hover:shadow-primary-900/20"
               >
                 <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-100">{cert.title}</h3>
-                    <p className="text-gray-400 text-sm mt-1">{cert.period}</p>
+                  <h3 className="text-lg font-bold text-gray-100">{cert.title}</h3>
+                  <div className="flex items-center gap-3">
+                    <p className="text-sm text-gray-400">{cert.period}</p>
+                    <FaExternalLinkAlt className="w-4 h-4 text-primary-400" />
                   </div>
-                  <FaExternalLinkAlt className="w-4 h-4 text-primary-400" />
                 </div>
               </a>
             ))}
@@ -182,9 +132,12 @@ export default function About() {
           <div className="space-y-4">
             {honors.map((honor) => (
               <div key={honor.id} className="bg-gray-900 border-l-4 border-primary-600 rounded-lg p-4 hover:bg-gray-800 transition-all hover:shadow-lg hover:shadow-primary-900/20">
-                <h3 className="text-lg font-bold text-gray-100">{honor.title}</h3>
-                <p className="text-gray-400 flex items-center gap-2 mt-1 text-sm">
-                  <BsBuilding className="w-3.5 h-3.5" /> {honor.institution} • {honor.period}
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className="text-lg font-bold text-gray-100">{honor.title}</h3>
+                  <p className="text-sm text-gray-400">{honor.period}</p>
+                </div>
+                <p className="text-gray-400 flex items-center gap-2 text-sm">
+                  <BsBuilding className="w-3.5 h-3.5" /> {honor.institution}
                 </p>
                 <p className="text-gray-400 text-sm mt-2 italic leading-relaxed">{honor.details}</p>
               </div>
@@ -197,9 +150,12 @@ export default function About() {
           <div className="space-y-4">
             {education.map((edu) => (
               <div key={edu.id} className="bg-gray-900 border-l-4 border-primary-600 rounded-lg p-4 hover:bg-gray-800 transition-all hover:shadow-lg hover:shadow-primary-900/20">
-                <h3 className="text-lg font-bold text-gray-100">{edu.title}</h3>
-                <p className="text-gray-400 flex items-center gap-2 mt-1 text-sm">
-                  <BsBuilding className="w-3.5 h-3.5" /> {edu.institution} • {edu.period}
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className="text-lg font-bold text-gray-100">{edu.title}</h3>
+                  <p className="text-sm text-gray-400">{edu.period}</p>
+                </div>
+                <p className="text-gray-400 flex items-center gap-2 text-sm">
+                  <BsBuilding className="w-3.5 h-3.5" /> {edu.institution}
                 </p>
               </div>
             ))}

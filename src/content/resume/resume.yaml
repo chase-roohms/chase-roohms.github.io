@@ -41,7 +41,7 @@ cv:
         highlights:
           - Increased code scanning coverage by ~400% using GitHub CodeQL.
           - Decreased spending on GitHub Actions runners minutes by ~45% by improving workflow efficiency.
-          - Led the migration from OpsGenie to Squadcast (SolarWinds Incident Response).
+          - Led the migration from OpsGenie to SolarWinds Incident Response (formerly Squadcast).
           - Achieved SLSA level 2 compliance in multiple products by automating signed SBOM and provenance generation in CI/CD pipelines, ensuring software integrity and tamper-resistance.
       - company: SolarWinds
         position: Security Engineer Intern
