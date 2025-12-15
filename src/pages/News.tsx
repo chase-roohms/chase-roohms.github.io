@@ -115,7 +115,7 @@ export default function News() {
                       <div className="hidden md:block absolute -left-6 top-7 w-6 h-0.5 bg-gradient-to-r from-primary-500 to-transparent"></div>
 
                       {/* News Card */}
-                      <div className="bg-gray-900 border-l-4 border-primary-600 rounded-lg p-6 hover:bg-gray-800 transition-all hover:shadow-lg hover:shadow-primary-900/20">
+                      <div id={item.id} className="bg-gray-900 border-l-4 border-primary-600 rounded-lg p-6 hover:bg-gray-800 transition-all hover:shadow-lg hover:shadow-primary-900/20 scroll-mt-24">
                         {/* Date Badge */}
                         <div className="flex items-center gap-2 mb-3">
                           <div className="inline-flex items-center gap-2 bg-primary-900 text-primary-400 px-3 py-1 rounded-full text-sm font-semibold">
