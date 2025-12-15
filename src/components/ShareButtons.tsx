@@ -18,10 +18,13 @@ export default function ShareButtons({ url, title, description }: ShareButtonsPr
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const twitterText = description ? `${title} - ${description}` : title;
+  const redditText = description || '';
+
   const shareLinks = {
-    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(twitterText)}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-    reddit: `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
+    reddit: `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}${redditText ? `&text=${encodeURIComponent(redditText)}` : ''}`,
   };
 
   // Close dropdown when clicking outside
