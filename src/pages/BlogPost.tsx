@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import { getBlogPost, type BlogPost } from '../utils/blogLoader';
+import { formatDate } from '../utils/dateFormatter';
 import { FaArrowLeft, FaCalendar, FaCopy, FaCheck } from 'react-icons/fa';
 import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
@@ -58,18 +59,6 @@ export default function BlogPost() {
     }
   }, [slug]);
 
-  const formatDate = (dateString: string) => {
-    // Parse date and assume it's noon CST (UTC-6, so 18:00 UTC)
-    // This ensures the date displays correctly regardless of user's timezone
-    const [year, month, day] = dateString.split('-').map(Number);
-    const date = new Date(Date.UTC(year, month - 1, day, 18, 0, 0));
-    return date.toLocaleDateString('en-US', { 
-      month: 'long', 
-      day: 'numeric', 
-      year: 'numeric' 
-    });
-  };
-
   if (loading) {
     return (
       <div className="section-container py-8 md:py-20">
@@ -110,6 +99,31 @@ export default function BlogPost() {
     );
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.description,
+    "image": post.image || "https://chaseroohms.com/social-preview.webp",
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": {
+      "@type": "Person",
+      "name": post.author || "Chase Roohms",
+      "url": "https://chaseroohms.com"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Chase Roohms",
+      "url": "https://chaseroohms.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://chaseroohms.com/blog/${post.slug}`
+    },
+    "keywords": post.topics.join(", ")
+  };
+
   return (
     <>
       <Helmet>
@@ -132,6 +146,9 @@ export default function BlogPost() {
         {post.image && <meta name="twitter:image" content={post.image} />}
         {post.image && <link rel="preload" as="image" href={post.image} />}
         <link rel="canonical" href={`https://chaseroohms.com/blog/${post.slug}`} />
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
       </Helmet>
       <div className="section-container py-8 md:py-20">
         <div className="max-w-4xl mx-auto">
@@ -212,6 +229,9 @@ export default function BlogPost() {
                   }
                   
                   return <CodeBlock className={className}>{codeString}</CodeBlock>;
+                },
+                img({ src, alt, ...props }: any) {
+                  return <img src={src} alt={alt} loading="lazy" {...props} />;
                 }
               }}
             >

@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && npm run prerender",
+    "build": "tsc -b && vite build && npm run postbuild",
+    "postbuild": "npm run prerender && npm run generate-rss && npm run generate-sitemap",
     "prerender": "node scripts/prerender.js",
+    "generate-rss": "node scripts/generate-rss.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -1,19 +1,14 @@
 import { Link } from 'react-router-dom';
 import { BsCalendar3 } from 'react-icons/bs';
-import { FaNewspaper } from 'react-icons/fa';
+import { FaNewspaper, FaRss, FaTimes } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { newsItems } from '../utils/newsData';
+import { formatDateShort } from '../utils/dateFormatter';
+import { useState } from 'react';
 
 export default function News() {
-
-  // Format date as "MMM D, YYYY" (e.g., "Dec 13, 2025")
-  const formatDate = (dateString: string) => {
-    // Parse date and assume it's noon CST (UTC-6, so 18:00 UTC)
-    // This ensures the date displays correctly regardless of user's timezone
-    const [year, month, day] = dateString.split('-').map(Number);
-    const date = new Date(Date.UTC(year, month - 1, day, 18, 0, 0));
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  };
+  const [showRssDialog, setShowRssDialog] = useState(false);
+  const rssUrl = 'https://chaseroohms.com/news-rss.xml';
 
   // Check if link is internal (relative path or same domain)
   const isInternalLink = (url?: string) => {
@@ -70,12 +65,23 @@ export default function News() {
         <meta name="twitter:description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/news" />
+        <link rel="alternate" type="application/rss+xml" title="Chase Roohms - News RSS Feed" href="https://chaseroohms.com/news-rss.xml" />
       </Helmet>
       <div className="section-container py-8 md:py-20">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
-          <FaNewspaper className="text-primary-400" />
-          News
-        </h1>
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold flex items-center gap-3">
+            <FaNewspaper className="text-primary-400" />
+            News
+          </h1>
+          <button
+            onClick={() => setShowRssDialog(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors font-semibold"
+            aria-label="Subscribe to RSS feed"
+          >
+            <FaRss />
+            <span className="hidden sm:inline">RSS Feed</span>
+          </button>
+        </div>
       <p className="text-gray-400 text-lg mb-12">
         Professional updates, achievements, and milestones.
       </p>
@@ -114,7 +120,7 @@ export default function News() {
                         <div className="flex items-center gap-2 mb-3">
                           <div className="inline-flex items-center gap-2 bg-primary-900 text-primary-400 px-3 py-1 rounded-full text-sm font-semibold">
                             <BsCalendar3 className="w-3 h-3" />
-                            <span>{formatDate(item.fullDate)}</span>
+                            {formatDateShort(item.fullDate)}
                           </div>
                         </div>
 
@@ -158,6 +164,52 @@ export default function News() {
             ))}
         </div>
       </div>
+
+      {/* RSS Feed Dialog */}
+      {showRssDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={() => setShowRssDialog(false)}>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-bold flex items-center gap-2">
+                <FaRss className="text-orange-500" />
+                RSS Feed
+              </h2>
+              <button
+                onClick={() => setShowRssDialog(false)}
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Close dialog"
+              >
+                <FaTimes size={24} />
+              </button>
+            </div>
+            <p className="text-gray-400 mb-4">
+              Subscribe to this RSS feed to get notified of new updates.
+            </p>
+            <div className="bg-gray-950 border border-gray-800 rounded p-3 mb-4">
+              <code className="text-primary-400 text-sm break-all">{rssUrl}</code>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(rssUrl);
+                  // Could add a toast notification here
+                }}
+                className="flex-1 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-semibold"
+              >
+                Copy URL
+              </button>
+              <a
+                href={rssUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors font-semibold text-center"
+              >
+                Open Feed
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
     </>
   );

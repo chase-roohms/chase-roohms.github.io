@@ -31,9 +31,9 @@ export default function Header() {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`transition-colors ${
+                  className={`relative transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary-400 after:transition-all after:duration-300 hover:after:w-full ${
                     isActive(item.path)
-                      ? 'text-primary-400 font-semibold'
+                      ? 'text-primary-400 font-semibold after:w-full'
                       : 'text-gray-400 hover:text-primary-400'
                   }`}
                 >

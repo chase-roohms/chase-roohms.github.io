@@ -36,7 +36,9 @@ npm run build
 Build process:
 1. Vite production build to `dist/`
 2. Puppeteer-based prerendering of all routes
-3. Static HTML generation with fully-rendered meta tags for crawler compatibility
+3. RSS feed generation for blog and news
+4. Sitemap.xml generation
+5. Static HTML generation with fully-rendered meta tags for crawler compatibility
 
 ## Project Structure
 
@@ -66,6 +68,8 @@ src/
 
 scripts/
 ├── prerender.js        # Prerendering script for SEO
+├── generate-rss.js     # RSS feed generation for blog and news
+├── generate-sitemap.js # Sitemap.xml generation
 ├── check-meta-tags.js  # Meta tag validation
 ├── verify-pages.js     # Page verification
 └── optimize-image.sh   # Image optimization
@@ -87,6 +91,15 @@ icon: "FaBalanceScale" # Some React icon or other
 image: "/blog-images/image.jpg"
 ---
 ```
+
+## SEO Features
+
+- **JSON-LD Structured Data**: Blog posts include BlogPosting schema markup
+- **RSS Feeds**: 
+  - Blog RSS feed at `/blog-rss.xml`
+  - News RSS feed at `/news-rss.xml`
+- **Sitemap**: Auto-generated sitemap.xml with all pages and blog posts
+- **robots.txt**: Configured with sitemap reference
 
 Posts are automatically discovered and rendered at build time. The prerender script generates static HTML for each post to ensure proper OpenGraph meta tags for social media crawlers.
 

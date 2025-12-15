@@ -13,6 +13,7 @@ export default function Footer() {
             <a
               href="https://github.com/chase-roohms"
               target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-2"
               aria-label="GitHub"
             >
@@ -22,6 +23,7 @@ export default function Footer() {
             <a
               href="https://www.linkedin.com/in/chaseroohms"
               target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-2"
               aria-label="LinkedIn"
             >
