@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { BsCalendar3 } from 'react-icons/bs';
 import { FaNewspaper } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
@@ -10,6 +11,26 @@ export default function News() {
     const [year, month, day] = dateString.split('-').map(Number);
     const date = new Date(year, month - 1, day);
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  };
+
+  // Check if link is internal (relative path or same domain)
+  const isInternalLink = (url?: string) => {
+    if (!url) return false;
+    return url.startsWith('/') || 
+           url.startsWith('./') || 
+           url.startsWith('../') ||
+           url.includes('chaseroohms.com');
+  };
+
+  // Convert internal URL to path
+  const getInternalPath = (url: string) => {
+    if (url.startsWith('/')) return url;
+    try {
+      const urlObj = new URL(url);
+      return urlObj.pathname;
+    } catch {
+      return url;
+    }
   };
 
   // Sort news items by date (newest first)
@@ -109,14 +130,23 @@ export default function News() {
 
                         {/* Link */}
                         {item.link && (
-                          <a
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block mt-4 text-primary-400 hover:text-primary-300 font-semibold"
-                          >
-                            Learn more →
-                          </a>
+                          isInternalLink(item.link) ? (
+                            <Link
+                              to={getInternalPath(item.link)}
+                              className="inline-block mt-4 text-primary-400 hover:text-primary-300 font-semibold"
+                            >
+                              Learn more →
+                            </Link>
+                          ) : (
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-block mt-4 text-primary-400 hover:text-primary-300 font-semibold"
+                            >
+                              Learn more →
+                            </a>
+                          )
                         )}
                       </div>
                     </div>

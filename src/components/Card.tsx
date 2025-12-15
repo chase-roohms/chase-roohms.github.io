@@ -39,6 +39,26 @@ export default function Card({
     });
   };
 
+  // Check if link is internal (relative path or same domain)
+  const isInternalLink = (url?: string) => {
+    if (!url) return false;
+    return url.startsWith('/') || 
+           url.startsWith('./') || 
+           url.startsWith('../') ||
+           url.includes('chaseroohms.com');
+  };
+
+  // Convert internal URL to path
+  const getInternalPath = (url: string) => {
+    if (url.startsWith('/')) return url;
+    try {
+      const urlObj = new URL(url);
+      return urlObj.pathname;
+    } catch {
+      return url;
+    }
+  };
+
   const content = (
     <>
       {image && (
@@ -104,6 +124,13 @@ export default function Card({
       {wrapInLink && internalLink ? (
         <>
           <Link to={internalLink} className="flex-1 flex flex-col">
+            {content}
+          </Link>
+          {tagsSection}
+        </>
+      ) : wrapInLink && link && isInternalLink(link) ? (
+        <>
+          <Link to={getInternalPath(link)} className="flex-1 flex flex-col">
             {content}
           </Link>
           {tagsSection}
