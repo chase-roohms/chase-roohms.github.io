@@ -9,7 +9,7 @@ slug: "criteria-for-automation"
 icon: "FaBalanceScale"
 ---
 
-One of my favorite quotes is from Twitter user [@zhuowei](https://x.com/zhuowei) - "Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it." Automation has become such a pervasive buzzword in the IT industry that people no longer ask whether something *should* be automated—only whether it *can* be.
+One of my favorite quotes is from Twitter user [@zhuowei](https://x.com/zhuowei): "Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it." Automation has become such a pervasive buzzword in the IT industry that people no longer ask whether something *should* be automated, only whether it *can* be.
 
 Let me walk you through two instances where I automated a process. One delivered real value, and the other missed the mark.
 
@@ -21,14 +21,14 @@ In my homelab, I run three servers and I’m fairly particular about my terminal
   <figcaption class="text-center text-sm text-gray-400 mt-2">The MOTD on one of my servers</figcaption>
 </figure>
 
-After setting up my first server I put a decent chunk of time into setting up [this repository](https://github.com/chase-roohms/ServerConfig/tree/main), which would house the default and tailored customizations for each server I added. A new server could now be configured with just two commands.
+After configuring my first server I spent a significant of time setting up [this repository](https://github.com/chase-roohms/ServerConfig/tree/main) to house both the default and tailored customizations for each server I added. With this in place, a new server could be customized to my liking with just two commands.
 
 ```shell
 git clone "https://github.com/chase-roohms/ServerConfig.git" "./.ServerConfig"
 bash "./.ServerConfig/configure"
 ```
 
-The problem? I only ever got to three servers. I realized quickly that I did not need to scale past that, and it would've taken far less time to just copy the MOTDs and `.bashrc` files across those three servers manually.
+The problem? I only ever set up three servers. I realized quickly that I did not need to scale past that, and it would've taken far less time to just copy the MOTDs and `.bashrc` files across those three servers manually.
 
 ## Delivering Value
 As a hobby, I create poster collections for movie and TV franchises, it's a refreshing break from technical work that lets me exercise my creative side. You can see some of my work on [TPDb](https://theposterdb.com/user/NeonVariant?category=All&textless=All&language=all&sort=Downloads&variation=orig&section=uploads).
