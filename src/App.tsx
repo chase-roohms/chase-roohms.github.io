@@ -26,8 +26,11 @@ function usePageTracking() {
   useEffect(() => {
     // Check if gtag exists (it won't in development without GA ID)
     if (typeof window.gtag !== 'undefined') {
-      window.gtag('config', 'G-CWVDN28C7W', {
+      // Send pageview event
+      window.gtag('event', 'page_view', {
         page_path: location.pathname + location.search,
+        page_location: window.location.href,
+        page_title: document.title,
       });
     }
   }, [location]);
