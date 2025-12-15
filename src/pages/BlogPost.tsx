@@ -12,6 +12,7 @@ import * as SiIcons from 'react-icons/si';
 import * as BsIcons from 'react-icons/bs';
 import { Helmet } from 'react-helmet-async';
 import BlogPostCard from '../components/BlogPostCard';
+import ShareButtons from '../components/ShareButtons';
 import 'highlight.js/styles/github-dark.css';
 
 function CodeBlock({ children, className }: { children: string; className?: string }) {
@@ -158,14 +159,6 @@ export default function BlogPost() {
       </Helmet>
       <div className="section-container py-8 md:py-20">
         <div className="max-w-4xl mx-auto">
-          {/* Back Button */}
-          <Link 
-            to="/blog" 
-            className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 mb-8 transition-colors"
-          >
-            <FaArrowLeft /> Back to Blog
-          </Link>
-
         {/* Post Header */}
         <article>
           <header className="mb-8">
@@ -192,28 +185,29 @@ export default function BlogPost() {
                   </span>
                 </>
               )}
-              {post.author && (
-                <>
-                  <span>•</span>
-                  <span>{post.author}</span>
-                </>
-              )}
             </div>
 
             <p className="text-xl text-gray-400 mb-6">
               {post.description}
             </p>
 
-            <div className="flex flex-wrap gap-2">
-              {post.topics.map(topic => (
-                <Link
-                  key={topic}
-                  to={`/blog?topic=${encodeURIComponent(topic)}`}
-                  className="text-sm bg-primary-950 text-primary-400 border border-primary-800 px-3 py-1 rounded-full hover:bg-primary-900 hover:border-primary-700 transition-colors"
-                >
-                  {topic}
-                </Link>
-              ))}
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex flex-wrap gap-2">
+                {post.topics.map(topic => (
+                  <Link
+                    key={topic}
+                    to={`/blog?topic=${encodeURIComponent(topic)}`}
+                    className="text-sm bg-primary-950 text-primary-400 border border-primary-800 px-3 py-1 rounded-full hover:bg-primary-900 hover:border-primary-700 transition-colors"
+                  >
+                    {topic}
+                  </Link>
+                ))}
+              </div>
+              <ShareButtons
+                url={`https://chaseroohms.com/blog/${post.slug}`}
+                title={post.title}
+                description={post.description}
+              />
             </div>
           </header>
 
