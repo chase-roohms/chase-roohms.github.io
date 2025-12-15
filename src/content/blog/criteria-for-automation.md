@@ -31,7 +31,7 @@ bash "./.ServerConfig/configure"
 The problem? I only ever got to three servers. I realized quickly that I did not need to scale past that, and it would've taken far less time to just copy the MOTDs and `.bashrc` files across those three servers manually.
 
 ## Delivering Value
-As a hobby, I create poster collections for movie and TV franchises, it's a refreshing break from technical work that lets me exercise my creative side. You can see some of my work on [TPDb](https://theposterdb.com/user/NeonVariant).
+As a hobby, I create poster collections for movie and TV franchises, it's a refreshing break from technical work that lets me exercise my creative side. You can see some of my work on [TPDb](https://theposterdb.com/user/NeonVariant?category=All&textless=All&language=all&sort=Downloads&variation=orig&section=uploads).
 
 Once a collection is finished, I share it on Reddit in a clean grid layout that makes it easy for both myself and others to view the entire set at a glance. I've made over 900 posters this year, and plenty of them were manually edited into a grid using Photoshop.
 
