@@ -3,6 +3,7 @@ import homelabHeader from '../assets/images/homelab-header.webp';
 import mythicmateHeader from '../assets/images/mythicmate-header.webp';
 import onePacePostersHeader from '../assets/images/one-pace-posters-header.webp';
 import tomJerryPostersHeader from '../assets/images/tom-jerry-posters-header.webp';
+import websiteHomePageHeader from '../assets/images/website-home-page-header.webp';
 
 export interface Project {
   id: string;
@@ -15,6 +16,15 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'modern-portfolio',
+    fullDate: '2025-12-13',
+    title: 'Modern Portfolio',
+    description: 'Launched a complete overhaul of my portfolio website with Vite, React, TypeScript, and Tailwind CSS.',
+    tech: ['Vite', 'React', 'TypeScript', 'Tailwind'],
+    image: websiteHomePageHeader,
+    link: 'https://github.com/chase-roohms/chase-roohms.github.io',
+  },
   {
     id: 'opsgenie-swir',
     fullDate: '2025-04-01',
