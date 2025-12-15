@@ -1,0 +1,220 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.5/schema.json
+cv:
+  name: Chase Roohms
+  headline: 
+  location: Austin, TX
+  phone: +1-512-632-4232
+  email: chaseroohms@gmail.com
+  photo: 
+  website: 
+  social_networks:
+    - network: LinkedIn
+      username: chaseroohms
+    - network: GitHub
+      username: chase-roohms
+  custom_connections:
+  sections:
+    summary:
+      - DevOps Engineer with a strong foundation in software development and IT security. Experienced in optimizing CI/CD pipelines, reducing costs, and enhancing security compliance. Skilled in automation and scalable solutions that streamline operations and improve reliability.
+    skills:
+      - label: CI/CD Platforms
+        details: GitHub Actions, Azure DevOps, TeamCity by JetBrains.
+      - label: Clouds
+        details: Google Cloud Platform (GCP), Amazon Web Services (AWS)
+      - label: Languages
+        details: Python, Bash, Java, C++, JavaScript
+      - label: Other
+        details: Linux, Terraform, Code Signing, GitHub
+    experience:
+      - company: SolarWinds
+        position: DevOps Engineer
+        start_date: 2025-10
+        end_date: present
+        location: Austin, TX
+        highlights:
+          - Expedited the Developer workflow with an end to end Self-Service platform.
+      - company: SolarWinds
+        position: Associate DevOps Engineer
+        start_date: 2024-10
+        end_date: 2025-10
+        location: Austin, TX
+        highlights:
+          - Increased code scanning coverage by ~400% using GitHub CodeQL.
+          - Decreased spending on GitHub Actions runners minutes by ~45% by improving workflow efficiency.
+          - Led the migration from OpsGenie to Squadcast (SolarWinds Incident Response).
+          - Achieved SLSA level 2 compliance in multiple products by automating signed SBOM and provenance generation in CI/CD pipelines, ensuring software integrity and tamper-resistance.
+      - company: SolarWinds
+        position: Security Engineer Intern
+        start_date: 2024-06
+        end_date: 2024-10
+        location: Austin, TX
+        highlights:
+          - Reduced the legal review time by ~70% with an SBOM Vex translation script written in Python.
+          - Increased security visibility by reviewing and redesigning data-flow threat models for more than 30 products.
+    honors_and_awards:
+      #- bullet: "**IT Pro Day, Rockstar of the Year** - SolarWinds"
+      - name: IT Pro Day, Rockstar of the Year
+        location: SolarWinds
+        date: 2025-09
+        summary: Consistently demonstrated high performance, and embodied SolarWinds values.
+      - name: DevOps Dynamo
+        location: SolarWinds
+        date: 2025-06
+        summary: Brought unmatched energy and precision to the DevOps workflow.
+    certifications:
+      - bullet: "**GitHub Actions** (GH-200)"
+      - bullet: "**GitHub Copilot** (GH-300)"
+    education:
+      - institution: Texas State University
+        area: Computer Science
+        degree: BS
+        date:
+        start_date: 2020-08
+        end_date: 2024-05
+        location: San Marcos, TX
+        #summary: Magna Cum Laude
+
+
+####################################################
+# Theming section                                  #
+####################################################
+
+design:
+  theme: sb2nov
+  page:
+    size: us-letter
+    top_margin: 0.6in
+    bottom_margin: 0.6in
+    left_margin: 0.6in
+    right_margin: 0.6in
+    show_footer: true
+    show_top_note: false
+  colors:
+    name: rgb(0,0,0)
+    connections: rgb(0,0,0)
+    section_titles: rgb(0,0,0)
+    headline: rgb(0,0,0)
+    links: rgb(0,0,0)
+  typography:
+    line_spacing: 0.5em
+    alignment: justified
+    date_and_location_column_alignment: right
+    font_family: New Computer Modern
+    font_size:
+      body: 10pt
+      name: 30pt
+      headline: 10pt
+      connections: 10pt
+      section_titles: 1.3em
+    small_caps:
+      name: false
+      headline: false
+      connections: false
+      section_titles: false
+    bold:
+      name: true
+      headline: false
+      connections: false
+      section_titles: true
+  links:
+    underline: true
+    show_external_link_icon: false
+  header:
+    alignment: center
+    photo_width: 3.5cm
+    photo_position: left
+    photo_space_left: 0.4cm
+    photo_space_right: 0.4cm
+    space_below_name: 0.7cm
+    space_below_headline: 0.7cm
+    space_below_connections: 0.7cm
+    connections:
+      phone_number_format: national
+      hyperlink: true
+      show_icons: true
+      display_urls_instead_of_usernames: false
+      separator: '|'
+      space_between_connections: 0.9cm
+  section_titles:
+    type: with_full_line
+  sections:
+    show_time_spans_in: []
+    space_between_regular_entries: 0.5em
+    space_between_text_based_entries: 0.3em
+  entries:
+    date_and_location_width: 4.15cm
+    side_space: 0.2cm
+    space_between_columns: 0.1cm
+    allow_page_break: false
+    short_second_row: false
+    summary:
+      space_above: 0cm
+      space_left: 0cm
+    highlights:
+      bullet: "◦"
+      nested_bullet: "◦"
+      space_left: 0.20cm
+      space_above: 0cm
+      space_between_items: 0cm
+      space_between_bullet_and_text: 0.3em
+  templates:
+    footer: 'Last updated in CURRENT_DATE'
+    education_entry:
+      main_column: "**INSTITUTION**\n*DEGREE* *in* *AREA*\nSUMMARY\nHIGHLIGHTS"
+      degree_column: null
+      date_and_location_column: "*LOCATION*\n*DATE*"
+    normal_entry:
+      date_and_location_column: "*LOCATION*\n*DATE*"
+    experience_entry:
+      main_column: "**POSITION**\n*COMPANY*\nSUMMARY\nHIGHLIGHTS"
+      date_and_location_column: "*LOCATION*\n*DATE*"
+locale:
+  language: english
+  last_updated: Last updated in
+  month: Month
+  months: Months
+  year: Year
+  years: Years
+  present: Present
+  month_abbreviations:
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - June
+    - July
+    - Aug
+    - Sept
+    - Oct
+    - Nov
+    - Dec
+  month_names:
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+settings:
+  current_date: '2025-12-13'
+  render_command:
+    design:
+    locale:
+    typst_path: output/resume.typ
+    pdf_path: output/resume.pdf
+    markdown_path: output/resume.md
+    html_path: output/resume.html
+    png_path: output/resume.png
+    dont_generate_markdown: true
+    dont_generate_html: true
+    dont_generate_typst: false
+    dont_generate_pdf: false
+    dont_generate_png: true
+  bold_keywords: []

@@ -1,5 +1,5 @@
 import { BsBuilding } from 'react-icons/bs';
-import { FaExternalLinkAlt, FaUserCircle } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaFileDownload, FaUserCircle } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import Skills from '../components/Skills';
 
@@ -105,13 +105,11 @@ export default function About() {
               About Me
             </h1>
           <a
-            href="https://raw.githubusercontent.com/chase-roohms/rendercv-resume/main/output/Chase_Roohms_CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/resume.pdf"
+            download="Chase-Roohms-Resume.pdf"
             className="btn-primary inline-flex items-center gap-2 w-fit"
-          >
-            PDF Resume
-            <FaExternalLinkAlt className="w-4 h-4" />
+          ><FaFileDownload className="w-4 h-4" />
+            Resume
           </a>
         </div>
       

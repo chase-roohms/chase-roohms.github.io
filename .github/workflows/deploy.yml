@@ -33,6 +33,21 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install RenderCV
+        run: pip install "rendercv[full]"
+
+      - name: Generate Resume PDF
+        run: |
+          cd src/content/resume
+          rendercv render resume.yaml
+          mkdir -p ../../../public
+          cp output/resume.pdf ../../../public/resume.pdf
+
       - name: Install Puppeteer dependencies
         run: |
           sudo apt-get update

@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# rendercv output
+src/content/resume/output/
+src/content/resume/output/**
+public/resume.pdf
