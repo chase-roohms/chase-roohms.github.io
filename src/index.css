@@ -39,3 +39,145 @@
     font-size: 0.95rem !important;
   }
 }
+
+/* Print Stylesheet */
+@media print {
+  /* Hide navigation, footer, and interactive elements */
+  header,
+  footer,
+  .no-print,
+  button,
+  nav,
+  [role="navigation"],
+  [aria-label="Breadcrumb"] {
+    display: none !important;
+  }
+
+  /* Reset body and html */
+  html,
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Optimize page layout */
+  .section-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Improve typography */
+  h1 {
+    font-size: 24pt !important;
+    color: black !important;
+    page-break-after: avoid;
+    margin-bottom: 12pt;
+  }
+
+  h2 {
+    font-size: 18pt !important;
+    color: black !important;
+    page-break-after: avoid;
+    margin-top: 12pt;
+    margin-bottom: 6pt;
+  }
+
+  h3 {
+    font-size: 14pt !important;
+    color: black !important;
+    page-break-after: avoid;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+  }
+
+  p {
+    color: black !important;
+    margin-bottom: 10pt;
+    page-break-inside: avoid;
+  }
+
+  /* Show URLs for links */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+    word-break: break-all;
+  }
+
+  /* Don't show URLs for internal links or anchors */
+  a[href^="/"]:after,
+  a[href^="#"]:after,
+  a[href*="chaseroohms.com"]:after {
+    content: "";
+  }
+
+  /* Code blocks */
+  pre,
+  code {
+    background: #f5f5f5 !important;
+    color: black !important;
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid;
+    font-size: 10pt;
+  }
+
+  pre {
+    padding: 10pt !important;
+    margin: 10pt 0 !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    color: black !important;
+    page-break-inside: avoid;
+  }
+
+  /* Tags/badges */
+  .prose [class*="bg-"],
+  [class*="border-primary"] {
+    background: #f0f0f0 !important;
+    color: black !important;
+    border-color: #ccc !important;
+  }
+
+  /* Remove shadows and transitions */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+  }
+
+  /* Ensure content visibility */
+  article {
+    color: black !important;
+  }
+
+  article * {
+    color: black !important;
+  }
+
+  /* Page breaks */
+  article {
+    page-break-before: avoid;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  img, table, figure {
+    page-break-inside: avoid;
+  }
+}
