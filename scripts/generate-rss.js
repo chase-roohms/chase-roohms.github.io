@@ -77,17 +77,23 @@ function generateNewsRSS() {
   const arrayContent = newsItemsMatch[1];
   const items = [];
   
-  // Extract individual items using regex
-  const itemRegex = /\{[\s\S]*?id:\s*(\d+),[\s\S]*?fullDate:\s*['"]([^'"]+)['"],[\s\S]*?title:\s*['"]([^'"]+)['"],[\s\S]*?description:\s*['"]([^'"]+)['"],[\s\S]*?(?:link:\s*['"]([^'"]+)['"],)?[\s\S]*?\}/g;
+  // Extract individual items using regex - updated to handle string IDs and optional links
+  const itemRegex = /\{[^}]*?id:\s*['"]([^'"]+)['"],[^}]*?fullDate:\s*['"]([^'"]+)['"],[^}]*?title:\s*['"]([^'"]+)['"],[^}]*?description:\s*['"]([^'"]+)['"],[^}]*?(?:link:\s*['"]([^'"]+)['"],[^}]*?)?\}/gs;
   
   let match;
   while ((match = itemRegex.exec(arrayContent)) !== null) {
+    const id = match[1];
+    const date = match[2];
+    const title = match[3];
+    const description = match[4];
+    const link = match[5];
+    
     items.push({
-      id: match[1],
-      date: match[2],
-      title: match[3],
-      description: match[4],
-      link: match[5] || `${SITE_URL}/news`
+      id,
+      date,
+      title,
+      description,
+      link: link || `${SITE_URL}/news#${id}`
     });
   }
 
@@ -103,8 +109,7 @@ function generateNewsRSS() {
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${SITE_URL}/news-rss.xml" rel="self" type="application/rss+xml"/>
-    ${items.map(item => `
-    <item>
+${items.map(item => `    <item>
       <title><![CDATA[${item.title}]]></title>
       <link>${item.link.startsWith('http') ? item.link : SITE_URL + item.link}</link>
       <description><![CDATA[${item.description}]]></description>
