@@ -51,15 +51,15 @@ export default function About() {
       </Helmet>
       <div className="section-container py-8 md:py-20">
         <div>
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-0 flex items-center gap-3">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
+            <h1 className="text-4xl md:text-5xl font-bold flex items-center gap-3">
               <FaUserCircle className="text-primary-400" />
               About Me
             </h1>
           <a
             href="/resume.pdf"
             download="Chase-Roohms-Resume.pdf"
-            className="btn-primary inline-flex items-center gap-2 w-fit"
+            className="btn-primary inline-flex items-center gap-2 w-fit self-center md:self-auto"
           ><FaFileDownload className="w-4 h-4" />
             Resume
           </a>
