@@ -1,14 +1,28 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BsCalendar3 } from 'react-icons/bs';
 import { FaNewspaper, FaRss, FaTimes } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { newsItems } from '../utils/newsData';
 import { formatDateShort } from '../utils/dateFormatter';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function News() {
   const [showRssDialog, setShowRssDialog] = useState(false);
   const rssUrl = 'https://chaseroohms.com/news-rss.xml';
+  const location = useLocation();
+
+  // Handle scroll to anchor when navigating from another page
+  useEffect(() => {
+    if (location.hash) {
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const element = document.getElementById(location.hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, [location]);
 
   // Check if link is internal (relative path or same domain)
   const isInternalLink = (url?: string) => {
