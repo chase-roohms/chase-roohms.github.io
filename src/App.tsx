@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
@@ -10,9 +11,33 @@ import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
-function App() {
+// Extend Window interface for gtag
+declare global {
+  interface Window {
+    gtag?: (command: string, targetId: string, config?: Record<string, any>) => void;
+    dataLayer?: any[];
+  }
+}
+
+// Google Analytics pageview tracker
+function usePageTracking() {
+  const location = useLocation();
+  
+  useEffect(() => {
+    // Check if gtag exists (it won't in development without GA ID)
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('config', 'G-CWVDN28C7W', {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
+}
+
+function AppContent() {
+  usePageTracking();
+  
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <Layout>
         <Routes>
@@ -26,6 +51,14 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
