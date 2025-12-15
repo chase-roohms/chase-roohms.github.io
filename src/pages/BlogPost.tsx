@@ -5,12 +5,37 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import { getBlogPost, type BlogPost } from '../utils/blogLoader';
-import { FaArrowLeft, FaCalendar } from 'react-icons/fa';
+import { FaArrowLeft, FaCalendar, FaCopy, FaCheck } from 'react-icons/fa';
 import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
 import * as BsIcons from 'react-icons/bs';
 import { Helmet } from 'react-helmet-async';
 import 'highlight.js/styles/github-dark.css';
+
+function CodeBlock({ children, className }: { children: string; className?: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(children);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="relative group not-prose">
+      <button
+        onClick={handleCopy}
+        className="absolute right-3 top-3 p-1.5 rounded bg-gray-800 hover:bg-gray-700 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 z-10"
+        aria-label="Copy code"
+      >
+        {copied ? <FaCheck className="w-3.5 h-3.5 text-green-400" /> : <FaCopy className="w-3.5 h-3.5 text-gray-400" />}
+      </button>
+      <pre className={className}>
+        <code className={className}>{children}</code>
+      </pre>
+    </div>
+  );
+}
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -174,6 +199,18 @@ export default function BlogPost() {
             <ReactMarkdown 
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw, rehypeHighlight]}
+              components={{
+                code({ className, children, ...props }: any) {
+                  const match = /language-(\w+)/.exec(className || '');
+                  const codeString = String(children).replace(/\n$/, '');
+                  
+                  if (!match) {
+                    return <code className={className} {...props}>{children}</code>;
+                  }
+                  
+                  return <CodeBlock className={className}>{codeString}</CodeBlock>;
+                }
+              }}
             >
               {post.content}
             </ReactMarkdown>

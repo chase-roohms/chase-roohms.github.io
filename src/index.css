@@ -20,4 +20,22 @@
   .section-container {
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  /* Remove backticks from inline code */
+  .prose code::before,
+  .prose code::after {
+    content: none !important;
+  }
+
+  /* Code block styling adjustments */
+  .prose pre {
+    @apply !p-4;
+    border: 0.5px solid theme('colors.gray.800') !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .prose pre code {
+    font-size: 0.95rem !important;
+  }
 }
