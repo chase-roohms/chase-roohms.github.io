@@ -1,7 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function Header() {
+interface HeaderProps {
+  onLogoClick: () => void;
+}
+
+export default function Header({ onLogoClick }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -21,7 +25,11 @@ export default function Header() {
       <nav className="section-container py-4">
         <div className="flex justify-between items-center">
           {/* Logo/Brand */}
-          <Link to="/" className="text-2xl font-bold text-primary-400 font-mono">
+          <Link 
+            to="/" 
+            className="text-2xl font-bold text-primary-400 font-mono"
+            onClick={onLogoClick}
+          >
             ./chase-roohms.tsx
           </Link>
 

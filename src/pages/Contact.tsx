@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaCommentDots, FaPaperPlane } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
+import { unlockAchievement } from '../utils/achievements';
 
 export default function Contact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -26,6 +27,7 @@ export default function Contact() {
       if (response.ok) {
         setFormState('success');
         setFormData({ name: '', email: '', message: '' });
+        unlockAchievement('networker');
       } else {
         setFormState('error');
       }
