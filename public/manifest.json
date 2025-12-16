@@ -1,0 +1,23 @@
+{
+  "name": "Chase Roohms - DevOps Engineer Portfolio",
+  "short_name": "Chase Roohms",
+  "description": "DevOps Engineer at SolarWinds specializing in automation and infrastructure as code",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#ff6200",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "education", "technology"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}

@@ -21,7 +21,7 @@ export const professionalProjects: Project[] = [
     fullDate: '2025-12-13',
     title: 'Modern Portfolio',
     description: 'Launched a complete overhaul of my portfolio website with Vite, React, TypeScript, and Tailwind CSS.',
-    tech: ['Vite', 'React', 'TypeScript', 'Tailwind', 'UI'],
+    tech: ['Vite', 'React', 'TypeScript', 'UI'],
     image: websiteHomePageHeader,
     link: 'https://github.com/chase-roohms/chase-roohms.github.io',
   },
