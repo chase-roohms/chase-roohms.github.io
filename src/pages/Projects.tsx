@@ -1,43 +1,48 @@
-import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { FaProjectDiagram, FaSearch } from 'react-icons/fa';
+import { useMemo } from 'react';
+import { FaProjectDiagram } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { professionalProjects, personalProjects } from '../utils/projectsData';
 import ProjectCard from '../components/ProjectCard';
+import SearchBar from '../components/SearchBar';
+import TopicFilter from '../components/TopicFilter';
+import FilterResultsCount from '../components/FilterResultsCount';
+import { useContentFilter } from '../hooks/useContentFilter';
 
 export default function Projects() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const selectedTopic = searchParams.get('topic') || 'All';
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
-
   // Sort projects by date (newest first)
-  const sortedProfessionalProjects = [...professionalProjects].sort((a, b) => 
-    new Date(b.fullDate).getTime() - new Date(a.fullDate).getTime()
+  const sortedProfessionalProjects = useMemo(() => 
+    [...professionalProjects].sort((a, b) => 
+      new Date(b.fullDate).getTime() - new Date(a.fullDate).getTime()
+    ), []);
+
+  const sortedPersonalProjects = useMemo(() => 
+    [...personalProjects].sort((a, b) => 
+      new Date(b.fullDate).getTime() - new Date(a.fullDate).getTime()
+    ), []);
+
+  // Combine all projects for filtering
+  const allProjects = useMemo(() => 
+    [...sortedProfessionalProjects, ...sortedPersonalProjects], 
+    [sortedProfessionalProjects, sortedPersonalProjects]
   );
 
-  const sortedPersonalProjects = [...personalProjects].sort((a, b) => 
-    new Date(b.fullDate).getTime() - new Date(a.fullDate).getTime()
+  const {
+    searchQuery,
+    selectedTopic,
+    allTopics,
+    filteredItems: filteredAllProjects,
+    handleSearchChange,
+    handleTopicChange,
+  } = useContentFilter(allProjects);
+
+  // Separate filtered projects back into professional and personal
+  const filteredProfessionalProjects = filteredAllProjects.filter(project =>
+    sortedProfessionalProjects.includes(project)
   );
-
-  // Get all unique topics from tech field across all projects
-  const allProjects = [...professionalProjects, ...personalProjects];
-  const allTopics = ['All', ...new Set(allProjects.flatMap(project => project.tech))];
-
-  // Filter function
-  const filterProjects = (projects: typeof professionalProjects) => {
-    return projects.filter(project => {
-      const matchesTopic = selectedTopic === 'All' || project.tech.includes(selectedTopic);
-      const matchesSearch = searchQuery === '' ||
-        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.tech.some(tech => tech.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesTopic && matchesSearch;
-    });
-  };
-
-  const filteredProfessionalProjects = filterProjects(sortedProfessionalProjects);
-  const filteredPersonalProjects = filterProjects(sortedPersonalProjects);
-  const totalFilteredProjects = filteredProfessionalProjects.length + filteredPersonalProjects.length;
+  const filteredPersonalProjects = filteredAllProjects.filter(project =>
+    sortedPersonalProjects.includes(project)
+  );
+  const totalFilteredProjects = filteredAllProjects.length;
 
   return (
     <>
@@ -71,58 +76,29 @@ export default function Projects() {
 
       {/* Search Bar */}
       <div className="mb-8">
-        <div className="relative">
-          <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Search projects by title, description, or technology..."
-            value={searchQuery}
-            onChange={(e) => {
-              const value = e.target.value;
-              setSearchQuery(value);
-              const newParams: Record<string, string> = {};
-              if (value) newParams.search = value;
-              if (selectedTopic !== 'All') newParams.topic = selectedTopic;
-              setSearchParams(newParams);
-            }}
-            className="w-full pl-12 pr-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-primary-500 transition-colors"
-          />
-        </div>
+        <SearchBar
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Search projects by title, description, or technology..."
+        />
       </div>
 
       {/* Topic Filter */}
       <div className="mb-12">
-        <h2 className="text-xl font-semibold mb-4">Filter by Topic</h2>
-        <div className="flex flex-wrap gap-2">
-          {allTopics.map(topic => (
-            <button
-              key={topic}
-              onClick={() => {
-                const newParams: Record<string, string> = {};
-                if (searchQuery) newParams.search = searchQuery;
-                if (topic !== 'All') newParams.topic = topic;
-                setSearchParams(newParams);
-              }}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-                selectedTopic === topic
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-              }`}
-            >
-              {topic}
-            </button>
-          ))}
-        </div>
+        <TopicFilter
+          topics={allTopics}
+          selectedTopic={selectedTopic}
+          onTopicChange={handleTopicChange}
+        />
       </div>
 
       {/* Results Count */}
-      {(searchQuery || selectedTopic !== 'All') && (
-        <p className="text-gray-400 mb-6">
-          Found {totalFilteredProjects} project{totalFilteredProjects !== 1 ? 's' : ''}
-          {searchQuery && ` matching "${searchQuery}"`}
-          {selectedTopic !== 'All' && ` with ${selectedTopic}`}
-        </p>
-      )}
+      <FilterResultsCount
+        count={totalFilteredProjects}
+        searchQuery={searchQuery}
+        selectedTopic={selectedTopic}
+        itemType="project"
+      />
 
       {/* No Results */}
       {totalFilteredProjects === 0 ? (
@@ -139,12 +115,7 @@ export default function Projects() {
                   <ProjectCard 
                     key={project.id} 
                     project={project} 
-                    onTopicClick={(topic) => {
-                      const newParams: Record<string, string> = {};
-                      if (searchQuery) newParams.search = searchQuery;
-                      newParams.topic = topic;
-                      setSearchParams(newParams);
-                    }}
+                    onTopicClick={handleTopicChange}
                   />
                 ))}
               </div>
@@ -163,12 +134,7 @@ export default function Projects() {
                   <ProjectCard 
                     key={project.id} 
                     project={project} 
-                    onTopicClick={(topic) => {
-                      const newParams: Record<string, string> = {};
-                      if (searchQuery) newParams.search = searchQuery;
-                      newParams.topic = topic;
-                      setSearchParams(newParams);
-                    }}
+                    onTopicClick={handleTopicChange}
                   />
                 ))}
               </div>

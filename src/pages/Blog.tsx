@@ -1,21 +1,30 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaBlog, FaSearch, FaRss, FaTimes } from 'react-icons/fa';
+import { FaBlog, FaRss, FaTimes } from 'react-icons/fa';
 import { getAllBlogPosts, type BlogPost } from '../utils/blogLoader';
 import BlogPostCard from '../components/BlogPostCard';
+import SearchBar from '../components/SearchBar';
+import TopicFilter from '../components/TopicFilter';
+import FilterResultsCount from '../components/FilterResultsCount';
+import { useContentFilter } from '../hooks/useContentFilter';
 
 const ITEMS_PER_PAGE = 9;
 
 export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const selectedTopic = searchParams.get('topic') || 'All';
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
   const [currentPage, setCurrentPage] = useState(1);
   const [showRssDialog, setShowRssDialog] = useState(false);
   const rssUrl = 'https://chaseroohms.com/blog-rss.xml';
+
+  const {
+    searchQuery,
+    selectedTopic,
+    allTopics,
+    filteredItems: filteredPosts,
+    handleSearchChange,
+    handleTopicChange,
+  } = useContentFilter<BlogPost>(posts);
 
   useEffect(() => {
     getAllBlogPosts().then(loadedPosts => {
@@ -28,19 +37,6 @@ export default function Blog() {
   useEffect(() => {
     setCurrentPage(1);
   }, [searchQuery, selectedTopic]);
-
-  // Get all unique topics
-  const allTopics = ['All', ...new Set(posts.flatMap(post => post.topics))];
-
-  // Filter posts by selected topic and search query
-  const filteredPosts = posts.filter(post => {
-    const matchesTopic = selectedTopic === 'All' || post.topics.includes(selectedTopic);
-    const matchesSearch = searchQuery === '' || 
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.topics.some(topic => topic.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesTopic && matchesSearch;
-  });
 
   // Pagination
   const totalPages = Math.ceil(filteredPosts.length / ITEMS_PER_PAGE);
@@ -100,58 +96,29 @@ export default function Blog() {
 
       {/* Search Bar */}
       <div className="mb-8">
-        <div className="relative">
-          <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Search posts by title, description, or topic..."
-            value={searchQuery}
-            onChange={(e) => {
-              const value = e.target.value;
-              setSearchQuery(value);
-              const newParams: Record<string, string> = {};
-              if (value) newParams.search = value;
-              if (selectedTopic !== 'All') newParams.topic = selectedTopic;
-              setSearchParams(newParams);
-            }}
-            className="w-full pl-12 pr-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-primary-500 transition-colors"
-          />
-        </div>
+        <SearchBar
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Search posts by title, description, or topic..."
+        />
       </div>
 
       {/* Topic Filter */}
       <div className="mb-12">
-        <h2 className="text-xl font-semibold mb-4">Filter by Topic</h2>
-        <div className="flex flex-wrap gap-2">
-          {allTopics.map(topic => (
-            <button
-              key={topic}
-              onClick={() => {
-                const newParams: Record<string, string> = {};
-                if (searchQuery) newParams.search = searchQuery;
-                if (topic !== 'All') newParams.topic = topic;
-                setSearchParams(newParams);
-              }}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-                selectedTopic === topic
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-              }`}
-            >
-              {topic}
-            </button>
-          ))}
-        </div>
+        <TopicFilter
+          topics={allTopics}
+          selectedTopic={selectedTopic}
+          onTopicChange={handleTopicChange}
+        />
       </div>
 
       {/* Results Count */}
-      {(searchQuery || selectedTopic !== 'All') && (
-        <p className="text-gray-400 mb-6">
-          Found {filteredPosts.length} post{filteredPosts.length !== 1 ? 's' : ''}
-          {searchQuery && ` matching "${searchQuery}"`}
-          {selectedTopic !== 'All' && ` in ${selectedTopic}`}
-        </p>
-      )}
+      <FilterResultsCount
+        count={filteredPosts.length}
+        searchQuery={searchQuery}
+        selectedTopic={selectedTopic}
+        itemType="post"
+      />
 
       {/* Blog Posts Grid */}
       {filteredPosts.length === 0 ? (
@@ -165,7 +132,7 @@ export default function Blog() {
               <BlogPostCard
                 key={post.slug}
                 post={post}
-                onTopicClick={(topic) => setSearchParams({ topic })}
+                onTopicClick={handleTopicChange}
               />
             ))}
           </div>
