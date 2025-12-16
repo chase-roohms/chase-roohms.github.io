@@ -40,7 +40,7 @@ Once a collection is finished, I share it on Reddit in a clean grid layout that 
   <figcaption class="text-center text-sm text-gray-400 mt-2">My Tom & Jerry poster collection</figcaption>
 </figure>
 
-Last month I spent about 20 minutes writing a Python script using the image processing library [Pillow (PIL)](https://pypi.org/project/pillow/) that would generate the grids for me, and I have used it daily since. Putting together the grids in Photoshop used to take me 20 minutes or sometimes even longer, now it takes around 10 seconds.
+Last month I spent about 20 minutes writing a Python script using the image processing library [Pillow (PIL)](https://pypi.org/project/pillow/) that would generate the grids for me, and I have used it daily since. Putting together the grids in Photoshop used to take me 20 minutes or sometimes even longer, now it takes around 10 seconds. You can find the script [here](https://github.com/chase-roohms/poster-tools/blob/main/generate-pretty-display.py).
 
 ## What's the Difference?
 **Frequency and Complexity.** There are two kinds of processes that *should* be automated: those you perform frequently, and those that are easy to get wrong.
