@@ -4,6 +4,7 @@ import mythicmateHeader from '../assets/images/mythicmate-header.webp';
 import onePacePostersHeader from '../assets/images/one-pace-posters-header.webp';
 import tomJerryPostersHeader from '../assets/images/tom-jerry-posters-header.webp';
 import websiteHomePageHeader from '../assets/images/website-home-page-header.webp';
+import pDashHeader from '../assets/images/p-dash-header.webp';
 
 export interface Project {
   id: string;
@@ -42,6 +43,15 @@ export const professionalProjects: Project[] = [
     tech: ['Linux', 'Bash', 'Docker'],
     image: homelabHeader,
     link: '/blog/home-lab-setup',
+  },
+  {
+    id: 'p-dash',
+    fullDate: '2024-07-26',
+    title: 'P-Dash',
+    description: 'An aggressive and speedy port scanner, for when you just need info and don\'t care about being discreet.',
+    tech: ['Python', 'Networking', 'Security'],
+    image: pDashHeader,
+    link: 'https://github.com/chase-roohms/p-dash',
   },
   {
     id: 'mythicmate',
