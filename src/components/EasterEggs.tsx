@@ -17,8 +17,8 @@ function EasterEggModal({ active, children, backgroundEffect }: EasterEggModalPr
   if (!active) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-90 animate-fade-in">
-      <div className="text-center max-w-2xl mx-auto px-4">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-90 animate-fade-in overflow-y-auto py-4 md:py-0">
+      <div className="text-center max-w-2xl mx-auto px-4 my-auto">
         {backgroundEffect}
         <div className="relative z-10">
           {children}
