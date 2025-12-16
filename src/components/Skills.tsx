@@ -1,5 +1,5 @@
-import { SiPython, SiGnubash, SiLinux, SiDocker, SiGithubactions, SiGooglecloud, SiTerraform, SiApachemaven } from 'react-icons/si';
-import { FaKey, FaJava, FaCogs, FaNetworkWired } from 'react-icons/fa';
+import { SiPython, SiGnubash, SiLinux, SiDocker, SiGithubactions, SiGooglecloud, SiTerraform } from 'react-icons/si';
+import { FaKey, FaJava, FaCogs, FaNetworkWired, FaBrain } from 'react-icons/fa';
 
 interface SkillsProps {
   compact?: boolean;
@@ -43,6 +43,11 @@ export default function Skills({ compact = false }: SkillsProps) {
       proficiency: 85,
     },
     { 
+      name: 'AI',
+      icon: FaBrain,
+      proficiency: 80,
+    },
+    { 
       name: 'Code Signing',
       icon: FaKey,
       proficiency: 80,
@@ -61,11 +66,6 @@ export default function Skills({ compact = false }: SkillsProps) {
       name: 'Java',
       icon: FaJava,
       proficiency: 60,
-    },
-    { 
-      name: 'Maven',
-      icon: SiApachemaven,
-      proficiency: 50,
     },
   ].sort((a, b) => b.proficiency - a.proficiency);
 
