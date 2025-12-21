@@ -5,6 +5,8 @@ import onePacePostersHeader from '../assets/images/one-pace-posters-header.webp'
 import tomJerryPostersHeader from '../assets/images/tom-jerry-posters-header.webp';
 import websiteHomePageHeader from '../assets/images/website-home-page-header.webp';
 import pDashHeader from '../assets/images/p-dash-header.webp';
+import deVexHeader from '../assets/images/de-vex-header.webp';
+import looneyTunesPostersHeader from '../assets/images/looney-tunes-posters-header.webp';
 
 export interface Project {
   id: string;
@@ -63,6 +65,15 @@ export const professionalProjects: Project[] = [
     link: 'https://github.com/chase-roohms/p-dash',
   },
   {
+    id: 'de-vex',
+    fullDate: '2024-07-26',
+    title: 'De-Vex',
+    description: 'Translates VEX JSON files to human readable text, saving them into a text file for easy review. ',
+    tech: ['Python', 'Security'],
+    image: deVexHeader,
+    link: 'https://github.com/chase-roohms/de-vex',
+  },
+  {
     id: 'mythicmate',
     fullDate: '2023-11-14',
     title: 'MythicMate',
@@ -74,6 +85,15 @@ export const professionalProjects: Project[] = [
 ];
 
 export const personalProjects: Project[] = [
+  {
+    id: 'looney-tunes-posters',
+    fullDate: '2025-12-20',
+    title: 'Looney Tunes Posters',
+    description: 'Created custom posters for original Looney Tunes shows and movies.',
+    tech: ['Photoshop'],
+    image: looneyTunesPostersHeader,
+    link: 'https://github.com/chase-roohms/looney-tunes-assets',
+  },
   {
     id: 'one-pace-posters',
     fullDate: '2025-12-13',
