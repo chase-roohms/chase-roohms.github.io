@@ -7,6 +7,7 @@ import websiteHomePageHeader from '../assets/images/website-home-page-header.web
 import pDashHeader from '../assets/images/p-dash-header.webp';
 import deVexHeader from '../assets/images/de-vex-header.webp';
 import looneyTunesPostersHeader from '../assets/images/looney-tunes-posters-header.webp';
+import plexWrappedHeader from '../assets/images/plex-wrapped-header.webp';
 
 export interface Project {
   id: string;
@@ -19,6 +20,15 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'plex-wrapped',
+    fullDate: '2025-12-29',
+    title: 'Plex Wrapped',
+    description: 'Static site generator to share personalized yearly summaries of Plex media consumption with my users.',
+    tech: ['Python', 'HTML', 'UI'],
+    image: plexWrappedHeader,
+    link: 'https://github.com/chase-roohms/plex-wrapped',
+  },
   {
     id: 'modern-portfolio',
     fullDate: '2025-12-13',
