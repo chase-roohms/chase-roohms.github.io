@@ -8,6 +8,7 @@ import pDashHeader from '../assets/images/p-dash-header.webp';
 import deVexHeader from '../assets/images/de-vex-header.webp';
 import looneyTunesPostersHeader from '../assets/images/looney-tunes-posters-header.webp';
 import plexWrappedHeader from '../assets/images/plex-wrapped-header.webp';
+import dumpsterrHeader from '../assets/images/dumpsterr-header.webp';
 
 export interface Project {
   id: string;
@@ -20,6 +21,15 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'dumpsterr',
+    fullDate: '2026-01-08',
+    title: 'Dumpsterr',
+    description: 'Dockerized Python application that safely empties your Plex trash, verifying file availability before doing so. Prevents unintentional deletion of movies and shows when drives are disconnected.',
+    tech: ['Python', 'Docker'],
+    image: dumpsterrHeader,
+    link: 'https://github.com/chase-roohms/dumpsterr',
+  },
   {
     id: 'plex-wrapped',
     fullDate: '2025-12-29',
