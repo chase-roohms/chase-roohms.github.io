@@ -48,16 +48,25 @@ async function startPreviewServer() {
     });
     
     let resolved = false;
+    let serverUrl = 'http://localhost:3001'; // Default
     
     server.stdout.on('data', (data) => {
       const output = data.toString();
       console.log('Server output:', output.trim());
+      
+      // Extract the actual URL from server output
+      const urlMatch = output.match(/https?:\/\/[^\s]+/);
+      if (urlMatch) {
+        serverUrl = urlMatch[0];
+        console.log(`Detected server URL: ${serverUrl}`);
+      }
+      
       if (!resolved && (output.includes('Accepting connections') || output.includes('Listening'))) {
         resolved = true;
         console.log('Server is ready!');
         resolve({ 
           server, 
-          url: 'http://localhost:3001',
+          url: serverUrl,
           close: () => {
             server.kill('SIGTERM');
             setTimeout(() => {
@@ -86,7 +95,7 @@ async function startPreviewServer() {
         resolved = true;
         resolve({ 
           server, 
-          url: 'http://localhost:3001',
+          url: serverUrl,
           close: () => {
             server.kill('SIGTERM');
             setTimeout(() => {
