@@ -34,21 +34,70 @@ export async function fetchDockerHubPulls(dockerUrl: string): Promise<number | u
     }
     
     const [, namespace, repository] = match;
-    
-    // Use allOrigins CORS proxy with /get endpoint
     const apiUrl = `https://hub.docker.com/v2/repositories/${namespace}/${repository}`;
-    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
     
-    const response = await fetch(proxyUrl);
+    // Try multiple proxies and direct fetch with retry logic
+    const fetchStrategies = [
+      // Try direct fetch first (might work in some environments)
+      async () => {
+        const response = await fetch(apiUrl, { 
+          mode: 'cors',
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+      },
+      // Primary CORS proxy
+      async () => {
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
+        const response = await fetch(proxyUrl, { 
+          signal: AbortSignal.timeout(8000) 
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const proxyData = await response.json();
+        return JSON.parse(proxyData.contents);
+      },
+      // Fallback CORS proxy
+      async () => {
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
+        const response = await fetch(proxyUrl, { 
+          signal: AbortSignal.timeout(8000) 
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+      },
+      // Another fallback
+      async () => {
+        const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(apiUrl)}`;
+        const response = await fetch(proxyUrl, { 
+          signal: AbortSignal.timeout(8000) 
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+      }
+    ];
     
-    if (!response.ok) {
-      console.error('Docker Hub API response not OK:', response.status, response.statusText);
-      return undefined;
+    // Try each strategy with retries
+    for (const strategy of fetchStrategies) {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          const data = await strategy();
+          if (data && typeof data.pull_count === 'number') {
+            return data.pull_count;
+          }
+        } catch (error) {
+          // Continue to next attempt/strategy
+          if (attempt === 1) {
+            console.debug(`Strategy failed after retries:`, error);
+          }
+          // Small delay before retry
+          await new Promise(resolve => setTimeout(resolve, 300));
+        }
+      }
     }
     
-    const proxyData = await response.json();
-    const data = JSON.parse(proxyData.contents);
-    return data.pull_count;
+    console.error('All Docker Hub fetch strategies failed for:', dockerUrl);
+    return undefined;
   } catch (error) {
     console.error('Error fetching Docker Hub pulls:', error);
     return undefined;
