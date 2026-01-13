@@ -18,6 +18,8 @@ export interface Project {
   tech: string[];
   image: string;
   link?: string;
+  github_link?: string;
+  docker_link?: string;
 }
 
 export const professionalProjects: Project[] = [
@@ -29,6 +31,8 @@ export const professionalProjects: Project[] = [
     tech: ['Python', 'Docker'],
     image: dumpsterrHeader,
     link: 'https://github.com/chase-roohms/dumpsterr',
+    github_link: 'https://github.com/chase-roohms/dumpsterr',
+    docker_link: 'https://hub.docker.com/r/neonvariant/dumpsterr',
   },
   {
     id: 'plex-wrapped',
@@ -38,6 +42,7 @@ export const professionalProjects: Project[] = [
     tech: ['Python', 'HTML', 'UI'],
     image: plexWrappedHeader,
     link: 'https://github.com/chase-roohms/plex-wrapped',
+    github_link: 'https://github.com/chase-roohms/plex-wrapped'
   },
   {
     id: 'modern-portfolio',
@@ -47,6 +52,7 @@ export const professionalProjects: Project[] = [
     tech: ['React', 'UI'],
     image: websiteHomePageHeader,
     link: 'https://github.com/chase-roohms/chase-roohms.github.io',
+    github_link: 'https://github.com/chase-roohms/chase-roohms.github.io'
   },
   {
     id: 'poster-grid-generator',
@@ -56,6 +62,7 @@ export const professionalProjects: Project[] = [
     tech: ['Python'],
     image: onePacePostersHeader,
     link: 'https://github.com/chase-roohms/poster-tools/blob/main/generate-pretty-display.py',
+    github_link: 'https://github.com/chase-roohms/poster-tools'
   },
   {
     id: 'opsgenie-swir',
@@ -83,6 +90,7 @@ export const professionalProjects: Project[] = [
     tech: ['Python', 'Networking', 'Security'],
     image: pDashHeader,
     link: 'https://github.com/chase-roohms/p-dash',
+    github_link: 'https://github.com/chase-roohms/p-dash',
   },
   {
     id: 'de-vex',
@@ -92,6 +100,7 @@ export const professionalProjects: Project[] = [
     tech: ['Python', 'Security'],
     image: deVexHeader,
     link: 'https://github.com/chase-roohms/de-vex',
+    github_link: 'https://github.com/chase-roohms/de-vex',
   },
   {
     id: 'mythicmate',
@@ -101,6 +110,7 @@ export const professionalProjects: Project[] = [
     tech: ['Java', 'AI'],
     image: mythicmateHeader,
     link: 'https://github.com/chase-roohms/MythicMate',
+    github_link: 'https://github.com/chase-roohms/MythicMate',
   },
 ];
 
