@@ -1,6 +1,6 @@
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaRobot } from 'react-icons/fa';
-import { useState } from 'react';
 
 const funMessages = [
   {
@@ -33,6 +33,12 @@ export default function NotFound() {
   const [message] = useState(() => 
     funMessages[Math.floor(Math.random() * funMessages.length)]
   );
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimate(true), 10);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>

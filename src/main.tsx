@@ -14,7 +14,7 @@ console.log('%cInterested in how this site was built? Check out:', 'color: #8b5c
 console.log('%chttps://github.com/chase-roohms/chase-roohms.github.io', 'color: #ec4899;');
 
 // Add interactive console functions
-(window as Record<string, unknown>).explore = () => {
+(window as unknown as Record<string, unknown>).explore = () => {
   console.clear();
   console.log('%c🎉 Achievement Unlocked! 🎉', 'color: #10b981; font-size: 20px; font-weight: bold;');
   console.log('%cYou are a true Console Explorer!', 'color: #0ea5e9; font-size: 16px;');
@@ -27,7 +27,7 @@ console.log('%chttps://github.com/chase-roohms/chase-roohms.github.io', 'color: 
   console.log('%c• about() - Learn about this site', 'color: #fff;');
 };
 
-(window as Record<string, unknown>).achievements = () => {
+(window as unknown as Record<string, unknown>).achievements = () => {
   const stats = getAchievementStats();
   console.clear();
   console.log('%c🏆 Achievement Progress 🏆', 'color: #ff6200; font-size: 20px; font-weight: bold;');
@@ -42,7 +42,7 @@ console.log('%chttps://github.com/chase-roohms/chase-roohms.github.io', 'color: 
   });
 };
 
-(window as Record<string, unknown>).about = () => {
+(window as unknown as Record<string, unknown>).about = () => {
   console.clear();
   console.log('%c💻 About This Site 💻', 'color: #ff6200; font-size: 20px; font-weight: bold;');
   console.log('%c\nBuilt with:', 'color: #10b981; font-weight: bold;');
