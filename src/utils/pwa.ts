@@ -46,7 +46,7 @@ export function registerServiceWorker() {
 
 // Check if app can be installed
 export function checkInstallability() {
-  let deferredPrompt: any = null;
+  let deferredPrompt: Event | null = null;
 
   window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile

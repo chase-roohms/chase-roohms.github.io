@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './EasterEggs.css';
 
@@ -29,20 +29,31 @@ function EasterEggModal({ active, children, backgroundEffect }: EasterEggModalPr
 }
 
 export function KonamiEasterEgg({ active, onClose }: EasterEggsProps) {
+  const [matrixDrops] = useState(() => 
+    Array.from({ length: 50 }).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      animationDelay: Math.random() * 5,
+      animationDuration: 3 + Math.random() * 3,
+      fontSize: 12 + Math.random() * 8,
+      text: ['0', '1', '01', '10', '101', '010', '1001'][Math.floor(Math.random() * 7)]
+    }))
+  );
+
   const matrixRain = (
     <div className="matrix-rain-container">
-      {Array.from({ length: 50 }).map((_, i) => (
+      {matrixDrops.map((drop) => (
         <div 
-          key={i} 
+          key={drop.id} 
           className="matrix-drop" 
           style={{
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${3 + Math.random() * 3}s`,
-            fontSize: `${12 + Math.random() * 8}px`,
+            left: `${drop.left}%`,
+            animationDelay: `${drop.animationDelay}s`,
+            animationDuration: `${drop.animationDuration}s`,
+            fontSize: `${drop.fontSize}px`,
           }}
         >
-          {['0', '1', '01', '10', '101', '010', '1001'][Math.floor(Math.random() * 7)]}
+          {drop.text}
         </div>
       ))}
     </div>
@@ -237,20 +248,35 @@ export function AutomationEasterEgg({ active, onClose }: EasterEggsProps) {
 }
 
 export function LogoClickEasterEgg({ active, onClose }: EasterEggsProps) {
+  const [confettiPieces] = useState(() => 
+    Array.from({ length: 100 }).map((_, i) => {
+      const colors = ['#ff6200', '#0ea5e9', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6'];
+      return {
+        id: i,
+        left: Math.random() * 100,
+        animationDelay: Math.random() * 4,
+        animationDuration: 2 + Math.random() * 2,
+        backgroundColor: colors[Math.floor(Math.random() * 6)],
+        width: 5 + Math.random() * 10,
+        height: 5 + Math.random() * 10,
+      };
+    })
+  );
+
   const confettiEffect = (
     <>
       <div className="confetti-container">
-        {Array.from({ length: 100 }).map((_, i) => (
+        {confettiPieces.map((piece) => (
           <div 
-            key={i} 
+            key={piece.id} 
             className="confetti" 
             style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 4}s`,
-              animationDuration: `${2 + Math.random() * 2}s`,
-              backgroundColor: ['#ff6200', '#0ea5e9', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6'][Math.floor(Math.random() * 6)],
-              width: `${5 + Math.random() * 10}px`,
-              height: `${5 + Math.random() * 10}px`,
+              left: `${piece.left}%`,
+              animationDelay: `${piece.animationDelay}s`,
+              animationDuration: `${piece.animationDuration}s`,
+              backgroundColor: piece.backgroundColor,
+              width: `${piece.width}px`,
+              height: `${piece.height}px`,
             }}
           ></div>
         ))}

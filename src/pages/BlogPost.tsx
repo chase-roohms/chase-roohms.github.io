@@ -229,7 +229,7 @@ export default function BlogPost() {
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw, rehypeHighlight]}
               components={{
-                code({ className, children, ...props }: any) {
+                code({ className, children, ...props }: { className?: string; children?: React.ReactNode; [key: string]: unknown }) {
                   const match = /language-(\w+)/.exec(className || '');
                   const codeString = String(children).replace(/\n$/, '');
                   
@@ -239,7 +239,7 @@ export default function BlogPost() {
                   
                   return <CodeBlock className={className}>{codeString}</CodeBlock>;
                 },
-                img({ src, alt, ...props }: any) {
+                img({ src, alt, ...props }: { src?: string; alt?: string; [key: string]: unknown }) {
                   return <img src={src} alt={alt} loading="lazy" {...props} />;
                 }
               }}

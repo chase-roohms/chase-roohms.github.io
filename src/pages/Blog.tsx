@@ -35,7 +35,11 @@ export default function Blog() {
 
   // Reset to page 1 when search or topic changes
   useEffect(() => {
-    setCurrentPage(1);
+    // Using a condition to avoid unnecessary renders
+    if (currentPage !== 1) {
+      setCurrentPage(1);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, selectedTopic]);
 
   // Pagination

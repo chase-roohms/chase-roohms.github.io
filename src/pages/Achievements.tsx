@@ -7,21 +7,20 @@ export default function Achievements() {
   const [stats, setStats] = useState({ unlocked: 0, total: 0, percentage: 0 });
   const [showConfetti, setShowConfetti] = useState(false);
 
-  useEffect(() => {
-    // Unlock the achievement hunter achievement
-    unlockAchievement('achievement_hunter');
-    loadAchievements();
-
-    // Listen for achievement unlocks
-    const handleUnlock = () => loadAchievements();
-    window.addEventListener('achievementUnlocked', handleUnlock);
-    window.addEventListener('achievementsReset', handleUnlock);
-
-    return () => {
-      window.removeEventListener('achievementUnlocked', handleUnlock);
-      window.removeEventListener('achievementsReset', handleUnlock);
-    };
-  }, []);
+  const [confettiPieces] = useState(() => 
+    Array.from({ length: 100 }).map((_, i) => {
+      const colors = ['#ff6200', '#0ea5e9', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6'];
+      return {
+        id: i,
+        left: Math.random() * 100,
+        animationDelay: Math.random() * 3,
+        animationDuration: 2 + Math.random() * 2,
+        backgroundColor: colors[Math.floor(Math.random() * 6)],
+        width: 5 + Math.random() * 10,
+        height: 5 + Math.random() * 10,
+      };
+    })
+  );
 
   const loadAchievements = () => {
     const loadedAchievements = getAchievements();
@@ -34,6 +33,23 @@ export default function Achievements() {
       setTimeout(() => setShowConfetti(false), 5000);
     }
   };
+
+  useEffect(() => {
+    // Unlock the achievement hunter achievement
+    unlockAchievement('achievement_hunter');
+    // Load achievements after mount to avoid cascading renders
+    setTimeout(() => loadAchievements(), 0);
+
+    // Listen for achievement unlocks
+    const handleUnlock = () => loadAchievements();
+    window.addEventListener('achievementUnlocked', handleUnlock);
+    window.addEventListener('achievementsReset', handleUnlock);
+
+    return () => {
+      window.removeEventListener('achievementUnlocked', handleUnlock);
+      window.removeEventListener('achievementsReset', handleUnlock);
+    };
+  }, []);
 
   const formatDate = (timestamp?: number) => {
     if (!timestamp) return '';
@@ -65,17 +81,17 @@ export default function Achievements() {
         {showConfetti && (
           <div className="fixed inset-0 pointer-events-none z-50">
             <div className="confetti-container">
-              {Array.from({ length: 100 }).map((_, i) => (
+              {confettiPieces.map((piece) => (
                 <div
-                  key={i}
+                  key={piece.id}
                   className="confetti"
                   style={{
-                    left: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 3}s`,
-                    animationDuration: `${2 + Math.random() * 2}s`,
-                    backgroundColor: ['#ff6200', '#0ea5e9', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6'][Math.floor(Math.random() * 6)],
-                    width: `${5 + Math.random() * 10}px`,
-                    height: `${5 + Math.random() * 10}px`,
+                    left: `${piece.left}%`,
+                    animationDelay: `${piece.animationDelay}s`,
+                    animationDuration: `${piece.animationDuration}s`,
+                    backgroundColor: piece.backgroundColor,
+                    width: `${piece.width}px`,
+                    height: `${piece.height}px`,
                   }}
                 ></div>
               ))}
