@@ -9,6 +9,7 @@ import deVexHeader from '../assets/images/de-vex-header.webp';
 import looneyTunesPostersHeader from '../assets/images/looney-tunes-posters-header.webp';
 import plexWrappedHeader from '../assets/images/plex-wrapped-header.webp';
 import dumpsterrHeader from '../assets/images/dumpsterr-header.webp';
+import kometaConfigsHeader from '../assets/images/kometa-configs-header.webp';
 
 export interface Project {
   id: string;
@@ -63,6 +64,16 @@ export const professionalProjects: Project[] = [
     image: onePacePostersHeader,
     link: 'https://github.com/chase-roohms/poster-tools/blob/main/generate-pretty-display.py',
     github_link: 'https://github.com/chase-roohms/poster-tools'
+  },
+  {
+    id: 'kometa-configs',
+    fullDate: '2025-04-18',
+    title: 'Automated Kometa Configs',
+    description: 'Automates the creation of configuration files for use in Kometa, manages metadata, playlists, collections, etc. for a Plex instance.',
+    tech: ['Bash', 'IaC', 'GitHub Actions'],
+    image: kometaConfigsHeader,
+    link: 'https://github.com/chase-roohms/kometa-configs',
+    github_link: 'https://github.com/chase-roohms/kometa-configs'
   },
   {
     id: 'opsgenie-swir',
