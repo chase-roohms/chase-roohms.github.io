@@ -10,6 +10,7 @@ import looneyTunesPostersHeader from '../assets/images/looney-tunes-posters-head
 import plexWrappedHeader from '../assets/images/plex-wrapped-header.webp';
 import dumpsterrHeader from '../assets/images/dumpsterr-header.webp';
 import kometaConfigsHeader from '../assets/images/kometa-configs-header.webp';
+import tagAndReleaseHeader from '../assets/images/tag-and-release-header.webp';
 
 export interface Project {
   id: string;
@@ -24,6 +25,16 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'tag-and-release',
+    fullDate: '2026-01-13',
+    title: 'Tag and Release',
+    description: 'GitHub Action that creates a semantic version release with optional parent tag updates (e.g., updating v3 and v3.5 when releasing v3.5.2) ',
+    tech: ['Bash', 'GitHub Actions', 'CI/CD'],
+    image: tagAndReleaseHeader,
+    link: 'https://github.com/marketplace/actions/tag-and-release-semantic-version',
+    github_link: 'https://github.com/chase-roohms/tag-and-release',
+  },
   {
     id: 'dumpsterr',
     fullDate: '2026-01-08',
