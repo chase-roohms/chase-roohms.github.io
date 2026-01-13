@@ -120,8 +120,9 @@ export const professionalProjects: Project[] = [
     description: 'Developed an AI powered Discord companion for Dungeons and Dragons, using Java and OpenAI\'s GPT-4.',
     tech: ['Java', 'AI'],
     image: mythicmateHeader,
-    link: 'https://github.com/chase-roohms/MythicMate',
-    github_link: 'https://github.com/chase-roohms/MythicMate',
+    link: 'https://github.com/chase-roohms/mythicmate',
+    github_link: 'https://github.com/chase-roohms/mythicmate',
+    docker_link: 'https://hub.docker.com/r/neonvariant/mythicmate',
   },
 ];
 
