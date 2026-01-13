@@ -3,7 +3,16 @@ export interface ProjectStats {
   dockerPulls?: number;
 }
 
+// Cache to avoid repeated API calls
+const githubStarsCache = new Map<string, number | undefined>();
+const dockerPullsCache = new Map<string, number | undefined>();
+
 export async function fetchGitHubStars(githubUrl: string): Promise<number | undefined> {
+  // Check cache first
+  if (githubStarsCache.has(githubUrl)) {
+    return githubStarsCache.get(githubUrl);
+  }
+
   try {
     // Extract owner and repo from GitHub URL
     // Example: https://github.com/chase-roohms/dumpsterr
@@ -16,7 +25,11 @@ export async function fetchGitHubStars(githubUrl: string): Promise<number | unde
     if (!response.ok) return undefined;
     
     const data = await response.json();
-    return data.stargazers_count;
+    const stars = data.stargazers_count;
+    
+    // Cache the result
+    githubStarsCache.set(githubUrl, stars);
+    return stars;
   } catch (error) {
     console.error('Error fetching GitHub stars:', error);
     return undefined;
@@ -24,6 +37,11 @@ export async function fetchGitHubStars(githubUrl: string): Promise<number | unde
 }
 
 export async function fetchDockerHubPulls(dockerUrl: string): Promise<number | undefined> {
+  // Check cache first
+  if (dockerPullsCache.has(dockerUrl)) {
+    return dockerPullsCache.get(dockerUrl);
+  }
+
   try {
     // Extract namespace and repository from Docker Hub URL
     // Example: https://hub.docker.com/r/neonvariant/dumpsterr
@@ -35,69 +53,28 @@ export async function fetchDockerHubPulls(dockerUrl: string): Promise<number | u
     
     const [, namespace, repository] = match;
     const apiUrl = `https://hub.docker.com/v2/repositories/${namespace}/${repository}`;
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
     
-    // Create fetch attempts for multiple CORS proxies
-    const createFetchAttempt = async (proxyUrl: string, parseResponse: (res: any) => any) => {
-      try {
-        const response = await fetch(proxyUrl, { 
-          signal: AbortSignal.timeout(10000),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = parseResponse ? await parseResponse(response) : await response.json();
-        if (data && typeof data.pull_count === 'number') {
-          return data.pull_count;
-        }
-        throw new Error('Invalid response format');
-      } catch (error) {
-        throw error;
-      }
-    };
+    const response = await fetch(proxyUrl, { 
+      signal: AbortSignal.timeout(20000),
+      headers: { 'Accept': 'application/json' }
+    });
     
-    // Try all proxies in parallel - first one to succeed wins
-    const proxyAttempts = [
-      createFetchAttempt(
-        `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`,
-        async (res) => {
-          const proxyData = await res.json();
-          return JSON.parse(proxyData.contents);
-        }
-      ),
-      createFetchAttempt(
-        `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`,
-        (res) => res.json()
-      ),
-      createFetchAttempt(
-        `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(apiUrl)}`,
-        (res) => res.json()
-      ),
-    ];
-    
-    // Race all proxies, return first successful result
-    const result = await Promise.race(
-      proxyAttempts.map(attempt => 
-        attempt.catch(() => undefined)
-      )
-    );
-    
-    if (result !== undefined) {
-      return result;
+    if (!response.ok) {
+      console.warn('Could not fetch Docker Hub pulls for:', dockerUrl);
+      return undefined;
     }
     
-    // If all parallel attempts failed, try them sequentially with retries
-    for (const attempt of proxyAttempts) {
-      try {
-        const pullCount = await attempt;
-        if (pullCount !== undefined) {
-          return pullCount;
-        }
-      } catch (error) {
-        // Continue to next proxy
-        continue;
-      }
+    const proxyData = await response.json();
+    const data = JSON.parse(proxyData.contents);
+    
+    if (data && typeof data.pull_count === 'number') {
+      const pulls = data.pull_count;
+      // Cache the result
+      dockerPullsCache.set(dockerUrl, pulls);
+      return pulls;
     }
     
-    console.warn('Could not fetch Docker Hub pulls for:', dockerUrl);
     return undefined;
   } catch (error) {
     console.error('Error fetching Docker Hub pulls:', error);
