@@ -40,14 +40,21 @@ async function getBlogSlugs() {
 // Start a static file server for the built files
 async function startPreviewServer() {
   return new Promise((resolve, reject) => {
+    console.log('Starting static file server on port 3001...');
     const server = spawn('npx', ['serve', '-s', distPath, '-l', '3001', '--no-clipboard'], {
       stdio: 'pipe',
-      detached: false
+      detached: false,
+      shell: true
     });
+    
+    let resolved = false;
     
     server.stdout.on('data', (data) => {
       const output = data.toString();
-      if (output.includes('Accepting connections')) {
+      console.log('Server output:', output.trim());
+      if (!resolved && (output.includes('Accepting connections') || output.includes('Listening'))) {
+        resolved = true;
+        console.log('Server is ready!');
         resolve({ 
           server, 
           url: 'http://localhost:3001',
@@ -64,57 +71,75 @@ async function startPreviewServer() {
     });
     
     server.stderr.on('data', (data) => {
-      console.error('Server error:', data.toString());
+      console.error('Server stderr:', data.toString());
     });
     
-    // Give it a few seconds to start
+    server.on('error', (error) => {
+      console.error('Failed to start server:', error);
+      reject(error);
+    });
+    
+    // Give it 5 seconds to start, with better error handling
     setTimeout(() => {
-      resolve({ 
-        server, 
-        url: 'http://localhost:3001',
-        close: () => {
-          server.kill('SIGTERM');
-          setTimeout(() => {
-            if (!server.killed) {
-              server.kill('SIGKILL');
-            }
-          }, 1000);
-        }
-      });
-    }, 3000);
+      if (!resolved) {
+        console.log('Server took longer than expected, proceeding anyway...');
+        resolved = true;
+        resolve({ 
+          server, 
+          url: 'http://localhost:3001',
+          close: () => {
+            server.kill('SIGTERM');
+            setTimeout(() => {
+              if (!server.killed) {
+                server.kill('SIGKILL');
+              }
+            }, 1000);
+          }
+        });
+      }
+    }, 5000);
   });
 }
 
-// Prerender a single route
-async function prerenderRoute(browser, url, outputPath) {
+// Prerender a single route with retries
+async function prerenderRoute(browser, url, outputPath, retries = 3) {
   console.log(`Prerendering: ${url}`);
   
   const page = await browser.newPage();
   
-  try {
-    // Navigate and wait for the page to be fully loaded
-    await page.goto(url, { 
-      waitUntil: 'networkidle0',
-      timeout: 30000 
-    });
-    
-    // Wait a bit more for React Helmet to update meta tags
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Get the fully rendered HTML
-    const html = await page.content();
-    
-    // Create directory if it doesn't exist
-    await mkdir(dirname(outputPath), { recursive: true });
-    
-    // Write the HTML file
-    await writeFile(outputPath, html, 'utf-8');
-    
-    console.log(`✓ Saved: ${outputPath}`);
-  } catch (error) {
-    console.error(`✗ Failed to prerender ${url}:`, error.message);
-  } finally {
-    await page.close();
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      // Navigate and wait for the page to be fully loaded
+      await page.goto(url, { 
+        waitUntil: 'networkidle0',
+        timeout: 30000 
+      });
+      
+      // Wait a bit more for React Helmet to update meta tags
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Get the fully rendered HTML
+      const html = await page.content();
+      
+      // Create directory if it doesn't exist
+      await mkdir(dirname(outputPath), { recursive: true });
+      
+      // Write the HTML file
+      await writeFile(outputPath, html, 'utf-8');
+      
+      console.log(`✓ Saved: ${outputPath}`);
+      await page.close();
+      return;
+    } catch (error) {
+      if (attempt < retries) {
+        console.log(`  Attempt ${attempt} failed, retrying... (${error.message})`);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      } else {
+        console.error(`✗ Failed to prerender ${url} after ${retries} attempts:`, error.message);
+        await page.close();
+        throw error;
+      }
+    }
   }
 }
 
@@ -130,6 +155,29 @@ async function main() {
   console.log('Starting preview server...');
   const { server, url, close } = await startPreviewServer();
   console.log(`Preview server running at ${url}\n`);
+  
+  // Wait for server to be fully ready
+  console.log('Verifying server is responding...');
+  let serverReady = false;
+  for (let i = 0; i < 10; i++) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        serverReady = true;
+        console.log('✓ Server is responding\n');
+        break;
+      }
+    } catch (error) {
+      console.log(`  Waiting for server... (attempt ${i + 1}/10)`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+  }
+  
+  if (!serverReady) {
+    console.error('❌ Server failed to start properly');
+    close();
+    process.exit(1);
+  }
   
   // Launch Puppeteer
   console.log('Launching browser...');
