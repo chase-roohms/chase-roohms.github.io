@@ -36,67 +36,68 @@ export async function fetchDockerHubPulls(dockerUrl: string): Promise<number | u
     const [, namespace, repository] = match;
     const apiUrl = `https://hub.docker.com/v2/repositories/${namespace}/${repository}`;
     
-    // Try multiple proxies and direct fetch with retry logic
-    const fetchStrategies = [
-      // Try direct fetch first (might work in some environments)
-      async () => {
-        const response = await fetch(apiUrl, { 
-          mode: 'cors',
+    // Create fetch attempts for multiple CORS proxies
+    const createFetchAttempt = async (proxyUrl: string, parseResponse: (res: any) => any) => {
+      try {
+        const response = await fetch(proxyUrl, { 
+          signal: AbortSignal.timeout(10000),
           headers: { 'Accept': 'application/json' }
         });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return await response.json();
-      },
-      // Primary CORS proxy
-      async () => {
-        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
-        const response = await fetch(proxyUrl, { 
-          signal: AbortSignal.timeout(8000) 
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const proxyData = await response.json();
-        return JSON.parse(proxyData.contents);
-      },
-      // Fallback CORS proxy
-      async () => {
-        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
-        const response = await fetch(proxyUrl, { 
-          signal: AbortSignal.timeout(8000) 
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return await response.json();
-      },
-      // Another fallback
-      async () => {
-        const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(apiUrl)}`;
-        const response = await fetch(proxyUrl, { 
-          signal: AbortSignal.timeout(8000) 
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return await response.json();
+        const data = parseResponse ? await parseResponse(response) : await response.json();
+        if (data && typeof data.pull_count === 'number') {
+          return data.pull_count;
+        }
+        throw new Error('Invalid response format');
+      } catch (error) {
+        throw error;
       }
+    };
+    
+    // Try all proxies in parallel - first one to succeed wins
+    const proxyAttempts = [
+      createFetchAttempt(
+        `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`,
+        async (res) => {
+          const proxyData = await res.json();
+          return JSON.parse(proxyData.contents);
+        }
+      ),
+      createFetchAttempt(
+        `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`,
+        (res) => res.json()
+      ),
+      createFetchAttempt(
+        `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(apiUrl)}`,
+        (res) => res.json()
+      ),
     ];
     
-    // Try each strategy with retries
-    for (const strategy of fetchStrategies) {
-      for (let attempt = 0; attempt < 2; attempt++) {
-        try {
-          const data = await strategy();
-          if (data && typeof data.pull_count === 'number') {
-            return data.pull_count;
-          }
-        } catch (error) {
-          // Continue to next attempt/strategy
-          if (attempt === 1) {
-            console.debug(`Strategy failed after retries:`, error);
-          }
-          // Small delay before retry
-          await new Promise(resolve => setTimeout(resolve, 300));
+    // Race all proxies, return first successful result
+    const result = await Promise.race(
+      proxyAttempts.map(attempt => 
+        attempt.catch(() => undefined)
+      )
+    );
+    
+    if (result !== undefined) {
+      return result;
+    }
+    
+    // If all parallel attempts failed, try them sequentially with retries
+    for (const attempt of proxyAttempts) {
+      try {
+        const pullCount = await attempt;
+        if (pullCount !== undefined) {
+          return pullCount;
         }
+      } catch (error) {
+        // Continue to next proxy
+        continue;
       }
     }
     
-    console.error('All Docker Hub fetch strategies failed for:', dockerUrl);
+    console.warn('Could not fetch Docker Hub pulls for:', dockerUrl);
     return undefined;
   } catch (error) {
     console.error('Error fetching Docker Hub pulls:', error);
