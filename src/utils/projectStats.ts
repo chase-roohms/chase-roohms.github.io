@@ -52,29 +52,31 @@ export async function fetchDockerHubPulls(dockerUrl: string): Promise<number | u
     }
     
     const [, namespace, repository] = match;
-    const apiUrl = `https://hub.docker.com/v2/repositories/${namespace}/${repository}`;
-    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
+    const repoKey = `${namespace}/${repository}`;
     
-    const response = await fetch(proxyUrl, { 
-      signal: AbortSignal.timeout(20000),
+    // Fetch from automated stats repository
+    const statsUrl = 'https://raw.githubusercontent.com/chase-roohms/docker-stats/refs/heads/main/stats.json';
+    const response = await fetch(statsUrl, { 
+      signal: AbortSignal.timeout(10000),
       headers: { 'Accept': 'application/json' }
     });
     
     if (!response.ok) {
-      console.warn('Could not fetch Docker Hub pulls for:', dockerUrl);
+      console.warn('Could not fetch Docker Hub stats from automated repository');
       return undefined;
     }
     
-    const proxyData = await response.json();
-    const data = JSON.parse(proxyData.contents);
+    const stats = await response.json();
     
-    if (data && typeof data.pull_count === 'number') {
-      const pulls = data.pull_count;
+    // Look up the pull count for this specific repository
+    if (stats?.repositories?.[repoKey]?.pull_count !== undefined) {
+      const pulls = stats.repositories[repoKey].pull_count;
       // Cache the result
       dockerPullsCache.set(dockerUrl, pulls);
       return pulls;
     }
     
+    console.warn(`No stats found for Docker repository: ${repoKey}`);
     return undefined;
   } catch (error) {
     console.error('Error fetching Docker Hub pulls:', error);
