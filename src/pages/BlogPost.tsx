@@ -15,11 +15,20 @@ import BlogPostCard from '../components/BlogPostCard';
 import ShareButtons from '../components/ShareButtons';
 import 'highlight.js/styles/github-dark.css';
 
-function CodeBlock({ children, className }: { children: string; className?: string }) {
+function CodeBlock({ children, className }: { children: React.ReactNode; className?: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(children);
+    // Extract text content for copying
+    const getTextContent = (node: any): string => {
+      if (typeof node === 'string') return node;
+      if (Array.isArray(node)) return node.map(getTextContent).join('');
+      if (node?.props?.children) return getTextContent(node.props.children);
+      return '';
+    };
+    
+    const textContent = getTextContent(children);
+    await navigator.clipboard.writeText(textContent);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -229,15 +238,16 @@ export default function BlogPost() {
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw, rehypeHighlight]}
               components={{
-                code({ className, children, ...props }) {
+                code({ node, className, children, ...props }: any) {
                   const match = /language-(\w+)/.exec(className || '');
-                  const codeString = String(children).replace(/\n$/, '');
                   
+                  // If no language match, render as inline code
                   if (!match) {
                     return <code className={className} {...props}>{children}</code>;
                   }
                   
-                  return <CodeBlock className={className}>{codeString}</CodeBlock>;
+                  // For code blocks, preserve the syntax-highlighted children
+                  return <CodeBlock className={className}>{children}</CodeBlock>;
                 },
                 img({ src, alt, ...props }) {
                   return <img src={src} alt={alt} loading="lazy" {...props} />;
