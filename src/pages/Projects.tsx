@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { FaProjectDiagram } from 'react-icons/fa';
+import { useMemo, useState } from 'react';
+import { FaProjectDiagram, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { professionalProjects, personalProjects } from '../utils/projectsData';
 import ProjectCard from '../components/ProjectCard';
@@ -9,6 +9,12 @@ import FilterResultsCount from '../components/FilterResultsCount';
 import { useContentFilter } from '../hooks/useContentFilter';
 
 export default function Projects() {
+  const ITEMS_PER_PAGE = 6;
+  
+  // Pagination state for each section
+  const [professionalPage, setProfessionalPage] = useState(0);
+  const [personalPage, setPersonalPage] = useState(0);
+
   // Sort projects by date (newest first)
   const sortedProfessionalProjects = useMemo(() => 
     [...professionalProjects].sort((a, b) => 
@@ -43,6 +49,88 @@ export default function Projects() {
     sortedPersonalProjects.includes(project)
   );
   const totalFilteredProjects = filteredAllProjects.length;
+
+  // Reset pagination when filters change
+  useMemo(() => {
+    setProfessionalPage(0);
+    setPersonalPage(0);
+  }, [searchQuery, selectedTopic]);
+
+  // Calculate pagination for professional projects
+  const professionalTotalPages = Math.ceil(filteredProfessionalProjects.length / ITEMS_PER_PAGE);
+  const professionalStartIndex = professionalPage * ITEMS_PER_PAGE;
+  const professionalEndIndex = professionalStartIndex + ITEMS_PER_PAGE;
+  const paginatedProfessionalProjects = filteredProfessionalProjects.slice(
+    professionalStartIndex,
+    professionalEndIndex
+  );
+
+  // Calculate pagination for personal projects
+  const personalTotalPages = Math.ceil(filteredPersonalProjects.length / ITEMS_PER_PAGE);
+  const personalStartIndex = personalPage * ITEMS_PER_PAGE;
+  const personalEndIndex = personalStartIndex + ITEMS_PER_PAGE;
+  const paginatedPersonalProjects = filteredPersonalProjects.slice(
+    personalStartIndex,
+    personalEndIndex
+  );
+
+  // Pagination handlers
+  const handleProfessionalPrevPage = () => {
+    setProfessionalPage((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleProfessionalNextPage = () => {
+    setProfessionalPage((prev) => Math.min(professionalTotalPages - 1, prev + 1));
+  };
+
+  const handlePersonalPrevPage = () => {
+    setPersonalPage((prev) => Math.max(0, prev - 1));
+  };
+
+  const handlePersonalNextPage = () => {
+    setPersonalPage((prev) => Math.min(personalTotalPages - 1, prev + 1));
+  };
+
+  // Pagination component
+  const PaginationControls = ({ 
+    currentPage, 
+    totalPages, 
+    onPrevious, 
+    onNext,
+    itemCount 
+  }: { 
+    currentPage: number; 
+    totalPages: number; 
+    onPrevious: () => void; 
+    onNext: () => void;
+    itemCount: number;
+  }) => {
+    if (totalPages <= 1) return null;
+
+    return (
+      <div className="flex items-center justify-center gap-4 mt-8">
+        <button
+          onClick={onPrevious}
+          disabled={currentPage === 0}
+          className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          aria-label="Previous page"
+        >
+          <FaChevronLeft className="text-primary-400" />
+        </button>
+        <span className="text-gray-400">
+          Page {currentPage + 1} of {totalPages} ({itemCount} {itemCount === 1 ? 'project' : 'projects'})
+        </span>
+        <button
+          onClick={onNext}
+          disabled={currentPage === totalPages - 1}
+          className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          aria-label="Next page"
+        >
+          <FaChevronRight className="text-primary-400" />
+        </button>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -111,7 +199,7 @@ export default function Projects() {
           {filteredProfessionalProjects.length > 0 && (
             <section className="mb-20">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredProfessionalProjects.map((project) => (
+                {paginatedProfessionalProjects.map((project) => (
                   <ProjectCard 
                     key={project.id} 
                     project={project} 
@@ -119,6 +207,13 @@ export default function Projects() {
                   />
                 ))}
               </div>
+              <PaginationControls
+                currentPage={professionalPage}
+                totalPages={professionalTotalPages}
+                onPrevious={handleProfessionalPrevPage}
+                onNext={handleProfessionalNextPage}
+                itemCount={filteredProfessionalProjects.length}
+              />
             </section>
           )}
 
@@ -130,7 +225,7 @@ export default function Projects() {
                 A peek behind the curtains at some of my other projects and hobbies.
               </p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredPersonalProjects.map((project) => (
+                {paginatedPersonalProjects.map((project) => (
                   <ProjectCard 
                     key={project.id} 
                     project={project} 
@@ -138,6 +233,13 @@ export default function Projects() {
                   />
                 ))}
               </div>
+              <PaginationControls
+                currentPage={personalPage}
+                totalPages={personalTotalPages}
+                onPrevious={handlePersonalPrevPage}
+                onNext={handlePersonalNextPage}
+                itemCount={filteredPersonalProjects.length}
+              />
             </section>
           )}
         </>
