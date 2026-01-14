@@ -11,6 +11,11 @@ icon: "FaDocker"
 
 Back in 2024 I created a Java based Discord bot I called "MythicMate". It's purpose? Provide intuitive dice rolling, comprehensive rules referencing, and AI-powered assistance for all things D&D.
 
+<figure class="my-6">
+  <img src="https://chaseroohms.com/blog-images/mythicmate-header.webp" alt="MythicMate branding header" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <figcaption class="text-center text-sm text-gray-400 mt-2">The "Mythic Mate" himself</figcaption>
+</figure>
+
 ## Difficulties
 
 I was quite inexperienced at this time, so building a Java application with Maven was a daunting task. After numerous failed attempts I managed to compile a Jar and move it over to my server. 
