@@ -150,3 +150,5 @@ Dockerization transformed MythicMate from a brittle, environment-dependent appli
 5. **Portability**: Run anywhere Docker runs: cloud, on-premises, or local
 
 What started as a frustrating experience managing a Java application across different systems became a lesson in the power of containerization. Docker didn't just solve my deployment problems; it fundamentally changed how I approach application development and delivery.
+
+Check out my progress on [MythicMate on Github](https://github.com/chase-roohms/mythicmate)!
