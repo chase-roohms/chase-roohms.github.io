@@ -27,7 +27,7 @@ function generateBlogRSS() {
     return {
       title: data.title,
       description: data.description,
-      link: `${SITE_URL}/blog/${data.slug}`,
+      link: `${SITE_URL}/blog/${data.slug}/`,
       pubDate: new Date(data.date).toUTCString(),
       author: data.author || 'Chase Roohms',
       categories: data.topics || []

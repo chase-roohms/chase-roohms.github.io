@@ -16,13 +16,14 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 }
 
 // Static pages with their priorities and change frequencies
+// Note: URLs include trailing slashes to match GitHub Pages behavior
 const staticPages = [
   { url: '/', changefreq: 'weekly', priority: '1.0' },
-  { url: '/about', changefreq: 'monthly', priority: '0.8' },
-  { url: '/projects', changefreq: 'weekly', priority: '0.9' },
-  { url: '/blog', changefreq: 'weekly', priority: '0.9' },
-  { url: '/news', changefreq: 'weekly', priority: '0.8' },
-  { url: '/contact', changefreq: 'monthly', priority: '0.7' },
+  { url: '/about/', changefreq: 'monthly', priority: '0.8' },
+  { url: '/projects/', changefreq: 'weekly', priority: '0.9' },
+  { url: '/blog/', changefreq: 'weekly', priority: '0.9' },
+  { url: '/news/', changefreq: 'weekly', priority: '0.8' },
+  { url: '/contact/', changefreq: 'monthly', priority: '0.7' },
 ];
 
 function generateSitemap() {
@@ -34,7 +35,7 @@ function generateSitemap() {
     const { data } = matter(content);
     
     return {
-      url: `/blog/${data.slug}`,
+      url: `/blog/${data.slug}/`,
       lastmod: data.date,
       changefreq: 'monthly',
       priority: '0.7'
