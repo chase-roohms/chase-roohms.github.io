@@ -8,6 +8,20 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'dockerized-mythicmate',
+    fullDate: '2026-01-14',
+    title: 'Dockerized MythicMate',
+    description: 'Dockerized the AI powered Discord companion for Dungeons and Dragons, MythicMate, to simplify deployment and usage.',
+    link: 'https://github.com/chase-roohms/mythicmate',
+  },
+  {
+    id: 'launched-dumpsterr',
+    fullDate: '2026-01-08',
+    title: 'Launched Dumpsterr',
+    description: 'Dockerized Python application that safely empties your Plex trash, verifying file availability before doing so. Prevents unintentional deletion of movies and shows when drives are disconnected.',
+    link: 'https://github.com/chase-roohms/dumpsterr',
+  },
+  {
     id: 'new-portfolio',
     fullDate: '2025-12-13',
     title: 'Built a Modern Portfolio',
