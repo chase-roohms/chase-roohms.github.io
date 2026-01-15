@@ -11,6 +11,7 @@ import plexWrappedHeader from '../assets/images/plex-wrapped-header.webp';
 import dumpsterrHeader from '../assets/images/dumpsterr-header.webp';
 import kometaConfigsHeader from '../assets/images/kometa-configs-header.webp';
 import tagAndReleaseHeader from '../assets/images/tag-and-release-header.webp';
+import discordWebhookNotifierHeader from '../assets/images/discord-webhook-notifier-header.webp';
 
 export interface Project {
   id: string;
@@ -25,6 +26,16 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'discord-webhook-notifier',
+    fullDate: '2026-01-14',
+    title: 'Discord Webhook Notifier',
+    description: 'GitHub Action that sends notifications to Discord webhooks.',
+    tech: ['Bash', 'GitHub Actions', 'CI/CD'],
+    image: discordWebhookNotifierHeader,
+    link: 'https://github.com/marketplace/actions/discord-webhook-notifier',
+    github_link: 'https://github.com/chase-roohms/discord-notify',
+  },
   {
     id: 'tag-and-release',
     fullDate: '2026-01-13',
