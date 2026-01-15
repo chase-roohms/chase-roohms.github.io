@@ -44,7 +44,7 @@ cv:
           - Decreased spending on GitHub Actions runners minutes by ~45% by improving workflow efficiency.
           - Led the migration from OpsGenie to SolarWinds Incident Response (formerly Squadcast).
           - Served as the primary implementer for the org-wide GitHub Copilot rollout, enabling developers through training sessions and hands-on support while driving measurable productivity improvements.
-          # - Achieved SLSA level 2 compliance in multiple products by automating signed SBOM and provenance generation in CI/CD pipelines, ensuring software integrity and tamper-resistance.
+          - Achieved SLSA level 2 compliance in multiple products by automating signed SBOM and provenance generation in CI/CD pipelines, ensuring software integrity and tamper-resistance.
       - company: SolarWinds
         position: Security Engineer Intern
         start_date: 2024-06
