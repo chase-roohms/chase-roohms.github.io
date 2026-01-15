@@ -32,7 +32,8 @@ cv:
         end_date: present
         location: Austin, TX
         highlights:
-          - Expedited the Developer workflow with an end to end Self-Service platform.
+          - Reduced IT/DevOps overhead and expedited the Developer workflow by building an end-to-end self-service platform that automates developer access (applications, repositories, etc.) and streamlines provisioning of new resources such as repositories and GCP projects.
+          - Grew GitHub Copilot code acceptance rates from 14% to 31%, daily active users from ~130 to 500+, and overall license adoption from 62% to 95% through model enablement, custom agent development, and training sessions.
       - company: SolarWinds
         position: Associate DevOps Engineer
         start_date: 2024-10
@@ -42,7 +43,8 @@ cv:
           - Increased code scanning coverage by ~400% using GitHub CodeQL.
           - Decreased spending on GitHub Actions runners minutes by ~45% by improving workflow efficiency.
           - Led the migration from OpsGenie to SolarWinds Incident Response (formerly Squadcast).
-          - Achieved SLSA level 2 compliance in multiple products by automating signed SBOM and provenance generation in CI/CD pipelines, ensuring software integrity and tamper-resistance.
+          - Served as the primary implementer for the org-wide GitHub Copilot rollout, enabling developers through training sessions and hands-on support while driving measurable productivity improvements.
+          # - Achieved SLSA level 2 compliance in multiple products by automating signed SBOM and provenance generation in CI/CD pipelines, ensuring software integrity and tamper-resistance.
       - company: SolarWinds
         position: Security Engineer Intern
         start_date: 2024-06
