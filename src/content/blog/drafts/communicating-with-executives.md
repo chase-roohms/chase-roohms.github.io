@@ -1,6 +1,6 @@
 ---
 title: "Communicating With Executives"
-date: "2026-01-15"
+date: "2026-01-28"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/executive-communication-header.webp"
 description: "Communicate with clarity and earn your leadership's trust in the process."
@@ -23,12 +23,12 @@ When communicating up the chain of command, it’s crucial to filter your messag
 So how do you decide what’s worth including? My simple rule of thumb is to consider the action an executive could take based on the information you’re sharing. If the detail doesn’t change a decision, a timeline, a risk, or a business outcome, it probably doesn’t belong in the message. This mindset keeps your communication sharp, relevant, and respectful of their time.
 
 **What Not To Say**
-> “We’re rewriting part of the backend because the current implementation is messy and hard to maintain.”
+> We’re rewriting part of the backend because the current implementation is messy and hard to maintain.
 - Nothing about business impact, timing, or risk
 - Giving an update just for the sake of giving an update
 
 **What To Say Instead**
-> “We’re refactoring the backend auth service to reduce outage risk and improve deploy reliability. It will take two sprints and lowers our incident probability by ~20%.”
+> We’re refactoring the backend auth service to reduce outage risk and improve deploy reliability. It will take two sprints and lowers our incident probability by ~20%.
 - Ties the work to risk reduction
 - Sets a timeline so they can plan accordingly
 - Frames the outcome in business terms
@@ -40,13 +40,13 @@ Executives don’t have time to dig for the point, you need to lead with it. Sta
 A reliable structure is **conclusion → key points → recommended next step**. This ensures your message is immediately clear while still giving enough substance to act on. You can always dive deeper if asked, but don’t make leaders wade through unnecessary detail up front.
 
 **What Not To Say**
-> "So yesterday we had this long issue with the deployment pipeline, and after going through multiple logs and retries, I noticed the caching layer was acting weird. Then I realized the artifact step was misconfigured, and I think that’s why it failed… anyway, we’re working on it.”
+> So yesterday we had this long issue with the deployment pipeline, and after going through multiple logs and retries, I noticed the caching layer was acting weird. Then I realized the artifact step was misconfigured, and I think that’s why it failed… anyway, we’re working on it.
 - Buries the conclusion
 - Rambles through background
 - Feels like problem-dumping
 
 **What To Say Instead**
-> “The deployment is temporarily blocked due to a configuration error. I’ve identified the fix and will confirm resolution by 3 PM. No customer impact, and I’ll escalate if the timeline changes.”
+> The deployment is temporarily blocked due to a configuration error. I’ve identified the fix and will confirm resolution by 3 PM. No customer impact, and I’ll escalate if the timeline changes.
 - Leads with the point
 - Uses minimal context
 - Defines the next step
@@ -54,21 +54,24 @@ A reliable structure is **conclusion → key points → recommended next step**.
 - Signals readiness to go deeper if asked, not upfront
 
 ## Build Trust Through Consistency and Ownership
-Communication isn’t just about what you say, it’s about how reliably you follow through. Executives need people who surface issues early, take ownership of outcomes, and deliver updates without being chased. Surprises erode trust; proactive transparency builds it.
+Communication isn’t just about what you say, it’s about how reliably you follow through. Executives need people who surface issues early, take ownership of outcomes, and deliver updates without being chased. Surprises erode trust, transparency builds it.
 
 Whether something is on track or slipping, be the person who communicates clearly, owns the result, and offers solutions rather than excuses. Over time, that consistency signals professionalism and makes your leaders confident they can rely on you.
 
 **What Not To Say**
-> “The migration slipped because the platform team didn’t get us the API updates in time. I’m not sure what the new timeline is yet.”
+> The migration slipped because the platform team didn’t get us the API updates in time. I’m not sure what the new timeline is yet.
 - Deflects blame
 - Signals lack of control
 - Provides no path forward
 - Leaves the executive with uncertainty
 
 **What To Say Instead**
-> “The migration is tracking one week behind due to a delayed API update. I’ve synced with the platform team, and we’re aligned on a new delivery date of Friday. No action needed from you—I’ll update again if anything shifts.”
+> The migration is tracking one week behind due to a delayed API update. I’ve synced with the platform team, and we’re aligned on a new delivery date of Friday. No action needed from you, I’ll update again if anything shifts.
 - Takes ownership of communication
 - Flags the blocker early
 - Provides a new timeline
 - Reduces surprises
 - Shows follow-through
+
+## TLDR
+Communicating effectively with executives is less about sharing every detail and more about delivering the right information, in the right way, at the right time. By filtering what matters, structuring your message clearly, and demonstrating consistent ownership, you can build trust, influence decisions, and make your leaders’ lives easier - all while advancing your own professional credibility.
