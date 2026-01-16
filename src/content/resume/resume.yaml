@@ -15,7 +15,7 @@ cv:
   custom_connections:
   sections:
     summary:
-      - DevOps Engineer with a strong foundation in software development and IT security. Experienced in optimizing CI/CD pipelines, reducing costs, and enhancing security compliance. Skilled in automation and scalable solutions that streamline operations and improve reliability.
+      - DevOps Engineer with a strong foundation in software development and IT security. Experienced in optimizing CI/CD pipelines, reducing costs, and enhancing security compliance. Skilled in automating scalable solutions and improving developer tooling.
     skills:
       - label: CI/CD Platforms
         details: GitHub Actions, Azure DevOps, TeamCity by JetBrains.
@@ -43,7 +43,7 @@ cv:
           - Increased code scanning coverage by ~400% using GitHub CodeQL.
           - Decreased spending on GitHub Actions runners minutes by ~45% by improving workflow efficiency.
           - Led the migration from OpsGenie to SolarWinds Incident Response (formerly Squadcast).
-          - Served as the primary implementer for the org-wide GitHub Copilot rollout, enabling developers through training sessions and hands-on support while driving measurable productivity improvements.
+          - Drove measurable developer productivity improvements (reduced PR cycle time, increased commit velocity) as the primary implementer for the org-wide GitHub Copilot rollout.
           - Achieved SLSA level 2 compliance in multiple products by automating signed SBOM and provenance generation in CI/CD pipelines, ensuring software integrity and tamper-resistance.
       - company: SolarWinds
         position: Security Engineer Intern
@@ -53,16 +53,46 @@ cv:
         highlights:
           - Reduced the legal review time by ~70% with an SBOM Vex translation script written in Python.
           - Increased security visibility by reviewing and redesigning data-flow threat models for more than 30 products.
+    projects:
+      - name: Dumpsterr
+        #date: 2026-01
+        start_date:
+        end_date:
+        location: github.com/chase-roohms/dumpsterr
+        summary: Empties Plex trash after verifying file availability, preventing deletions when drives are disconnected.
+        highlights:
+          - Developed a Python CLI tool to interact with the Plex API for managing media libraries.
+          - Runs on a cron schedule to replace the Plex native "Empty trash automatically" that is known to cause data loss.
+          - Containerized the application with Docker to enable consistent, portable deployment.
+      - name: Portfolio Website
+        #date: 2026-01
+        start_date:
+        end_date:
+        location: chaseroohms.com
+        summary: Modern personal portfolio showcasing projects and skills, built with Vite, React, TypeScript, and Tailwind CSS.
+        highlights:
+          - Developed a fast, modular frontend with React and TypeScript for maintainable and scalable code.
+          - Implemented a clean, responsive UI using Tailwind CSS to enhance usability and visual appeal.
+          - Optimized site structure and performance, achieving strong SEO rankings and actionable analytics insights.
+      - name: MythicMate
+        #start_date: 2024-11
+        #end_date: present
+        location: github.com/chase-roohms/mythicmate
+        summary: Dungeons & Dragons Discord Bot that provides dice rolling, rules referencing, and AI-powered assistance.
+        highlights:
+          - Developed a Java/Maven backend leveraging the JDA (Java Discord API) library.
+          - Integrated OpenAI's API to offer AI-driven responses and game assistance.
+          - Containerized the application with Docker to enable consistent, portable deployment.
     honors_and_awards:
-      #- bullet: "**IT Pro Day, Rockstar of the Year** - SolarWinds"
       - name: IT Pro Day, Rockstar of the Year
         location: SolarWinds
         date: 2025-09
         summary: Consistently demonstrated high performance, and embodied SolarWinds values.
-      - name: DevOps Dynamo
-        location: SolarWinds
-        date: 2025-06
-        summary: Brought unmatched energy and precision to the DevOps workflow.
+      # Commenting out as its kind of SolarWinds specific
+      #- name: DevOps Dynamo
+      #  location: SolarWinds
+      #  date: 2025-06
+      #  summary: Brought unmatched energy and precision to the DevOps workflow.
     certifications:
       - bullet: "**GitHub Actions** (GH-200)"
       - bullet: "**GitHub Copilot** (GH-300)"
@@ -144,7 +174,7 @@ design:
     space_between_regular_entries: 0.5em
     space_between_text_based_entries: 0.3em
   entries:
-    date_and_location_width: 4.15cm
+    date_and_location_width: 6cm # Was 4.15cm
     side_space: 0.2cm
     space_between_columns: 0.1cm
     allow_page_break: false
