@@ -177,3 +177,13 @@ export const personalProjects: Project[] = [
     link: 'https://theposterdb.com/set/371611',
   },
 ];
+
+// Featured project ID - only one project can be featured at a time
+export const FEATURED_PROJECT_ID = 'dumpsterr';
+
+// Helper function to get the featured project
+export function getFeaturedProject(): Project | undefined {
+  return [...professionalProjects, ...personalProjects].find(
+    project => project.id === FEATURED_PROJECT_ID
+  );
+}

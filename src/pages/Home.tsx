@@ -5,7 +5,7 @@ import Skills from '../components/Skills';
 import CircuitDecoration from '../components/CircuitDecoration';
 import ProjectCard from '../components/ProjectCard';
 import BlogPostCard from '../components/BlogPostCard';
-import { professionalProjects } from '../utils/projectsData';
+import { getFeaturedProject } from '../utils/projectsData';
 import { profileData } from '../utils/profileData';
 import { getAllBlogPosts, type BlogPost } from '../utils/blogLoader';
 import headshot from '../assets/images/headshot.webp';
@@ -16,6 +16,7 @@ export default function Home() {
   const last_name = name.split(" ")[1];
   
   const [recentPost, setRecentPost] = useState<BlogPost | null>(null);
+  const featuredProject = getFeaturedProject();
 
   useEffect(() => {
     getAllBlogPosts().then(posts => {
@@ -124,17 +125,17 @@ export default function Home() {
           {/* Recent Project Section */}
           <div>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-bold">Latest Project</h2>
+              <h2 className="text-3xl font-bold">Featured Project</h2>
               <Link to="/projects" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
                 View All →
               </Link>
             </div>
-            <ProjectCard 
-              project={[...professionalProjects].sort((a, b) => 
-                new Date(b.fullDate).getTime() - new Date(a.fullDate).getTime()
-              )[0]}
-              showTech={false}
-            />
+            {featuredProject && (
+              <ProjectCard 
+                project={featuredProject}
+                showTech={false}
+              />
+            )}
           </div>
 
           {/* Skills & Technologies Section */}

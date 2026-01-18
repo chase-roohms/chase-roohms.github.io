@@ -112,7 +112,7 @@ export default function Card({
           {githubStars !== undefined && (
             <div className="flex items-center gap-1.5 text-gray-400 group/stat">
               <svg 
-                className="w-4 h-4" 
+                className="w-4 h-4 text-yellow-500" 
                 fill="currentColor" 
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,7 @@ export default function Card({
           {dockerPulls !== undefined && (
             <div className="flex items-center gap-1.5 text-gray-400 group/stat">
               <svg 
-                className="w-4 h-4" 
+                className="w-4 h-4 text-blue-500" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
