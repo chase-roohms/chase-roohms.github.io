@@ -207,6 +207,8 @@ export default function BlogPost() {
                     key={topic}
                     to={`/blog?topic=${encodeURIComponent(topic)}`}
                     className="text-sm bg-primary-950 text-primary-400 border border-primary-800 px-3 py-1 rounded-full hover:bg-primary-900 hover:border-primary-700 transition-colors"
+                    aria-label={`Filter blog posts by ${topic}`}
+                    title={`Filter blog posts by ${topic}`}
                   >
                     {topic}
                   </Link>
@@ -250,7 +252,8 @@ export default function BlogPost() {
                   return <CodeBlock className={className}>{children}</CodeBlock>;
                 },
                 img({ src, alt, ...props }) {
-                  return <img src={src} alt={alt} loading="lazy" {...props} />;
+                  const altText = alt || 'Blog post image';
+                  return <img src={src} alt={altText} loading="lazy" {...props} />;
                 }
               }}
             >

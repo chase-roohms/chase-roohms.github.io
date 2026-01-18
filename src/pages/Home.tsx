@@ -74,7 +74,7 @@ export default function Home() {
           {/* Image Placeholder */}
           <div className="flex-1 flex justify-center md:justify-end mt-8 md:mt-0">
             <div className="w-48 h-48 md:w-80 md:h-80 bg-gray-900 border-2 border-gray-800 rounded-2xl flex items-center justify-center">
-              <img src={headshot} alt="Headshot" fetchPriority="high" className="w-full h-full object-cover rounded-2xl" />
+              <img src={headshot} alt="Chase Roohms professional headshot" fetchPriority="high" className="w-full h-full object-cover rounded-2xl" />
             </div>
           </div>
         </div>

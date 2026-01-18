@@ -155,6 +155,8 @@ export default function Card({
             key={tag}
             onClick={() => onTagClick(tag)}
             className="text-xs bg-primary-950 text-primary-400 border border-primary-800 px-2 py-1 rounded-full hover:bg-primary-900 hover:border-primary-700 transition-colors"
+            aria-label={`Filter by ${tag}`}
+            title={`Filter by ${tag}`}
           >
             {tag}
           </button>
