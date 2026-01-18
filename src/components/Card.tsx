@@ -107,9 +107,9 @@ export default function Card({
         {description}
       </p>
 
-      {(githubStars !== undefined || dockerPulls !== undefined) && (
+      {((githubStars !== undefined && githubStars > 0) || (dockerPulls !== undefined && dockerPulls > 0)) && (
         <div className="flex items-center gap-4 mb-4">
-          {githubStars !== undefined && (
+          {githubStars !== undefined && githubStars > 0 && (
             <div className="flex items-center gap-1.5 text-gray-400 group/stat">
               <svg 
                 className="w-4 h-4 text-yellow-500" 
@@ -125,7 +125,7 @@ export default function Card({
               </div>
             </div>
           )}
-          {dockerPulls !== undefined && (
+          {dockerPulls !== undefined && dockerPulls > 0 && (
             <div className="flex items-center gap-1.5 text-gray-400 group/stat">
               <svg 
                 className="w-4 h-4 text-blue-500" 
