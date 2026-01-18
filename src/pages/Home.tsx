@@ -105,7 +105,7 @@ export default function Home() {
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-3xl font-bold">Latest Blog Post</h2>
               <Link to="/blog" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
-                View All →
+                All Blogs →
               </Link>
             </div>
             {recentPost ? (
@@ -127,7 +127,7 @@ export default function Home() {
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-3xl font-bold">Featured Project</h2>
               <Link to="/projects" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
-                View All →
+                All Projects →
               </Link>
             </div>
             {featuredProject && (
