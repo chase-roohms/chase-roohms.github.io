@@ -6,25 +6,39 @@ import App from './App.tsx'
 import { registerServiceWorker, checkInstallability } from './utils/pwa'
 import { unlockAchievement, getAchievementStats, getAchievements } from './utils/achievements'
 
-// Handle chunk loading errors (common with PWA/service worker updates)
+// Handle chunk loading errors (occurs after deployments when cached chunks are outdated)
+let hasReloadedForChunkError = false;
+const handleChunkError = () => {
+  if (hasReloadedForChunkError) return;
+  
+  console.warn('[App] Chunk load error detected - reloading to fetch latest assets');
+  hasReloadedForChunkError = true;
+  sessionStorage.setItem('chunkErrorReload', 'true');
+  
+  // Clear service worker caches and reload
+  const hasCaches = 'caches' in window;
+  if (hasCaches) {
+    caches.keys().then(keys => {
+      Promise.all(keys.map(key => caches.delete(key))).then(() => {
+        window.location.reload();
+      });
+    });
+  } else {
+    window.location.reload();
+  }
+};
+
 window.addEventListener('error', (event) => {
   if (event.message?.includes('ChunkLoadError') || event.message?.includes('Loading chunk')) {
-    console.warn('[PWA] Chunk loading error detected, clearing cache and reloading...');
     event.preventDefault();
-    
-    // Unregister service worker and clear caches
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(registrations => {
-        registrations.forEach(registration => registration.unregister());
-      });
-    }
-    
-    caches.keys().then(keys => {
-      Promise.all(keys.map(key => caches.delete(key)))
-        .then(() => {
-          window.location.reload();
-        });
-    });
+    handleChunkError();
+  }
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+  if (event.reason?.message?.includes('ChunkLoadError') || event.reason?.message?.includes('Loading chunk')) {
+    event.preventDefault();
+    handleChunkError();
   }
 });
 
@@ -75,28 +89,6 @@ console.log('%chttps://github.com/chase-roohms/chase-roohms.github.io', 'color: 
   console.log('%c\nSource Code:', 'color: #10b981; font-weight: bold;');
   console.log('%chttps://github.com/chase-roohms/chase-roohms.github.io', 'color: #0ea5e9;');
 };
-
-// Handle chunk loading errors (occurs after deployments when cached chunks are outdated)
-let hasReloadedForChunkError = false;
-window.addEventListener('error', (event) => {
-  if (!hasReloadedForChunkError && (event.message.includes('ChunkLoadError') || event.message.includes('Loading chunk'))) {
-    console.warn('Chunk load error detected - reloading page to fetch latest assets');
-    hasReloadedForChunkError = true;
-    sessionStorage.setItem('chunkErrorReload', 'true');
-    window.location.reload();
-  }
-});
-
-// Handle unhandled promise rejections for dynamic imports
-window.addEventListener('unhandledrejection', (event) => {
-  if (!hasReloadedForChunkError && (event.reason?.message?.includes('ChunkLoadError') || event.reason?.message?.includes('Loading chunk'))) {
-    console.warn('Chunk load error detected in promise - reloading page to fetch latest assets');
-    event.preventDefault();
-    hasReloadedForChunkError = true;
-    sessionStorage.setItem('chunkErrorReload', 'true');
-    window.location.reload();
-  }
-});
 
 // Clear reload flag after successful load
 if (sessionStorage.getItem('chunkErrorReload') === 'true') {

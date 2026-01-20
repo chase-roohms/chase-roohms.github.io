@@ -1,10 +1,8 @@
-const CACHE_NAME = 'chase-roohms-v3'; // Increment when deploying breaking changes
-const RUNTIME_CACHE = 'runtime-cache-v3';
+const CACHE_NAME = 'chase-roohms-v4'; // Increment when deploying breaking changes
+const RUNTIME_CACHE = 'runtime-cache-v4';
 
-// Core assets to cache on install
+// Core assets to cache on install - MINIMAL SET (no HTML to avoid chunk reference issues)
 const CORE_ASSETS = [
-  '/',
-  '/index.html',
   '/favicon.svg',
   '/social-preview.webp',
 ];
@@ -40,6 +38,13 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+// Message handler for skip waiting
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 // Fetch event - network first, then cache, with runtime caching
 self.addEventListener('fetch', (event) => {
   const { request } = event;
@@ -55,51 +60,11 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Network-first strategy for HTML pages
-  if (request.headers.get('accept')?.includes('text/html')) {
-    event.respondWith(
-      fetch(request)
-        .then((response) => {
-          // Clone and cache the response
-          const responseClone = response.clone();
-          caches.open(RUNTIME_CACHE).then((cache) => {
-            cache.put(request, responseClone);
-          });
-          return response;
-        })
-        .catch(() => {
-          // If network fails, try cache
-          return caches.match(request).then((cachedResponse) => {
-            if (cachedResponse) {
-              return cachedResponse;
-            }
-            // Return offline page if available
-            return caches.match('/');
-          });
-        })
-    );
-    return;
-  }
-
-  // Network-first for JS chunks (prevents chunk loading errors during updates)
-  if (request.url.match(/\.(js|json)$/)) {
-    event.respondWith(
-      fetch(request)
-        .then((response) => {
-          // Only cache successful responses
-          if (response && response.status === 200) {
-            const responseClone = response.clone();
-            caches.open(RUNTIME_CACHE).then((cache) => {
-              cache.put(request, responseClone);
-            });
-          }
-          return response;
-        })
-        .catch(() => {
-          // Fallback to cache only if network fails
-          return caches.match(request);
-        })
-    );
+  // NEVER cache HTML or JS chunks - they reference specific build hashes that change on deploy
+  // This prevents ChunkLoadError when HTML references old chunks
+  if (request.headers.get('accept')?.includes('text/html') || 
+      request.url.match(/\.(js|json)$/)) {
+    event.respondWith(fetch(request));
     return;
   }
 
@@ -153,11 +118,4 @@ self.addEventListener('fetch', (event) => {
         return caches.match(request);
       })
   );
-});
-
-// Handle messages from clients
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
 });

@@ -8,17 +8,13 @@ export default defineConfig({
   build: {
     sourcemap: true,
     cssCodeSplit: true,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-markdown': ['react-markdown', 'rehype-highlight', 'rehype-raw', 'remark-gfm'],
-          'vendor-helmet': ['react-helmet-async'],
-          'vendor-icons': ['react-icons'],
-        },
+        // Let Vite handle chunking automatically to avoid chunk loading errors
+        manualChunks: undefined,
       },
     },
-    chunkSizeWarningLimit: 1000,
   },
   define: {
     'global': 'globalThis',
