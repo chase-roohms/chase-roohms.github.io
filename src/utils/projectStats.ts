@@ -26,7 +26,7 @@ export async function fetchGitHubStars(githubUrl: string): Promise<number | unde
     const repoKey = `${owner}/${repo}`;
     
     // Fetch from automated stats repository
-    const statsUrl = 'https://raw.githubusercontent.com/chase-roohms/docker-stats/refs/heads/main/data/github-stats.json';
+    const statsUrl = 'https://raw.githubusercontent.com/chase-roohms/dev-stats/refs/heads/main/data/github-stats.json';
     const response = await fetch(statsUrl, { 
       signal: AbortSignal.timeout(10000),
       headers: { 'Accept': 'application/json' }
@@ -75,7 +75,7 @@ export async function fetchDockerHubPulls(dockerUrl: string): Promise<number | u
     const repoKey = `${namespace}/${repository}`;
     
     // Fetch from automated stats repository
-    const statsUrl = 'https://raw.githubusercontent.com/chase-roohms/docker-stats/refs/heads/main/data/dockerhub-stats.json';
+    const statsUrl = 'https://raw.githubusercontent.com/chase-roohms/dev-stats/refs/heads/main/data/dockerhub-stats.json';
     const response = await fetch(statsUrl, { 
       signal: AbortSignal.timeout(10000),
       headers: { 'Accept': 'application/json' }
