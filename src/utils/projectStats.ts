@@ -55,7 +55,7 @@ export async function fetchDockerHubPulls(dockerUrl: string): Promise<number | u
     const repoKey = `${namespace}/${repository}`;
     
     // Fetch from automated stats repository
-    const statsUrl = 'https://raw.githubusercontent.com/chase-roohms/docker-stats/refs/heads/main/stats.json';
+    const statsUrl = 'https://raw.githubusercontent.com/chase-roohms/docker-stats/refs/heads/main/data/dockerhub-stats.json';
     const response = await fetch(statsUrl, { 
       signal: AbortSignal.timeout(10000),
       headers: { 'Accept': 'application/json' }
