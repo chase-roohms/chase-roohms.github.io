@@ -1,5 +1,5 @@
-const CACHE_NAME = 'chase-roohms-v1';
-const RUNTIME_CACHE = 'runtime-cache';
+const CACHE_NAME = 'chase-roohms-v2'; // Increment when deploying breaking changes
+const RUNTIME_CACHE = 'runtime-cache-v2';
 
 // Core assets to cache on install
 const CORE_ASSETS = [

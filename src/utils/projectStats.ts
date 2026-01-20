@@ -17,19 +17,40 @@ export async function fetchGitHubStars(githubUrl: string): Promise<number | unde
     // Extract owner and repo from GitHub URL
     // Example: https://github.com/chase-roohms/dumpsterr
     const match = githubUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
-    if (!match) return undefined;
+    if (!match) {
+      console.error('GitHub URL format not recognized:', githubUrl);
+      return undefined;
+    }
     
     const [, owner, repo] = match;
-    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+    const repoKey = `${owner}/${repo}`;
     
-    if (!response.ok) return undefined;
+    // Fetch from automated stats repository
+    const statsUrl = 'https://raw.githubusercontent.com/chase-roohms/docker-stats/refs/heads/main/data/github-stats.json';
+    const response = await fetch(statsUrl, { 
+      signal: AbortSignal.timeout(10000),
+      headers: { 'Accept': 'application/json' }
+    });
     
-    const data = await response.json();
-    const stars = data.stargazers_count;
+    if (!response.ok) {
+      console.warn('Could not fetch GitHub stats from automated repository');
+      return undefined;
+    }
     
-    // Cache the result
-    githubStarsCache.set(githubUrl, stars);
-    return stars;
+    const stats = await response.json();
+    
+    // Look up the star count for this specific repository
+    // Note: The cached stats use 'stars' not 'stargazers_count'
+    if (stats?.repositories?.[repoKey]?.stars !== undefined) {
+      const stars = stats.repositories[repoKey].stars;
+      console.log(`GitHub stars for ${repoKey}: ${stars}`);
+      // Cache the result
+      githubStarsCache.set(githubUrl, stars);
+      return stars;
+    }
+    
+    console.warn(`No stats found for GitHub repository: ${repoKey}`);
+    return undefined;
   } catch (error) {
     console.error('Error fetching GitHub stars:', error);
     return undefined;

@@ -54,6 +54,34 @@ console.log('%chttps://github.com/chase-roohms/chase-roohms.github.io', 'color: 
   console.log('%chttps://github.com/chase-roohms/chase-roohms.github.io', 'color: #0ea5e9;');
 };
 
+// Handle chunk loading errors (occurs after deployments when cached chunks are outdated)
+let hasReloadedForChunkError = false;
+window.addEventListener('error', (event) => {
+  if (!hasReloadedForChunkError && (event.message.includes('ChunkLoadError') || event.message.includes('Loading chunk'))) {
+    console.warn('Chunk load error detected - reloading page to fetch latest assets');
+    hasReloadedForChunkError = true;
+    sessionStorage.setItem('chunkErrorReload', 'true');
+    window.location.reload();
+  }
+});
+
+// Handle unhandled promise rejections for dynamic imports
+window.addEventListener('unhandledrejection', (event) => {
+  if (!hasReloadedForChunkError && (event.reason?.message?.includes('ChunkLoadError') || event.reason?.message?.includes('Loading chunk'))) {
+    console.warn('Chunk load error detected in promise - reloading page to fetch latest assets');
+    event.preventDefault();
+    hasReloadedForChunkError = true;
+    sessionStorage.setItem('chunkErrorReload', 'true');
+    window.location.reload();
+  }
+});
+
+// Clear reload flag after successful load
+if (sessionStorage.getItem('chunkErrorReload') === 'true') {
+  console.log('Successfully reloaded after chunk error');
+  sessionStorage.removeItem('chunkErrorReload');
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
