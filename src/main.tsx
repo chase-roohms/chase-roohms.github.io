@@ -6,6 +6,28 @@ import App from './App.tsx'
 import { registerServiceWorker, checkInstallability } from './utils/pwa'
 import { unlockAchievement, getAchievementStats, getAchievements } from './utils/achievements'
 
+// Handle chunk loading errors (common with PWA/service worker updates)
+window.addEventListener('error', (event) => {
+  if (event.message?.includes('ChunkLoadError') || event.message?.includes('Loading chunk')) {
+    console.warn('[PWA] Chunk loading error detected, clearing cache and reloading...');
+    event.preventDefault();
+    
+    // Unregister service worker and clear caches
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        registrations.forEach(registration => registration.unregister());
+      });
+    }
+    
+    caches.keys().then(keys => {
+      Promise.all(keys.map(key => caches.delete(key)))
+        .then(() => {
+          window.location.reload();
+        });
+    });
+  }
+});
+
 // Easter egg for developers opening the console
 console.log('%c🚀 Welcome, Developer! 🚀', 'color: #ff6200; font-size: 24px; font-weight: bold;');
 console.log('%cYou found the developer console!', 'color: #0ea5e9; font-size: 16px;');
@@ -90,6 +112,28 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 
-// Register service worker for PWA support
-registerServiceWorker()
-checkInstallability()
+// Register service worker for PWA support (production only)
+if (import.meta.env.PROD) {
+  registerServiceWorker()
+  checkInstallability()
+} else {
+  console.log('[PWA] Service worker disabled in development mode')
+  
+  // Unregister any existing service workers in development
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      registrations.forEach(registration => {
+        registration.unregister()
+        console.log('[PWA] Unregistered existing service worker')
+      })
+    })
+    
+    // Clear all caches
+    caches.keys().then(keys => {
+      keys.forEach(key => {
+        caches.delete(key)
+        console.log('[PWA] Cleared cache:', key)
+      })
+    })
+  }
+}

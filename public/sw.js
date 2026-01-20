@@ -1,5 +1,5 @@
-const CACHE_NAME = 'chase-roohms-v2'; // Increment when deploying breaking changes
-const RUNTIME_CACHE = 'runtime-cache-v2';
+const CACHE_NAME = 'chase-roohms-v3'; // Increment when deploying breaking changes
+const RUNTIME_CACHE = 'runtime-cache-v3';
 
 // Core assets to cache on install
 const CORE_ASSETS = [
@@ -81,29 +81,57 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cache-first strategy for static assets (CSS, JS, images, fonts)
+  // Network-first for JS chunks (prevents chunk loading errors during updates)
+  if (request.url.match(/\.(js|json)$/)) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          // Only cache successful responses
+          if (response && response.status === 200) {
+            const responseClone = response.clone();
+            caches.open(RUNTIME_CACHE).then((cache) => {
+              cache.put(request, responseClone);
+            });
+          }
+          return response;
+        })
+        .catch(() => {
+          // Fallback to cache only if network fails
+          return caches.match(request);
+        })
+    );
+    return;
+  }
+
+  // Cache-first strategy for static assets (CSS, images, fonts)
   if (
-    request.url.match(/\.(css|js|json|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot)$/)
+    request.url.match(/\.(css|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot)$/)
   ) {
     event.respondWith(
       caches.match(request).then((cachedResponse) => {
         if (cachedResponse) {
           // Return cached version and update in background
-          fetch(request).then((response) => {
-            caches.open(RUNTIME_CACHE).then((cache) => {
-              cache.put(request, response);
-            });
-          });
+          fetch(request)
+            .then((response) => {
+              if (response && response.status === 200) {
+                caches.open(RUNTIME_CACHE).then((cache) => {
+                  cache.put(request, response);
+                });
+              }
+            })
+            .catch(() => {}); // Silently fail background updates
           return cachedResponse;
         }
 
         // Not in cache, fetch from network
         return fetch(request).then((response) => {
           // Cache the fetched response
-          const responseClone = response.clone();
-          caches.open(RUNTIME_CACHE).then((cache) => {
-            cache.put(request, responseClone);
-          });
+          if (response && response.status === 200) {
+            const responseClone = response.clone();
+            caches.open(RUNTIME_CACHE).then((cache) => {
+              cache.put(request, responseClone);
+            });
+          }
           return response;
         });
       })
