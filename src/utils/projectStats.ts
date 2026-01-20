@@ -43,7 +43,6 @@ export async function fetchGitHubStars(githubUrl: string): Promise<number | unde
     // Note: The cached stats use 'stars' not 'stargazers_count'
     if (stats?.repositories?.[repoKey]?.stars !== undefined) {
       const stars = stats.repositories[repoKey].stars;
-      console.log(`GitHub stars for ${repoKey}: ${stars}`);
       // Cache the result
       githubStarsCache.set(githubUrl, stars);
       return stars;
