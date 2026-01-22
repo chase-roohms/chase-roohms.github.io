@@ -8,6 +8,13 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'dumpsterr-twenty-stars',
+    fullDate: '2026-01-22',
+    title: 'Dumpsterr Reaches 20 Stars',
+    description: 'Dumpsterr, the Dockerized Python application that safely empties your Plex trash, has reached 20 stars on GitHub.',
+    link: 'https://github.com/chase-roohms/dumpsterr',
+  },
+  {
     id: 'dockerized-mythicmate',
     fullDate: '2026-01-14',
     title: 'Dockerized MythicMate',
