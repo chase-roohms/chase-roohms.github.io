@@ -9,18 +9,18 @@ slug: "communicationg-with-executives"
 icon: "FaUserTie"
 ---
 
-Professional communication has been one of the biggest learning curves for me in my young career. During highschool I made sandwhiches at a Firehouse Subs, and throughout college I bartneded at a chilis - two roles where conversational communication mattered far more than direct, executive-facing dialogue.
+Professional communication has been one of the steepest learning curves early in my career. During high school I made sandwiches at a Firehouse Subs, and throughout college I bartended at a Chili's - two roles where conversational communication mattered more than direct, executive-facing dialogue.
 
-Since stepping into a corporate setting, I’ve learned several principles that make executive communication far more effective.
+Since stepping into a corporate setting, I’ve learned several principles that make executive communication more effective.
 
 <figure class="my-6">
   <img src="https://chaseroohms.com/blog-images/executive-communication-header.webp" alt="Graphic showing information flow between employee and employer" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
 </figure>
 
 ## What Do Executives **Actually** Care About?
-When communicating up the chain of command, it’s crucial to filter your message and focus only on what your leaders actually need to know. Remember: they have dozens of people just like you sending them updates every day, and their time and attention are spread thin.
+When communicating up the chain of command, you must **filter your message to what leaders actually need to know.** Remember: they have dozens of people just like you sending them updates every day, and their time and attention are spread thin.
 
-So how do you decide what’s worth including? My simple rule of thumb is to consider the action an executive could take based on the information you’re sharing. If the detail doesn’t change a decision, a timeline, a risk, or a business outcome, it probably doesn’t belong in the message. This mindset keeps your communication sharp, relevant, and respectful of their time.
+So how do you decide what’s worth including? My simple rule of thumb is to consider the action an superior could take based on the information you’re sharing. If the detail doesn’t change a decision, a timeline, a risk, or a business outcome, it probably doesn’t belong in the message. This mindset keeps your communication sharp, relevant, and respectful of their time.
 
 **What Not To Say**
 > We’re rewriting part of the backend because the current implementation is messy and hard to maintain.
@@ -35,7 +35,7 @@ So how do you decide what’s worth including? My simple rule of thumb is to con
 - Filters out unnecessary technical detail
 
 ## Deliver Clear, Structured Messaging
-Executives don’t have time to dig for the point, you need to lead with it. Start with the conclusion, then offer only the context required to understand it. Keep your message brief, direct, and free of jargon or technical rambling.
+Executives don’t have time to dig for the point, you need to lead with it. **Start with the conclusion**, then offer only the context required to understand it. Keep your message brief, direct, and free of jargon or technical rambling.
 
 A reliable structure is **conclusion → key points → recommended next step**. This ensures your message is immediately clear while still giving enough substance to act on. You can always dive deeper if asked, but don’t make leaders wade through unnecessary detail up front.
 
@@ -54,7 +54,7 @@ A reliable structure is **conclusion → key points → recommended next step**.
 - Signals readiness to go deeper if asked, not upfront
 
 ## Build Trust Through Consistency and Ownership
-Communication isn’t just about what you say, it’s about how reliably you follow through. Executives need people who surface issues early, take ownership of outcomes, and deliver updates without being chased. Surprises erode trust, transparency builds it.
+Communication isn’t just about what you say, it’s about how reliably you follow through. Your leadership needs people who surface issues early, **take ownership of outcomes**, and deliver updates without being chased. Surprises erode trust, transparency builds it.
 
 Whether something is on track or slipping, be the person who communicates clearly, owns the result, and offers solutions rather than excuses. Over time, that consistency signals professionalism and makes your leaders confident they can rely on you.
 
@@ -74,4 +74,4 @@ Whether something is on track or slipping, be the person who communicates clearl
 - Shows follow-through
 
 ## TLDR
-Communicating effectively with executives is less about sharing every detail and more about delivering the right information, in the right way, at the right time. By filtering what matters, structuring your message clearly, and demonstrating consistent ownership, you can build trust, influence decisions, and make your leaders’ lives easier - all while advancing your own professional credibility.
+Communicating effectively with executives is less about sharing every detail and more about delivering the right information, in the right way, at the right time. Mastering upward communication isn’t just about professionalism - it’s one of the fastest ways to stand out, build trust, and accelerate your career.
