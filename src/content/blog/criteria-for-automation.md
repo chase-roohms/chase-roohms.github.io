@@ -9,7 +9,7 @@ slug: "criteria-for-automation"
 icon: "FaBalanceScale"
 ---
 
-One of my favorite quotes is from Twitter user [@zhuowei](https://x.com/zhuowei): "Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it." Automation has become such a pervasive buzzword in the IT industry that people no longer ask whether something *should* be automated, only whether it *can* be.
+One of my favorite quotes is from Twitter user [@zhuowei](https://x.com/zhuowei/): "Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it." Automation has become such a pervasive buzzword in the IT industry that people no longer ask whether something *should* be automated, only whether it *can* be.
 
 Let me walk you through two instances where I automated a process. One delivered real value, and the other missed the mark.
 
@@ -21,7 +21,7 @@ In my homelab, I run three servers and I’m fairly particular about my terminal
   <figcaption class="text-center text-sm text-gray-400 mt-2">The MOTD on one of my servers</figcaption>
 </figure>
 
-After configuring my first server I spent a significant of time setting up [this repository](https://github.com/chase-roohms/ServerConfig/tree/main) to house both the default and tailored customizations for each server I added. With this in place, a new server could be customized to my liking with just two commands.
+After configuring my first server I spent a significant of time setting up [this repository](https://github.com/chase-roohms/ServerConfig/) to house both the default and tailored customizations for each server I added. With this in place, a new server could be customized to my liking with just two commands.
 
 ```shell
 git clone "https://github.com/chase-roohms/ServerConfig.git" "./.ServerConfig"
