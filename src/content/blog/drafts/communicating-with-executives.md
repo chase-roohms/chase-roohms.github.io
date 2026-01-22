@@ -1,6 +1,6 @@
 ---
 title: "Communicating With Executives"
-date: "2026-01-28"
+date: "2026-01-22"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/executive-communication-header.webp"
 description: "Communicate with clarity and earn your leadership's trust in the process."
@@ -9,7 +9,7 @@ slug: "communicationg-with-executives"
 icon: "FaUserTie"
 ---
 
-Professional communication has been one of the biggest learning curves for me. During highschool I made sandwhiches at a Firehouse Subs, and throughout college I bartneded at a chilis - two roles where conversational communication mattered far more than direct, executive-facing dialogue.
+Professional communication has been one of the biggest learning curves for me in my young career. During highschool I made sandwhiches at a Firehouse Subs, and throughout college I bartneded at a chilis - two roles where conversational communication mattered far more than direct, executive-facing dialogue.
 
 Since stepping into a corporate setting, I’ve learned several principles that make executive communication far more effective.
 
