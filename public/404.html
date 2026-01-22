@@ -1,21 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Redirecting...</title>
+    <meta name="robots" content="noindex">
+    <title>Page Not Found - Redirecting...</title>
     <script>
       // Single Page Apps GitHub Pages hack
       // https://github.com/rafgraph/spa-github-pages
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
+      // Store the current path and redirect to root with path encoded
+      sessionStorage.setItem('redirectPath', window.location.pathname + window.location.search + window.location.hash);
       
       var pathSegmentsToKeep = 0;
       var l = window.location;
@@ -29,5 +22,6 @@
     </script>
   </head>
   <body>
+    <p>Redirecting...</p>
   </body>
 </html>
