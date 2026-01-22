@@ -35,7 +35,7 @@ export default function About() {
         <meta name="description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://chaseroohms.com/about" />
+        <meta property="og:url" content="https://chaseroohms.com/about/" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Chase Roohms" />
         <meta property="og:title" content="About - Chase Roohms" />
@@ -47,7 +47,7 @@ export default function About() {
         <meta name="twitter:title" content="About Chase Roohms" />
         <meta name="twitter:description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
-        <link rel="canonical" href="https://chaseroohms.com/about" />
+        <link rel="canonical" href="https://chaseroohms.com/about/" />
       </Helmet>
       <div className="section-container py-8 md:py-20">
         <div>

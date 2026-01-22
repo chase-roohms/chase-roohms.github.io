@@ -62,10 +62,10 @@ export default function Home() {
               {headline}
             </p>
             <div className="flex gap-4 justify-center md:justify-start">
-              <Link to="/projects" className="btn-primary">
+              <Link to="/projects/" className="btn-primary">
                 My Projects
               </Link>
-              <Link to="/contact" className="btn-secondary">
+              <Link to="/contact/" className="btn-secondary">
                 Get in Touch
               </Link>
             </div>
@@ -94,7 +94,7 @@ export default function Home() {
               ))}
             </div>
             <div className="text-center">
-              <Link to="/about" className="btn-secondary inline-block">
+              <Link to="/about/" className="btn-secondary inline-block">
                 Learn More About Me
               </Link>
             </div>
@@ -104,7 +104,7 @@ export default function Home() {
           <div>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-3xl font-bold">Latest Blog Post</h2>
-              <Link to="/blog" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
+              <Link to="/blog/" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
                 All Blogs →
               </Link>
             </div>
@@ -126,7 +126,7 @@ export default function Home() {
           <div>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-3xl font-bold">Featured Project</h2>
-              <Link to="/projects" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
+              <Link to="/projects/" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
                 All Projects →
               </Link>
             </div>

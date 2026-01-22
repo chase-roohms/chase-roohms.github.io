@@ -19,7 +19,7 @@ export default function BlogPostCard({ post, showTopics = true, onTopicClick }: 
       tags={post.topics}
       showTags={showTopics}
       onTagClick={onTopicClick}
-      internalLink={`/blog/${post.slug}`}
+      internalLink={`/blog/${post.slug}/`}
       wrapInLink={true}
     />
   );

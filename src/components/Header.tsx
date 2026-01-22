@@ -11,11 +11,11 @@ export default function Header({ onLogoClick }: HeaderProps) {
 
   const navItems = [
     { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/news', label: 'News' },
-    { path: '/blog', label: 'Blog' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/about/', label: 'About' },
+    { path: '/projects/', label: 'Projects' },
+    { path: '/news/', label: 'News' },
+    { path: '/blog/', label: 'Blog' },
+    { path: '/contact/', label: 'Contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

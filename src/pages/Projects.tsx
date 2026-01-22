@@ -139,7 +139,7 @@ export default function Projects() {
         <meta name="description" content="Professional and personal projects by Chase Roohms, including DevOps automation, web applications, and infrastructure solutions." />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://chaseroohms.com/projects" />
+        <meta property="og:url" content="https://chaseroohms.com/projects/" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Chase Roohms" />
         <meta property="og:title" content="Projects - Chase Roohms" />
@@ -151,7 +151,7 @@ export default function Projects() {
         <meta name="twitter:title" content="Projects - Chase Roohms" />
         <meta name="twitter:description" content="Professional and personal projects by Chase Roohms, including DevOps automation, web applications, and infrastructure solutions." />
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
-        <link rel="canonical" href="https://chaseroohms.com/projects" />
+        <link rel="canonical" href="https://chaseroohms.com/projects/" />
       </Helmet>
       <div className="section-container py-8 md:py-20">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">

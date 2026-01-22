@@ -83,13 +83,13 @@ function AppContent() {
       <Layout onLogoClick={handleLogoClick}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/about/" element={<About />} />
+          <Route path="/projects/" element={<Projects />} />
+          <Route path="/news/" element={<News />} />
+          <Route path="/blog/" element={<Blog />} />
+          <Route path="/blog/:slug/" element={<BlogPost />} />
+          <Route path="/contact/" element={<Contact />} />
+          <Route path="/achievements/" element={<Achievements />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

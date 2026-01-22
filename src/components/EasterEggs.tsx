@@ -122,7 +122,7 @@ export function KonamiEasterEgg({ active, onClose }: EasterEggsProps) {
           </div>
           <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
             <Link
-              to="/achievements"
+              to="/achievements/"
               className="btn-secondary text-lg px-8 py-3 inline-block"
               onClick={onClose}
             >
@@ -229,7 +229,7 @@ export function AutomationEasterEgg({ active, onClose }: EasterEggsProps) {
 
         <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
           <Link
-            to="/achievements"
+            to="/achievements/"
             className="btn-secondary text-lg px-8 py-3 inline-block"
             onClick={onClose}
           >
@@ -337,7 +337,7 @@ export function LogoClickEasterEgg({ active, onClose }: EasterEggsProps) {
 
         <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
           <Link
-            to="/achievements"
+            to="/achievements/"
             className="btn-secondary text-lg px-8 py-3 inline-block"
             onClick={onClose}
           >

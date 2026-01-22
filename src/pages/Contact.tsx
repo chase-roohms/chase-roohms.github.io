@@ -73,7 +73,7 @@ export default function Contact() {
         <meta name="description" content="Get in touch with Chase Roohms via email, GitHub, or LinkedIn. Let's connect!" />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://chaseroohms.com/contact" />
+        <meta property="og:url" content="https://chaseroohms.com/contact/" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Chase Roohms" />
         <meta property="og:title" content="Contact - Chase Roohms" />
@@ -85,7 +85,7 @@ export default function Contact() {
         <meta name="twitter:title" content="Contact - Chase Roohms" />
         <meta name="twitter:description" content="Get in touch with Chase Roohms via email, GitHub, or LinkedIn. Let's connect!" />
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
-        <link rel="canonical" href="https://chaseroohms.com/contact" />
+        <link rel="canonical" href="https://chaseroohms.com/contact/" />
       </Helmet>
       <div className="section-container py-8 md:py-20">
       <div className="max-w-4xl mx-auto">

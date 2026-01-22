@@ -91,7 +91,7 @@ export default function BlogPost() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Error Loading Post</h1>
           <p className="text-gray-400 mb-6">{error}</p>
-          <Link to="/blog" className="btn-primary inline-flex items-center gap-2">
+          <Link to="/blog/" className="btn-primary inline-flex items-center gap-2">
             <FaArrowLeft /> Back to Blog
           </Link>
         </div>
@@ -107,7 +107,7 @@ export default function BlogPost() {
           <p className="text-gray-400 mb-6">
             The blog post you're looking for doesn't exist.
           </p>
-          <Link to="/blog" className="btn-primary inline-flex items-center gap-2">
+          <Link to="/blog/" className="btn-primary inline-flex items-center gap-2">
             <FaArrowLeft /> Back to Blog
           </Link>
         </div>
@@ -135,7 +135,7 @@ export default function BlogPost() {
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://chaseroohms.com/blog/${post.slug}`
+      "@id": `https://chaseroohms.com/blog/${post.slug}/`
     },
     "keywords": post.topics.join(", ")
   };
@@ -149,7 +149,7 @@ export default function BlogPost() {
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://chaseroohms.com/blog/${post.slug}`} />
+        <meta property="og:url" content={`https://chaseroohms.com/blog/${post.slug}/`} />
         <meta property="og:site_name" content="Chase Roohms" />
         {post.image && <meta property="og:image" content={post.image} />}
         {post.image && <meta property="og:image:width" content="1920" />}
@@ -161,7 +161,7 @@ export default function BlogPost() {
         <meta name="twitter:description" content={post.description} />
         {post.image && <meta name="twitter:image" content={post.image} />}
         {post.image && <link rel="preload" as="image" href={post.image} />}
-        <link rel="canonical" href={`https://chaseroohms.com/blog/${post.slug}`} />
+        <link rel="canonical" href={`https://chaseroohms.com/blog/${post.slug}/`} />
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}
         </script>
@@ -212,10 +212,9 @@ export default function BlogPost() {
                   >
                     {topic}
                   </Link>
-                ))}
-              </div>
+                ))}              </div>
               <ShareButtons
-                url={`https://chaseroohms.com/blog/${post.slug}`}
+                url={`https://chaseroohms.com/blog/${post.slug}/`}
                 title={post.title}
                 description={post.description}
               />
@@ -281,7 +280,7 @@ export default function BlogPost() {
         {/* Back to Blog */}
         <div className="mt-12 pt-8 border-t border-gray-800">
           <Link 
-            to="/blog" 
+            to="/blog/" 
             className="btn-secondary inline-flex items-center gap-2"
           >
             <FaArrowLeft /> Back to Blog

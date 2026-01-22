@@ -16,7 +16,6 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 }
 
 // Static pages with their priorities and change frequencies
-// Note: URLs include trailing slashes to match GitHub Pages behavior
 const staticPages = [
   { url: '/', changefreq: 'weekly', priority: '1.0' },
   { url: '/about/', changefreq: 'monthly', priority: '0.8' },

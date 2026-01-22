@@ -66,7 +66,7 @@ export default function News() {
         <meta name="description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://chaseroohms.com/news" />
+        <meta property="og:url" content="https://chaseroohms.com/news/" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Chase Roohms" />
         <meta property="og:title" content="News - Chase Roohms" />
@@ -78,7 +78,7 @@ export default function News() {
         <meta name="twitter:title" content="News - Chase Roohms" />
         <meta name="twitter:description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
-        <link rel="canonical" href="https://chaseroohms.com/news" />
+        <link rel="canonical" href="https://chaseroohms.com/news/" />
         <link rel="alternate" type="application/rss+xml" title="Chase Roohms - News RSS Feed" href="https://chaseroohms.com/news-rss.xml" />
       </Helmet>
       <div className="section-container py-8 md:py-20">
