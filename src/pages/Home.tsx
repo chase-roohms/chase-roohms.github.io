@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 import Skills from '../components/Skills';
+import BiographyText from '../components/BiographyText';
 import CircuitDecoration from '../components/CircuitDecoration';
 import ProjectCard from '../components/ProjectCard';
 import BlogPostCard from '../components/BlogPostCard';
@@ -87,11 +88,7 @@ export default function Home() {
           <div>
             <h2 className="text-3xl font-bold mb-6">About Me</h2>
             <div className="space-y-4 mb-6">
-              {biography.map((paragraph, index) => (
-                <p key={index} className="text-gray-400 text-lg">
-                  {paragraph}
-                </p>
-              ))}
+              <BiographyText paragraphs={biography} className="text-gray-400 text-lg" />
             </div>
             <div className="text-center">
               <Link to="/about/" className="btn-secondary inline-block">

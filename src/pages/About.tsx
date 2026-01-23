@@ -2,6 +2,7 @@ import { BsBuilding } from 'react-icons/bs';
 import { FaExternalLinkAlt, FaFileDownload, FaUserCircle } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import Skills from '../components/Skills';
+import BiographyText from '../components/BiographyText';
 import { getExperiences, getHonorsAndAwards, getEducation } from '../utils/resumeLoader';
 import { profileData } from '../utils/profileData';
 
@@ -69,11 +70,7 @@ export default function About() {
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Background</h2>
           <div className="space-y-4">
-            {biography.map((paragraph, index) => (
-              <p key={index} className="text-gray-400 leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
+            <BiographyText paragraphs={biography} />
           </div>
         </section>
 
