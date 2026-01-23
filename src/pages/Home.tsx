@@ -96,7 +96,28 @@ export default function Home() {
               </Link>
             </div>
           </div>
+          
+          {/* Recent Project Section */}
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-3xl font-bold">Featured Project</h2>
+              <Link to="/projects/" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
+                All Projects →
+              </Link>
+            </div>
+            {featuredProject && (
+              <ProjectCard 
+                project={featuredProject}
+                showTech={false}
+              />
+            )}
+          </div>
+        </div>
+      </section>
 
+      {/* Project & Skills */}
+      <section className="py-4 md:py-20 md:border-t border-gray-800">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Recent Blog Post Section */}
           <div>
             <div className="flex items-center justify-between mb-6">
@@ -111,27 +132,6 @@ export default function Home() {
               <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
                 <p className="text-gray-400">Loading...</p>
               </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Project & Skills */}
-      <section className="py-4 md:py-20 md:border-t border-gray-800">
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          {/* Recent Project Section */}
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-bold">Featured Project</h2>
-              <Link to="/projects/" className="text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold">
-                All Projects →
-              </Link>
-            </div>
-            {featuredProject && (
-              <ProjectCard 
-                project={featuredProject}
-                showTech={false}
-              />
             )}
           </div>
 
