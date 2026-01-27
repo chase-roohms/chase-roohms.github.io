@@ -4,7 +4,7 @@ date: "2026-02-28"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/tag-and-release-header.webp"
 description: "Decoupling GitHub workflow logic into standalone, version-controlled actions for the global Marketplace."
-topics: ["CI/CD", "GitHub Actions"]
+topics: ["CI/CD", "GitHub Actions", "Automation"]
 slug: "anatomy-of-a-reusable-gha"
 icon: "FaGithub"
 ---
@@ -19,10 +19,6 @@ At its core, DRY gives you two major advantages:
 Developers apply DRY instinctively in code. But here’s my question:
 
 **Why don’t we apply DRY with the same intensity in DevOps?**
-
-<figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/gha-header.webp" alt="Tag and Release and Discord Webhook Notifier Logos" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
-</figure>
 
 Most of us write infrastructure automation in YAML: GitHub Actions, GitLab CI, Jenkins pipelines, Helm charts, Terraform modules, you name it. And while DRY shows up in some tools (Terraform modules, for example), GitHub Actions workflows tend to become cluttered with copy-pasted steps, hardcoded logic, and long blocks of Bash.
 
@@ -40,8 +36,12 @@ That shift completely changed the way I think about automation.
 
 Over the past few months, I published two GitHub Actions to the GitHub Marketplace:
 
-- [Tag and Release Semantic Version](https://github.com/marketplace/actions/tag-and-release-semantic-version)
 - [Discord Webhook Notifier](https://github.com/marketplace/actions/discord-webhook-notifier)
+- [Tag and Release Semantic Version](https://github.com/marketplace/actions/tag-and-release-semantic-version)
+
+<figure class="my-6">
+  <img src="https://chaseroohms.com/blog-images/gha-header.webp" alt="Tag and Release and Discord Webhook Notifier Logos" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+</figure>
 
 Both of these started as local workflow steps that were simple, repetitive scripts copy-pasted between projects.
 
