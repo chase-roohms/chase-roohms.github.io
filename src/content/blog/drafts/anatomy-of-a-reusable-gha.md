@@ -20,6 +20,10 @@ Developers apply DRY instinctively in code. But here’s my question:
 
 **Why don’t we apply DRY with the same intensity in DevOps?**
 
+<figure class="my-6">
+  <img src="https://chaseroohms.com/blog-images/gha-header.webp" alt="Tag and Release and Discord Webhook Notifier Logos" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+</figure>
+
 Most of us write infrastructure automation in YAML: GitHub Actions, GitLab CI, Jenkins pipelines, Helm charts, Terraform modules, you name it. And while DRY shows up in some tools (Terraform modules, for example), GitHub Actions workflows tend to become cluttered with copy-pasted steps, hardcoded logic, and long blocks of Bash.
 
 I used to write GitHub workflow files the same way: repetitive, handwritten chunks of logic in `.github/workflows`. Every repo had its own version of the same steps. Every fix meant updating each workflow manually. Every improvement meant diffing YAML in five different repos.
@@ -62,10 +66,6 @@ This wasn’t just DevOps anymore. This was **open-source contribution**.
 ## Example: Automating Semantic Versioning for All Your Projects
 
 My [Tag and Release](https://github.com/marketplace/actions/tag-and-release-semantic-version) action is a great example.
-
-<figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/tag-and-release-header.webp" alt="Tag and Release Logo" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
-</figure>
 
 Originally, this was a step of a workflow living inside one project. Then two. Then three. Every project I worked on ([MythicMate](https://github.com/chase-roohms/mythicmate), [Dumpsterr](https://github.com/chase-roohms/dumpsterr), and anything else I built) needed the same versioning logic.
 
