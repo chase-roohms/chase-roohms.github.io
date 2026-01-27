@@ -32,7 +32,7 @@ That shift completely changed the way I think about automation.
 
 ---
 
-## **From Hardcoded Workflows to Reusable Actions**
+## From Hardcoded Workflows to Reusable Actions
 
 Over the past few months, I published two GitHub Actions to the GitHub Marketplace:
 
@@ -59,11 +59,11 @@ This wasn’t just DevOps anymore. This was **open-source contribution**.
 
 ---
 
-## **Example: Automating Semantic Versioning for All Your Projects**
+## Example: Automating Semantic Versioning for All Your Projects
 
 My [Tag and Release](https://github.com/marketplace/actions/tag-and-release-semantic-version) action is a great example.
 
-Originally, this was a step of a workflow living inside one project. Then two. Then three. Every project I worked on (MythicMate, Dumpsterr, and anything else I built) needed the same versioning logic.
+Originally, this was a step of a workflow living inside one project. Then two. Then three. Every project I worked on ([MythicMate](https://github.com/chase-roohms/mythicmate), [Dumpsterr](https://github.com/chase-roohms/dumpsterr), and anything else I built) needed the same versioning logic.
 
 The workflow:
 
@@ -77,12 +77,13 @@ Useful? Absolutely. Reusable? Definitely. DRY? Not at all, when duplicated acros
 
 Turning it into a standalone GitHub Action meant:
 
-- MythicMate and Dumpsterr now share one consistent semantic-versioning workflow
+- [MythicMate](https://github.com/chase-roohms/mythicmate) and [Dumpsterr](https://github.com/chase-roohms/dumpsterr) now share one consistent semantic-versioning workflow
 - If I fix a bug in tag generation, every project benefits instantly
 - I can publish formal versions (`v1`, `v1.1`, `v1.2`, etc.)
 - Anyone else on GitHub can now automate their versioning too
 
-Now I can call the action with 3 lines of yaml
+Now the workflow logic boils down to 3 lines of yaml:
+
 ```yaml
 - uses: chase-roohms/tag-and-release@v1
   with:
@@ -93,7 +94,7 @@ This is the DevOps equivalent of extracting repeated code into a single shared l
 
 ---
 
-## **DevOps for One vs. DevOps for Everyone**
+## DevOps for One vs. DevOps for Everyone
 
 This experience taught me something subtle but important.
 
@@ -111,33 +112,33 @@ It creates better code, better tooling, and it makes you a better engineer.
 
 ---
 
-## **Why DevOps Engineers Should Embrace DRY Like Devs**
+## Why DevOps Engineers Should Embrace DRY Like Devs
 
 The same benefits developers get from DRY apply (sometimes even more strongly) in DevOps:
 
-### **1. Centralized Logic → Global Fixes**
+### 1. Centralized Logic → Global Fixes
 
 One fix in an action updates automation across your entire ecosystem.
 
-### **2. Faster Development → Less Boilerplate**
+### 2. Faster Development → Less Boilerplate
 
 No more writing 20 lines of workflow logic for something you could call with one line.
 
-### **3. Versioning → Predictability**
+### 3. Versioning → Predictability
 
 Actions follow real release cycles, not ad-hoc YAML edits.
 
-### **4. Open Source → Community Improvement**
+### 4. Open Source → Community Improvement
 
 Publishing your automation lets others improve it. You get feature requests, bug reports, ideas, and contributions.
 
-### **5. Portfolio → Real-World Impact**
+### 5. Portfolio → Real-World Impact
 
 Reusable DevOps tools are some of the most valuable open-source assets a young engineer can build.
 
 ---
 
-## **Conclusion: If It’s Repeated DevOps Logic, Make It a Reusable Action**
+## TLDR: If It’s Repeated DevOps Logic, Make It a Reusable Action
 
 If you find yourself copy-pasting the same lines of YAML, the same Bash scripts, or the same notification logic across repos, that’s your signal.
 
