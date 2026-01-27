@@ -2,7 +2,7 @@
 title: "Anatomy of a Reusable GitHub Action"
 date: "2026-02-28"
 author: Chase Roohms
-image: ""
+image: "https://chaseroohms.com/blog-images/tag-and-release-header.webp"
 description: "Decoupling GitHub workflow logic into standalone, version-controlled actions for the global Marketplace."
 topics: ["CI/CD", "GitHub Actions"]
 slug: "anatomy-of-a-reusable-gha"
@@ -62,6 +62,10 @@ This wasn’t just DevOps anymore. This was **open-source contribution**.
 ## Example: Automating Semantic Versioning for All Your Projects
 
 My [Tag and Release](https://github.com/marketplace/actions/tag-and-release-semantic-version) action is a great example.
+
+<figure class="my-6">
+  <img src="https://chaseroohms.com/blog-images/tag-and-release-header.webp" alt="Tag and Release Logo" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+</figure>
 
 Originally, this was a step of a workflow living inside one project. Then two. Then three. Every project I worked on ([MythicMate](https://github.com/chase-roohms/mythicmate), [Dumpsterr](https://github.com/chase-roohms/dumpsterr), and anything else I built) needed the same versioning logic.
 
