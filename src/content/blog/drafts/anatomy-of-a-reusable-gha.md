@@ -34,7 +34,7 @@ That shift completely changed the way I think about automation.
 
 ## From Hardcoded Workflows to Reusable Actions
 
-Over the past few months, I published two GitHub Actions to the GitHub Marketplace:
+Over the past two months, I published two GitHub Actions to the GitHub Marketplace:
 
 - [Discord Webhook Notifier](https://github.com/marketplace/actions/discord-webhook-notifier)
 - [Tag and Release Semantic Version](https://github.com/marketplace/actions/tag-and-release-semantic-version)
