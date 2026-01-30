@@ -10,7 +10,7 @@ icon: "FaDollarSign"
 ---
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/homelab-header.webp" alt="My homelab today" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <img src="https://chaseroohms.com/blog-images/homelab-header.webp" alt="Server rack showcasing a a server, network switch, Raspberry Pis, and a network attached storage" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">My homelab today, after numerous upgrades</figcaption>
 </figure>
 
