@@ -12,6 +12,7 @@ import dumpsterrHeader from '../assets/images/dumpsterr-header.webp';
 import kometaConfigsHeader from '../assets/images/kometa-configs-header.webp';
 import tagAndReleaseHeader from '../assets/images/tag-and-release-header.webp';
 import discordWebhookNotifierHeader from '../assets/images/discord-webhook-notifier-header.webp';
+import marvelPostersHeader from '../assets/images/marvel-posters-header.webp';
 
 export interface Project {
   id: string;
@@ -150,6 +151,15 @@ export const professionalProjects: Project[] = [
 
 export const personalProjects: Project[] = [
   {
+    id: 'marvel-cinematic-universe-posters',
+    fullDate: '2025-01-05',
+    title: 'Marvel Posters',
+    description: 'Created custom posters for original Marvel Cinematic Universe shows and movies.',
+    tech: ['Photoshop'],
+    image: marvelPostersHeader,
+    link: 'https://theposterdb.com/set/377851',
+  },
+  {
     id: 'looney-tunes-posters',
     fullDate: '2025-12-20',
     title: 'Looney Tunes Posters',
@@ -165,7 +175,7 @@ export const personalProjects: Project[] = [
     description: 'Created custom posters for the One Pace fan-edit project.',
     tech: ['Photoshop'],
     image: onePacePostersHeader,
-    link: 'https://www.reddit.com/r/onepace/comments/1pleut8/one_pace_location_posters/',
+    link: 'https://theposterdb.com/set/382668',
   },
   {
     id: 'tom-jerry-posters',
