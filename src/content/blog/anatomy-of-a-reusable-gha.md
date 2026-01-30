@@ -1,6 +1,6 @@
 ---
 title: "Anatomy of a Reusable GitHub Action"
-date: "2026-02-28"
+date: "2026-01-30"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/tag-and-release-header.webp"
 description: "Decoupling GitHub workflow logic into standalone, version-controlled actions for the global Marketplace."
