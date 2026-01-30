@@ -1,5 +1,6 @@
 import matter from 'gray-matter';
 import { Buffer } from 'buffer';
+import { fetchAllBlogViews, fetchBlogViews } from './blogStats';
 
 // Extend Window interface to include Buffer
 declare global {
@@ -24,6 +25,7 @@ export interface BlogPost {
   author?: string;
   image?: string;
   readingTime?: number;
+  views?: number;
 }
 
 // Calculate reading time in minutes (average 200 words per minute)
@@ -73,6 +75,9 @@ async function getMetadata() {
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
   const metadata = await getMetadata();
   
+  // Fetch all blog views at once for efficiency
+  const viewsMap = await fetchAllBlogViews();
+  
   // Load content to calculate reading time
   const posts = await Promise.all(
     metadata.map(async (meta) => {
@@ -82,6 +87,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
         ...meta,
         content: '', // Don't include full content for listing page
         readingTime: calculateReadingTime(markdown),
+        views: viewsMap.get(meta.slug),
       };
     })
   );
@@ -99,6 +105,9 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const content = await blogFiles[postMeta.path]();
   const { data, content: markdown } = matter(content);
   
+  // Fetch view count for this specific post
+  const views = await fetchBlogViews(slug);
+  
   return {
     slug: data.slug,
     title: data.title,
@@ -110,6 +119,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     author: data.author,
     image: data.image,
     readingTime: calculateReadingTime(markdown),
+    views,
   };
 }
 

@@ -6,7 +6,7 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import { getBlogPost, getRelatedPosts, type BlogPost } from '../utils/blogLoader';
 import { formatDate } from '../utils/dateFormatter';
-import { FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock } from 'react-icons/fa';
+import { FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock, FaEye } from 'react-icons/fa';
 import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
 import * as BsIcons from 'react-icons/bs';
@@ -191,6 +191,18 @@ export default function BlogPost() {
                   <span className="flex items-center gap-2">
                     <FaClock className="w-4 h-4" />
                     {post.readingTime} min read
+                  </span>
+                </>
+              )}
+              {post.views !== undefined && post.views > 0 && (
+                <>
+                  <span>•</span>
+                  <span className="flex items-center gap-2 group/views relative">
+                    <FaEye className="w-4 h-4" />
+                    {post.views.toLocaleString()} views
+                    <span className="absolute hidden group-hover/views:block bg-gray-950 text-white text-xs rounded py-1 px-2 -mt-14 left-0 whitespace-nowrap border border-gray-700 z-10">
+                      Blog views (updates every 6 hours)
+                    </span>
                   </span>
                 </>
               )}

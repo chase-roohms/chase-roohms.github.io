@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FaEye } from 'react-icons/fa';
 
 interface CardProps {
   image?: string;
@@ -16,6 +17,7 @@ interface CardProps {
   wrapInLink?: boolean;
   githubStars?: number;
   dockerPulls?: number;
+  views?: number;
 }
 
 export default function Card({
@@ -34,6 +36,7 @@ export default function Card({
   wrapInLink = false,
   githubStars,
   dockerPulls,
+  views,
 }: CardProps) {
   // Format date as "MMM D, YYYY"
   const formatDate = (dateString: string) => {
@@ -94,6 +97,14 @@ export default function Card({
           {readingTime && (
             <span className="text-sm text-gray-500">
               • {readingTime} min read
+            </span>
+          )}
+          {views !== undefined && views > 0 && (
+            <span className="text-sm text-gray-500 group/views relative flex items-center gap-1.5">
+              • <FaEye className="w-3.5 h-3.5" /> {formatNumber(views)}
+              <span className="absolute hidden group-hover/views:block bg-gray-950 text-white text-xs rounded py-1 px-2 -mt-8 left-0 whitespace-nowrap border border-gray-700 z-10">
+                Blog views (updates every 6 hours)
+              </span>
             </span>
           )}
         </div>
