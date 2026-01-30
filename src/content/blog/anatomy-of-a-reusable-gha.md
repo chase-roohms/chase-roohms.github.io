@@ -28,13 +28,13 @@ Eventually, I realized something important:
 
 > **If I’m repeating the same logic across repositories, I should treat it like code and package it for reuse.**
 
-That shift completely changed the way I think about automation.
+That shift completely changed the way I think about automation and CI/CD.
 
 ---
 
 ## From Hardcoded Workflows to Reusable Actions
 
-Over the past two months, I published two GitHub Actions to the GitHub Marketplace:
+In the past month, I published two GitHub Actions to the GitHub Marketplace:
 
 - [Discord Webhook Notifier](https://github.com/marketplace/actions/discord-webhook-notifier)
 - [Tag and Release Semantic Version](https://github.com/marketplace/actions/tag-and-release-semantic-version)
