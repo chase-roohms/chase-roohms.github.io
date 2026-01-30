@@ -32,6 +32,11 @@ export async function fetchBlogViews(slug: string): Promise<number | undefined> 
     
     if (stats?.blog_posts?.[blogPath]?.page_views !== undefined) {
       const views = stats.blog_posts[blogPath].page_views;
+      // Check if the views is a number
+      if (typeof views !== 'number') {
+        console.warn(`Invalid view count for blog post: ${blogPath}`);
+        return undefined;
+      }
       // Cache the result
       blogViewsCache.set(slug, views);
       return views;
