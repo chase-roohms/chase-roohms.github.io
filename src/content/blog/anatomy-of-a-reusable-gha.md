@@ -13,8 +13,8 @@ icon: "FaGithub"
 
 At its core, DRY gives you two major advantages:
 
-1. **Maintainability** — Fix a bug in one place, fix it everywhere.
-2. **Development Speed** — Reusable functions, classes, and modules let you build faster and with fewer mistakes.
+1. **Maintainability**: Fix a bug in one place, fix it everywhere.
+2. **Development Speed**: Reusable functions, classes, and modules let you build faster and with fewer mistakes.
 
 Developers apply DRY instinctively in code. But here’s my question:
 
@@ -22,7 +22,7 @@ Developers apply DRY instinctively in code. But here’s my question:
 
 Most of us write infrastructure automation in YAML: GitHub Actions, GitLab CI, Ansible playbooks, Helm charts, Kubernetes manifests, you name it. And while DRY shows up in some tools (Terraform modules, for example), GitHub Actions workflows tend to become cluttered with copy-pasted steps, hardcoded logic, and long blocks of Bash.
 
-I used to write GitHub workflow files the same way: repetitive, handwritten chunks of logic in `.github/workflows`. Every repo had its own version of the same steps. Every fix meant updating each workflow manually. Every improvement meant diffing YAML in five different repos.
+I used to write GitHub workflow files the same way: repetitive, handwritten chunks of logic in the `.github/workflows` directory. Every repo had its own version of the same steps. Every fix meant updating each workflow manually. Every improvement meant diffing YAML in five different repos.
 
 Eventually, I realized something important:
 
