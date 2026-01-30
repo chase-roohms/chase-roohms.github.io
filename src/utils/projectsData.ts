@@ -52,7 +52,7 @@ export const professionalProjects: Project[] = [
     fullDate: '2026-01-08',
     title: 'Dumpsterr',
     description: 'Dockerized Python application that safely empties your Plex trash, verifying file availability before doing so. Prevents unintentional deletion of movies and shows when drives are disconnected.',
-    tech: ['Python', 'Docker'],
+    tech: ['Python', 'Docker', 'CI/CD'],
     image: dumpsterrHeader,
     link: 'https://github.com/chase-roohms/dumpsterr',
     github_link: 'https://github.com/chase-roohms/dumpsterr',
@@ -73,7 +73,7 @@ export const professionalProjects: Project[] = [
     fullDate: '2025-12-13',
     title: 'Modern Portfolio',
     description: 'Launched a complete overhaul of my portfolio website with Vite, React, TypeScript, and Tailwind CSS.',
-    tech: ['React', 'UI'],
+    tech: ['React', 'Tailwind', 'TypeScript', 'UI'],
     image: websiteHomePageHeader,
     link: 'https://github.com/chase-roohms/chase-roohms.github.io',
     github_link: 'https://github.com/chase-roohms/chase-roohms.github.io'
@@ -152,7 +152,7 @@ export const professionalProjects: Project[] = [
 export const personalProjects: Project[] = [
   {
     id: 'marvel-cinematic-universe-posters',
-    fullDate: '2025-01-05',
+    fullDate: '2026-01-05',
     title: 'Marvel Posters',
     description: 'Posters for the Marvel Cinematic Universe shows and movies.',
     tech: ['Photoshop'],
