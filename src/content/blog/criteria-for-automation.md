@@ -17,7 +17,7 @@ Let me walk you through two instances where I automated a process. One delivered
 In my homelab, I run three servers and I’m fairly particular about my terminal setup. I use a custom message of the day (MOTD) to keep things interesting, a concise and colorful prompt that shows the machine hostname and current directory, and a simple Docker configuration to make `docker ps` more readable.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/home-server-1-terminal.webp" alt="Terminal on my server" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <img src="https://chaseroohms.com/blog-images/home-server-1-terminal.webp" alt="Colorful and customized message of the day for my server on a terminal" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">The MOTD on one of my servers</figcaption>
 </figure>
 
