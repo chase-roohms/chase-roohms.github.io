@@ -40,7 +40,8 @@ Over the past two months, I published two GitHub Actions to the GitHub Marketpla
 - [Tag and Release Semantic Version](https://github.com/marketplace/actions/tag-and-release-semantic-version)
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/gha-header.webp" alt="Tag and Release and Discord Webhook Notifier Logos" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <img src="https://chaseroohms.com/blog-images/gha-header.webp" alt="Logos for two github actions, one a tag on a green background, the other a bell on a purple background" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <figcaption class="text-center text-sm text-gray-400 mt-2">Logos for the two actions</figcaption>
 </figure>
 
 Both of these started as local workflow steps that were simple, repetitive scripts copy-pasted between projects.
