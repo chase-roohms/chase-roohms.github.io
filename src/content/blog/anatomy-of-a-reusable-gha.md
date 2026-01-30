@@ -20,7 +20,7 @@ Developers apply DRY instinctively in code. But here’s my question:
 
 **Why don’t we apply DRY with the same intensity in DevOps?**
 
-Most of us write infrastructure automation in YAML: GitHub Actions, GitLab CI, Jenkins pipelines, Helm charts, Terraform modules, you name it. And while DRY shows up in some tools (Terraform modules, for example), GitHub Actions workflows tend to become cluttered with copy-pasted steps, hardcoded logic, and long blocks of Bash.
+Most of us write infrastructure automation in YAML: GitHub Actions, GitLab CI, Ansible playbooks, Helm charts, Kubernetes manifests, you name it. And while DRY shows up in some tools (Terraform modules, for example), GitHub Actions workflows tend to become cluttered with copy-pasted steps, hardcoded logic, and long blocks of Bash.
 
 I used to write GitHub workflow files the same way: repetitive, handwritten chunks of logic in `.github/workflows`. Every repo had its own version of the same steps. Every fix meant updating each workflow manually. Every improvement meant diffing YAML in five different repos.
 
