@@ -87,7 +87,7 @@ cv:
       - name: IT Pro Day, Rockstar of the Year
         location: SolarWinds
         date: 2025-09
-        summary: Consistently demonstrated high performance, and embodied SolarWinds values.
+        summary: Demonstrated high performance, and embodied SolarWinds values.
       # Commenting out as its kind of SolarWinds specific
       #- name: DevOps Dynamo
       #  location: SolarWinds
