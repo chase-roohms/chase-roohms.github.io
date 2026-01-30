@@ -13,7 +13,7 @@ icon: "FaGithub"
 
 At its core, DRY gives you two major advantages:
 
-1. **Maintainability** — Fix a bug in one place, benefit everywhere.
+1. **Maintainability** — Fix a bug in one place, fix it everywhere.
 2. **Development Speed** — Reusable functions, classes, and modules let you build faster and with fewer mistakes.
 
 Developers apply DRY instinctively in code. But here’s my question:
