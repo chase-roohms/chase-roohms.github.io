@@ -244,7 +244,7 @@ export default function BlogPost() {
             prose-ul:text-gray-300 prose-ol:text-gray-300
             prose-li:text-gray-300
             prose-blockquote:text-gray-400 prose-blockquote:border-primary-600
-            prose-img:rounded-lg prose-img:w-full prose-img:h-auto
+            prose-img:rounded-lg prose-img:h-auto
             prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-gray-400 prose-figcaption:mt-2
           ">
             <ReactMarkdown 
@@ -262,9 +262,9 @@ export default function BlogPost() {
                   // For code blocks, preserve the syntax-highlighted children
                   return <CodeBlock className={className}>{children}</CodeBlock>;
                 },
-                img({ src, alt, ...props }) {
+                img({ src, alt, className, ...props }: any) {
                   const altText = alt || 'Blog post image';
-                  return <img src={src} alt={altText} loading="lazy" {...props} />;
+                  return <img src={src} alt={altText} className={className} loading="lazy" {...props} />;
                 }
               }}
             >
@@ -277,7 +277,7 @@ export default function BlogPost() {
         {relatedPosts.length > 0 && (
           <div className="mt-16 pt-8 border-t border-gray-800">
             <h2 className="text-3xl font-bold mb-8">Related Posts</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
               {relatedPosts.map(relatedPost => (
                 <BlogPostCard
                   key={relatedPost.slug}
