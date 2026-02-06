@@ -13,6 +13,7 @@ import kometaConfigsHeader from '../assets/images/kometa-configs-header.webp';
 import tagAndReleaseHeader from '../assets/images/tag-and-release-header.webp';
 import discordWebhookNotifierHeader from '../assets/images/discord-webhook-notifier-header.webp';
 import marvelPostersHeader from '../assets/images/marvel-posters-header.webp';
+import cloudflareWorkerHeader from '../assets/images/cloudflare-worker-error-header.webp'
 
 export interface Project {
   id: string;
@@ -27,6 +28,16 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'cloudflare-error-worker',
+    fullDate: '2026-01-21',
+    title: 'Cloudflare Error Worker',
+    description: 'Cloudflare Worker that handles errors on my homelab domain.',
+    tech: ['JavaScript', 'Cloudflare', 'Network'],
+    image: cloudflareWorkerHeader,
+    link: 'https://github.com/chase-roohms/cloudflare-error-worker',
+    github_link: 'https://github.com/chase-roohms/cloudflare-error-worker',
+  },
   {
     id: 'discord-webhook-notifier',
     fullDate: '2026-01-14',
