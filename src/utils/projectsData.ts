@@ -14,6 +14,7 @@ import tagAndReleaseHeader from '../assets/images/tag-and-release-header.webp';
 import discordWebhookNotifierHeader from '../assets/images/discord-webhook-notifier-header.webp';
 import marvelPostersHeader from '../assets/images/marvel-posters-header.webp';
 import cloudflareWorkerHeader from '../assets/images/cloudflare-worker-error-header.webp'
+import schemaValidatorHeader from '../assets/images/schema-validator-header.webp'
 
 export interface Project {
   id: string;
@@ -28,6 +29,16 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'schema-validator',
+    fullDate: '2026-02-06',
+    title: 'Schema Validator',
+    description: 'GitHub Action that validates JSON, YAML, and XML files against a schema.',
+    tech: ['Python', 'GitHub Actions', 'CI/CD'],
+    image: schemaValidatorHeader,
+    link: 'https://github.com/marketplace/actions/schema-validator',
+    github_link: 'https://github.com/chase-roohms/schema-validator',
+  },
   {
     id: 'cloudflare-error-worker',
     fullDate: '2026-01-21',
