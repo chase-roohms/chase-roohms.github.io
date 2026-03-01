@@ -8,6 +8,13 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'launching-transmute',
+    fullDate: '2026-02-28',
+    title: 'Launching Transmute',
+    description: 'Excited to announce the launch of Transmute, a self-hosted file converter that lets you convert anything, anywhere.',
+    link: 'https://transmute.sh',
+  },
+  {
     id: 'dumpsterr-twenty-stars',
     fullDate: '2026-01-22',
     title: 'Dumpsterr Reaches 20 Stars',
