@@ -15,6 +15,7 @@ import discordWebhookNotifierHeader from '../assets/images/discord-webhook-notif
 import marvelPostersHeader from '../assets/images/marvel-posters-header.webp';
 import cloudflareWorkerHeader from '../assets/images/cloudflare-worker-error-header.webp'
 import schemaValidatorHeader from '../assets/images/schema-validator-header.webp'
+import transmuteHeader from '../assets/images/transmute-header.webp'
 
 export interface Project {
   id: string;
@@ -29,6 +30,17 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'transmute',
+    fullDate: '2026-02-28',
+    title: 'Transmute',
+    description: 'Self-hosted file converter that lets you convert anything, anywhere.',
+    tech: ['Python', 'Docker', 'React', 'TypeScript'],
+    image: transmuteHeader,
+    link: 'https://transmute.sh',
+    github_link: 'https://github.com/transmute-app/transmute',
+    docker_link: 'https://hub.docker.com/r/neonvariant/transmute',
+  },
   {
     id: 'schema-validator',
     fullDate: '2026-02-06',
@@ -211,7 +223,7 @@ export const personalProjects: Project[] = [
 ];
 
 // Featured project ID - only one project can be featured at a time
-export const FEATURED_PROJECT_ID = 'dumpsterr';
+export const FEATURED_PROJECT_ID = 'transmute';
 
 // Helper function to get the featured project
 export function getFeaturedProject(): Project | undefined {
