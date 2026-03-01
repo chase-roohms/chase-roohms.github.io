@@ -1,6 +1,6 @@
 ---
 title: "Static Site - Dynamic Data"
-date: "2026-02-15"
+date: "2026-02-28"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/dev-stats-demo.webp"
 description: "How I solved a static site problem with a GitHub Actions 'stats crawler' middle-man."
