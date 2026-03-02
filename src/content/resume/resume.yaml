@@ -54,6 +54,16 @@ cv:
           - Reduced the legal review time by ~70% with an SBOM Vex translation script written in Python.
           - Increased security visibility by reviewing and redesigning data-flow threat models for more than 30 products.
     projects:
+      - name: Transmute
+        #date: 2026-02
+        start_date:
+        end_date:
+        location: transmute.sh
+        summary: open-source, self-hosted file converter that handles images, video, audio, data, documents, and more.
+        highlights:
+          - Developed a full-stack application using Python/FastAPI and React/TypeScript, integrating 6 open-source converter engines.
+          - Grew the open-source community to 9 contributors and 9 forks within weeks of launch.
+          - Containerized the application with Docker, enabling one-command self-hosted deployment via Docker Compose.
       - name: Dumpsterr
         #date: 2026-01
         start_date:
@@ -64,16 +74,16 @@ cv:
           - Developed a Python CLI tool to interact with the Plex API for managing media libraries.
           - Runs on a cron schedule to replace the Plex native "Empty trash automatically" that is known to cause data loss.
           - Containerized the application with Docker to enable consistent, portable deployment.
-      - name: Portfolio Website
-        #date: 2026-01
-        start_date:
-        end_date:
-        location: chaseroohms.com
-        summary: Modern personal portfolio showcasing projects and skills, built with Vite, React, TypeScript, and Tailwind CSS.
-        highlights:
-          - Developed a fast, modular frontend with React and TypeScript for maintainable and scalable code.
-          - Implemented a clean, responsive UI using Tailwind CSS to enhance usability and visual appeal.
-          - Optimized site structure and performance, achieving strong SEO rankings and actionable analytics insights.
+      #- name: Portfolio Website
+      #  #date: 2026-01
+      #  start_date:
+      #  end_date:
+      #  location: chaseroohms.com
+      #  summary: Modern personal portfolio showcasing projects and skills, built with Vite, React, TypeScript, and Tailwind CSS.
+      #  highlights:
+      #    - Developed a fast, modular frontend with React and TypeScript for maintainable and scalable code.
+      #    - Implemented a clean, responsive UI using Tailwind CSS to enhance usability and visual appeal.
+      #    - Optimized site structure and performance, achieving strong SEO rankings and actionable analytics insights.
       - name: MythicMate
         #start_date: 2024-11
         #end_date: present
