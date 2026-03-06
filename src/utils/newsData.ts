@@ -8,8 +8,15 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'transmute-ten-stars',
+    fullDate: '2026-03-06',
+    title: 'Transmute Reaches 10 Stars',
+    description: 'Transmute, the self-hosted file converter, has reached 10 stars on GitHub.',
+    link: 'https://github.com/transmute-app/transmute/stargazers',
+  },
+  {
     id: 'launching-transmute',
-    fullDate: '2026-02-28',
+    fullDate: '2026-02-17',
     title: 'Launching Transmute',
     description: 'Excited to announce the launch of Transmute, a self-hosted file converter that lets you convert anything, anywhere.',
     link: 'https://transmute.sh',
