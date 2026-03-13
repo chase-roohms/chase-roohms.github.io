@@ -8,31 +8,38 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'transmute-twenty-stars',
+    fullDate: '2026-03-13',
+    title: 'Transmute Reaches 20 Stars',
+    description: 'Transmute, my self-hosted file converter, has reached 20 stars on GitHub.',
+    link: 'https://github.com/transmute-app/transmute/stargazers',
+  },
+  {
     id: 'transmute-ten-stars',
     fullDate: '2026-03-06',
     title: 'Transmute Reaches 10 Stars',
-    description: 'Transmute, the self-hosted file converter, has reached 10 stars on GitHub.',
+    description: 'Transmute, my self-hosted file converter, has reached 10 stars on GitHub.',
     link: 'https://github.com/transmute-app/transmute/stargazers',
   },
   {
     id: 'launching-transmute',
     fullDate: '2026-02-17',
     title: 'Launching Transmute',
-    description: 'Excited to announce the launch of Transmute, a self-hosted file converter that lets you convert anything, anywhere.',
+    description: 'Excited to announce the launch of Transmute, my self-hosted file converter that lets you convert anything, anywhere.',
     link: 'https://transmute.sh',
   },
   {
     id: 'dumpsterr-twenty-stars',
     fullDate: '2026-01-22',
     title: 'Dumpsterr Reaches 20 Stars',
-    description: 'Dumpsterr, the Dockerized Python application that safely empties your Plex trash, has reached 20 stars on GitHub.',
+    description: 'Dumpsterr, my Dockerized Python application that safely empties your Plex trash, has reached 20 stars on GitHub.',
     link: 'https://github.com/chase-roohms/dumpsterr',
   },
   {
     id: 'dockerized-mythicmate',
     fullDate: '2026-01-14',
     title: 'Dockerized MythicMate',
-    description: 'Dockerized the AI powered Discord companion for Dungeons and Dragons, MythicMate, to simplify deployment and usage.',
+    description: 'Dockerized AI powered Discord companion for Dungeons and Dragons, MythicMate, to simplify deployment and usage.',
     link: 'https://github.com/chase-roohms/mythicmate',
   },
   {
