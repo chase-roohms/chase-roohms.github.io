@@ -8,6 +8,13 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'transmute-seventy-five-stars',
+    fullDate: '2026-03-18',
+    title: 'Transmute Reaches 75 Stars',
+    description: 'Transmute, my self-hosted file converter, has reached 75 stars on GitHub.',
+    link: 'https://github.com/transmute-app/transmute/stargazers',
+  },
+  {
     id: 'transmute-fifty-stars',
     fullDate: '2026-03-17',
     title: 'Transmute Reaches 50 Stars',
@@ -15,17 +22,10 @@ export const newsItems: NewsItem[] = [
     link: 'https://github.com/transmute-app/transmute/stargazers',
   },
   {
-    id: 'transmute-thirty-stars',
+    id: 'transmute-twenty-five-stars',
     fullDate: '2026-03-16',
-    title: 'Transmute Reaches 30 Stars',
-    description: 'Transmute, my self-hosted file converter, has reached 30 stars on GitHub.',
-    link: 'https://github.com/transmute-app/transmute/stargazers',
-  },
-  {
-    id: 'transmute-twenty-stars',
-    fullDate: '2026-03-13',
-    title: 'Transmute Reaches 20 Stars',
-    description: 'Transmute, my self-hosted file converter, has reached 20 stars on GitHub.',
+    title: 'Transmute Reaches 25 Stars',
+    description: 'Transmute, my self-hosted file converter, has reached 25 stars on GitHub.',
     link: 'https://github.com/transmute-app/transmute/stargazers',
   },
   {
