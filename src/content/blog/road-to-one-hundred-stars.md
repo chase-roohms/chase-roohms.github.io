@@ -60,7 +60,7 @@ The key is to not be spammy. If every minor update becomes a big self-promotiona
 At this stage, you are still mostly gathering social proof. You are trying to make the project look active, credible, and worth checking out.
 
 <div class="linkedin-embed">
-	<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7437137235432386560?collapsed=1" min-height="400" frameborder="0" allowfullscreen="" title="My actual LinkedIn post"></iframe>
+	<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7437137235432386560?collapsed=1" height="588" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 </div>
 
 ## 4. Niche Subreddits, Not Giant Ones

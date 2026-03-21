@@ -47,7 +47,6 @@
 
   .prose .linkedin-embed iframe {
     display: block;
-    width: 50%;
     max-width: 100%;
     min-height: 500px;
     border: 1px solid theme('colors.gray.800');
