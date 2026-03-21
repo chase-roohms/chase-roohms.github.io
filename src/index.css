@@ -38,6 +38,24 @@
   .prose pre code {
     font-size: 0.95rem !important;
   }
+
+  .prose .linkedin-embed {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .prose .linkedin-embed iframe {
+    display: block;
+    width: 50%;
+    max-width: 100%;
+    min-height: 500px;
+    border: 1px solid theme('colors.gray.800');
+    border-radius: 1rem;
+    background: theme('colors.gray.950');
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+  }
 }
 
 /* Print Stylesheet */
