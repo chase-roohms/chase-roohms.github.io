@@ -57,11 +57,9 @@ For me, this helped push the project to around 30 stars.
 
 The key is to not be spammy. If every minor update becomes a big self-promotional post, people tune you out fast. But if you make one solid post when the project is starting to look real, it can absolutely help.
 
-At this stage, you are still mostly gathering social proof. You are trying to make the project look active, credible, and worth checking out.
+[My LinkedIn Post](https://www.linkedin.com/posts/chaseroohms_github-transmute-apptransmute-convert-activity-7437137238314024960-9Cx9?utm_source=share&utm_medium=member_desktop&rcm=ACoAACKKdcQB0xh5R8fWzuTg7Vax1vztz6e3k5k)
 
-<div class="linkedin-embed">
-	<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7437137235432386560?collapsed=1" height="588" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
-</div>
+At this stage, you are still mostly gathering social proof. You are trying to make the project look active, credible, and worth checking out.
 
 ## 4. Niche Subreddits, Not Giant Ones
 
@@ -73,11 +71,7 @@ What worked for me was finding a niche subreddit where Transmute directly solved
 
 For me, that was [`r/DigitalEscapeTools`](https://www.reddit.com/r/DigitalEscapeTools/). It only has about 28k monthly visitors, which is tiny compared to the massive tech subreddits people usually chase. But the engagement was extremely high because the fit was strong. Transmute is a self-hosted, open source file converter that avoids the whole “upload your files to some random third-party server” model. That community is explicitly interested in privacy-respecting, open source, self-hosted tools. It matched almost perfectly.
 
-<blockquote class="reddit-embed-bq" style="height:500px" data-embed-theme="dark" data-embed-height="560">
-<a href="https://www.reddit.com/r/DigitalEscapeTools/comments/1ruyf3c/transmute_selfhosted_opensource_file_converter/">Transmute: self-hosted open-source file converter (Alternative to Cloud Converters)</a><br> by
-<a href="https://www.reddit.com/user/ChaseDak/">u/ChaseDak</a> in
-<a href="https://www.reddit.com/r/DigitalEscapeTools/">DigitalEscapeTools</a>
-</blockquote><script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
+[My Reddit Post](https://www.reddit.com/r/DigitalEscapeTools/comments/1ruyf3c/transmute_selfhosted_opensource_file_converter/)
 
 That one post took me to roughly 75 stars, which was a huge jump.
 
