@@ -9,14 +9,12 @@ slug: "road-to-one-hundred-stars"
 icon: "FaStar"
 ---
 
-I’m writing this at 98 stars, so by the time you read it there is a decent chance Transmute has already crossed 100.
+I’ve been steadily working on this app for a little over a month now, with the first real MVP release going out after about two weeks. Hitting 100 GitHub stars is not some massive startup milestone, but for a new open source project, especially one built from scratch without an existing audience, it does feel like an important checkpoint. It means people are finding it, trying it, and deciding it is worth bookmarking.
 
 <figure class="my-6" style="text-align: center;">
   <img src="https://chaseroohms.com/blog-images/star-history-100.webp" alt="Chart showing the rising star count of my repository transmute-app/transmute" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Star history over the last month</figcaption>
 </figure>
-
-I’ve been steadily working on this app for a little over a month now, with the first real MVP release going out after about two weeks. Hitting 100 GitHub stars is not some massive startup milestone, but for a new open source project, especially one built from scratch without an existing audience, it does feel like an important checkpoint. It means people are finding it, trying it, and deciding it is worth bookmarking.
 
 A lot of advice around growing open source projects is either too generic or comes from people who already had distribution. This is what actually worked for me with no existing followers.
 

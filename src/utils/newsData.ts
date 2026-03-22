@@ -8,6 +8,13 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'transmute-one-hundred-stars',
+    fullDate: '2026-03-20',
+    title: 'Transmute Reaches 100 Stars',
+    description: 'Transmute, my self-hosted file converter, has reached 100 stars on GitHub.',
+    link: 'https://github.com/transmute-app/transmute/stargazers',
+  },
+  {
     id: 'transmute-seventy-five-stars',
     fullDate: '2026-03-18',
     title: 'Transmute Reaches 75 Stars',
