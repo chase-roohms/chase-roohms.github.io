@@ -9,6 +9,8 @@ slug: "road-to-one-hundred-stars"
 icon: "FaStar"
 ---
 
+My open source self-hosted file converter, [Transmute](https://transmute.sh), just broke 100 stars on GitHub.
+
 I’ve been steadily working on this app for a little over a month now, with the first real MVP release going out after about two weeks. Hitting 100 GitHub stars is not some massive startup milestone, but for a new open source project, especially one built from scratch without an existing audience, it does feel like an important checkpoint. It means people are finding it, trying it, and deciding it is worth bookmarking.
 
 <figure class="my-6" style="text-align: center;">
