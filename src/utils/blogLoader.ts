@@ -28,6 +28,10 @@ export interface BlogPost {
   views?: number;
 }
 
+interface ParsedBlogPost extends Omit<BlogPost, 'views'> {
+  path: string;
+}
+
 // Calculate reading time in minutes (average 200 words per minute)
 function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
@@ -36,101 +40,110 @@ function calculateReadingTime(content: string): number {
   return readingTime;
 }
 
-// Import all markdown files as raw strings with eager: false for lazy loading
-const blogFiles = import.meta.glob('../content/blog/*.md', { 
+// Import all markdown files as raw strings so prerendered pages can hydrate
+// against the same content immediately on the client.
+const blogFiles = import.meta.glob('../content/blog/*.md', {
   query: '?raw',
   import: 'default',
-  eager: false,
-});
+  eager: true,
+}) as Record<string, string>;
 
-// Cache for blog post metadata (without full content)
-let metadataCache: Array<Omit<BlogPost, 'content'> & { path: string }> | null = null;
+const parsedBlogPosts: ParsedBlogPost[] = Object.entries(blogFiles)
+  .map(([path, source]) => {
+    const { data, content } = matter(source);
 
-async function getMetadata() {
-  if (metadataCache) return metadataCache;
-  
-  const metadata: Array<Omit<BlogPost, 'content'> & { path: string }> = [];
-  
-  for (const path in blogFiles) {
-    const content = await blogFiles[path]();
-    const { data } = matter(content);
-    
-    metadata.push({
+    return {
       path,
       slug: data.slug,
       title: data.title,
       date: data.date,
       description: data.description,
       topics: data.topics || [],
+      content,
       icon: data.icon,
       author: data.author,
       image: data.image,
-    });
-  }
-  
-  metadataCache = metadata.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  return metadataCache;
+      readingTime: calculateReadingTime(content),
+    };
+  })
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+function createListingPost(post: ParsedBlogPost): BlogPost {
+  return {
+    slug: post.slug,
+    title: post.title,
+    date: post.date,
+    description: post.description,
+    topics: [...post.topics],
+    content: '',
+    icon: post.icon,
+    author: post.author,
+    image: post.image,
+    readingTime: post.readingTime,
+  };
+}
+
+function createFullPost(post: ParsedBlogPost): BlogPost {
+  return {
+    slug: post.slug,
+    title: post.title,
+    date: post.date,
+    description: post.description,
+    topics: [...post.topics],
+    content: post.content,
+    icon: post.icon,
+    author: post.author,
+    image: post.image,
+    readingTime: post.readingTime,
+  };
+}
+
+function findParsedPost(slug: string): ParsedBlogPost | undefined {
+  return parsedBlogPosts.find((post) => post.slug === slug);
+}
+
+export function getAllBlogPostsSync(): BlogPost[] {
+  return parsedBlogPosts.map(createListingPost);
+}
+
+export function getBlogPostSync(slug: string): BlogPost | null {
+  const post = findParsedPost(slug);
+  return post ? createFullPost(post) : null;
 }
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  const metadata = await getMetadata();
+  const posts = getAllBlogPostsSync();
   
   // Fetch all blog views at once for efficiency
   const viewsMap = await fetchAllBlogViews();
-  
-  // Load content to calculate reading time
-  const posts = await Promise.all(
-    metadata.map(async (meta) => {
-      const content = await blogFiles[meta.path]();
-      const { content: markdown } = matter(content);
-      return {
-        ...meta,
-        content: '', // Don't include full content for listing page
-        readingTime: calculateReadingTime(markdown),
-        views: viewsMap.get(meta.slug),
-      };
-    })
-  );
-  
-  return posts;
+
+  return posts.map((post) => ({
+    ...post,
+    views: viewsMap.get(post.slug),
+  }));
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const metadata = await getMetadata();
-  const postMeta = metadata.find(post => post.slug === slug);
+  const post = getBlogPostSync(slug);
   
-  if (!postMeta) return null;
-  
-  // Only load full content for the requested post
-  const content = await blogFiles[postMeta.path]();
-  const { data, content: markdown } = matter(content);
+  if (!post) return null;
   
   // Fetch view count for this specific post
   const views = await fetchBlogViews(slug);
   
   return {
-    slug: data.slug,
-    title: data.title,
-    date: data.date,
-    description: data.description,
-    topics: data.topics || [],
-    content: markdown,
-    icon: data.icon,
-    author: data.author,
-    image: data.image,
-    readingTime: calculateReadingTime(markdown),
+    ...post,
     views,
   };
 }
 
 // Get related posts based on shared topics (excluding the current post)
-export async function getRelatedPosts(currentSlug: string, limit: number = 3): Promise<BlogPost[]> {
-  const allPosts = await getAllBlogPosts();
+export function getRelatedPostsSync(currentSlug: string, limit: number = 3): BlogPost[] {
+  const allPosts = getAllBlogPostsSync();
   const currentPost = allPosts.find(post => post.slug === currentSlug);
   
   if (!currentPost) return [];
   
-  // Calculate similarity score based on shared topics
   const postsWithScore = allPosts
     .filter(post => post.slug !== currentSlug)
     .map(post => {
@@ -140,12 +153,15 @@ export async function getRelatedPosts(currentSlug: string, limit: number = 3): P
         score: sharedTopics.length,
       };
     })
-    .filter(item => item.score > 0) // Only include posts with at least one shared topic
+    .filter(item => item.score > 0)
     .sort((a, b) => {
-      // Sort by score first, then by date
       if (b.score !== a.score) return b.score - a.score;
       return new Date(b.post.date).getTime() - new Date(a.post.date).getTime();
     });
   
   return postsWithScore.slice(0, limit).map(item => item.post);
+}
+
+export async function getRelatedPosts(currentSlug: string, limit: number = 3): Promise<BlogPost[]> {
+  return getRelatedPostsSync(currentSlug, limit);
 }

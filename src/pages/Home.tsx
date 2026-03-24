@@ -8,7 +8,7 @@ import ProjectCard from '../components/ProjectCard';
 import BlogPostCard from '../components/BlogPostCard';
 import { getFeaturedProject } from '../utils/projectsData';
 import { profileData } from '../utils/profileData';
-import { getAllBlogPosts, type BlogPost } from '../utils/blogLoader';
+import { getAllBlogPosts, getAllBlogPostsSync, type BlogPost } from '../utils/blogLoader';
 import headshot from '../assets/images/headshot.webp';
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
   const first_name = name.split(" ")[0];
   const last_name = name.split(" ")[1];
   
-  const [recentPost, setRecentPost] = useState<BlogPost | null>(null);
+  const [recentPost, setRecentPost] = useState<BlogPost | null>(() => getAllBlogPostsSync()[0] ?? null);
   const featuredProject = getFeaturedProject();
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { HelmetProvider } from 'react-helmet-async'
 import './index.css'
 import App from './App.tsx'
@@ -96,13 +96,21 @@ if (sessionStorage.getItem('chunkErrorReload') === 'true') {
   sessionStorage.removeItem('chunkErrorReload');
 }
 
-createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById('root')!
+
+const app = (
   <StrictMode>
     <HelmetProvider>
       <App />
     </HelmetProvider>
-  </StrictMode>,
+  </StrictMode>
 )
+
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, app)
+} else {
+  createRoot(rootElement).render(app)
+}
 
 // Register service worker for PWA support (production only)
 if (import.meta.env.PROD) {

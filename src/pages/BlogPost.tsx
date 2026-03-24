@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
-import { getBlogPost, getRelatedPosts, type BlogPost } from '../utils/blogLoader';
+import { getBlogPost, getBlogPostSync, getRelatedPostsSync, type BlogPost } from '../utils/blogLoader';
 import { formatDate } from '../utils/dateFormatter';
 import { FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock, FaEye } from 'react-icons/fa';
 import * as FaIcons from 'react-icons/fa';
@@ -51,39 +51,37 @@ function CodeBlock({ children, className }: { children: React.ReactNode; classNa
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [post, setPost] = useState<BlogPost | null>(() => (slug ? getBlogPostSync(slug) : null));
+  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>(() => (slug ? getRelatedPostsSync(slug, 3) : []));
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (slug) {
-      Promise.all([
-        getBlogPost(slug),
-        getRelatedPosts(slug, 3)
-      ])
-        .then(([loadedPost, related]) => {
-          setPost(loadedPost);
-          setRelatedPosts(related);
-          setLoading(false);
-        })
-        .catch(err => {
-          console.error('Error loading blog post:', err);
-          setError('Failed to load blog post');
-          setLoading(false);
-        });
+    if (!slug) {
+      setPost(null);
+      setRelatedPosts([]);
+      return;
     }
-  }, [slug]);
 
-  if (loading) {
-    return (
-      <div className="section-container py-8 md:py-20">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-gray-400 text-lg">Loading post...</p>
-        </div>
-      </div>
-    );
-  }
+    const syncPost = getBlogPostSync(slug);
+    setPost(syncPost);
+    setRelatedPosts(getRelatedPostsSync(slug, 3));
+    setError(null);
+
+    if (!syncPost) {
+      return;
+    }
+
+    getBlogPost(slug)
+      .then((loadedPost) => {
+        if (loadedPost) {
+          setPost(loadedPost);
+        }
+      })
+      .catch(err => {
+        console.error('Error loading blog post:', err);
+        setError('Failed to refresh blog metadata');
+      });
+  }, [slug]);
 
   if (error) {
     return (

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaBlog, FaRss, FaTimes } from 'react-icons/fa';
-import { getAllBlogPosts, type BlogPost } from '../utils/blogLoader';
+import { getAllBlogPosts, getAllBlogPostsSync, type BlogPost } from '../utils/blogLoader';
 import BlogPostCard from '../components/BlogPostCard';
 import SearchBar from '../components/SearchBar';
 import TopicFilter from '../components/TopicFilter';
@@ -11,8 +11,7 @@ import { useContentFilter } from '../hooks/useContentFilter';
 const ITEMS_PER_PAGE = 9;
 
 export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState<BlogPost[]>(() => getAllBlogPostsSync());
   const [currentPage, setCurrentPage] = useState(1);
   const [showRssDialog, setShowRssDialog] = useState(false);
   const rssUrl = 'https://chaseroohms.com/blog-rss.xml';
@@ -29,7 +28,6 @@ export default function Blog() {
   useEffect(() => {
     getAllBlogPosts().then(loadedPosts => {
       setPosts(loadedPosts);
-      setLoading(false);
     });
   }, []);
 
@@ -46,16 +44,6 @@ export default function Blog() {
   const totalPages = Math.ceil(filteredPosts.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedPosts = filteredPosts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
-  if (loading) {
-    return (
-      <div className="section-container py-8 md:py-20">
-        <div className="flex items-center justify-center">
-          <p className="text-gray-400 text-lg">Loading blog posts...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
