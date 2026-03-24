@@ -1,16 +1,18 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
-import About from './pages/About';
-import Projects from './pages/Projects';
-import News from './pages/News';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
-import Contact from './pages/Contact';
-import NotFound from './pages/NotFound';
-import Achievements from './pages/Achievements';
+
+// Lazy-load non-critical routes for code splitting
+const About = lazy(() => import('./pages/About'));
+const Projects = lazy(() => import('./pages/Projects'));
+const News = lazy(() => import('./pages/News'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const Contact = lazy(() => import('./pages/Contact'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const Achievements = lazy(() => import('./pages/Achievements'));
 import { useKonamiCode, useSecretWord, useLogoClicks } from './hooks/useKonamiCode';
 import { KonamiEasterEgg, AutomationEasterEgg, LogoClickEasterEgg } from './components/EasterEggs';
 import { unlockAchievement } from './utils/achievements';
@@ -81,17 +83,19 @@ function AppContent() {
     <>
       <ScrollToTop />
       <Layout onLogoClick={handleLogoClick}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about/" element={<About />} />
-          <Route path="/projects/" element={<Projects />} />
-          <Route path="/news/" element={<News />} />
-          <Route path="/blog/" element={<Blog />} />
-          <Route path="/blog/:slug/" element={<BlogPost />} />
-          <Route path="/contact/" element={<Contact />} />
-          <Route path="/achievements/" element={<Achievements />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about/" element={<About />} />
+            <Route path="/projects/" element={<Projects />} />
+            <Route path="/news/" element={<News />} />
+            <Route path="/blog/" element={<Blog />} />
+            <Route path="/blog/:slug/" element={<BlogPost />} />
+            <Route path="/contact/" element={<Contact />} />
+            <Route path="/achievements/" element={<Achievements />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </Layout>
       
       {/* Easter Eggs */}

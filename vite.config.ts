@@ -11,8 +11,10 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        // Let Vite handle chunking automatically to avoid chunk loading errors
-        manualChunks: undefined,
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'markdown': ['react-markdown', 'remark-gfm', 'rehype-raw', 'rehype-highlight'],
+        },
       },
     },
   },

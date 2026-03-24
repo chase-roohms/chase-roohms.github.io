@@ -6,10 +6,13 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import { getBlogPost, getBlogPostSync, getRelatedPostsSync, type BlogPost } from '../utils/blogLoader';
 import { formatDate } from '../utils/dateFormatter';
-import { FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock, FaEye } from 'react-icons/fa';
-import * as FaIcons from 'react-icons/fa';
-import * as SiIcons from 'react-icons/si';
-import * as BsIcons from 'react-icons/bs';
+import { FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock, FaEye, FaDollarSign, FaStar, FaBalanceScale, FaDocker, FaGithub, FaHome, FaExchangeAlt, FaUserTie, FaSyncAlt } from 'react-icons/fa';
+import type { IconType } from 'react-icons';
+
+// Explicit icon map instead of wildcard imports to avoid bundling all 15k+ icons
+const blogIconMap: Record<string, IconType> = {
+  FaDollarSign, FaStar, FaBalanceScale, FaDocker, FaGithub, FaHome, FaExchangeAlt, FaUserTie, FaSyncAlt,
+};
 import { Helmet } from 'react-helmet-async';
 import BlogPostCard from '../components/BlogPostCard';
 import ShareButtons from '../components/ShareButtons';
@@ -171,8 +174,7 @@ export default function BlogPost() {
           <header className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
               {post.icon && (() => {
-                const iconMap = { ...FaIcons, ...SiIcons, ...BsIcons };
-                const IconComponent = iconMap[post.icon as keyof typeof iconMap];
+                const IconComponent = blogIconMap[post.icon];
                 return IconComponent ? <IconComponent className="text-primary-400" /> : null;
               })()}
               {post.title}
