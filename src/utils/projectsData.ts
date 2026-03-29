@@ -27,6 +27,7 @@ export interface Project {
   link?: string;
   github_link?: string;
   docker_link?: string;
+  ghcr_link?: string;
 }
 
 export const professionalProjects: Project[] = [
@@ -40,6 +41,7 @@ export const professionalProjects: Project[] = [
     link: 'https://transmute.sh',
     github_link: 'https://github.com/transmute-app/transmute',
     docker_link: 'https://hub.docker.com/r/neonvariant/transmute',
+    ghcr_link: 'https://ghcr.io/transmute-app/transmute',
   },
   {
     id: 'schema-validator',

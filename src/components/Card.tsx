@@ -17,6 +17,7 @@ interface CardProps {
   wrapInLink?: boolean;
   githubStars?: number;
   dockerPulls?: number;
+  pullsTooltip?: string;
   views?: number;
 }
 
@@ -36,6 +37,7 @@ export default function Card({
   wrapInLink = false,
   githubStars,
   dockerPulls,
+  pullsTooltip = 'Docker Hub Pulls',
   views,
 }: CardProps) {
   // Format date as "MMM D, YYYY"
@@ -149,7 +151,7 @@ export default function Card({
               </svg>
               <span className="text-sm font-medium">{formatNumber(dockerPulls)}</span>
               <div className="absolute hidden group-hover/stat:block bg-gray-950 text-white text-xs rounded py-1 px-2 -mt-8 whitespace-nowrap border border-gray-700 z-10">
-                {dockerPulls.toLocaleString()} Docker Hub Pulls
+                {dockerPulls.toLocaleString()} {pullsTooltip}
               </div>
             </div>
           )}

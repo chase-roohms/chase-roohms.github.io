@@ -6,6 +6,7 @@ export interface ProjectStats {
 // Cache to avoid repeated API calls
 const githubStarsCache = new Map<string, number | undefined>();
 const dockerPullsCache = new Map<string, number | undefined>();
+const ghcrPullsCache = new Map<string, number | undefined>();
 
 export async function fetchGitHubStars(githubUrl: string): Promise<number | undefined> {
   // Check cache first
@@ -105,6 +106,56 @@ export async function fetchDockerHubPulls(dockerUrl: string): Promise<number | u
     return undefined;
   } catch (error) {
     console.error('Error fetching Docker Hub pulls:', error);
+    return undefined;
+  }
+}
+
+export async function fetchGHCRPulls(ghcrUrl: string): Promise<number | undefined> {
+  // Check cache first
+  if (ghcrPullsCache.has(ghcrUrl)) {
+    return ghcrPullsCache.get(ghcrUrl);
+  }
+
+  try {
+    // Extract owner and package from GHCR URL
+    // Example: https://ghcr.io/transmute-app/transmute
+    const match = ghcrUrl.match(/ghcr\.io\/([^/]+)\/([^/]+)/);
+    if (!match) {
+      console.error('GHCR URL format not recognized:', ghcrUrl);
+      return undefined;
+    }
+
+    const [, owner, pkg] = match;
+    const containerKey = `${owner}/${pkg}`;
+
+    // Fetch from automated stats repository
+    const statsUrl = 'https://raw.githubusercontent.com/chase-roohms/dev-stats/refs/heads/main/data/github-stats.json';
+    const response = await fetch(statsUrl, {
+      signal: AbortSignal.timeout(10000),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (!response.ok) {
+      console.warn('Could not fetch GHCR stats from automated repository');
+      return undefined;
+    }
+
+    const stats = await response.json();
+
+    if (stats?.containers?.[containerKey]?.download_count !== undefined) {
+      const pulls = stats.containers[containerKey].download_count;
+      if (typeof pulls !== 'number') {
+        console.warn(`Invalid download count for GHCR package: ${containerKey}`);
+        return undefined;
+      }
+      ghcrPullsCache.set(ghcrUrl, pulls);
+      return pulls;
+    }
+
+    console.warn(`No stats found for GHCR package: ${containerKey}`);
+    return undefined;
+  } catch (error) {
+    console.error('Error fetching GHCR pulls:', error);
     return undefined;
   }
 }
