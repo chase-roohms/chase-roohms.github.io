@@ -4,7 +4,7 @@ date: "2025-11-19"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/homelab-header.webp"
 description: "How I built a functional home lab for learning and experimentation without breaking the bank."
-topics: ["Linux", "Docker"]
+topics: ["Linux", "Docker", "Self-Hosting"]
 slug: "home-lab-setup"
 icon: "FaDollarSign"
 ---

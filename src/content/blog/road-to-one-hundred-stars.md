@@ -4,7 +4,7 @@ date: "2026-03-20"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/star-history-100.webp"
 description: "The story of how I got Transmute from zero to 100 GitHub stars in just over a month."
-topics: ["GitHub", "Open Source"]
+topics: ["GitHub", "Open Source", "Self-Hosting"]
 slug: "road-to-one-hundred-stars"
 icon: "FaStar"
 ---
