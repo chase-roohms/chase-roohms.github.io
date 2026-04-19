@@ -9,7 +9,7 @@ slug: "road-to-five-hundred-stars"
 icon: "FaStar"
 ---
 
-My open source self-hosted file converter, [Transmute](https://transmute.sh), is about to break 500 stars on GitHub.
+My open source self-hosted file converter, [Transmute](https://transmute.sh), just broke 500 stars on GitHub.
 
 <figure class="my-6" style="text-align: center;">
   <img src="https://chaseroohms.com/blog-images/star-history-500.webp" alt="Chart showing the rising star count of my repository transmute-app/transmute" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
