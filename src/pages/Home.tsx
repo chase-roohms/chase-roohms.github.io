@@ -15,6 +15,7 @@ export default function Home() {
   const { name, headline, biography } = profileData;
   const first_name = name.split(" ")[0];
   const last_name = name.split(" ")[1];
+  const [primaryHeadline] = headline.split('\n');
   
   const [recentPost, setRecentPost] = useState<BlogPost | null>(() => getAllBlogPostsSync()[0] ?? null);
   const featuredProject = getFeaturedProject();
@@ -60,7 +61,19 @@ export default function Home() {
               Hi, I'm <a href="https://www.google.com/search?q=Chase+Roohms" target="_blank" rel="noopener noreferrer" className="text-[#ff6200] cursor-pointer [&>span]:inline-block [&>span]:transition-transform [&>span]:duration-300 hover:[&>span]:scale-110"><span>{first_name}</span> <span>{last_name}</span></a>
             </h1>
             <p className="text-xl text-gray-400 mb-8">
-              {headline}
+              <span className="block">{primaryHeadline}</span>
+              <span className="block mt-2">
+                Founder of{' '}
+                <a
+                  href="https://transmute.sh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  referrerPolicy="no-referrer"
+                  className="text-primary-400 hover:text-primary-300 transition-colors"
+                >
+                  Transmute
+                </a>
+              </span>
             </p>
             <div className="flex gap-4 justify-center md:justify-start">
               <Link to="/projects/" className="btn-primary">
