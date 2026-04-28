@@ -43,6 +43,7 @@ export const professionalProjects: Project[] = [
     docker_link: 'https://hub.docker.com/r/neonvariant/transmute',
     ghcr_link: 'https://ghcr.io/transmute-app/transmute',
   },
+  /* Commenting out as its not really an impressive project.
   {
     id: 'schema-validator',
     fullDate: '2026-02-06',
@@ -52,7 +53,8 @@ export const professionalProjects: Project[] = [
     image: schemaValidatorHeader,
     link: 'https://github.com/marketplace/actions/schema-validator',
     github_link: 'https://github.com/chase-roohms/schema-validator',
-  },
+  },*/
+  /* Commenting out as its not really an impressive project.
   {
     id: 'cloudflare-error-worker',
     fullDate: '2026-01-21',
@@ -62,7 +64,8 @@ export const professionalProjects: Project[] = [
     image: cloudflareWorkerHeader,
     link: 'https://github.com/chase-roohms/cloudflare-error-worker',
     github_link: 'https://github.com/chase-roohms/cloudflare-error-worker',
-  },
+  },*/
+  /* Commenting out as its not really an impressive project.
   {
     id: 'discord-webhook-notifier',
     fullDate: '2026-01-14',
@@ -73,6 +76,8 @@ export const professionalProjects: Project[] = [
     link: 'https://github.com/marketplace/actions/discord-webhook-notifier',
     github_link: 'https://github.com/chase-roohms/discord-notify',
   },
+  */
+  /* Commenting out as its not really an impressive project.
   {
     id: 'tag-and-release',
     fullDate: '2026-01-13',
@@ -82,7 +87,7 @@ export const professionalProjects: Project[] = [
     image: tagAndReleaseHeader,
     link: 'https://github.com/marketplace/actions/tag-and-release-semantic-version',
     github_link: 'https://github.com/chase-roohms/tag-and-release',
-  },
+  },*/
   {
     id: 'dumpsterr',
     fullDate: '2026-01-08',
@@ -94,6 +99,7 @@ export const professionalProjects: Project[] = [
     github_link: 'https://github.com/chase-roohms/dumpsterr',
     docker_link: 'https://hub.docker.com/r/neonvariant/dumpsterr',
   },
+  /* Commenting out as its not really an impressive project.
   {
     id: 'plex-wrapped',
     fullDate: '2025-12-29',
@@ -103,7 +109,7 @@ export const professionalProjects: Project[] = [
     image: plexWrappedHeader,
     link: 'https://github.com/chase-roohms/plex-wrapped',
     github_link: 'https://github.com/chase-roohms/plex-wrapped'
-  },
+  },*/
   {
     id: 'modern-portfolio',
     fullDate: '2025-12-13',
@@ -124,6 +130,7 @@ export const professionalProjects: Project[] = [
     link: 'https://github.com/chase-roohms/poster-tools/blob/main/generate-pretty-display.py',
     github_link: 'https://github.com/chase-roohms/poster-tools'
   },
+  /* Commenting out as its not really an impressive project.
   {
     id: 'kometa-configs',
     fullDate: '2025-04-18',
@@ -133,7 +140,7 @@ export const professionalProjects: Project[] = [
     image: kometaConfigsHeader,
     link: 'https://github.com/chase-roohms/kometa-configs',
     github_link: 'https://github.com/chase-roohms/kometa-configs'
-  },
+  },*/
   {
     id: 'opsgenie-swir',
     fullDate: '2025-04-01',
@@ -152,6 +159,7 @@ export const professionalProjects: Project[] = [
     image: homelabHeader,
     link: '/blog/home-lab-setup',
   },
+  /* Commenting out as its not really an impressive project.
   {
     id: 'p-dash',
     fullDate: '2024-07-26',
@@ -161,7 +169,8 @@ export const professionalProjects: Project[] = [
     image: pDashHeader,
     link: 'https://github.com/chase-roohms/p-dash',
     github_link: 'https://github.com/chase-roohms/p-dash',
-  },
+  },*/
+  /* Commenting out as its not really an impressive project.
   {
     id: 'de-vex',
     fullDate: '2024-07-26',
@@ -171,7 +180,7 @@ export const professionalProjects: Project[] = [
     image: deVexHeader,
     link: 'https://github.com/chase-roohms/de-vex',
     github_link: 'https://github.com/chase-roohms/de-vex',
-  },
+  },*/
   {
     id: 'mythicmate',
     fullDate: '2023-11-14',
