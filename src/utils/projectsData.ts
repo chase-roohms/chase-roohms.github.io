@@ -4,17 +4,17 @@ import mythicmateHeader from '../assets/images/mythicmate-header.webp';
 import onePacePostersHeader from '../assets/images/one-pace-posters-header.webp';
 import tomJerryPostersHeader from '../assets/images/tom-jerry-posters-header.webp';
 import websiteHomePageHeader from '../assets/images/website-home-page-header.webp';
-import pDashHeader from '../assets/images/p-dash-header.webp';
-import deVexHeader from '../assets/images/de-vex-header.webp';
+//import pDashHeader from '../assets/images/p-dash-header.webp';
+//import deVexHeader from '../assets/images/de-vex-header.webp';
 import looneyTunesPostersHeader from '../assets/images/looney-tunes-posters-header.webp';
-import plexWrappedHeader from '../assets/images/plex-wrapped-header.webp';
+//import plexWrappedHeader from '../assets/images/plex-wrapped-header.webp';
 import dumpsterrHeader from '../assets/images/dumpsterr-header.webp';
-import kometaConfigsHeader from '../assets/images/kometa-configs-header.webp';
-import tagAndReleaseHeader from '../assets/images/tag-and-release-header.webp';
-import discordWebhookNotifierHeader from '../assets/images/discord-webhook-notifier-header.webp';
+//import kometaConfigsHeader from '../assets/images/kometa-configs-header.webp';
+//import tagAndReleaseHeader from '../assets/images/tag-and-release-header.webp';
+//import discordWebhookNotifierHeader from '../assets/images/discord-webhook-notifier-header.webp';
 import marvelPostersHeader from '../assets/images/marvel-posters-header.webp';
-import cloudflareWorkerHeader from '../assets/images/cloudflare-worker-error-header.webp'
-import schemaValidatorHeader from '../assets/images/schema-validator-header.webp'
+//import cloudflareWorkerHeader from '../assets/images/cloudflare-worker-error-header.webp'
+//import schemaValidatorHeader from '../assets/images/schema-validator-header.webp'
 import transmuteHeader from '../assets/images/transmute-converter.webp'
 
 export interface Project {
