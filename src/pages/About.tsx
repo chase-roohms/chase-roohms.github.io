@@ -28,6 +28,10 @@ export default function About() {
   
   const honors = getHonorsAndAwards();
   const education = getEducation();
+  const hasExperiences = experiences.length > 0;
+  const hasCertifications = certifications.length > 0;
+  const hasHonors = honors.length > 0;
+  const hasEducation = education.length > 0;
 
   return (
     <>
@@ -74,6 +78,7 @@ export default function About() {
           </div>
         </section>
 
+        {hasExperiences && (
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Experience</h2>
           <div className="space-y-6">
@@ -95,12 +100,14 @@ export default function About() {
             ))}
           </div>
         </section>
+        )}
 
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Skills & Technologies</h2>
           <Skills />
         </section>
 
+        {hasCertifications && (
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Certifications</h2>
           <div className="space-y-4">
@@ -123,7 +130,9 @@ export default function About() {
             ))}
           </div>
         </section>
+        )}
 
+        {hasHonors && (
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Honors & Awards</h2>
           <div className="space-y-4">
@@ -141,7 +150,9 @@ export default function About() {
             ))}
           </div>
         </section>
+        )}
 
+        {hasEducation && (
         <section>
           <h2 className="text-2xl font-semibold mb-4">Education</h2>
           <div className="space-y-4">
@@ -158,6 +169,7 @@ export default function About() {
             ))}
           </div>
         </section>
+        )}
       </div>
       </div>
       </div>
