@@ -15,7 +15,7 @@ cv:
   custom_connections:
   sections:
     summary:
-      - Technical Lead specializing in AI Ops, developer enablement, and scalable automation. Experienced in software development, IT security, CI/CD optimization, infrastructure cost reduction, compliance, and enterprise AI adoption.
+      - AI Ops Engineer focused on secure, practical AI adoption across organizations. Experienced in AI enablement, developer tooling, scalable automation, CI/CD optimization, infrastructure cost reduction, compliance, and IT security.
     skills:
       - label: AI / Dev Tools
         details: GitHub Copilot, Claude Code, AWS Bedrock, Claude Enterprise, Glean
@@ -27,7 +27,7 @@ cv:
         details: Python, Bash, Java, C++, JavaScript
     experience:
       - company: SolarWinds
-        position: Technical Lead, AI Ops
+        position: AI Ops Engineer
         start_date: 2026-05
         end_date: present
         location: Austin, TX
@@ -41,6 +41,7 @@ cv:
         location: Austin, TX
         highlights:
           - Reduced IT/DevOps overhead and accelerated developer workflows by building an end-to-end self-service platform for access management, repository creation, GCP project provisioning, and other resource requests.
+          - Reduced manually routed Helpdesk tickets by ~70% with a custom-built triage agent that uses LLMs to understand and route incoming requests to the appropriate teams.
           - Increased GitHub Copilot code acceptance from 14% to 31%, daily active users from ~130 to 500+, and license adoption from 62% to 95% through enablement, custom agents, and developer training.
           - Drove 90%+ adoption of Claude Code across 300+ developers by rolling it out through AWS Bedrock and supporting developer enablement.
           - Reduced annual code signing costs from ~$240K to ~$40K by migrating Authenticode signing to Azure Code Signing and GPG signing to an HSM-backed workflow.
