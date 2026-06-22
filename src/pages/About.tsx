@@ -83,11 +83,11 @@ export default function About() {
       <div className="section-container py-8 md:py-20">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold flex items-center gap-3">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
               <FaUserCircle className="text-primary-400" />
               About Me
             </h1>
-            <p className="text-gray-400 mt-3 md:ml-[3.75rem]">{primaryHeadline}</p>
+            <p className="text-gray-400 text-lg">{primaryHeadline}.</p>
           </div>
           <a
             href="/resume.pdf"
