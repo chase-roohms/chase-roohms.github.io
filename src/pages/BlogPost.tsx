@@ -6,12 +6,12 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import { getBlogPost, getBlogPostSync, getRelatedPostsSync, type BlogPost } from '../utils/blogLoader';
 import { formatDate } from '../utils/dateFormatter';
-import { FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock, FaEye, FaDollarSign, FaStar, FaBalanceScale, FaDocker, FaGithub, FaHome, FaExchangeAlt, FaUserTie, FaSyncAlt } from 'react-icons/fa';
+import { FaCloud, FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock, FaEye, FaDollarSign, FaStar, FaBalanceScale, FaDocker, FaGithub, FaHome, FaExchangeAlt, FaUserTie, FaSyncAlt } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
 
 // Explicit icon map instead of wildcard imports to avoid bundling all 15k+ icons
 const blogIconMap: Record<string, IconType> = {
-  FaDollarSign, FaStar, FaBalanceScale, FaDocker, FaGithub, FaHome, FaExchangeAlt, FaUserTie, FaSyncAlt,
+  FaDollarSign, FaStar, FaBalanceScale, FaDocker, FaGithub, FaHome, FaExchangeAlt, FaUserTie, FaSyncAlt, FaCloud,
 };
 import { Helmet } from 'react-helmet-async';
 import BlogPostCard from '../components/BlogPostCard';

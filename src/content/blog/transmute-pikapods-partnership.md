@@ -1,6 +1,6 @@
 ---
 
-title: "Why Transmute Is Partnering With PikaPods"
+title: "Transmute Partners With PikaPods"
 date: "2026-06-21"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/pikapods-transmute-partnership.webp"
