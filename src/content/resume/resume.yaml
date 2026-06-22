@@ -15,25 +15,36 @@ cv:
   custom_connections:
   sections:
     summary:
-      - DevOps Engineer with a strong foundation in software development and IT security. Experienced in optimizing CI/CD pipelines, reducing costs, and enhancing security compliance. Skilled in automating scalable solutions and improving developer tooling.
+      - AI Ops Engineer focused on secure, practical AI adoption across organizations. Experienced in AI enablement, developer tooling, scalable automation, CI/CD optimization, infrastructure cost reduction, compliance, and IT security.
     skills:
-      - label: CI/CD Platforms
-        details: GitHub Actions, Azure DevOps, TeamCity by JetBrains.
-      - label: Clouds
+      - label: AI / Dev Tools
+        details: GitHub Copilot, Claude Code, AWS Bedrock, Claude Enterprise, Glean
+      - label: CI/CD
+        details: GitHub Actions, TeamCity, Azure DevOps
+      - label: Cloud
         details: Google Cloud Platform (GCP), Amazon Web Services (AWS)
       - label: Languages
         details: Python, Bash, Java, C++, JavaScript
-      - label: Other
-        details: Linux, Terraform, Code Signing, GitHub
     experience:
       - company: SolarWinds
-        position: DevOps Engineer
-        start_date: 2025-10
+        position: AI Ops Engineer
+        start_date: 2026-06
         end_date: present
         location: Austin, TX
         highlights:
-          - Reduced IT/DevOps overhead and expedited the Developer workflow by building an end-to-end self-service platform that automates developer access (applications, repositories, etc.) and streamlines provisioning of new resources such as repositories and GCP projects.
-          - Grew GitHub Copilot code acceptance rates from 14% to 31%, daily active users from ~130 to 500+, and overall license adoption from 62% to 95% through model enablement, custom agent development, and training sessions.
+          - Leading technical strategy for a new AI Ops team focused on enterprise AI enablement, developer productivity, governance, and automation.
+          - Driving organization-wide AI adoption through platform integrations, internal tooling, usage standards, and developer training.
+      - company: SolarWinds
+        position: DevOps Engineer
+        start_date: 2025-10
+        end_date: 2026-06
+        location: Austin, TX
+        highlights:
+          - Reduced IT/DevOps overhead and accelerated developer workflows by building an end-to-end self-service platform for access management, repository creation, GCP project provisioning, and other resource requests.
+          - Reduced manually routed Helpdesk tickets by ~70% with a custom-built triage agent that uses LLMs to understand and route incoming requests to the appropriate teams.
+          - Increased GitHub Copilot code acceptance from 14% to 31%, daily active users from ~130 to 500+, and license adoption from 62% to 95% through enablement, custom agents, and developer training.
+          - Drove 90%+ adoption of Claude Code across 300+ developers by rolling it out through AWS Bedrock and supporting developer enablement.
+          - Reduced annual code signing costs from ~$240K to ~$40K by migrating Authenticode signing to Azure Code Signing and GPG signing to an HSM-backed workflow.
       - company: SolarWinds
         position: Associate DevOps Engineer
         start_date: 2024-10
@@ -41,39 +52,29 @@ cv:
         location: Austin, TX
         highlights:
           - Increased code scanning coverage by ~400% using GitHub CodeQL.
-          - Decreased spending on GitHub Actions runners minutes by ~45% by improving workflow efficiency.
-          - Led the migration from OpsGenie to SolarWinds Incident Response (formerly Squadcast).
-          - Drove measurable developer productivity improvements (reduced PR cycle time, increased commit velocity) as the primary implementer for the org-wide GitHub Copilot rollout.
-          - Achieved SLSA level 2 compliance in multiple products by automating signed SBOM and provenance generation in CI/CD pipelines, ensuring software integrity and tamper-resistance.
-      - company: SolarWinds
-        position: Security Engineer Intern
-        start_date: 2024-06
-        end_date: 2024-10
-        location: Austin, TX
-        highlights:
-          - Reduced the legal review time by ~70% with an SBOM Vex translation script written in Python.
-          - Increased security visibility by reviewing and redesigning data-flow threat models for more than 30 products.
+          - Reduced GitHub Actions runner minute spend by ~45% by improving workflow efficiency.
+          - Achieved SLSA Level 2 compliance across multiple products by automating signed SBOM and provenance generation in CI/CD pipelines.
     projects:
       - name: Transmute
         #date: 2026-02
         start_date:
         end_date:
         location: transmute.sh
-        summary: open-source, self-hosted file converter that handles images, video, audio, data, documents, and more.
+        summary: Open-source, self-hosted file converter that handles images, video, audio, data, documents, and more.
         highlights:
-          - Developed a full-stack application using Python/FastAPI and React/TypeScript, integrating 6 open-source converter engines.
-          - Grew the open-source community to 9 contributors and 9 forks within weeks of launch.
+          - Built a full-stack Python/FastAPI and React/TypeScript application integrating 6 open-source converter engines.
           - Containerized the application with Docker, enabling one-command self-hosted deployment via Docker Compose.
-      - name: Dumpsterr
-        #date: 2026-01
-        start_date:
-        end_date:
-        location: github.com/chase-roohms/dumpsterr
-        summary: Empties Plex trash after verifying file availability, preventing deletions when drives are disconnected.
-        highlights:
-          - Developed a Python CLI tool to interact with the Plex API for managing media libraries.
-          - Runs on a cron schedule to replace the Plex native "Empty trash automatically" that is known to cause data loss.
-          - Containerized the application with Docker to enable consistent, portable deployment.
+          - Grew community adoption through PikaPods publishing, selfh.st coverage, and YouTube features.
+      #- name: Dumpsterr
+      #  #date: 2026-01
+      #  start_date:
+      #  end_date:
+      #  location: github.com/chase-roohms/dumpsterr
+      #  summary: Empties Plex trash after verifying file availability, preventing deletions when drives are disconnected.
+      #  highlights:
+      #    - Developed a Python CLI tool to interact with the Plex API for managing media libraries.
+      #    - Runs on a cron schedule to replace the Plex native "Empty trash automatically" that is known to cause data loss.
+      #    - Containerized the application with Docker to enable consistent, portable deployment.
       #- name: Portfolio Website
       #  #date: 2026-01
       #  start_date:
@@ -84,28 +85,28 @@ cv:
       #    - Developed a fast, modular frontend with React and TypeScript for maintainable and scalable code.
       #    - Implemented a clean, responsive UI using Tailwind CSS to enhance usability and visual appeal.
       #    - Optimized site structure and performance, achieving strong SEO rankings and actionable analytics insights.
-      - name: MythicMate
-        #start_date: 2024-11
-        #end_date: present
-        location: github.com/chase-roohms/mythicmate
-        summary: Dungeons & Dragons Discord Bot that provides dice rolling, rules referencing, and AI-powered assistance.
-        highlights:
-          - Developed a Java/Maven backend leveraging the JDA (Java Discord API) library.
-          - Integrated OpenAI's API to offer AI-driven responses and game assistance.
-          - Containerized the application with Docker to enable consistent, portable deployment.
-    honors_and_awards:
-      - name: IT Pro Day, Rockstar of the Year
-        location: SolarWinds
-        date: 2025-09
-        summary: Demonstrated high performance, and embodied SolarWinds values.
+      #- name: MythicMate
+      #  #start_date: 2024-11
+      #  #end_date: present
+      #  location: github.com/chase-roohms/mythicmate
+      #  summary: Dungeons & Dragons Discord Bot that provides dice rolling, rules referencing, and AI-powered assistance.
+      #  highlights:
+      #    - Developed a Java/Maven backend leveraging the JDA (Java Discord API) library.
+      #    - Integrated OpenAI's API to offer AI-driven responses and game assistance.
+      #    - Containerized the application with Docker to enable consistent, portable deployment.
+    #honors_and_awards:
+    #  - name: IT Pro Day, Rockstar of the Year
+    #    location: SolarWinds
+    #    date: 2025-09
+    #    summary: Recognized for high performance and embodiment of SolarWinds values.
       # Commenting out as its kind of SolarWinds specific
       #- name: DevOps Dynamo
       #  location: SolarWinds
       #  date: 2025-06
       #  summary: Brought unmatched energy and precision to the DevOps workflow.
-    certifications:
-      - bullet: "**GitHub Actions** (GH-200)"
-      - bullet: "**GitHub Copilot** (GH-300)"
+    #certifications:
+    #  - bullet: "**GitHub Actions** (GH-200)"
+    #  - bullet: "**GitHub Copilot** (GH-300)"
     education:
       - institution: Texas State University
         area: Computer Science
@@ -245,7 +246,7 @@ locale:
     - November
     - December
 settings:
-  current_date: '2025-01-15'
+  current_date: '2026-05-21'
   render_command:
     design:
     locale:

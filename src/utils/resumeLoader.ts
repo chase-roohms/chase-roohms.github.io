@@ -46,18 +46,19 @@ interface ResumeData {
     website: string;
     social_networks: SocialNetwork[];
     sections: {
-      summary: string[];
-      skills: Array<{ label: string; details: string }>;
-      experience: Experience[];
-      honors_and_awards: HonorAward[];
-      certifications: Certification[];
-      education: Education[];
+      summary?: string[];
+      skills?: Array<{ label: string; details: string }>;
+      experience?: Experience[];
+      honors_and_awards?: HonorAward[];
+      certifications?: Certification[];
+      education?: Education[];
     };
   };
 }
 
 // Parse the YAML content
 const resumeData = yaml.load(resumeYaml) as ResumeData;
+const resumeSections = resumeData.cv.sections;
 
 // Helper function to format date ranges
 function formatDateRange(startDate: string, endDate: string): string {
@@ -73,8 +74,10 @@ function formatDateRange(startDate: string, endDate: string): string {
 
 // Export transformed data for use in components
 export const getExperiences = () => {
-  return resumeData.cv.sections.experience.map((exp, index) => ({
-    id: resumeData.cv.sections.experience.length - index, // Reverse order for display
+  const experiences = resumeSections.experience ?? [];
+
+  return experiences.map((exp, index) => ({
+    id: experiences.length - index, // Reverse order for display
     title: exp.position,
     company: exp.company,
     period: formatDateRange(exp.start_date, exp.end_date),
@@ -83,12 +86,14 @@ export const getExperiences = () => {
 };
 
 export const getCertifications = () => {
-  return resumeData.cv.sections.certifications.map((cert, index) => {
+  const certifications = resumeSections.certifications ?? [];
+
+  return certifications.map((cert, index) => {
     // Parse the markdown-style bullet: "**GitHub Actions** (GH-200)"
     const match = cert.bullet.match(/\*\*(.+?)\*\*\s*\((.+?)\)/);
     if (match) {
       return {
-        id: resumeData.cv.sections.certifications.length - index,
+        id: certifications.length - index,
         title: `${match[1]} (${match[2]})`,
         period: 'Aug 2025', // TODO: Add dates to YAML if needed
         link: '', // Links not in YAML, will need to be maintained separately or added to YAML
@@ -104,8 +109,10 @@ export const getCertifications = () => {
 };
 
 export const getHonorsAndAwards = () => {
-  return resumeData.cv.sections.honors_and_awards.map((honor, index) => ({
-    id: resumeData.cv.sections.honors_and_awards.length - index,
+  const honorsAndAwards = resumeSections.honors_and_awards ?? [];
+
+  return honorsAndAwards.map((honor, index) => ({
+    id: honorsAndAwards.length - index,
     title: honor.name,
     institution: honor.location,
     period: formatDate(honor.date),
@@ -120,7 +127,9 @@ function formatDate(dateStr: string): string {
 }
 
 export const getEducation = () => {
-  return resumeData.cv.sections.education.map((edu, index) => ({
+  const education = resumeSections.education ?? [];
+
+  return education.map((edu, index) => ({
     id: index + 1,
     title: `${edu.degree} in ${edu.area}`,
     institution: edu.institution,
@@ -129,7 +138,7 @@ export const getEducation = () => {
 };
 
 export const getSummary = () => {
-  return resumeData.cv.sections.summary[0];
+  return resumeSections.summary?.[0] ?? '';
 };
 
 export const getContactInfo = () => ({
