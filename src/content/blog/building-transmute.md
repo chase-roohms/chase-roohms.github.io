@@ -4,7 +4,7 @@ date: "2026-03-14"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/transmute-converter.webp"
 description: "Why I built Transmute, a self-hosted file converter focused on polish, automation, and extensibility"
-topics: ["Python", "FastAPI", "Docker", "React"]
+topics: ["Python", "FastAPI", "Docker", "React", "Transmute"]
 slug: "building-transmute"
 icon: "FaExchangeAlt"
 ---
