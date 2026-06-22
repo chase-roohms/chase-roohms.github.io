@@ -8,6 +8,13 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'transmute-pikapods-partnership',
+    fullDate: '2026-06-19',
+    title: 'Transmute is Partnering with PikaPods',
+    description: 'Transmute, my self-hosted file converter, is partnering with PikaPods as its primary cloud deployment provider.',
+    link: 'https://chaseroohms.com/blog/transmute-pikapods/',
+  },
+  {
     id: 'transmute-five-hundred-stars',
     fullDate: '2026-04-19',
     title: 'Transmute Reaches 500 Stars',
