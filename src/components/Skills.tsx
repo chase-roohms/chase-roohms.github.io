@@ -45,7 +45,7 @@ export default function Skills({ compact = false }: SkillsProps) {
     { 
       name: 'AI',
       icon: FaBrain,
-      proficiency: 80,
+      proficiency: 100,
     },
     { 
       name: 'Code Signing',

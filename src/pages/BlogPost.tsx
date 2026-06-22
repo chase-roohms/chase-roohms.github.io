@@ -265,6 +265,19 @@ export default function BlogPost() {
                 img({ src, alt, className, ...props }: any) {
                   const altText = alt || 'Blog post image';
                   return <img src={src} alt={altText} className={className} loading="lazy" {...props} />;
+                },
+                a({ href, children, ...props }: any) {
+                  const isExternal = typeof href === 'string' && /^https?:\/\//i.test(href);
+
+                  if (isExternal) {
+                    return (
+                      <a href={href} target="_blank" rel="noopener" {...props}>
+                        {children}
+                      </a>
+                    );
+                  }
+
+                  return <a href={href} {...props}>{children}</a>;
                 }
               }}
             >
