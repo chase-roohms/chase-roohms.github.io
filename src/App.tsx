@@ -1,18 +1,22 @@
-import { useEffect, useState, useCallback, lazy, Suspense } from 'react';
+import { useEffect, useState, useCallback, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
+import ErrorBoundary from './components/ErrorBoundary';
+import { lazyWithRetry } from './utils/lazyWithRetry';
 import Home from './pages/Home';
 
-// Lazy-load non-critical routes for code splitting
-const About = lazy(() => import('./pages/About'));
-const Projects = lazy(() => import('./pages/Projects'));
-const News = lazy(() => import('./pages/News'));
-const Blog = lazy(() => import('./pages/Blog'));
-const BlogPost = lazy(() => import('./pages/BlogPost'));
-const Contact = lazy(() => import('./pages/Contact'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-const Achievements = lazy(() => import('./pages/Achievements'));
+// Lazy-load non-critical routes for code splitting.
+// lazyWithRetry recovers from transient chunk-load failures that would
+// otherwise leave the Suspense fallback (a blank screen) on-screen.
+const About = lazyWithRetry(() => import('./pages/About'));
+const Projects = lazyWithRetry(() => import('./pages/Projects'));
+const News = lazyWithRetry(() => import('./pages/News'));
+const Blog = lazyWithRetry(() => import('./pages/Blog'));
+const BlogPost = lazyWithRetry(() => import('./pages/BlogPost'));
+const Contact = lazyWithRetry(() => import('./pages/Contact'));
+const NotFound = lazyWithRetry(() => import('./pages/NotFound'));
+const Achievements = lazyWithRetry(() => import('./pages/Achievements'));
 import { useKonamiCode, useSecretWord, useLogoClicks } from './hooks/useKonamiCode';
 import { KonamiEasterEgg, AutomationEasterEgg, LogoClickEasterEgg } from './components/EasterEggs';
 import { unlockAchievement } from './utils/achievements';
@@ -83,19 +87,21 @@ function AppContent() {
     <>
       <ScrollToTop />
       <Layout onLogoClick={handleLogoClick}>
-        <Suspense fallback={<div className="min-h-screen" />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about/" element={<About />} />
-            <Route path="/projects/" element={<Projects />} />
-            <Route path="/news/" element={<News />} />
-            <Route path="/blog/" element={<Blog />} />
-            <Route path="/blog/:slug/" element={<BlogPost />} />
-            <Route path="/contact/" element={<Contact />} />
-            <Route path="/achievements/" element={<Achievements />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about/" element={<About />} />
+              <Route path="/projects/" element={<Projects />} />
+              <Route path="/news/" element={<News />} />
+              <Route path="/blog/" element={<Blog />} />
+              <Route path="/blog/:slug/" element={<BlogPost />} />
+              <Route path="/contact/" element={<Contact />} />
+              <Route path="/achievements/" element={<Achievements />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </Layout>
       
       {/* Easter Eggs */}

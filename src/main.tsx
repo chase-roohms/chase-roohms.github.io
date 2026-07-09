@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import './index.css'
 import App from './App.tsx'
 import { registerServiceWorker, checkInstallability } from './utils/pwa'
+import { isDynamicImportError } from './utils/lazyWithRetry'
 import { unlockAchievement, getAchievementStats, getAchievements } from './utils/achievements'
 
 // Handle chunk loading errors (occurs after deployments when cached chunks are outdated)
@@ -29,14 +30,14 @@ const handleChunkError = () => {
 };
 
 window.addEventListener('error', (event) => {
-  if (event.message?.includes('ChunkLoadError') || event.message?.includes('Loading chunk')) {
+  if (isDynamicImportError(event.message) || isDynamicImportError(event.error)) {
     event.preventDefault();
     handleChunkError();
   }
 });
 
 window.addEventListener('unhandledrejection', (event) => {
-  if (event.reason?.message?.includes('ChunkLoadError') || event.reason?.message?.includes('Loading chunk')) {
+  if (isDynamicImportError(event.reason)) {
     event.preventDefault();
     handleChunkError();
   }
