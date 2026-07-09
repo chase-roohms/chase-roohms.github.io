@@ -27,13 +27,14 @@ cv:
         details: Python, Bash, Java, C++, JavaScript
     experience:
       - company: SolarWinds
-        position: AI Ops Engineer
+        position: Senior AI Operations Engineer
         start_date: 2026-06
         end_date: present
         location: Austin, TX
         highlights:
-          - Leading technical strategy for a new AI Ops team focused on enterprise AI enablement, developer productivity, governance, and automation.
-          - Driving organization-wide AI adoption through platform integrations, internal tooling, usage standards, and developer training.
+          - Own and scale internal AI platform capabilities, approved AI tools, and operational controls to support secure, low-friction AI adoption across the organization.
+          - Design and maintain automations, integrations, scripts, and operational workflows using APIs, service accounts, and platform-native tooling to reduce manual effort and improve service reliability.
+          - Partner cross-functionally with IT, Security, Legal, Business Applications, and Engineering to translate business needs into practical, policy-aligned AI solutions, documentation, and governance patterns.
       - company: SolarWinds
         position: DevOps Engineer
         start_date: 2025-10
