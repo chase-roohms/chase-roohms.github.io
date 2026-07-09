@@ -28,7 +28,7 @@ cv:
     experience:
       - company: SolarWinds
         position: Senior AI Operations Engineer
-        start_date: 2026-06
+        start_date: 2026-07
         end_date: present
         location: Austin, TX
         highlights:
@@ -38,7 +38,7 @@ cv:
       - company: SolarWinds
         position: DevOps Engineer
         start_date: 2025-10
-        end_date: 2026-06
+        end_date: 2026-07
         location: Austin, TX
         highlights:
           - Reduced IT/DevOps overhead and accelerated developer workflows by building an end-to-end self-service platform for access management, repository creation, GCP project provisioning, and other resource requests.
