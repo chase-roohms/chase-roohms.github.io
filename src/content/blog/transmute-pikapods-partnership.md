@@ -1,5 +1,4 @@
 ---
-
 title: "Transmute Partners With PikaPods"
 date: "2026-06-21"
 author: Chase Roohms
@@ -8,7 +7,7 @@ description: "Why I chose PikaPods as the recommended hosted deployment option f
 topics: ["Open Source", "Self-Hosting", "Transmute"]
 slug: "transmute-pikapods"
 icon: "FaCloud"
----------------
+---
 
 [Transmute](https://transmute.sh), my self-hosted file converter, is partnering with PikaPods as its recommended hosted deployment option.
 
