@@ -8,6 +8,12 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'promotion-senior-aiops-engineer',
+    fullDate: '2026-07-16',
+    title: 'Promotion to Senior AIOps Engineer',
+    description: 'Advanced to DevOps Engineer role at SolarWinds.',
+  },
+  {
     id: 'transmute-pikapods-partnership',
     fullDate: '2026-06-19',
     title: 'Transmute is Partnering with PikaPods',
@@ -22,45 +28,10 @@ export const newsItems: NewsItem[] = [
     link: 'https://github.com/transmute-app/transmute/stargazers',
   },
   {
-    id: 'transmute-two-hundred-stars',
-    fullDate: '2026-03-28',
-    title: 'Transmute Reaches 200 Stars',
-    description: 'Transmute, my self-hosted file converter, has reached 200 stars on GitHub.',
-    link: 'https://github.com/transmute-app/transmute/stargazers',
-  },
-  {
     id: 'transmute-one-hundred-stars',
     fullDate: '2026-03-20',
     title: 'Transmute Reaches 100 Stars',
     description: 'Transmute, my self-hosted file converter, has reached 100 stars on GitHub.',
-    link: 'https://github.com/transmute-app/transmute/stargazers',
-  },
-  {
-    id: 'transmute-seventy-five-stars',
-    fullDate: '2026-03-18',
-    title: 'Transmute Reaches 75 Stars',
-    description: 'Transmute, my self-hosted file converter, has reached 75 stars on GitHub.',
-    link: 'https://github.com/transmute-app/transmute/stargazers',
-  },
-  {
-    id: 'transmute-fifty-stars',
-    fullDate: '2026-03-17',
-    title: 'Transmute Reaches 50 Stars',
-    description: 'Transmute, my self-hosted file converter, has reached 50 stars on GitHub.',
-    link: 'https://github.com/transmute-app/transmute/stargazers',
-  },
-  {
-    id: 'transmute-twenty-five-stars',
-    fullDate: '2026-03-16',
-    title: 'Transmute Reaches 25 Stars',
-    description: 'Transmute, my self-hosted file converter, has reached 25 stars on GitHub.',
-    link: 'https://github.com/transmute-app/transmute/stargazers',
-  },
-  {
-    id: 'transmute-ten-stars',
-    fullDate: '2026-03-06',
-    title: 'Transmute Reaches 10 Stars',
-    description: 'Transmute, my self-hosted file converter, has reached 10 stars on GitHub.',
     link: 'https://github.com/transmute-app/transmute/stargazers',
   },
   {
