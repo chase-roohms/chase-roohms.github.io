@@ -10,8 +10,8 @@ export const newsItems: NewsItem[] = [
   {
     id: 'promotion-senior-aiops-engineer',
     fullDate: '2026-07-16',
-    title: 'Promotion to Senior AIOps Engineer',
-    description: 'Advanced to DevOps Engineer role at SolarWinds.',
+    title: 'Promotion to Senior AI Operations Engineer',
+    description: 'Advanced to Senior AI Operations Engineer role at SolarWinds.',
   },
   {
     id: 'transmute-pikapods-partnership',
