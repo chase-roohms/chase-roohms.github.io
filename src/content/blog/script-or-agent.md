@@ -14,6 +14,10 @@ In [The Criteria for Automation](/blog/criteria-for-automation), I argued that b
 
 Those questions help determine whether a process is worth automating at all. With the explosion of AI tools, there is now a second decision to make: **Should you automate it with a traditional script, or build an AI agent?**
 
+<figure class="my-6">
+  <img src="https://chaseroohms.com/blog-images/clock-vs-money-scale.webp" alt="Figure showing scales weighing time against money" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+</figure>
+
 Agents are quickly becoming the default answer to every automation problem. Sometimes that is exactly what the process needs. Other times, you are replacing twenty lines of reliable Python with a slower, more expensive system that occasionally makes up its own instructions.
 
 The goal should be to use the simplest form of automation capable of handling the problem.
@@ -65,6 +69,10 @@ In my current role, I helped build a triage system that uses an LLM to understan
 
 The model was not valuable because it could click buttons or call APIs. A script could already do those things. It was valuable because it could interpret unstructured language.
 
+<figure class="my-6">
+  <img src="https://chaseroohms.com/blog-images/script-or-agent-example.webp" alt="Comparison of a script poorly handling a problem vs an agent handling it well" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+</figure>
+
 That is the distinction I use most often: **Scripts execute known rules. Agents navigate ambiguity.**
 
 ## What Makes Something an Agent?
@@ -110,8 +118,7 @@ Scripts and agents should not be treated as competing approaches. Let the model 
 5. Low-confidence or invalid responses go to a human.
 
 <figure class="my-6">
-	<img src="https://chaseroohms.com/blog-images/script-or-agent-hybrid-workflow.svg" alt="Workflow diagram showing incoming requests interpreted by an LLM, validated by deterministic code, then either auto-routed or sent for human review" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
-	<figcaption class="text-center text-sm text-gray-400 mt-2">A hybrid workflow: the model interprets the request, and deterministic code decides what happens next.</figcaption>
+  <img src="https://chaseroohms.com/blog-images/script-and-agent-example.webp" alt="Example of a script and agent working together to solve a problem." class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
 </figure>
 
 The model's responsibility is narrow: interpret the language. It does not need unrestricted access or permission to invent its own actions.
