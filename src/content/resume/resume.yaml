@@ -53,7 +53,7 @@ cv:
         highlights:
           - Increased code scanning coverage by ~400% using GitHub CodeQL.
           - Reduced GitHub Actions runner minute spend by ~45% by improving workflow efficiency.
-          - Achieved SLSA Level 2 compliance across multiple products.
+          - Achieved SLSA Level 2 compliance across multiple products by automating SBOM and provenance generation.
     projects:
       - name: Transmute
         #date: 2026-02
