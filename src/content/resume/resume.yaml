@@ -18,9 +18,7 @@ cv:
       - AI Ops Engineer focused on secure, practical AI adoption across organizations. Experienced in AI enablement, developer tooling, scalable automation, CI/CD optimization, infrastructure cost reduction, compliance, and IT security.
     skills:
       - label: AI / Dev Tools
-        details: GitHub Copilot, Claude Code, AWS Bedrock, Claude Enterprise, Glean
-      - label: CI/CD
-        details: GitHub Actions, TeamCity, Azure DevOps
+        details: GitHub Copilot, Claude, AWS Bedrock, Glean, GitHub Actions, TeamCity, Azure DevOps
       - label: Cloud
         details: Google Cloud Platform (GCP), Amazon Web Services (AWS)
       - label: Languages
@@ -32,9 +30,10 @@ cv:
         end_date: present
         location: Austin, TX
         highlights:
-          - Own and scale internal AI platform capabilities, approved AI tools, and operational controls to support secure, low-friction AI adoption across the organization.
-          - Design and maintain automations, integrations, scripts, and operational workflows using APIs, service accounts, and platform-native tooling to reduce manual effort and improve service reliability.
-          - Partner cross-functionally with IT, Security, Legal, Business Applications, and Engineering to translate business needs into practical, policy-aligned AI solutions, documentation, and governance patterns.
+          - Scaled enterprise AI access 3x, from 500 to 1,500 users, while building the platform capabilities, operational controls, and governance needed to support secure, low-friction adoption across the organization.
+          - Reduced average AI cost per user by 56%, from $305 to $135/month, without sacrificing productivity, through model-selection guidance, targeted user education, budget controls, and proactive usage management.
+          - Increased weekly active usage from 69% to 91% and monthly active usage from 82% to 98% through targeted training, license rotation, adoption campaigns, and data-driven optimization of user access.
+          - Built and owned centralized AI cost tracking and reporting, giving leadership visibility into spend trends and helping halt sustained month-over-month cost growth through earlier detection, forecasting, and intervention.
       - company: SolarWinds
         position: DevOps Engineer
         start_date: 2025-10
@@ -54,7 +53,7 @@ cv:
         highlights:
           - Increased code scanning coverage by ~400% using GitHub CodeQL.
           - Reduced GitHub Actions runner minute spend by ~45% by improving workflow efficiency.
-          - Achieved SLSA Level 2 compliance across multiple products by automating signed SBOM and provenance generation in CI/CD pipelines.
+          - Achieved SLSA Level 2 compliance across multiple products.
     projects:
       - name: Transmute
         #date: 2026-02
