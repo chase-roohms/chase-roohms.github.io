@@ -11,8 +11,8 @@ interface Experience {
   position: string;
   start_date: string;
   end_date: string;
-  location: string;
-  highlights: string[];
+  location?: string;
+  highlights?: string[];
 }
 
 interface Certification {
@@ -81,7 +81,7 @@ export const getExperiences = () => {
     title: exp.position,
     company: exp.company,
     period: formatDateRange(exp.start_date, exp.end_date),
-    achievements: exp.highlights,
+    achievements: exp.highlights ?? [],
   }));
 };
 

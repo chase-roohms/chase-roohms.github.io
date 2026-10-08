@@ -15,22 +15,25 @@ cv:
   custom_connections:
   sections:
     summary:
-      - AI Ops Engineer focused on secure, practical AI adoption across organizations. Experienced in AI enablement, developer tooling, scalable automation, CI/CD optimization, infrastructure cost reduction, compliance, and IT security.
+      - AI Operations Engineer driving enterprise-wide AI adoption, developer productivity, and infrastructure cost optimization. Experienced in scaling AI platforms to 1500+ users, delivering measurable efficiency gains, and building secure, scalable engineering solutions.
     skills:
-      - label: AI / Dev Tools
-        details: GitHub Copilot, Claude, AWS Bedrock, Glean, GitHub Actions, TeamCity, Azure DevOps
-      - label: Cloud
-        details: Google Cloud Platform (GCP), Amazon Web Services (AWS)
+      - label: AI Platforms
+        details: GitHub Copilot, Claude, AWS Bedrock, Glean, Aperture (LLM Gateway)
+      - label: DevOps
+        details: GitHub Actions, TeamCity, Azure DevOps, CI/CD
+      - label: Cloud & Infrastructure
+        details: AWS, GCP, Docker, Terraform, Linux
       - label: Languages
-        details: Python, Bash, Java, C++, JavaScript
+        details: Python, Bash, JavaScript/TypeScript, Java, C++
     experience:
       - company: SolarWinds
+        employer: SolarWinds # Custom key: only set on the first role per company to render the group header
         position: Senior AI Operations Engineer
         start_date: 2026-07
         end_date: present
         location: Austin, TX
         highlights:
-          - Scaled enterprise AI access 3x, from 500 to 1,500 users, while building the platform capabilities, operational controls, and governance needed to support secure, low-friction adoption across the organization.
+          - Scaled enterprise AI (Glean) access 3x, from 500 to 1,500 users, while building the platform capabilities, operational controls, and governance needed to support secure, low-friction adoption across the organization.
           - Reduced average AI cost per user by 56%, from $305 to $135/month, without sacrificing productivity, through model-selection guidance, targeted user education, budget controls, and proactive usage management.
           - Increased weekly active usage from 69% to 91% and monthly active usage from 82% to 98% through targeted training, license rotation, adoption campaigns, and data-driven optimization of user access.
           - Built and owned centralized AI cost tracking and reporting, giving leadership visibility into spend trends and helping halt sustained month-over-month cost growth through earlier detection, forecasting, and intervention.
@@ -38,7 +41,6 @@ cv:
         position: DevOps Engineer
         start_date: 2025-10
         end_date: 2026-07
-        location: Austin, TX
         highlights:
           - Reduced IT/DevOps overhead and accelerated developer workflows by building an end-to-end self-service platform for access management, repository creation, GCP project provisioning, and other resource requests.
           - Reduced manually routed Helpdesk tickets by ~70% with a custom-built triage agent that uses LLMs to understand and route incoming requests to the appropriate teams.
@@ -49,11 +51,14 @@ cv:
         position: Associate DevOps Engineer
         start_date: 2024-10
         end_date: 2025-10
-        location: Austin, TX
         highlights:
           - Increased code scanning coverage by ~400% using GitHub CodeQL.
           - Reduced GitHub Actions runner minute spend by ~45% by improving workflow efficiency.
           - Achieved SLSA Level 2 compliance across multiple products by automating SBOM and provenance generation.
+      - company: SolarWinds
+        position: Security Engineer Intern
+        start_date: 2024-06
+        end_date: 2024-10
     projects:
       - name: Transmute
         #date: 2026-02
@@ -62,9 +67,9 @@ cv:
         location: transmute.sh
         summary: Open-source, self-hosted file converter that handles images, video, audio, data, documents, and more.
         highlights:
-          - Built a full-stack Python/FastAPI and React/TypeScript application integrating 6 open-source converter engines.
-          - Containerized the application with Docker, enabling one-command self-hosted deployment via Docker Compose.
-          - Grew community adoption through PikaPods publishing, selfh.st coverage, and YouTube features.
+          - Architected and developed a full-stack file conversion platform using Python/FastAPI, React/TypeScript, and six open-source conversion engines.
+          - Grew the project to 1,400+ GitHub stars, 100 forks, and 1M+ container pulls, demonstrating substantial open-source adoption.
+          - Built and maintained an open-source contributor community of 35 contributors, coordinating contributions, reviewing code, and guiding the project's technical direction.
       #- name: Dumpsterr
       #  #date: 2026-01
       #  start_date:
@@ -104,9 +109,9 @@ cv:
       #  location: SolarWinds
       #  date: 2025-06
       #  summary: Brought unmatched energy and precision to the DevOps workflow.
-    #certifications:
-    #  - bullet: "**GitHub Actions** (GH-200)"
-    #  - bullet: "**GitHub Copilot** (GH-300)"
+    certifications:
+      - bullet: "**GitHub Actions** (GH-200)"
+      - bullet: "**GitHub Copilot** (GH-300)"
     education:
       - institution: Texas State University
         area: Computer Science
@@ -201,15 +206,16 @@ design:
       space_between_items: 0cm
       space_between_bullet_and_text: 0.3em
   templates:
-    footer: 'Last updated in CURRENT_DATE'
+    footer: '' #'Last updated in CURRENT_DATE'
     education_entry:
       main_column: "**INSTITUTION**\n*DEGREE* *in* *AREA*\nSUMMARY\nHIGHLIGHTS"
       degree_column: null
-      date_and_location_column: "*LOCATION*\n*DATE*"
+      date_and_location_column: "*DATE*\n*LOCATION*"
     normal_entry:
-      date_and_location_column: "*LOCATION*\n*DATE*"
+      date_and_location_column: "*DATE*\n*LOCATION*"
     experience_entry:
-      main_column: "**POSITION**\n*COMPANY*\nSUMMARY\nHIGHLIGHTS"
+      # No spaces in the #text call so RenderCV drops it entirely when EMPLOYER is missing
+      main_column: "#text(size:1.2em,weight:\"bold\",\"EMPLOYER\")\n**POSITION**\nSUMMARY\nHIGHLIGHTS"
       date_and_location_column: "*LOCATION*\n*DATE*"
 locale:
   language: english
