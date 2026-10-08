@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 255" width="340" height="255" role="img" aria-labelledby="title">
+  <title id="title">Continuous improvement cycle: understand, enable, measure, listen, improve, and repeat</title>
+  <defs>
+    <marker id="improvement-loop-arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0 0 L6 3 L0 6 Z" fill="#5893B9"/>
+    </marker>
+  </defs>
+  <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#FFFFFF">
+    <rect x="123" y="14" width="94" height="32" rx="16" fill="#185E83"/>
+    <text x="170" y="34">Understand</text>
+    <rect x="230" y="62" width="94" height="32" rx="16" fill="#185E83"/>
+    <text x="277" y="82">Enable</text>
+    <rect x="230" y="161" width="94" height="32" rx="16" fill="#185E83"/>
+    <text x="277" y="181">Measure</text>
+    <rect x="123" y="210" width="94" height="32" rx="16" fill="#185E83"/>
+    <text x="170" y="230">Listen</text>
+    <rect x="16" y="161" width="94" height="32" rx="16" fill="#185E83"/>
+    <text x="63" y="181">Improve</text>
+    <rect x="16" y="62" width="94" height="32" rx="16" fill="#185E83"/>
+    <text x="63" y="82">Repeat</text>
+  </g>
+  <g fill="none" stroke="#5893B9" stroke-width="2.5" marker-end="url(#improvement-loop-arrow)">
+    <path d="M219 31 Q258 30 274 60"/>
+    <path d="M295 96 Q317 126 295 156"/>
+    <path d="M274 195 Q257 225 220 226"/>
+    <path d="M120 226 Q83 225 66 195"/>
+    <path d="M45 156 Q23 126 45 96"/>
+    <path d="M66 60 Q82 30 120 31"/>
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#EDEDED">
+    <text x="170" y="121">Continuous</text>
+    <text x="170" y="138">improvement</text>
+  </g>
+</svg>
