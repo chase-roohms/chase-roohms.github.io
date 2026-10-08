@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaCommentDots, FaPaperPlane } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { unlockAchievement } from '../utils/achievements';
+import { getPageTitle } from '../utils/pageTitle';
 
 export default function Contact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -69,7 +70,7 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact - Chase Roohms - DevOps Engineer & Automation Evangelist</title>
+        <title>{getPageTitle('Contact')}</title>
         <meta name="description" content="Get in touch with Chase Roohms via email, GitHub, or LinkedIn. Let's connect!" />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />

@@ -7,6 +7,7 @@ import SearchBar from '../components/SearchBar';
 import TopicFilter from '../components/TopicFilter';
 import FilterResultsCount from '../components/FilterResultsCount';
 import { useContentFilter } from '../hooks/useContentFilter';
+import { getPageTitle } from '../utils/pageTitle';
 
 export default function Projects() {
   const ITEMS_PER_PAGE = 6;
@@ -135,7 +136,7 @@ export default function Projects() {
   return (
     <>
       <Helmet>
-        <title>Projects - Chase Roohms - DevOps Engineer & Automation Evangelist</title>
+        <title>{getPageTitle('Projects')}</title>
         <meta name="description" content="Professional and personal projects by Chase Roohms, including DevOps automation, web applications, and infrastructure solutions." />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />

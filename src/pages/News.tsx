@@ -4,6 +4,7 @@ import { FaNewspaper, FaRss, FaTimes } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { newsItems } from '../utils/newsData';
 import { formatDateShort } from '../utils/dateFormatter';
+import { getPageTitle } from '../utils/pageTitle';
 import { useState, useEffect } from 'react';
 
 export default function News() {
@@ -62,7 +63,7 @@ export default function News() {
   return (
     <>
       <Helmet>
-        <title>News - Chase Roohms - DevOps Engineer & Automation Evangelist</title>
+        <title>{getPageTitle('News')}</title>
         <meta name="description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />

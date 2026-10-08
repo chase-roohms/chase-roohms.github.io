@@ -1,5 +1,6 @@
 export const profileData = {
   name: "Chase Roohms",
+  titleDescriptor: "AI Operations Engineer & Open-Source Developer",
   headline: "Senior AI Ops Engineer at SolarWinds and an Automation Evangelist\nFounder of Transmute",
   biography: [
     "I'm a Senior AI Operations Engineer at SolarWinds, where I help turn emerging AI capabilities into practical, scalable tools used across the organization.",

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaRobot } from 'react-icons/fa';
+import { getPageTitle } from '../utils/pageTitle';
 
 const funMessages = [
   {
@@ -43,7 +44,7 @@ export default function NotFound() {
   return (
     <>
       <Helmet>
-        <title>404 - Page Not Found - Chase Roohms</title>
+        <title>{getPageTitle('Page Not Found')}</title>
         <meta name="description" content="The page you're looking for doesn't exist." />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>

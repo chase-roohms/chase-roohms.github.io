@@ -8,6 +8,7 @@ import ProjectCard from '../components/ProjectCard';
 import BlogPostCard from '../components/BlogPostCard';
 import { getFeaturedProject } from '../utils/projectsData';
 import { profileData } from '../utils/profileData';
+import { getPageTitle } from '../utils/pageTitle';
 import { getAllBlogPosts, getAllBlogPostsSync, type BlogPost } from '../utils/blogLoader';
 import headshot from '../assets/images/headshot.webp';
 
@@ -30,7 +31,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Chase Roohms - DevOps Engineer & Automation Evangelist</title>
+        <title>{getPageTitle()}</title>
         <meta name="description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code. Explore my projects, blog posts, and professional journey." />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />

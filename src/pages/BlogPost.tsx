@@ -6,6 +6,7 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import { getBlogPost, getBlogPostSync, getRelatedPostsSync, type BlogPost } from '../utils/blogLoader';
 import { formatDate } from '../utils/dateFormatter';
+import { getPageTitle } from '../utils/pageTitle';
 import { FaRobot, FaCloud, FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock, FaEye, FaDollarSign, FaStar, FaBalanceScale, FaDocker, FaGithub, FaHome, FaExchangeAlt, FaUserTie, FaSyncAlt } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
 
@@ -144,7 +145,7 @@ export default function BlogPost() {
   return (
     <>
       <Helmet>
-        <title>{post.title} - Chase Roohms</title>
+        <title>{getPageTitle(post.title)}</title>
         <meta name="description" content={post.description} />
         <meta name="author" content={post.author || 'Chase Roohms'} />
         <meta property="og:title" content={post.title} />

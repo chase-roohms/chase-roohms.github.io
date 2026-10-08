@@ -20,6 +20,7 @@ import Skills from '../components/Skills';
 import BiographyText from '../components/BiographyText';
 import { getExperiences, getHonorsAndAwards, getEducation, getContactInfo } from '../utils/resumeLoader';
 import { profileData } from '../utils/profileData';
+import { getPageTitle } from '../utils/pageTitle';
 
 function SectionHeading({ icon: Icon, children }: { icon: IconType; children: ReactNode }) {
   return (
@@ -62,7 +63,7 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About - Chase Roohms - DevOps Engineer & Automation Evangelist</title>
+        <title>{getPageTitle('About')}</title>
         <meta name="description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />

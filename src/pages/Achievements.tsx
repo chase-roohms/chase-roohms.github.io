@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { getAchievements, getAchievementStats, unlockAchievement, resetAchievements, type Achievement } from '../utils/achievements';
+import { getPageTitle } from '../utils/pageTitle';
 
 export default function Achievements() {
   const [achievements, setAchievements] = useState<Achievement[]>([]);
@@ -72,7 +73,7 @@ export default function Achievements() {
   return (
     <>
       <Helmet>
-        <title>Achievements - Chase Roohms</title>
+        <title>{getPageTitle('Achievements')}</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 

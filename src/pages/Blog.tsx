@@ -7,6 +7,7 @@ import SearchBar from '../components/SearchBar';
 import TopicFilter from '../components/TopicFilter';
 import FilterResultsCount from '../components/FilterResultsCount';
 import { useContentFilter } from '../hooks/useContentFilter';
+import { getPageTitle } from '../utils/pageTitle';
 
 const ITEMS_PER_PAGE = 9;
 
@@ -48,7 +49,7 @@ export default function Blog() {
   return (
     <>
       <Helmet>
-        <title>Blog - Chase Roohms - DevOps Engineer & Automation Evangelist</title>
+        <title>{getPageTitle('Blog')}</title>
         <meta name="description" content="Technical articles, tutorials, and thoughts on DevOps, automation, and software development by Chase Roohms." />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />
