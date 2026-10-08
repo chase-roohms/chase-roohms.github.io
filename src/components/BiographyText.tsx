@@ -9,22 +9,36 @@ export default function BiographyText({ paragraphs, className = 'text-gray-400 l
   return (
     <>
       {paragraphs.map((paragraph, index) => {
-        // Check if paragraph contains contact page link
-        if (paragraph.includes('contact page')) {
-          const parts = paragraph.split('contact page');
-          return (
-            <p key={index} className={className}>
-              {parts[0]}
-              <Link to="/contact/" className="text-primary-400 hover:text-primary-300 underline">
-                contact page
-              </Link>
-              {parts[1]}
-            </p>
-          );
-        }
+        const parts = paragraph.split(/(\[[^\]]+\]\(https?:\/\/[^)\s]+\)|contact page)/g);
+
         return (
           <p key={index} className={className}>
-            {paragraph}
+            {parts.map((part, partIndex) => {
+              if (part === 'contact page') {
+                return (
+                  <Link key={partIndex} to="/contact/" className="text-primary-400 hover:text-primary-300 underline">
+                    contact page
+                  </Link>
+                );
+              }
+
+              const markdownLink = part.match(/^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/);
+              if (markdownLink) {
+                return (
+                  <a
+                    key={partIndex}
+                    href={markdownLink[2]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-400 hover:text-primary-300 underline"
+                  >
+                    {markdownLink[1]}
+                  </a>
+                );
+              }
+
+              return part;
+            })}
           </p>
         );
       })}

@@ -2,8 +2,8 @@ export const profileData = {
   name: "Chase Roohms",
   headline: "Senior AI Ops Engineer at SolarWinds and an Automation Evangelist\nFounder of Transmute",
   biography: [
-    "I'm a Senior AI Ops Engineer at SolarWinds, focused on developer enablement, scalable automation, and responsible AI adoption. Coming from a software, DevOps, and security background, I like building systems that make engineering teams faster, safer, and less dependent on manual process.",
-    "When I'm not working, you'll usually find me exploring new tech, running my own home servers, or building small projects just to see what I can learn from them.",
-    "If you're interested in chatting, collaborating, or just saying hello, you can get in touch via my contact page.",
+    "I'm a Senior AI Operations Engineer at SolarWinds, where I help turn emerging AI capabilities into practical, scalable tools used across the organization.",
+    "My background spans software engineering, DevOps, security, and automation. I'm particularly interested in removing friction from engineering workflows, making powerful technology accessible, and building systems that people actually want to use.",
+    "Outside of work, I'm the creator of [Transmute](https://transmute.sh), an open-source, self-hosted file converter, and a lifelong tinkerer with a habit of turning small ideas into unnecessarily elaborate projects.",
   ]
 };
