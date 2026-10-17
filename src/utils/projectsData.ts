@@ -1,4 +1,5 @@
 import opsgenieSwirHeader from '../assets/images/opsgenie-swir-header.webp';
+import legendkeeperMcpHeader from '../assets/images/legendkeeper-mcp-header.webp';
 import homelabHeader from '../assets/images/homelab-header.webp';
 import mythicmateHeader from '../assets/images/mythicmate-header.webp';
 import onePacePostersHeader from '../assets/images/one-pace-posters-header.webp';
@@ -31,6 +32,17 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'legendkeeper-mcp',
+    fullDate: '2026-10-16',
+    title: 'LegendKeeper MCP',
+    description: 'MCP server for LegendKeeper, lets AI assistants read and build your TTRPG worlds.',
+    tech: ['Python', 'Docker', 'MCP', 'AI'],
+    image: legendkeeperMcpHeader,
+    link: 'https://github.com/chase-roohms/legendkeeper-mcp',
+    github_link: 'https://github.com/chase-roohms/legendkeeper-mcp',
+    ghcr_link: 'https://ghcr.io/chase-roohms/legendkeeper-mcp',
+  },
   {
     id: 'transmute',
     fullDate: '2026-02-28',
