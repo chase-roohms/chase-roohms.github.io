@@ -4,7 +4,7 @@ date: "2026-01-22"
 author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/executive-communication-header.webp"
 description: "Communicate with clarity and earn your leadership's trust in the process."
-topics: ["Communication", "Leadership"]
+topics: ["Communication", "Career"]
 slug: "communicationg-with-executives"
 icon: "FaUserTie"
 ---
