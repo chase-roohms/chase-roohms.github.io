@@ -55,6 +55,48 @@
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
     overflow: hidden;
   }
+
+  .prose .career-timeline {
+    @apply my-8 rounded-2xl border border-gray-800 bg-gray-900/50 p-5 sm:p-8;
+  }
+
+  .prose .career-timeline figcaption {
+    @apply m-0 mb-6 text-xs font-semibold uppercase tracking-widest text-gray-400;
+  }
+
+  .prose .career-timeline ol {
+    @apply m-0 list-none p-0;
+  }
+
+  .prose .career-timeline li {
+    @apply relative m-0 ml-1 border-l-2 border-primary-800 pb-7 pl-6 sm:pl-8;
+  }
+
+  .prose .career-timeline li:last-child {
+    @apply border-transparent pb-0;
+  }
+
+  .prose .career-timeline li::before {
+    content: '';
+    @apply absolute -left-2 top-1 h-3.5 w-3.5 rounded-full border-2 border-primary-400 bg-gray-950;
+  }
+
+  .prose .career-timeline li:last-child::before {
+    @apply bg-primary-400;
+    box-shadow: 0 0 0 4px theme('colors.primary.400 / 15%');
+  }
+
+  .prose .career-timeline-date {
+    @apply block text-sm font-semibold leading-6 text-primary-400;
+  }
+
+  .prose .career-timeline h3 {
+    @apply m-0 mt-1 text-lg font-semibold leading-snug text-gray-100;
+  }
+
+  .prose .career-timeline p {
+    @apply m-0 mt-1 text-sm leading-relaxed text-gray-400;
+  }
 }
 
 /* Print Stylesheet */
