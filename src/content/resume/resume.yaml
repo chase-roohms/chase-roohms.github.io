@@ -15,10 +15,10 @@ cv:
   custom_connections:
   sections:
     summary:
-      - AI Operations Engineer driving enterprise-wide AI adoption, developer productivity, and infrastructure cost optimization. Experienced in scaling AI platforms to 1500+ users, delivering measurable efficiency gains, and building secure, scalable engineering solutions.
+      - Senior Software Engineer specializing in AI developer platforms, enterprise LLM infrastructure, and developer productivity. Experienced in operating agentic development platforms, scaling AI tooling to 1,500+ users, optimizing AI costs, and building secure, reliable solutions that accelerate engineering workflows.
     skills:
-      - label: AI Platforms
-        details: GitHub Copilot, Claude, AWS Bedrock, Glean, Aperture (LLM Gateway)
+      - label: AI
+        details: Factory, GitHub Copilot, Claude, AWS Bedrock, Azure AI Foundry, Glean, Aperture (LLM Gateway), MCP
       - label: DevOps
         details: GitHub Actions, TeamCity, Azure DevOps, CI/CD
       - label: Cloud & Infrastructure
@@ -28,14 +28,23 @@ cv:
     experience:
       - company: SolarWinds
         employer: SolarWinds # Custom key: only set on the first role per company to render the group header
+        position: Senior Software Engineer, AI Developer Platform
+        start_date: 2026-11
+        end_date: present
+        location: Austin, TX # Only put on first entry
+        highlights:
+          - Own the operation and evolution of Factory's agentic software development platform, enabling autonomous AI workflows across the engineering organization.
+          - Manage enterprise LLM infrastructure spanning AWS Bedrock, Azure AI Foundry, and Aperture (LLM gateway), with a focus on secure model access, governance, and cost controls.
+          - Develop and maintain Model Context Protocol (MCP) integrations and developer tooling to connect AI agents with internal systems and engineering workflows.
+          - Drive engineering-wide AI adoption through platform enablement, reusable integrations, and collaboration with development teams.
+      - company: SolarWinds
         position: Senior AI Operations Engineer
         start_date: 2026-07
-        end_date: present
-        location: Austin, TX
+        end_date: 2026-11
         highlights:
           - Scaled enterprise AI (Glean) access 3x, from 500 to 1,500 users, while building the platform capabilities, operational controls, and governance needed to support secure, low-friction adoption across the organization.
           - Reduced average AI cost per user by 56%, from $305 to $135/month, without sacrificing productivity, through model-selection guidance, targeted user education, budget controls, and proactive usage management.
-          - Increased weekly active usage from 69% to 91% and monthly active usage from 82% to 98% through targeted training, license rotation, adoption campaigns, and data-driven optimization of user access.
+          - Increased weekly active usage of our core AI platform from 69% to 91% and monthly active usage from 82% to 98% through targeted training, license rotation, adoption campaigns, and data-driven optimization of user access.
           - Built and owned centralized AI cost tracking and reporting, giving leadership visibility into spend trends and helping halt sustained month-over-month cost growth through earlier detection, forecasting, and intervention.
       - company: SolarWinds
         position: DevOps Engineer

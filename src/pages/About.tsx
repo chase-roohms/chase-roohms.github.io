@@ -64,20 +64,20 @@ export default function About() {
     <>
       <Helmet>
         <title>{getPageTitle('About')}</title>
-        <meta name="description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
+        <meta name="description" content="Senior Software Engineer on the AI Developer Platform team at SolarWinds, building enterprise AI infrastructure and developer tooling." />
         <meta name="author" content="Chase Roohms" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://chaseroohms.com/about/" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Chase Roohms" />
         <meta property="og:title" content="About - Chase Roohms" />
-        <meta property="og:description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
+        <meta property="og:description" content="Senior Software Engineer on the AI Developer Platform team at SolarWinds, building enterprise AI infrastructure and developer tooling." />
         <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
         <meta property="og:image:type" content="image/webp" />
-        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta property="og:image:alt" content="Chase Roohms - Software Engineer Portfolio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Chase Roohms" />
-        <meta name="twitter:description" content="DevOps Engineer at SolarWinds specializing in automation and infrastructure as code." />
+        <meta name="twitter:description" content="Senior Software Engineer on the AI Developer Platform team at SolarWinds, building enterprise AI infrastructure and developer tooling." />
         <meta name="twitter:image" content="https://chaseroohms.com/social-preview.webp" />
         <link rel="canonical" href="https://chaseroohms.com/about/" />
       </Helmet>
@@ -118,7 +118,7 @@ export default function About() {
                   <span className="w-9 h-9 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
                     <FaBriefcase className="text-primary-400 w-4 h-4" />
                   </span>
-                  <span>Senior AI Ops Engineer</span>
+                  <span>Senior Software Engineer</span>
                 </li>
                 <li className="flex items-center gap-3 text-gray-300">
                   <span className="w-9 h-9 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">

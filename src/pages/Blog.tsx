@@ -60,7 +60,7 @@ export default function Blog() {
         <meta property="og:description" content="Technical articles, tutorials, and thoughts on DevOps, automation, and software development by Chase Roohms." />
         <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
         <meta property="og:image:type" content="image/webp" />
-        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta property="og:image:alt" content="Chase Roohms - Software Engineer Portfolio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Blog - Chase Roohms" />
         <meta name="twitter:description" content="Technical articles, tutorials, and thoughts on DevOps, automation, and software development by Chase Roohms." />

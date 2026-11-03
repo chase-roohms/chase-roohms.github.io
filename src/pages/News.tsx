@@ -74,7 +74,7 @@ export default function News() {
         <meta property="og:description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />
         <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
         <meta property="og:image:type" content="image/webp" />
-        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta property="og:image:alt" content="Chase Roohms - Software Engineer Portfolio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="News - Chase Roohms" />
         <meta name="twitter:description" content="Latest professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development." />

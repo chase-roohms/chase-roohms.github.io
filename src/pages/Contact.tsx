@@ -81,7 +81,7 @@ export default function Contact() {
         <meta property="og:description" content="Get in touch with Chase Roohms via email, GitHub, or LinkedIn. Let's connect!" />
         <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
         <meta property="og:image:type" content="image/webp" />
-        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta property="og:image:alt" content="Chase Roohms - Software Engineer Portfolio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact - Chase Roohms" />
         <meta name="twitter:description" content="Get in touch with Chase Roohms via email, GitHub, or LinkedIn. Let's connect!" />

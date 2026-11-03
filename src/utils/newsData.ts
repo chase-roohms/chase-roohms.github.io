@@ -8,6 +8,12 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'senior-software-engineer-ai-developer-platform',
+    fullDate: '2026-11-03',
+    title: 'Joined the AI Developer Platform Team',
+    description: 'Started a new role as Senior Software Engineer on the AI Developer Platform team at SolarWinds.',
+  },
+  {
     id: 'promotion-senior-aiops-engineer',
     fullDate: '2026-07-16',
     title: 'Promotion to Senior AI Operations Engineer',

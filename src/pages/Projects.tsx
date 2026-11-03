@@ -147,7 +147,7 @@ export default function Projects() {
         <meta property="og:description" content="Professional and personal projects by Chase Roohms, including DevOps automation, web applications, and infrastructure solutions." />
         <meta property="og:image" content="https://chaseroohms.com/social-preview.webp" />
         <meta property="og:image:type" content="image/webp" />
-        <meta property="og:image:alt" content="Chase Roohms - DevOps Engineer Portfolio" />
+        <meta property="og:image:alt" content="Chase Roohms - Software Engineer Portfolio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Projects - Chase Roohms" />
         <meta name="twitter:description" content="Professional and personal projects by Chase Roohms, including DevOps automation, web applications, and infrastructure solutions." />
