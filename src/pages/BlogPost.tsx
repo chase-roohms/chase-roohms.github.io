@@ -117,12 +117,17 @@ export default function BlogPost() {
     );
   }
 
+  // Social/structured-data image URLs must be absolute, while post frontmatter may use root-relative paths.
+  const absoluteImage = post.image
+    ? new URL(post.image, 'https://chaseroohms.com').href
+    : undefined;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
-    "image": post.image || "https://chaseroohms.com/social-preview.webp",
+    "image": absoluteImage || "https://chaseroohms.com/social-preview.webp",
     "datePublished": post.date,
     "dateModified": post.date,
     "author": {
@@ -153,7 +158,7 @@ export default function BlogPost() {
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://chaseroohms.com/blog/${post.slug}/`} />
         <meta property="og:site_name" content="Chase Roohms" />
-        {post.image && <meta property="og:image" content={post.image} />}
+        {absoluteImage && <meta property="og:image" content={absoluteImage} />}
         {post.image && <meta property="og:image:width" content="1920" />}
         {post.image && <meta property="og:image:height" content="716" />}
         <meta property="article:published_time" content={post.date} />
@@ -161,7 +166,7 @@ export default function BlogPost() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.description} />
-        {post.image && <meta name="twitter:image" content={post.image} />}
+        {absoluteImage && <meta name="twitter:image" content={absoluteImage} />}
         {post.image && <link rel="preload" as="image" href={post.image} />}
         <link rel="canonical" href={`https://chaseroohms.com/blog/${post.slug}/`} />
         <script type="application/ld+json">

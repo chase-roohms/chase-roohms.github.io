@@ -2,7 +2,7 @@
 title: "Anatomy of a Reusable GitHub Action"
 date: "2026-01-30"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/tag-and-release-header.webp"
+image: "/blog-images/tag-and-release-header.webp"
 description: "Decoupling GitHub workflow logic into standalone, version-controlled actions for the global Marketplace."
 topics: ["CI/CD", "GitHub Actions", "Automation"]
 slug: "anatomy-of-a-reusable-gha"
@@ -40,7 +40,7 @@ In the past month, I published two GitHub Actions to the GitHub Marketplace:
 - [Tag and Release Semantic Version](https://github.com/marketplace/actions/tag-and-release-semantic-version)
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/gha-header.webp" alt="Logos for two github actions, one a tag on a green background, the other a bell on a purple background" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/gha-header.webp" alt="Logos for two github actions, one a tag on a green background, the other a bell on a purple background" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Logos for the two actions</figcaption>
 </figure>
 

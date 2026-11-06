@@ -2,7 +2,7 @@
 title: "Static Site - Dynamic Data"
 date: "2026-02-28"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/dev-stats-demo.webp"
+image: "/blog-images/dev-stats-demo.webp"
 description: "How I solved a static site problem with a GitHub Actions 'stats crawler' middle-man."
 topics: ["Python", "GitHub Actions", "Automation"]
 slug: "static-site-dynamic-data"
@@ -22,7 +22,7 @@ Fetching these directly from the user's browser turned into a mess pretty quickl
 ## Problem
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/dev-stats-old.webp" alt="Network diagram showing the failing approach I took to start" class="rounded-lg w-3/5 mx-auto" style="max-width: 60%; display: block;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/dev-stats-old.webp" alt="Network diagram showing the failing approach I took to start" class="rounded-lg w-3/5 mx-auto" style="max-width: 60%; display: block;" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Failing client side approach</figcaption>
 </figure>
 
@@ -37,7 +37,7 @@ GitHub and Docker Stats would load sometimes, fail randomly, and were slow to sh
 ## Solution
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/dev-stats-new.webp" alt="Network diagram showing the new successful approach" class="rounded-lg w-full mx-auto" style="max-width: 100%; display: block;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/dev-stats-new.webp" alt="Network diagram showing the new successful approach" class="rounded-lg w-full mx-auto" style="max-width: 100%; display: block;" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Successful middle-man approach</figcaption>
 </figure>
 
@@ -74,6 +74,6 @@ With the GitHub Actions approach, the “backend” is basically free and mainte
 The result is my same free to host static website, now with flashy dynamic statistics included.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/dev-stats-demo.webp" alt="Screenshot showing view counts on blogs, and stars / pull counts on projects" class="rounded-lg w-3/5 mx-auto" style="max-width: 60%; display: block;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/dev-stats-demo.webp" alt="Screenshot showing view counts on blogs, and stars / pull counts on projects" class="rounded-lg w-3/5 mx-auto" style="max-width: 60%; display: block;" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Stats for blogs and projects</figcaption>
 </figure>

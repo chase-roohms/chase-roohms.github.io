@@ -2,7 +2,7 @@
 title: "Start Self-Hosting on a Budget"
 date: "2025-11-19"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/homelab-header.webp"
+image: "/blog-images/homelab-header.webp"
 description: "How I built a functional home lab for learning and experimentation without breaking the bank."
 topics: ["Linux", "Docker", "Self-Hosting"]
 slug: "home-lab-setup"
@@ -10,7 +10,7 @@ icon: "FaDollarSign"
 ---
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/homelab-header.webp" alt="Server rack showcasing a a server, network switch, Raspberry Pis, and a network attached storage" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/homelab-header.webp" alt="Server rack showcasing a a server, network switch, Raspberry Pis, and a network attached storage" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">My homelab today, after numerous upgrades</figcaption>
 </figure>
 

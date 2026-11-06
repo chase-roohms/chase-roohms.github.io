@@ -2,7 +2,7 @@
 title: "From Intern to Staff Engineer in {{TIMEFRAME_TITLE}} Years"
 date: "2026-UNKNOWN"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/intern-to-staff-engineer.webp"
+image: "/blog-images/intern-to-staff-engineer.webp"
 description: "What my journey from intern to Staff Engineer taught me about career growth, taking ownership, delivering impact, and being useful."
 topics: ["Career", "Software Engineering", "Professional Growth"]
 slug: "intern-to-staff-engineer"
@@ -40,7 +40,7 @@ Be the person who volunteers to investigate an annoying recurring issue. The per
 **Be a doer.**
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/man-at-computer.webp" alt="Picture of a man at a computer with an IDE open" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/man-at-computer.webp" alt="Picture of a man at a computer with an IDE open" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
 </figure>
 
 That doesn't mean blindly saying yes to everything or working yourself into the ground. It means developing a habit of looking for problems you can actually solve, and then following through.
@@ -65,7 +65,7 @@ During my time in DevOps, I worked on everything from software supply chain secu
 For example, I helped expand our CodeQL scanning coverage by roughly 400%, reduced CI/CD runner consumption by ~45%, and later worked on changes that reduced annual code signing costs from approximately $240,000 to $40,000.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/focus-on-outcomes.webp" alt="Graphic displaying the statistics mentioned in the paragraph above." class="rounded-lg w-full" width="80%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/focus-on-outcomes.webp" alt="Graphic displaying the statistics mentioned in the paragraph above." class="rounded-lg w-full" width="80%" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">The converter homescreen</figcaption>
 </figure>
 
@@ -124,7 +124,7 @@ I've always enjoyed building things outside of work.
 Home servers, Discord bots, automation scripts, and more recently [Transmute](https://transmute.sh), my open-source file converter.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/transmute-converter.webp" alt="Home screen of my app Transmute" class="rounded-lg w-full" width="80%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/transmute-converter.webp" alt="Home screen of my app Transmute" class="rounded-lg w-full" width="80%" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Transmute interface</figcaption>
 </figure>
 
@@ -225,5 +225,5 @@ The goal was to become the kind of engineer people could count on to solve diffi
 That's what I intend to keep working toward.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/og-solarwinds-badge.webp" alt="Picture of Chase's original work ID badge" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/og-solarwinds-badge.webp" alt="Picture of Chase's original work ID badge" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
 </figure>

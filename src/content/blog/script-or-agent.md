@@ -3,7 +3,7 @@
 title: "Script or an Agent? How to Decide"
 date: "2026-07-13"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/clock-vs-money-scale.webp"
+image: "/blog-images/clock-vs-money-scale.webp"
 description: "A practical framework for deciding whether a workflow needs deterministic automation, an AI agent, or a combination of both."
 topics: ["AI", "Automation"]
 slug: "script-or-agent"
@@ -15,7 +15,7 @@ In [The Criteria for Automation](/blog/criteria-for-automation), I argued that b
 Those questions help determine whether a process is worth automating at all. With the explosion of AI tools, there is now a second decision to make: **Should you automate it with a traditional script, or build an AI agent?**
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/clock-vs-money-scale.webp" alt="Figure showing scales weighing time against money" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/clock-vs-money-scale.webp" alt="Figure showing scales weighing time against money" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
 </figure>
 
 Agents are quickly becoming the default answer to every automation problem. Sometimes that is exactly what the process needs. Other times, you are replacing twenty lines of reliable Python with a slower, more expensive system that occasionally makes up its own instructions.
@@ -29,7 +29,7 @@ Traditional automation works best when a process can be described as a predictab
 Take the poster grid script from the aforementioned blog post. It receives a directory of images, resizes them, calculates where each image belongs, and produces a final grid. The inputs are structured, the rules are known, and the expected output is clear.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/tom-jerry-posters-header.webp" alt="Tom & Jerry poster collection" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/tom-jerry-posters-header.webp" alt="Tom & Jerry poster collection" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">My Tom & Jerry poster collection</figcaption>
 </figure>
 
@@ -70,7 +70,7 @@ In my current role, I helped build a triage system that uses an LLM to understan
 The model was not valuable because it could click buttons or call APIs. A script could already do those things. It was valuable because it could interpret unstructured language.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/script-or-agent-example.webp" alt="Comparison of a script poorly handling a problem vs an agent handling it well" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/script-or-agent-example.webp" alt="Comparison of a script poorly handling a problem vs an agent handling it well" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
 </figure>
 
 That is the distinction I use most often: **Scripts execute known rules. Agents navigate ambiguity.**
@@ -118,7 +118,7 @@ Scripts and agents should not be treated as competing approaches. Let the model 
 5. Low-confidence or invalid responses go to a human.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/script-and-agent-example.webp" alt="Example of a script and agent working together to solve a problem." class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/script-and-agent-example.webp" alt="Example of a script and agent working together to solve a problem." class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
 </figure>
 
 The model's responsibility is narrow: interpret the language. It does not need unrestricted access or permission to invent its own actions.

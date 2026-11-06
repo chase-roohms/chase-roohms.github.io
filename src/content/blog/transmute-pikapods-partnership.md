@@ -2,7 +2,7 @@
 title: "Transmute Partners With PikaPods"
 date: "2026-06-21"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/pikapods-transmute-partnership.webp"
+image: "/blog-images/pikapods-transmute-partnership.webp"
 description: "Why I chose PikaPods as the recommended hosted deployment option for Transmute, and what that means for self-hosted users."
 topics: ["Open Source", "Self-Hosting", "Transmute"]
 slug: "transmute-pikapods"
@@ -18,7 +18,7 @@ So why partner with a hosting platform?
 Because “self-hosted” and “easy to access” should not be opposites.
 
 <figure class="my-6" style="text-align: center;">
-  <img src="https://chaseroohms.com/blog-images/pikapods-transmute-partnership.webp" alt="Transmute and PikaPods partnership graphic" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/pikapods-transmute-partnership.webp" alt="Transmute and PikaPods partnership graphic" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Transmute is now available as a one-click hosted app on PikaPods</figcaption>
 </figure>
 
@@ -49,7 +49,7 @@ Transmute is useful to homelab users, but file conversion is not only a homelab 
 - If you want the same open-source app but with a simpler hosted setup, use PikaPods.
 
 <figure class="my-6" style="text-align: center;">
-  <img src="https://chaseroohms.com/blog-images/transmute-on-pikapods.webp" alt="Transmute listed as a hosted open-source app." class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/transmute-on-pikapods.webp" alt="Transmute listed as a hosted open-source app." class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
 <figcaption class="text-center text-sm text-gray-400 mt-2">PikaPods' pod creation UI</figcaption>
 </figure>
 
@@ -94,7 +94,7 @@ This is the better option if you want Transmute available online without managin
 You still get the open-source app, but with a much simpler "one-click" deployment experience.
 
 <figure class="my-6" style="text-align: center;">
-  <img src="https://chaseroohms.com/blog-images/new-pikapods-cta.webp" alt="Homepage of our website showing the ability to run on PikaPods." class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/new-pikapods-cta.webp" alt="Homepage of our website showing the ability to run on PikaPods." class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
 </figure>
 
 ## Why I am excited about this

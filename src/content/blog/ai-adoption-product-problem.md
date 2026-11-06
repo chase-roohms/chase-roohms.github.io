@@ -2,7 +2,7 @@
 title: "Why Enterprise AI Adoption Fails"
 date: "2026-10-08"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/access-to-adoption.webp"
+image: "/blog-images/access-to-adoption.webp"
 description: "Why successful enterprise AI adoption takes more than buying licenses and granting access."
 topics: ["AI"]
 slug: "ai-adoption-product-problem"
@@ -20,7 +20,7 @@ In my experience working with developer tooling and enterprise AI operations, I'
 The mistake is treating AI adoption as an IT deployment when it should be treated more like a product.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/access-to-adoption.webp" alt="Graphic showing a contrast between a check list of users with succesful deployment versus a small amount of actual users" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/access-to-adoption.webp" alt="Graphic showing a contrast between a check list of users with succesful deployment versus a small amount of actual users" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
 </figure>
 
 ## Deployment Is Not Adoption
@@ -48,7 +48,7 @@ Unlike a ticketing system or other purpose-built software, a general-purpose AI 
 And that's where organizations need to step in.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/ai-adoption-funnel.svg" alt="User adoption funnel moving from licensed users through activation, engagement, and retention to meaningful impact" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/ai-adoption-funnel.svg" alt="User adoption funnel moving from licensed users through activation, engagement, and retention to meaningful impact" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
 </figure>
 
 ## Your Users Are Not AI Engineers
@@ -76,7 +76,7 @@ The goal isn't to turn every employee into an AI expert. It's to make AI useful 
 A good training session should leave someone thinking, "Oh, I could actually use this tomorrow." Not, "Wow, that technology is impressive."
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/human-and-chatbot.webp" alt="Human talking to a chatbot" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/human-and-chatbot.webp" alt="Human talking to a chatbot" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
 </figure>
 
 ## Listen to Your Users
@@ -100,7 +100,7 @@ Enterprise AI users can do the same thing, but you need to give them an opportun
 And don't just collect feedback to fill out a quarterly report. Use it to change something.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/deployment-vs-adoption.webp" alt="Circuit board carpet connecting humans" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/deployment-vs-adoption.webp" alt="Circuit board carpet connecting humans" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
 </figure>
 
 ## Measure What Actually Matters
@@ -139,7 +139,7 @@ Identify useful workflows, provide relevant training, measure adoption, collect 
 
 Then do it again.
 
-<img src="https://chaseroohms.com/blog-images/ai-adoption-cycle.svg" alt="Continuous improvement cycle: understand, enable, measure, listen, improve, and repeat" class="rounded-lg w-full max-w-md mx-auto" loading="lazy" />
+<img src="/blog-images/ai-adoption-cycle.svg" alt="Continuous improvement cycle: understand, enable, measure, listen, improve, and repeat" class="rounded-lg w-full max-w-md mx-auto" loading="lazy" />
 
 AI tooling changes quickly. Models improve, new capabilities appear, and workflows that weren't practical six months ago may suddenly become worthwhile.
 

@@ -2,7 +2,7 @@
 title: "Building a Self-Hosted File Converter"
 date: "2026-03-14"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/transmute-converter.webp"
+image: "/blog-images/transmute-converter.webp"
 description: "Why I built Transmute, a self-hosted file converter focused on polish, automation, and extensibility"
 topics: ["Python", "FastAPI", "Docker", "React", "Transmute"]
 slug: "building-transmute"
@@ -12,7 +12,7 @@ icon: "FaExchangeAlt"
 For the past four weeks, I’ve been building [Transmute](https://transmute.sh), an open-source, self-hosted file converter, because I felt like there was still room for another option in this space.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/transmute-converter.webp" alt="Home screen of my new app Transmute" class="rounded-lg w-full" width="80%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/transmute-converter.webp" alt="Home screen of my new app Transmute" class="rounded-lg w-full" width="80%" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">The converter homescreen</figcaption>
 </figure>
 
@@ -83,7 +83,7 @@ Transmute currently ships with **8 built-in themes**: 4 light and 4 dark.
 Want another color scheme? Open an issue. Themes are intentionally easy for me to add.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/transmute-viriditas.webp" alt="Screenshot of the green theme" class="rounded-lg w-full" width="80%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/transmute-viriditas.webp" alt="Screenshot of the green theme" class="rounded-lg w-full" width="80%" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">The "viriditas" theme</figcaption>
 </figure>
 

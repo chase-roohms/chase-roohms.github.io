@@ -2,7 +2,7 @@
 title: "The Road to 500 Stars"
 date: "2026-04-18"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/star-history-500.webp"
+image: "/blog-images/star-history-500.webp"
 description: "The story of how I got Transmute from 100 to 500 GitHub stars in just over a month."
 topics: ["GitHub", "Open Source", "Self-Hosting", "Transmute"]
 slug: "road-to-five-hundred-stars"
@@ -12,7 +12,7 @@ icon: "FaStar"
 My open source self-hosted file converter, [Transmute](https://transmute.sh), just broke 500 stars on GitHub.
 
 <figure class="my-6" style="text-align: center;">
-  <img src="https://chaseroohms.com/blog-images/star-history-500.webp" alt="Chart showing the rising star count of my repository transmute-app/transmute" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/star-history-500.webp" alt="Chart showing the rising star count of my repository transmute-app/transmute" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Star history over the last two months</figcaption>
 </figure>
 
@@ -49,8 +49,8 @@ A lot of maintainers treat localization like a “someday” task, or something 
 
 <figure class="my-6" style="text-align: center;">
   <div style="display: flex; gap: 1rem; justify-content: center; align-items: flex-start; flex-wrap: wrap;">
-    <img src="https://chaseroohms.com/blog-images/german-translations.webp" alt="German translation screenshots from contributors" class="rounded-lg" style="width: 45%;" loading="eager" fetchpriority="high" />
-    <img src="https://chaseroohms.com/blog-images/spanish-translations.webp" alt="Spanish translation screenshots from contributors" class="rounded-lg" style="width: 45%;" loading="eager" fetchpriority="high" />
+    <img src="/blog-images/german-translations.webp" alt="German translation screenshots from contributors" class="rounded-lg" style="width: 45%;" loading="eager" fetchpriority="high" />
+    <img src="/blog-images/spanish-translations.webp" alt="Spanish translation screenshots from contributors" class="rounded-lg" style="width: 45%;" loading="eager" fetchpriority="high" />
   </div>
   <figcaption class="text-center text-sm text-gray-400 mt-2">German and Spanish contributor provided translations</figcaption>
 </figure>
@@ -72,7 +72,7 @@ If you are trying to grow an open source project, go find the directories in you
 For me, [selfh.st](https://selfh.st/) was my goal from the start. Transmute first appeared in Self-Host Weekly on [March 20, 2026](https://selfh.st/weekly/2026-03-20/), and then showed up again in the [April 17 issue](https://selfh.st/weekly/2026-04-17/) as well as being featured on their browsable apps directory that updates regularly.
 
 <figure class="my-6" style="text-align: center;">
-  <img src="https://chaseroohms.com/blog-images/selfh-st-directory.webp" alt="Screenshot of my app Transmute on the selfh.st apps directory" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/selfh-st-directory.webp" alt="Screenshot of my app Transmute on the selfh.st apps directory" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">selfh.st directory entry</figcaption>
 </figure>
 

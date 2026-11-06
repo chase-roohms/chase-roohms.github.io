@@ -2,7 +2,7 @@
 title: "Communicating With Executives"
 date: "2026-01-22"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/executive-communication-header.webp"
+image: "/blog-images/executive-communication-header.webp"
 description: "Communicate with clarity and earn your leadership's trust in the process."
 topics: ["Communication", "Career"]
 slug: "communicationg-with-executives"
@@ -14,7 +14,7 @@ Professional communication has been one of the steepest learning curves early in
 Since stepping into a corporate setting, I’ve learned several principles that make executive communication more effective.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/executive-communication-header.webp" alt="Graphic showing information flow between employee and employer" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/executive-communication-header.webp" alt="Graphic showing information flow between employee and employer" class="rounded-lg w-full" width="100%" loading="eager" fetchpriority="high" />
 </figure>
 
 ## What Do Executives **Actually** Care About?

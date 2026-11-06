@@ -2,7 +2,7 @@
 title: "The Road to 100 Stars"
 date: "2026-03-20"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/star-history-100.webp"
+image: "/blog-images/star-history-100.webp"
 description: "The story of how I got Transmute from zero to 100 GitHub stars in just over a month."
 topics: ["GitHub", "Open Source", "Self-Hosting", "Transmute"]
 slug: "road-to-one-hundred-stars"
@@ -14,7 +14,7 @@ My open source self-hosted file converter, [Transmute](https://transmute.sh), ju
 I’ve been steadily working on this app for a little over a month now, with the first real MVP release going out after about two weeks. Hitting 100 GitHub stars is not some massive startup milestone, but for a new open source project, especially one built from scratch without an existing audience, it does feel like an important checkpoint. It means people are finding it, trying it, and deciding it is worth bookmarking.
 
 <figure class="my-6" style="text-align: center;">
-  <img src="https://chaseroohms.com/blog-images/star-history-100.webp" alt="Chart showing the rising star count of my repository transmute-app/transmute" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/star-history-100.webp" alt="Chart showing the rising star count of my repository transmute-app/transmute" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Star history over the last month</figcaption>
 </figure>
 
@@ -39,7 +39,7 @@ I have written about this on Reddit before, but good first issues brought in ear
 This works because open source projects with visible contributor activity feel alive. A repo with issues being opened, discussed, and closed looks healthier than one where the maintainer is just pushing commits alone in silence.
 
 <figure class="my-6" style="text-align: center;">
-  <img src="https://chaseroohms.com/blog-images/example-good-first-issue.webp" alt="Screenshot of one of the issues in my GitHub repository tagged with 'good first issue'" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/example-good-first-issue.webp" alt="Screenshot of one of the issues in my GitHub repository tagged with 'good first issue'" class="rounded-lg" style="width: 80%; margin: 0 auto;" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">Star history over the last month</figcaption>
 </figure>
 

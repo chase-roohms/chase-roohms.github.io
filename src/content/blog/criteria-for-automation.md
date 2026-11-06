@@ -2,7 +2,7 @@
 title: "The Criteria for Automation"
 date: "2025-12-14"
 author: Chase Roohms
-image: "https://chaseroohms.com/blog-images/clock-vs-money-scale.webp"
+image: "/blog-images/clock-vs-money-scale.webp"
 description: "Is something really worth automating, or will you spend more time on it than it's worth?"
 topics: ["Automation"]
 slug: "criteria-for-automation"
@@ -17,7 +17,7 @@ Let me walk you through two instances where I automated a process. One delivered
 In my homelab, I run three servers and I’m fairly particular about my terminal setup. I use a custom message of the day (MOTD) to keep things interesting, a concise and colorful prompt that shows the machine hostname and current directory, and a simple Docker configuration to make `docker ps` more readable.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/home-server-1-terminal.webp" alt="Colorful and customized message of the day for my server on a terminal" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/home-server-1-terminal.webp" alt="Colorful and customized message of the day for my server on a terminal" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">The MOTD on one of my servers</figcaption>
 </figure>
 
@@ -36,7 +36,7 @@ As a hobby, I create poster collections for movie and TV franchises, it's a refr
 Once a collection is finished, I share it on Reddit in a clean grid layout that makes it easy for both myself and others to view the entire set at a glance. I've made over 900 posters this year, and plenty of them were manually edited into a grid using Photoshop.
 
 <figure class="my-6">
-  <img src="https://chaseroohms.com/blog-images/tom-jerry-posters-header.webp" alt="Tom & Jerry poster collection" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
+  <img src="/blog-images/tom-jerry-posters-header.webp" alt="Tom & Jerry poster collection" class="rounded-lg w-full" width="1920" height="716" loading="eager" fetchpriority="high" />
   <figcaption class="text-center text-sm text-gray-400 mt-2">My Tom & Jerry poster collection</figcaption>
 </figure>
 
