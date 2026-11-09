@@ -93,7 +93,7 @@ export default function Card({
 
       {date && (
         <div className="mb-3 flex items-center gap-3">
-          <span className="text-sm text-primary-400 font-semibold">
+          <span className="text-sm text-gray-400 font-medium">
             {formatDate(date)}
           </span>
           {readingTime && (
@@ -125,7 +125,7 @@ export default function Card({
           {githubStars !== undefined && githubStars > 0 && (
             <div className="flex items-center gap-1.5 text-gray-400 group/stat">
               <svg 
-                className="w-4 h-4 text-yellow-500" 
+                className="w-4 h-4 text-gray-500" 
                 fill="currentColor" 
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +141,7 @@ export default function Card({
           {dockerPulls !== undefined && dockerPulls > 0 && (
             <div className="flex items-center gap-1.5 text-gray-400 group/stat">
               <svg 
-                className="w-4 h-4 text-blue-500" 
+                className="w-4 h-4 text-gray-500" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -167,7 +167,7 @@ export default function Card({
           <button
             key={tag}
             onClick={() => onTagClick(tag)}
-            className="text-xs bg-primary-950 text-primary-400 border border-primary-800 px-2 py-1 rounded-full hover:bg-primary-900 hover:border-primary-700 transition-colors"
+            className="text-xs bg-gray-900 text-gray-300 border border-gray-700 px-2 py-1 rounded-full hover:border-gray-500 hover:text-gray-100 transition-colors"
             aria-label={`Filter by ${tag}`}
             title={`Filter by ${tag}`}
           >
@@ -176,7 +176,7 @@ export default function Card({
         ) : (
           <span
             key={tag}
-            className="text-sm bg-primary-950 text-primary-400 border border-primary-800 px-3 py-1 rounded-full"
+            className="text-sm bg-gray-900 text-gray-300 border border-gray-700 px-3 py-1 rounded-full"
           >
             {tag}
           </span>
@@ -197,7 +197,7 @@ export default function Card({
   );
 
   return (
-    <article className={`surface rounded-xl p-5 hover:border-primary-500 transition-all ${wrapInLink ? 'group flex flex-col min-h-[280px]' : ''}`}>
+    <article className={`surface rounded-xl p-5 hover:border-gray-600 transition-colors ${wrapInLink ? 'group flex flex-col min-h-[280px]' : ''}`}>
       {wrapInLink && internalLink ? (
         <>
           <Link to={internalLink} className="flex-1 flex flex-col">

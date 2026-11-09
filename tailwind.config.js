@@ -21,6 +21,8 @@ export default {
           900: '#5c3d18',
           950: '#33210b',
         },
+        // Warm off-white for display text
+        ivory: '#efe8dc',
         // Neutral graphite
         gray: {
           50: '#f5f5f5',

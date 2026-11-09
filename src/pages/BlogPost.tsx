@@ -184,13 +184,17 @@ export default function BlogPost() {
             {seriesInfo && (
               <Link
                 to={`/blog/#series-${seriesInfo.series.id}`}
-                className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-primary-400 transition-colors hover:text-primary-300"
+                className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-gray-400 transition-colors hover:text-ivory"
               >
                 {seriesInfo.series.name}
-                <span className="text-gray-600">·</span>
-                <span>
-                  Part {seriesInfo.part} of {seriesInfo.total}
-                </span>
+                {seriesInfo.series.numbered && (
+                  <>
+                    <span className="text-gray-600">·</span>
+                    <span>
+                      Part {seriesInfo.part} of {seriesInfo.total}
+                    </span>
+                  </>
+                )}
               </Link>
             )}
             <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
@@ -239,7 +243,7 @@ export default function BlogPost() {
                   <Link
                     key={topic}
                     to={`/blog?topic=${encodeURIComponent(topic)}`}
-                    className="text-sm bg-primary-950 text-primary-400 border border-primary-800 px-3 py-1 rounded-full hover:bg-primary-900 hover:border-primary-700 transition-colors"
+                    className="text-sm bg-gray-900 text-gray-300 border border-gray-700 px-3 py-1 rounded-full hover:border-gray-500 hover:text-gray-100 transition-colors"
                     aria-label={`Filter blog posts by ${topic}`}
                     title={`Filter blog posts by ${topic}`}
                   >
@@ -258,13 +262,13 @@ export default function BlogPost() {
           <div className="prose prose-invert prose-lg max-w-[68ch]
             prose-headings:text-gray-100
             prose-p:text-gray-300
-            prose-a:text-primary-300 prose-a:no-underline hover:prose-a:text-primary-200
+            prose-a:text-ivory prose-a:underline prose-a:decoration-primary-400/60 prose-a:underline-offset-4 hover:prose-a:decoration-primary-400
             prose-strong:text-gray-100
-            prose-code:text-primary-300 prose-code:bg-gray-900 prose-code:font-normal prose-code:px-2 prose-code:py-1 prose-code:rounded
+            prose-code:text-gray-200 prose-code:bg-gray-900 prose-code:font-normal prose-code:px-2 prose-code:py-1 prose-code:rounded
             prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800
             prose-ul:text-gray-300 prose-ol:text-gray-300
             prose-li:text-gray-300
-            prose-blockquote:text-gray-400 prose-blockquote:border-primary-600 prose-blockquote:font-normal
+            prose-blockquote:text-gray-400 prose-blockquote:border-gray-700 prose-blockquote:font-normal
             prose-img:rounded-lg prose-img:h-auto
             prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-gray-400 prose-figcaption:mt-2
           ">
@@ -315,15 +319,15 @@ export default function BlogPost() {
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
               {seriesInfo.prev ? (
-                <Link to={`/blog/${seriesInfo.prev.slug}/`} className="group surface rounded-xl p-5 transition-colors hover:border-primary-500">
-                  <span className="flex items-center gap-2 text-xs text-gray-500"><FaArrowLeft /> Part {seriesInfo.part - 1}</span>
-                  <span className="mt-2 block font-semibold text-gray-100 group-hover:text-primary-400">{seriesInfo.prev.title}</span>
+                <Link to={`/blog/${seriesInfo.prev.slug}/`} className="group surface rounded-xl p-5 transition-colors hover:border-gray-600">
+                  <span className="flex items-center gap-2 text-xs text-gray-500"><FaArrowLeft /> {seriesInfo.series.numbered ? `Part ${seriesInfo.part - 1}` : 'Previous'}</span>
+                  <span className="mt-2 block font-semibold text-gray-100 group-hover:text-ivory">{seriesInfo.prev.title}</span>
                 </Link>
               ) : <span className="hidden sm:block" />}
               {seriesInfo.next && (
                 <Link to={`/blog/${seriesInfo.next.slug}/`} className="group surface rounded-xl p-5 text-right transition-colors hover:border-gray-600">
-                  <span className="flex items-center justify-end gap-2 text-xs text-gray-500">Part {seriesInfo.part + 1} <FaArrowRight /></span>
-                  <span className="mt-2 block font-semibold text-gray-100 group-hover:text-primary-400">{seriesInfo.next.title}</span>
+                  <span className="flex items-center justify-end gap-2 text-xs text-gray-500">{seriesInfo.series.numbered ? `Part ${seriesInfo.part + 1}` : 'Next'} <FaArrowRight /></span>
+                  <span className="mt-2 block font-semibold text-gray-100 group-hover:text-ivory">{seriesInfo.next.title}</span>
                 </Link>
               )}
             </div>

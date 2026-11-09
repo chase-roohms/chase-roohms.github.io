@@ -33,7 +33,7 @@ function PaginationControls({
         className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
         aria-label="Previous page"
       >
-        <FaChevronLeft className="text-primary-400" />
+        <FaChevronLeft className="text-gray-300" />
       </button>
       <span className="text-gray-400">
         Page {currentPage + 1} of {totalPages} ({itemCount} {itemCount === 1 ? 'project' : 'projects'})
@@ -44,7 +44,7 @@ function PaginationControls({
         className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
         aria-label="Next page"
       >
-        <FaChevronRight className="text-primary-400" />
+        <FaChevronRight className="text-gray-300" />
       </button>
     </div>
   );
@@ -223,7 +223,7 @@ export default function Projects() {
           {/* Personal Projects Section */}
           {filteredPersonalProjects.length > 0 && (
             <section>
-              <h2 className="text-3xl font-bold mb-3 text-primary-400">Personal</h2>
+              <h2 className="text-3xl font-bold mb-3">Personal</h2>
               <p className="text-gray-400 mb-8">
                 A peek behind the curtains at some of my other projects and hobbies.
               </p>

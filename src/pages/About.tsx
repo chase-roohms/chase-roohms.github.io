@@ -109,20 +109,20 @@ export default function About() {
               <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Quick Facts</h3>
               <ul className="space-y-4">
                 <li className="flex items-center gap-3 text-gray-300">
-                  <span className="w-9 h-9 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
-                    <FaMapMarkerAlt className="text-primary-400 w-4 h-4" />
+                  <span className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                    <FaMapMarkerAlt className="text-gray-300 w-4 h-4" />
                   </span>
                   <span>{location}</span>
                 </li>
                 <li className="flex items-center gap-3 text-gray-300">
-                  <span className="w-9 h-9 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
-                    <FaBriefcase className="text-primary-400 w-4 h-4" />
+                  <span className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                    <FaBriefcase className="text-gray-300 w-4 h-4" />
                   </span>
                   <span>Senior Software Engineer</span>
                 </li>
                 <li className="flex items-center gap-3 text-gray-300">
-                  <span className="w-9 h-9 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
-                    <FaRocket className="text-primary-400 w-4 h-4" />
+                  <span className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                    <FaRocket className="text-gray-300 w-4 h-4" />
                   </span>
                   <span>
                     Founder of{' '}
@@ -131,15 +131,15 @@ export default function About() {
                       target="_blank"
                       rel="noopener noreferrer"
                       referrerPolicy="no-referrer"
-                      className="text-primary-400 hover:text-primary-300 transition-colors"
+                      className="text-ivory underline decoration-primary-400/60 underline-offset-4 hover:decoration-primary-400 transition-colors"
                     >
                       Transmute
                     </a>
                   </span>
                 </li>
                 <li className="flex items-center gap-3 text-gray-300">
-                  <span className="w-9 h-9 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
-                    <FaGraduationCap className="text-primary-400 w-4 h-4" />
+                  <span className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                    <FaGraduationCap className="text-gray-300 w-4 h-4" />
                   </span>
                   <span>BS in Computer Science</span>
                 </li>
@@ -159,11 +159,11 @@ export default function About() {
                   <span className={`absolute -left-[41px] top-2 flex h-4 w-4 rounded-full ring-4 ring-gray-950 ${isCurrent ? 'bg-primary-500' : 'bg-gray-600'}`}>
                     {isCurrent && <span className="absolute inset-0 rounded-full bg-primary-500 animate-ping opacity-75" />}
                   </span>
-                  <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-primary-500/50 hover:bg-gray-800/60 transition-all hover:shadow-lg hover:shadow-primary-900/20">
+                  <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors">
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
                       <h3 className="text-xl font-bold text-gray-100">{experience.title}</h3>
                       {isCurrent && (
-                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary-500/10 text-primary-300 border border-primary-500/30">
+                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-gray-800 text-gray-200 border border-gray-700">
                           Current
                         </span>
                       )}
@@ -179,7 +179,7 @@ export default function About() {
                     <ul className="space-y-2.5">
                       {experience.achievements.map((achievement, index) => (
                         <li key={index} className="flex gap-2.5 text-gray-400 leading-relaxed">
-                          <FaChevronRight className="text-primary-500 w-3 h-3 mt-1.5 flex-shrink-0" />
+                          <FaChevronRight className="text-gray-600 w-3 h-3 mt-1.5 flex-shrink-0" />
                           <span>{achievement}</span>
                         </li>
                       ))}
@@ -207,16 +207,16 @@ export default function About() {
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 bg-gray-900 border border-gray-800 rounded-xl p-4 hover:border-primary-500/50 hover:bg-gray-800/60 transition-all"
+                className="group flex items-center gap-4 bg-gray-900 border border-gray-800 rounded-xl p-4 hover:border-gray-700 transition-colors"
               >
-                <span className="w-10 h-10 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
-                  <FaCertificate className="text-primary-400 w-5 h-5" />
+                <span className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                  <FaCertificate className="text-gray-300 w-5 h-5" />
                 </span>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-gray-100 truncate">{cert.title}</h3>
                   <p className="text-sm text-gray-400">{cert.period}</p>
                 </div>
-                <FaExternalLinkAlt className="w-3.5 h-3.5 text-gray-500 group-hover:text-primary-400 transition-colors flex-shrink-0" />
+                <FaExternalLinkAlt className="w-3.5 h-3.5 text-gray-500 group-hover:text-gray-200 transition-colors flex-shrink-0" />
               </a>
             ))}
           </div>
@@ -228,10 +228,10 @@ export default function About() {
           <SectionHeading icon={FaTrophy}>Honors &amp; Awards</SectionHeading>
           <div className="grid sm:grid-cols-2 gap-4">
             {honors.map((honor) => (
-              <div key={honor.id} className="bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-primary-500/50 hover:bg-gray-800/60 transition-all">
+              <div key={honor.id} className="bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-gray-700 transition-colors">
                 <div className="flex items-start gap-3 mb-2">
-                  <span className="w-10 h-10 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
-                    <FaTrophy className="text-primary-400 w-5 h-5" />
+                  <span className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                    <FaTrophy className="text-gray-300 w-5 h-5" />
                   </span>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-gray-100">{honor.title}</h3>
@@ -253,9 +253,9 @@ export default function About() {
           <SectionHeading icon={FaGraduationCap}>Education</SectionHeading>
           <div className="grid sm:grid-cols-2 gap-4">
             {education.map((edu) => (
-              <div key={edu.id} className="flex items-start gap-4 bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-primary-500/50 hover:bg-gray-800/60 transition-all">
-                <span className="w-10 h-10 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
-                  <FaGraduationCap className="text-primary-400 w-5 h-5" />
+              <div key={edu.id} className="flex items-start gap-4 bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-gray-700 transition-colors">
+                <span className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center flex-shrink-0">
+                  <FaGraduationCap className="text-gray-300 w-5 h-5" />
                 </span>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-gray-100">{edu.title}</h3>

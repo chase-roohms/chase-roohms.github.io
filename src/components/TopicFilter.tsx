@@ -38,7 +38,7 @@ export default function TopicFilter({
             onClick={() => onTopicChange(topic)}
             className={`px-3.5 py-1.5 rounded-full text-sm font-medium border transition-colors whitespace-nowrap flex-shrink-0 ${
               selectedTopic === topic
-                ? 'bg-primary-400 border-primary-400 text-gray-950'
+                ? 'bg-gray-100 border-gray-100 text-gray-950'
                 : 'bg-gray-900 border-gray-800 text-gray-400 hover:border-gray-600 hover:text-gray-100'
             }`}
           >

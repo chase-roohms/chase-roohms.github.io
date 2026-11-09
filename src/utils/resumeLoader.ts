@@ -137,6 +137,13 @@ export const getEducation = () => {
   }));
 };
 
+export const getSkillGroups = () => {
+  return (resumeSections.skills ?? []).map((group) => ({
+    label: group.label,
+    items: group.details.split(',').map((item) => item.trim()).filter(Boolean),
+  }));
+};
+
 export const getSummary = () => {
   return resumeSections.summary?.[0] ?? '';
 };

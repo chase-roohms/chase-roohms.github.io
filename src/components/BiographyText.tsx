@@ -16,7 +16,7 @@ export default function BiographyText({ paragraphs, className = 'text-gray-400 l
             {parts.map((part, partIndex) => {
               if (part === 'contact page') {
                 return (
-                  <Link key={partIndex} to="/contact/" className="text-primary-400 hover:text-primary-300 underline">
+                  <Link key={partIndex} to="/contact/" className="text-ivory underline decoration-primary-400/60 underline-offset-4 hover:decoration-primary-400 transition-colors">
                     contact page
                   </Link>
                 );
@@ -30,7 +30,7 @@ export default function BiographyText({ paragraphs, className = 'text-gray-400 l
                     href={markdownLink[2]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary-400 hover:text-primary-300 underline"
+                    className="text-ivory underline decoration-primary-400/60 underline-offset-4 hover:decoration-primary-400 transition-colors"
                   >
                     {markdownLink[1]}
                   </a>

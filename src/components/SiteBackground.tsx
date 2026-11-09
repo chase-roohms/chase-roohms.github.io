@@ -1,11 +1,14 @@
 export default function SiteBackground() {
   return (
-    <div className="site-bg" aria-hidden="true">
-      <div className="site-bg__speckle" />
-      <div className="site-bg__glass">
-        <div className="site-bg__light" />
-        <div className="site-bg__flutes" />
+    <>
+      <div className="site-bg" aria-hidden="true">
+        <div className="site-bg__speckle" />
       </div>
-    </div>
+      <div className="site-glow" aria-hidden="true" />
+      <div className="site-glass" aria-hidden="true">
+        <div className="site-glass__light" />
+        <div className="site-glass__flutes" />
+      </div>
+    </>
   );
 }

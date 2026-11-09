@@ -4,6 +4,8 @@ export interface BlogSeries {
   id: string;
   name: string;
   description: string;
+  /** Posts build on each other, so show part numbers (01, 02…) */
+  numbered?: boolean;
 }
 
 // Display order on the blog page. A post opts in with `series: "<id>"` in
@@ -13,6 +15,7 @@ export const BLOG_SERIES: BlogSeries[] = [
     id: 'transmute',
     name: 'Transmute',
     description: 'Building, launching, and growing an open-source, self-hosted file converter.',
+    numbered: true,
   },
   {
     id: 'ai-at-work',

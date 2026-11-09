@@ -1,121 +1,40 @@
-import { SiPython, SiGnubash, SiLinux, SiDocker, SiGithubactions, SiGooglecloud, SiTerraform } from 'react-icons/si';
-import { FaKey, FaJava, FaCogs, FaNetworkWired, FaBrain } from 'react-icons/fa';
+import { FaRobot, FaCodeBranch, FaCloud, FaCode, FaLayerGroup } from 'react-icons/fa';
+import type { IconType } from 'react-icons';
+import { getSkillGroups } from '../utils/resumeLoader';
 
-interface SkillsProps {
-  compact?: boolean;
-}
+// Groups and items come from src/content/resume/resume.yaml (cv.sections.skills),
+// so the site and the resume stay in sync.
+const groupIcons: Record<string, IconType> = {
+  AI: FaRobot,
+  DevOps: FaCodeBranch,
+  'Cloud & Infrastructure': FaCloud,
+  Languages: FaCode,
+};
 
-export default function Skills({ compact = false }: SkillsProps) {
-  const skills = [
-    { 
-      name: 'Automation',
-      icon: FaCogs,
-      proficiency: 100,
-    },
-    { 
-      name: 'Python',
-      icon: SiPython,
-      proficiency: 90,
-    },
-    { 
-      name: 'Linux',
-      icon: SiLinux,
-      proficiency: 90,
-    },
-    { 
-      name: 'CI/CD',
-      icon: SiGithubactions,
-      proficiency: 90,
-    },
-    { 
-      name: 'Bash',
-      icon: SiGnubash,
-      proficiency: 85,
-    },
-    { 
-      name: 'Networking',
-      icon: FaNetworkWired,
-      proficiency: 85,
-    },
-    { 
-      name: 'Docker',
-      icon: SiDocker,
-      proficiency: 85,
-    },
-    { 
-      name: 'AI',
-      icon: FaBrain,
-      proficiency: 100,
-    },
-    { 
-      name: 'Code Signing',
-      icon: FaKey,
-      proficiency: 80,
-    },
-    { 
-      name: 'GCP',
-      icon: SiGooglecloud,
-      proficiency: 75,
-    },
-    { 
-      name: 'IAC',
-      icon: SiTerraform,
-      proficiency: 70,
-    },
-    { 
-      name: 'Java',
-      icon: FaJava,
-      proficiency: 60,
-    },
-  ].sort((a, b) => b.proficiency - a.proficiency);
+export default function Skills() {
+  const groups = getSkillGroups();
 
   return (
-    <div className={`grid gap-3 ${compact ? 'grid-cols-2' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}`}>
-      {skills.map((skill) => {
-        const circumference = 2 * Math.PI * 14; // radius = 14
-        const strokeDashoffset = circumference - (skill.proficiency / 100) * circumference;
-        
+    <div className="grid gap-4 sm:grid-cols-2">
+      {groups.map((group) => {
+        const Icon = groupIcons[group.label] ?? FaLayerGroup;
         return (
-          <div
-            key={skill.name}
-            className="flex items-center gap-2.5 p-2.5 surface rounded-2xl hover:bg-gray-800 hover:border-primary-500 transition-all"
-          >
-            {/* Circular Progress Ring with Icon */}
-            <div className="relative w-8 h-8 flex-shrink-0">
-              <svg className="w-8 h-8 transform -rotate-90">
-                {/* Background circle */}
-                <circle
-                  cx="16"
-                  cy="16"
-                  r="14"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  fill="none"
-                  className="text-gray-700"
-                />
-                {/* Progress circle */}
-                <circle
-                  cx="16"
-                  cy="16"
-                  r="14"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeDasharray={circumference}
-                  strokeDashoffset={strokeDashoffset}
-                  className="text-primary-500 transition-all duration-1000 ease-out"
-                  strokeLinecap="round"
-                />
-              </svg>
-              {/* Icon in center */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <skill.icon className="w-4 h-4 text-primary-400" />
-              </div>
-            </div>
-            
-            {/* Skill Name */}
-            <p className="font-semibold text-gray-200 text-sm flex-1">{skill.name}</p>
-          </div>
+          <section key={group.label} className="surface rounded-xl p-5">
+            <h3 className="mb-4 flex items-center gap-2.5 text-base font-semibold text-ivory">
+              <Icon className="h-4 w-4 text-gray-400" aria-hidden="true" />
+              {group.label}
+            </h3>
+            <ul className="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-md border border-gray-800 bg-gray-950/60 px-2.5 py-1 text-sm text-gray-200"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
         );
       })}
     </div>

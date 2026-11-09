@@ -38,8 +38,8 @@ export default function Header() {
                   to={item.path}
                   className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                     isActive(item.path)
-                      ? 'text-primary-400 bg-gray-800/70'
-                      : 'text-gray-400 hover:text-primary-400'
+                      ? 'text-ivory bg-gray-800/70'
+                      : 'text-gray-300 hover:text-ivory'
                   }`}
                 >
                   {item.label}
@@ -88,8 +88,8 @@ export default function Header() {
                   to={item.path}
                   className={`block py-2 font-medium transition-colors ${
                     isActive(item.path)
-                      ? 'text-primary-400'
-                      : 'text-gray-400 hover:text-primary-400'
+                      ? 'text-ivory'
+                      : 'text-gray-300 hover:text-ivory'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >

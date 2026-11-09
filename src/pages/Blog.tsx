@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaRss, FaTimes, FaArrowRight } from 'react-icons/fa';
+import { FaRss, FaTimes, FaArrowRight, FaPenNib } from 'react-icons/fa';
 import { getAllBlogPosts, getAllBlogPostsSync, type BlogPost } from '../utils/blogLoader';
 import BlogPostCard from '../components/BlogPostCard';
 import SearchBar from '../components/SearchBar';
@@ -12,8 +12,14 @@ import { getPageTitle } from '../utils/pageTitle';
 import { groupPostsBySeries, getSeries } from '../utils/blogSeries';
 import { formatDateShort } from '../utils/dateFormatter';
 
+function firstSentence(text: string) {
+  const match = text.match(/^.*?[.!?](?=\s|$)/);
+  return match ? match[0] : text;
+}
+
 function FeaturedPost({ post }: { post: BlogPost }) {
   const series = getSeries(post.series);
+  const teaser = firstSentence(post.description);
   return (
     <Link
       to={`/blog/${post.slug}/`}
@@ -29,17 +35,18 @@ function FeaturedPost({ post }: { post: BlogPost }) {
           />
         </div>
       )}
-      <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 md:p-10">
+      <div className="flex flex-col justify-center gap-3 p-5 sm:p-8 md:gap-4 md:p-10">
         <div className="flex flex-wrap items-center gap-3">
           <span className="text-sm font-semibold text-primary-400">Latest post</span>
           {series && (
             <span className="text-sm text-gray-500">· {series.name}</span>
           )}
         </div>
-        <h2 className="text-3xl font-bold leading-tight text-gray-50">
+        <h2 className="text-2xl md:text-3xl font-bold leading-tight text-gray-50">
           {post.title}
         </h2>
-        <p className="text-lg text-gray-300">{post.description}</p>
+        <p className="text-gray-300 md:hidden">{teaser}</p>
+        <p className="hidden text-lg text-gray-300 md:block">{post.description}</p>
         <div className="mt-2 flex items-center justify-between gap-4 text-sm text-gray-400">
           <span>
             {formatDateShort(post.date)}
@@ -54,21 +61,27 @@ function FeaturedPost({ post }: { post: BlogPost }) {
   );
 }
 
-function SeriesPostRow({ post, part, isLatest }: { post: BlogPost; part: number; isLatest: boolean }) {
+function SeriesPostRow({ post, part, isLatest }: { post: BlogPost; part?: number; isLatest: boolean }) {
   return (
     <Link
       to={`/blog/${post.slug}/`}
-      className="group grid grid-cols-[1.75rem_minmax(0,1fr)_auto] items-baseline gap-x-3 rounded-lg px-3 py-2.5 -mx-3 transition-colors hover:bg-gray-800/60"
+      className="group -mx-3 flex gap-x-3 rounded-lg px-3 py-3 transition-colors hover:bg-gray-800/60"
     >
-      <span className="text-sm tabular-nums text-primary-500/80">{String(part).padStart(2, '0')}</span>
-      <span className="min-w-0">
-        <span className="block font-medium text-gray-200 transition-colors group-hover:text-primary-400">
-          {post.title}
+      {part !== undefined && (
+        <span className="w-6 shrink-0 text-sm leading-6 tabular-nums text-primary-500/80">
+          {String(part).padStart(2, '0')}
         </span>
-        <span className="mt-0.5 block truncate text-sm text-gray-500">{post.description}</span>
-      </span>
-      <span className="whitespace-nowrap text-xs tabular-nums text-gray-500">
-        {isLatest ? <span className="font-semibold text-primary-400">New</span> : formatDateShort(post.date)}
+      )}
+      <span className="min-w-0 flex-1 sm:flex sm:items-baseline sm:justify-between sm:gap-6">
+        <span className="min-w-0">
+          <span className="block font-medium leading-6 text-gray-200 transition-colors group-hover:text-primary-400">
+            {post.title}
+          </span>
+          <span className="mt-0.5 hidden text-sm text-gray-500 sm:block">{post.description}</span>
+        </span>
+        <span className="mt-1 block whitespace-nowrap text-xs tabular-nums text-gray-500 sm:mt-0">
+          {isLatest ? <span className="font-semibold text-primary-400">New</span> : formatDateShort(post.date)}
+        </span>
       </span>
     </Link>
   );
@@ -122,8 +135,11 @@ export default function Blog() {
       </Helmet>
       <div className="section-container py-10 md:py-20">
         {/* Page header */}
-        <div className="flex items-center justify-between gap-6 mb-10 md:mb-14">
-          <h1 className="text-4xl md:text-5xl font-bold">Blog</h1>
+        <div className="flex items-center justify-between gap-6 mb-6 md:mb-14">
+          <h1 className="text-4xl md:text-5xl font-bold flex items-center gap-3">
+            <FaPenNib className="text-primary-400" />
+            Blog
+          </h1>
           <button
             onClick={() => setShowRssDialog(true)}
             className="btn-secondary shrink-0"
@@ -134,11 +150,16 @@ export default function Blog() {
           </button>
         </div>
 
-        {/* Latest post, series agnostic */}
-        {latestPost && !isFiltering && <FeaturedPost post={latestPost} />}
+        <div className="flex flex-col">
+        {/* Latest post, series agnostic. Sits below search on mobile, above it on desktop */}
+        {latestPost && !isFiltering && (
+          <div className="order-2 md:order-1">
+            <FeaturedPost post={latestPost} />
+          </div>
+        )}
 
         {/* Search + topic filter */}
-        <div className="mt-14 mb-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="order-1 mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:order-2 md:mb-10 md:mt-14">
           <div className="w-full sm:max-w-sm">
             <SearchBar
               value={searchQuery}
@@ -153,6 +174,7 @@ export default function Blog() {
               onTopicChange={handleTopicChange}
             />
           </div>
+        </div>
         </div>
 
         <FilterResultsCount
@@ -175,32 +197,39 @@ export default function Blog() {
             </div>
           )
         ) : (
-          <div className="gap-5 lg:columns-2">
+          <div className="mt-12 border-b border-gray-800 md:mt-0">
             {seriesGroups.map(({ series, posts: seriesPosts }) => (
               <section
                 key={series.id}
                 id={`series-${series.id}`}
                 aria-labelledby={`series-${series.id}-title`}
-                className="surface mb-5 break-inside-avoid scroll-mt-24 rounded-xl p-5 sm:p-6"
+                className="grid scroll-mt-24 gap-x-12 gap-y-3 border-t border-gray-800 py-8 md:grid-cols-[15rem_minmax(0,1fr)] md:py-10 lg:grid-cols-[18rem_minmax(0,1fr)]"
               >
-                <div className="mb-3 border-b border-gray-800 pb-3">
-                  <div className="flex items-baseline justify-between gap-4">
-                    <h2 id={`series-${series.id}-title`} className="text-xl font-bold">
-                      {series.name}
-                    </h2>
-                    <span className="text-sm text-gray-500">
-                      {seriesPosts.length} {seriesPosts.length === 1 ? 'post' : 'posts'}
-                    </span>
-                  </div>
+                <div>
+                  <h2 id={`series-${series.id}-title`} className="text-xl font-bold">
+                    {series.name}
+                  </h2>
                   <p className="mt-1 text-sm text-gray-400">{series.description}</p>
+                  <p className="mt-2 text-sm text-gray-500">
+                    {seriesPosts.length} {seriesPosts.length === 1 ? 'post' : 'posts'}
+                  </p>
                 </div>
-                <ol>
-                  {seriesPosts.map((post, i) => (
-                    <li key={post.slug}>
-                      <SeriesPostRow post={post} part={i + 1} isLatest={post.slug === latestPost?.slug} />
-                    </li>
-                  ))}
-                </ol>
+                {(() => {
+                  const List = series.numbered ? 'ol' : 'ul';
+                  return (
+                    <List className="md:-mt-3">
+                      {seriesPosts.map((post, i) => (
+                        <li key={post.slug}>
+                          <SeriesPostRow
+                            post={post}
+                            part={series.numbered ? i + 1 : undefined}
+                            isLatest={post.slug === latestPost?.slug}
+                          />
+                        </li>
+                      ))}
+                    </List>
+                  );
+                })()}
               </section>
             ))}
           </div>
