@@ -90,7 +90,7 @@ export default function ShareButtons({ url, title, description }: ShareButtonsPr
 
             <button
               onClick={handleCopyLink}
-              className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-800 hover:bg-primary-600 text-gray-400 hover:text-white transition-all"
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-800 hover:bg-primary-400 text-gray-400 hover:text-gray-950 transition-all"
               aria-label="Copy link"
             >
               {copied ? <FaCheck className="w-4 h-4 text-green-400" /> : <FaLink className="w-4 h-4" />}

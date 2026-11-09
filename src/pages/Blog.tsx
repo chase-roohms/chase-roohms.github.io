@@ -1,19 +1,81 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaBlog, FaRss, FaTimes } from 'react-icons/fa';
+import { FaRss, FaTimes, FaArrowRight } from 'react-icons/fa';
 import { getAllBlogPosts, getAllBlogPostsSync, type BlogPost } from '../utils/blogLoader';
 import BlogPostCard from '../components/BlogPostCard';
 import SearchBar from '../components/SearchBar';
-import TopicFilter from '../components/TopicFilter';
+import TopicSelect from '../components/TopicSelect';
 import FilterResultsCount from '../components/FilterResultsCount';
 import { useContentFilter } from '../hooks/useContentFilter';
 import { getPageTitle } from '../utils/pageTitle';
+import { groupPostsBySeries, getSeries } from '../utils/blogSeries';
+import { formatDateShort } from '../utils/dateFormatter';
 
-const ITEMS_PER_PAGE = 9;
+function FeaturedPost({ post }: { post: BlogPost }) {
+  const series = getSeries(post.series);
+  return (
+    <Link
+      to={`/blog/${post.slug}/`}
+      className="group surface grid overflow-hidden rounded-xl transition-colors hover:border-primary-500 md:grid-cols-[1.15fr_1fr]"
+    >
+      {post.image && (
+        <div className="relative aspect-[16/9] md:aspect-auto md:min-h-[22rem] overflow-hidden bg-gray-900">
+          <img
+            src={post.image}
+            alt=""
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      )}
+      <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 md:p-10">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="text-sm font-semibold text-primary-400">Latest post</span>
+          {series && (
+            <span className="text-sm text-gray-500">· {series.name}</span>
+          )}
+        </div>
+        <h2 className="text-3xl font-bold leading-tight text-gray-50">
+          {post.title}
+        </h2>
+        <p className="text-lg text-gray-300">{post.description}</p>
+        <div className="mt-2 flex items-center justify-between gap-4 text-sm text-gray-400">
+          <span>
+            {formatDateShort(post.date)}
+            {post.readingTime ? ` · ${post.readingTime} min read` : ''}
+          </span>
+          <span className="flex items-center gap-2 font-semibold text-primary-400">
+            Read <FaArrowRight className="transition-transform group-hover:translate-x-1" />
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function SeriesPostRow({ post, part, isLatest }: { post: BlogPost; part: number; isLatest: boolean }) {
+  return (
+    <Link
+      to={`/blog/${post.slug}/`}
+      className="group grid grid-cols-[1.75rem_minmax(0,1fr)_auto] items-baseline gap-x-3 rounded-lg px-3 py-2.5 -mx-3 transition-colors hover:bg-gray-800/60"
+    >
+      <span className="text-sm tabular-nums text-primary-500/80">{String(part).padStart(2, '0')}</span>
+      <span className="min-w-0">
+        <span className="block font-medium text-gray-200 transition-colors group-hover:text-primary-400">
+          {post.title}
+        </span>
+        <span className="mt-0.5 block truncate text-sm text-gray-500">{post.description}</span>
+      </span>
+      <span className="whitespace-nowrap text-xs tabular-nums text-gray-500">
+        {isLatest ? <span className="font-semibold text-primary-400">New</span> : formatDateShort(post.date)}
+      </span>
+    </Link>
+  );
+}
 
 export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>(() => getAllBlogPostsSync());
-  const [currentPage, setCurrentPage] = useState(1);
   const [showRssDialog, setShowRssDialog] = useState(false);
   const rssUrl = 'https://chaseroohms.com/blog-rss.xml';
 
@@ -32,19 +94,9 @@ export default function Blog() {
     });
   }, []);
 
-  // Reset to page 1 when search or topic changes
-  useEffect(() => {
-    // Using a condition to avoid unnecessary renders
-    if (currentPage !== 1) {
-      setCurrentPage(1);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery, selectedTopic]);
-
-  // Pagination
-  const totalPages = Math.ceil(filteredPosts.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const isFiltering = searchQuery !== '' || selectedTopic !== 'All';
+  const latestPost = posts[0];
+  const seriesGroups = useMemo(() => groupPostsBySeries(posts), [posts]);
 
   return (
     <>
@@ -68,114 +120,99 @@ export default function Blog() {
         <link rel="canonical" href="https://chaseroohms.com/blog/" />
         <link rel="alternate" type="application/rss+xml" title="Chase Roohms - Blog RSS Feed" href="https://chaseroohms.com/blog-rss.xml" />
       </Helmet>
-      <div className="section-container py-8 md:py-20">
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-4xl md:text-5xl font-bold flex items-center gap-3">
-            <FaBlog className="text-primary-400" />
-            Blog
-          </h1>
+      <div className="section-container py-10 md:py-20">
+        {/* Page header */}
+        <div className="flex items-center justify-between gap-6 mb-10 md:mb-14">
+          <h1 className="text-4xl md:text-5xl font-bold">Blog</h1>
           <button
             onClick={() => setShowRssDialog(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors font-semibold"
+            className="btn-secondary shrink-0"
             aria-label="Subscribe to RSS feed"
           >
             <FaRss />
-            <span className="hidden sm:inline">RSS Feed</span>
+            <span className="hidden sm:inline">RSS</span>
           </button>
         </div>
-      <p className="text-gray-400 text-lg mb-8">
-        Technical articles, tutorials, and thoughts on software development.
-      </p>
 
-      {/* Search Bar */}
-      <div className="mb-8">
-        <SearchBar
-          value={searchQuery}
-          onChange={handleSearchChange}
-          placeholder="Search posts by title, description, or topic..."
-        />
-      </div>
+        {/* Latest post, series agnostic */}
+        {latestPost && !isFiltering && <FeaturedPost post={latestPost} />}
 
-      {/* Topic Filter */}
-      <div className="mb-12">
-        <TopicFilter
-          topics={allTopics}
+        {/* Search + topic filter */}
+        <div className="mt-14 mb-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="w-full sm:max-w-sm">
+            <SearchBar
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search posts..."
+            />
+          </div>
+          <div className="w-full sm:w-56">
+            <TopicSelect
+              topics={allTopics}
+              selectedTopic={selectedTopic}
+              onTopicChange={handleTopicChange}
+            />
+          </div>
+        </div>
+
+        <FilterResultsCount
+          count={filteredPosts.length}
+          searchQuery={searchQuery}
           selectedTopic={selectedTopic}
-          onTopicChange={handleTopicChange}
+          itemType="post"
         />
-      </div>
 
-      {/* Results Count */}
-      <FilterResultsCount
-        count={filteredPosts.length}
-        searchQuery={searchQuery}
-        selectedTopic={selectedTopic}
-        itemType="post"
-      />
-
-      {/* Blog Posts Grid */}
-      {filteredPosts.length === 0 ? (
-        <p className="text-gray-400 text-center py-12">
-          No blog posts found. Try adjusting your search or filters.
-        </p>
-      ) : (
-        <>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {paginatedPosts.map(post => (
-              <BlogPostCard
-                key={post.slug}
-                post={post}
-                onTopicClick={handleTopicChange}
-              />
+        {isFiltering ? (
+          filteredPosts.length === 0 ? (
+            <p className="text-gray-400 text-center py-12">
+              No blog posts found. Try adjusting your search or filters.
+            </p>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPosts.map(post => (
+                <BlogPostCard key={post.slug} post={post} onTopicClick={handleTopicChange} />
+              ))}
+            </div>
+          )
+        ) : (
+          <div className="gap-5 lg:columns-2">
+            {seriesGroups.map(({ series, posts: seriesPosts }) => (
+              <section
+                key={series.id}
+                id={`series-${series.id}`}
+                aria-labelledby={`series-${series.id}-title`}
+                className="surface mb-5 break-inside-avoid scroll-mt-24 rounded-xl p-5 sm:p-6"
+              >
+                <div className="mb-3 border-b border-gray-800 pb-3">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h2 id={`series-${series.id}-title`} className="text-xl font-bold">
+                      {series.name}
+                    </h2>
+                    <span className="text-sm text-gray-500">
+                      {seriesPosts.length} {seriesPosts.length === 1 ? 'post' : 'posts'}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm text-gray-400">{series.description}</p>
+                </div>
+                <ol>
+                  {seriesPosts.map((post, i) => (
+                    <li key={post.slug}>
+                      <SeriesPostRow post={post} part={i + 1} isLatest={post.slug === latestPost?.slug} />
+                    </li>
+                  ))}
+                </ol>
+              </section>
             ))}
           </div>
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-2">
-              <button
-                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                disabled={currentPage === 1}
-                className="px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-gray-400 hover:bg-gray-800 hover:border-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-              >
-                Previous
-              </button>
-              
-              <div className="flex gap-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`w-10 h-10 rounded-lg font-semibold transition-all ${
-                      currentPage === page
-                        ? 'bg-primary-600 text-white'
-                        : 'bg-gray-900 border border-gray-800 text-gray-400 hover:bg-gray-800 hover:border-primary-500'
-                    }`}
-                  >
-                    {page}
-                  </button>
-                ))}
-              </div>
-
-              <button
-                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                disabled={currentPage === totalPages}
-                className="px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-gray-400 hover:bg-gray-800 hover:border-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-              >
-                Next
-              </button>
-            </div>
-          )}
-        </>
-      )}
+        )}
 
       {/* RSS Feed Dialog */}
       {showRssDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={() => setShowRssDialog(false)} role="dialog" aria-modal="true" aria-labelledby="rss-dialog-title">
-          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
+          <div className="surface rounded-2xl p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h2 id="rss-dialog-title" className="text-2xl font-bold flex items-center gap-2">
-                <FaRss className="text-orange-500" />
+                <FaRss className="text-primary-400" />
                 RSS Feed
               </h2>
               <button
@@ -198,7 +235,7 @@ export default function Blog() {
                   navigator.clipboard.writeText(rssUrl);
                   // Could add a toast notification here
                 }}
-                className="flex-1 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-semibold"
+                className="flex-1 px-4 py-2 bg-primary-400 hover:bg-primary-300 text-gray-950 rounded-lg transition-colors font-semibold"
               >
                 Copy URL
               </button>

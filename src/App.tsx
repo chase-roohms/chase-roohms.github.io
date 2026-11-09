@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -11,15 +11,10 @@ import Home from './pages/Home';
 // otherwise leave the Suspense fallback (a blank screen) on-screen.
 const About = lazyWithRetry(() => import('./pages/About'));
 const Projects = lazyWithRetry(() => import('./pages/Projects'));
-const News = lazyWithRetry(() => import('./pages/News'));
 const Blog = lazyWithRetry(() => import('./pages/Blog'));
 const BlogPost = lazyWithRetry(() => import('./pages/BlogPost'));
 const Contact = lazyWithRetry(() => import('./pages/Contact'));
 const NotFound = lazyWithRetry(() => import('./pages/NotFound'));
-const Achievements = lazyWithRetry(() => import('./pages/Achievements'));
-import { useKonamiCode, useSecretWord, useLogoClicks } from './hooks/useKonamiCode';
-import { KonamiEasterEgg, AutomationEasterEgg, LogoClickEasterEgg } from './components/EasterEggs';
-import { unlockAchievement } from './utils/achievements';
 
 // Extend Window interface for gtag
 declare global {
@@ -48,75 +43,26 @@ function usePageTracking() {
 
 function AppContent() {
   usePageTracking();
-  const [showKonami, setShowKonami] = useState(false);
-  const [showAutomation, setShowAutomation] = useState(false);
-  const [showLogoEgg, setShowLogoEgg] = useState(false);
-  
-  // Konami Code Easter Egg
-  useKonamiCode(useCallback(() => {
-    setShowKonami(true);
-    unlockAchievement('konami_code');
-  }, []));
-  
-  // Secret Word Easter Egg
-  useSecretWord('automation', useCallback(() => {
-    setShowAutomation(true);
-    unlockAchievement('automation_word');
-  }, []));
-  
-  // Logo Click Easter Egg
-  const handleLogoClick = useLogoClicks(20, () => {
-    setShowLogoEgg(true);
-    unlockAchievement('logo_clicker');
-  });
-  
-  // Close on ESC key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setShowKonami(false);
-        setShowAutomation(false);
-        setShowLogoEgg(false);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-  
+
   return (
     <>
       <ScrollToTop />
-      <Layout onLogoClick={handleLogoClick}>
+      <Layout>
         <ErrorBoundary>
           <Suspense fallback={<div className="min-h-screen" />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about/" element={<About />} />
               <Route path="/projects/" element={<Projects />} />
-              <Route path="/news/" element={<News />} />
+              <Route path="/news/" element={<Navigate to="/" replace />} />
               <Route path="/blog/" element={<Blog />} />
               <Route path="/blog/:slug/" element={<BlogPost />} />
               <Route path="/contact/" element={<Contact />} />
-              <Route path="/achievements/" element={<Achievements />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>
       </Layout>
-      
-      {/* Easter Eggs */}
-      <KonamiEasterEgg 
-        active={showKonami} 
-        onClose={() => setShowKonami(false)} 
-      />
-      <AutomationEasterEgg 
-        active={showAutomation} 
-        onClose={() => setShowAutomation(false)} 
-      />
-      <LogoClickEasterEgg 
-        active={showLogoEgg} 
-        onClose={() => setShowLogoEgg(false)} 
-      />
     </>
   );
 }

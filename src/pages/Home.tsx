@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 import Skills from '../components/Skills';
 import BiographyText from '../components/BiographyText';
-import CircuitDecoration from '../components/CircuitDecoration';
 import ProjectCard from '../components/ProjectCard';
 import BlogPostCard from '../components/BlogPostCard';
 import { getFeaturedProject } from '../utils/projectsData';
@@ -50,18 +49,17 @@ export default function Home() {
         <link rel="canonical" href="https://chaseroohms.com/" />
       </Helmet>
       
-      <CircuitDecoration />
-      
-      <div className="section-container py-8 md:py-20 relative z-10">
+      <div className="section-container py-10 md:py-20">
       {/* Hero Section */}
-      <section className="pb-8 md:py-20">
-        <div className="flex flex-col md:flex-row items-center gap-3">
-          {/* Text Content */}
-          <div className="flex-[2]">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Hi, I'm <a href="https://www.google.com/search?q=Chase+Roohms" target="_blank" rel="noopener noreferrer" className="text-[#ff6200] cursor-pointer [&>span]:inline-block [&>span]:transition-transform [&>span]:duration-300 hover:[&>span]:scale-110"><span>{first_name}</span> <span>{last_name}</span></a>
+      <section className="pb-12 md:pb-20">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-10 md:gap-12">
+          <div className="flex-[2] text-center md:text-left">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary-400">
+              <a href="https://www.google.com/search?q=Chase+Roohms" target="_blank" rel="noopener noreferrer">
+                {first_name} {last_name}
+              </a>
             </h1>
-            <p className="text-xl text-gray-400 mb-8">
+            <p className="text-xl text-gray-400 mb-8 max-w-xl mx-auto md:mx-0">
               <span className="block">{primaryHeadline}</span>
               <span className="block mt-2">
                 Founder of{' '}
@@ -76,7 +74,7 @@ export default function Home() {
                 </a>
               </span>
             </p>
-            <div className="flex gap-4 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               <Link to="/projects/" className="btn-primary">
                 My Projects
               </Link>
@@ -86,11 +84,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Image Placeholder */}
-          <div className="flex-1 flex justify-center md:justify-end mt-8 md:mt-0">
-            <div className="w-48 h-48 md:w-80 md:h-80 bg-gray-900 border-2 border-gray-800 rounded-2xl flex items-center justify-center">
-              <img src={headshot} alt="Chase Roohms professional headshot" fetchPriority="high" className="w-full h-full object-cover rounded-2xl" />
-            </div>
+          <div className="flex-1 flex justify-center md:justify-end">
+            <img
+              src={headshot}
+              alt="Chase Roohms professional headshot"
+              fetchPriority="high"
+              className="w-48 h-48 md:w-72 md:h-72 rounded-2xl object-cover border border-gray-700 grayscale-[15%]"
+            />
           </div>
         </div>
       </section>
@@ -143,7 +143,7 @@ export default function Home() {
             {recentPost ? (
               <BlogPostCard post={recentPost} showTopics={false} />
             ) : (
-              <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <div className="surface rounded-2xl p-6">
                 <p className="text-gray-400">Loading...</p>
               </div>
             )}

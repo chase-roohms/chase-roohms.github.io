@@ -5,6 +5,7 @@ author: Chase Roohms
 image: ""
 description: "Implementing high-impact smart home solutions using Home Assistant."
 topics: ["Automation", "Docker"]
+series: "self-hosting"
 slug: "apartment-friendly-home-automation"
 icon: "FaHome"
 ---

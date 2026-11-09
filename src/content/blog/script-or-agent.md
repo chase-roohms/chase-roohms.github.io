@@ -6,6 +6,7 @@ author: Chase Roohms
 image: "/blog-images/clock-vs-money-scale.webp"
 description: "A practical framework for deciding whether a workflow needs deterministic automation, an AI agent, or a combination of both."
 topics: ["AI", "Automation"]
+series: "ai-at-work"
 slug: "script-or-agent"
 icon: "FaRobot"
 ---------------

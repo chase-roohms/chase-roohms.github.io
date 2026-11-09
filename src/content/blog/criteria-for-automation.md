@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/clock-vs-money-scale.webp"
 description: "Is something really worth automating, or will you spend more time on it than it's worth?"
 topics: ["Automation"]
+series: "automation"
 slug: "criteria-for-automation"
 icon: "FaBalanceScale"
 ---

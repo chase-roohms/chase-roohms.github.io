@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/mythicmate-header.webp"
 description: "How Docker solved dependency nightmares, security issues, and environment inconsistencies for my Java Discord bot."
 topics: ["Docker", "Java"]
+series: "automation"
 slug: "benefits-of-dockerization"
 icon: "FaDocker"
 ---

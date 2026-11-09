@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/xxx.webp"
 description: "The adoption, engagement, cost, and outcome metrics that reveal whether an enterprise AI rollout is delivering meaningful value."
 topics: ["AI", "Metrics"]
+series: "ai-at-work"
 slug: "enterprise-ai-rollout-metrics"
 icon: "FaChartLine"
 ---

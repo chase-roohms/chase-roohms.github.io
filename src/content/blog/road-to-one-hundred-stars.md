@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/star-history-100.webp"
 description: "The story of how I got Transmute from zero to 100 GitHub stars in just over a month."
 topics: ["GitHub", "Open Source", "Self-Hosting", "Transmute"]
+series: "transmute"
 slug: "road-to-one-hundred-stars"
 icon: "FaStar"
 ---

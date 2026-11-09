@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/dev-stats-demo.webp"
 description: "How I solved a static site problem with a GitHub Actions 'stats crawler' middle-man."
 topics: ["Python", "GitHub Actions", "Automation"]
+series: "automation"
 slug: "static-site-dynamic-data"
 icon: "FaSyncAlt"
 ---

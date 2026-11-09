@@ -36,7 +36,7 @@ npm run build
 Build process:
 1. Vite production build to `dist/`
 2. Puppeteer-based prerendering of all routes
-3. RSS feed generation for blog and news
+3. RSS feed generation for the blog
 4. Sitemap.xml generation
 5. Static HTML generation with fully-rendered meta tags for crawler compatibility
 
@@ -56,8 +56,7 @@ src/
 │   ├── Projects.tsx    # Project showcase
 │   ├── Blog.tsx        # Blog post list
 │   ├── BlogPost.tsx    # Individual post viewer
-│   ├── Contact.tsx     # Contact information
-│   └── News.tsx        # News/updates page
+│   └── Contact.tsx     # Contact information
 ├── content/            # Content files
 │   ├── blog/          # Blog posts (markdown)
 │   └── resume/        # Resume data (YAML)
@@ -68,7 +67,7 @@ src/
 
 scripts/
 ├── prerender.js        # Prerendering script for SEO
-├── generate-rss.js     # RSS feed generation for blog and news
+├── generate-rss.js     # RSS feed generation for the blog
 ├── generate-sitemap.js # Sitemap.xml generation
 ├── check-meta-tags.js  # Meta tag validation
 ├── verify-pages.js     # Page verification
@@ -95,9 +94,7 @@ image: "/blog-images/image.jpg"
 ## SEO Features
 
 - **JSON-LD Structured Data**: Blog posts include BlogPosting schema markup
-- **RSS Feeds**: 
-  - Blog RSS feed at `/blog-rss.xml`
-  - News RSS feed at `/news-rss.xml`
+- **RSS Feed**: Blog RSS feed at `/blog-rss.xml`
 - **Sitemap**: Auto-generated sitemap.xml with all pages and blog posts
 - **robots.txt**: Configured with sitemap reference
 

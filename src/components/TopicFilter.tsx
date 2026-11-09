@@ -26,7 +26,7 @@ export default function TopicFilter({
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Filter by Topic</h2>
+      <h2 className="text-sm font-medium text-gray-400 mb-3">Filter by topic</h2>
       <div 
         ref={containerRef}
         className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900"
@@ -36,10 +36,10 @@ export default function TopicFilter({
             key={topic}
             ref={topic === selectedTopic ? selectedButtonRef : null}
             onClick={() => onTopicChange(topic)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all whitespace-nowrap flex-shrink-0 ${
+            className={`px-3.5 py-1.5 rounded-full text-sm font-medium border transition-colors whitespace-nowrap flex-shrink-0 ${
               selectedTopic === topic
-                ? 'bg-primary-600 text-white'
-                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                ? 'bg-primary-400 border-primary-400 text-gray-950'
+                : 'bg-gray-900 border-gray-800 text-gray-400 hover:border-gray-600 hover:text-gray-100'
             }`}
           >
             {topic}

@@ -73,9 +73,9 @@ export async function fetchAllBlogViews(): Promise<Map<string, number>> {
       for (const [path, data] of Object.entries(stats.blog_posts)) {
         // Match paths like /blog/slug/
         const match = path.match(/^\/blog\/([^/]+)\/$/);
-        if (match && typeof (data as any).page_views === 'number') {
+        const views = (data as { page_views?: unknown } | null)?.page_views;
+        if (match && typeof views === 'number') {
           const slug = match[1];
-          const views = (data as any).page_views;
           viewsMap.set(slug, views);
           // Also update cache
           blogViewsCache.set(slug, views);

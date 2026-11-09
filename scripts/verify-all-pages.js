@@ -11,7 +11,6 @@ const pages = [
   { name: 'About', path: 'about/index.html' },
   { name: 'Projects', path: 'projects/index.html' },
   { name: 'Contact', path: 'contact/index.html' },
-  { name: 'News', path: 'news/index.html' },
   { name: 'Blog', path: 'blog/index.html' },
   { name: 'Blog Post (home-lab-setup)', path: 'blog/home-lab-setup/index.html' },
 ];

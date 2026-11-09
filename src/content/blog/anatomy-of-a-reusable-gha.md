@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/tag-and-release-header.webp"
 description: "Decoupling GitHub workflow logic into standalone, version-controlled actions for the global Marketplace."
 topics: ["CI/CD", "GitHub Actions", "Automation"]
+series: "automation"
 slug: "anatomy-of-a-reusable-gha"
 icon: "FaGithub"
 ---

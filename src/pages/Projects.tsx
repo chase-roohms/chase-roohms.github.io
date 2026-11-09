@@ -9,12 +9,50 @@ import FilterResultsCount from '../components/FilterResultsCount';
 import { useContentFilter } from '../hooks/useContentFilter';
 import { getPageTitle } from '../utils/pageTitle';
 
+// Pagination component
+function PaginationControls({ 
+  currentPage, 
+  totalPages, 
+  onPrevious, 
+  onNext,
+  itemCount 
+}: { 
+  currentPage: number; 
+  totalPages: number; 
+  onPrevious: () => void; 
+  onNext: () => void;
+  itemCount: number;
+}) {
+  if (totalPages <= 1) return null;
+
+  return (
+    <div className="flex items-center justify-center gap-4 mt-8">
+      <button
+        onClick={onPrevious}
+        disabled={currentPage === 0}
+        className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        aria-label="Previous page"
+      >
+        <FaChevronLeft className="text-primary-400" />
+      </button>
+      <span className="text-gray-400">
+        Page {currentPage + 1} of {totalPages} ({itemCount} {itemCount === 1 ? 'project' : 'projects'})
+      </span>
+      <button
+        onClick={onNext}
+        disabled={currentPage === totalPages - 1}
+        className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        aria-label="Next page"
+      >
+        <FaChevronRight className="text-primary-400" />
+      </button>
+    </div>
+  );
+}
+
 export default function Projects() {
   const ITEMS_PER_PAGE = 6;
   
-  // Pagination state for each section
-  const [professionalPage, setProfessionalPage] = useState(0);
-  const [personalPage, setPersonalPage] = useState(0);
 
   // Sort projects by date (newest first)
   const sortedProfessionalProjects = useMemo(() => 
@@ -51,11 +89,16 @@ export default function Projects() {
   );
   const totalFilteredProjects = filteredAllProjects.length;
 
-  // Reset pagination when filters change
-  useMemo(() => {
-    setProfessionalPage(0);
-    setPersonalPage(0);
-  }, [searchQuery, selectedTopic]);
+  // Pagination state for each section, keyed by the active filters so that
+  // changing the search or topic resets both sections to the first page
+  const filterKey = `${searchQuery}\u0000${selectedTopic}`;
+  const [pagination, setPagination] = useState({ filterKey, professional: 0, personal: 0 });
+  const professionalPage = pagination.filterKey === filterKey ? pagination.professional : 0;
+  const personalPage = pagination.filterKey === filterKey ? pagination.personal : 0;
+  const setProfessionalPage = (page: number) =>
+    setPagination({ filterKey, professional: page, personal: personalPage });
+  const setPersonalPage = (page: number) =>
+    setPagination({ filterKey, professional: professionalPage, personal: page });
 
   // Calculate pagination for professional projects
   const professionalTotalPages = Math.ceil(filteredProfessionalProjects.length / ITEMS_PER_PAGE);
@@ -77,60 +120,19 @@ export default function Projects() {
 
   // Pagination handlers
   const handleProfessionalPrevPage = () => {
-    setProfessionalPage((prev) => Math.max(0, prev - 1));
+    setProfessionalPage(Math.max(0, professionalPage - 1));
   };
 
   const handleProfessionalNextPage = () => {
-    setProfessionalPage((prev) => Math.min(professionalTotalPages - 1, prev + 1));
+    setProfessionalPage(Math.min(professionalTotalPages - 1, professionalPage + 1));
   };
 
   const handlePersonalPrevPage = () => {
-    setPersonalPage((prev) => Math.max(0, prev - 1));
+    setPersonalPage(Math.max(0, personalPage - 1));
   };
 
   const handlePersonalNextPage = () => {
-    setPersonalPage((prev) => Math.min(personalTotalPages - 1, prev + 1));
-  };
-
-  // Pagination component
-  const PaginationControls = ({ 
-    currentPage, 
-    totalPages, 
-    onPrevious, 
-    onNext,
-    itemCount 
-  }: { 
-    currentPage: number; 
-    totalPages: number; 
-    onPrevious: () => void; 
-    onNext: () => void;
-    itemCount: number;
-  }) => {
-    if (totalPages <= 1) return null;
-
-    return (
-      <div className="flex items-center justify-center gap-4 mt-8">
-        <button
-          onClick={onPrevious}
-          disabled={currentPage === 0}
-          className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-          aria-label="Previous page"
-        >
-          <FaChevronLeft className="text-primary-400" />
-        </button>
-        <span className="text-gray-400">
-          Page {currentPage + 1} of {totalPages} ({itemCount} {itemCount === 1 ? 'project' : 'projects'})
-        </span>
-        <button
-          onClick={onNext}
-          disabled={currentPage === totalPages - 1}
-          className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-          aria-label="Next page"
-        >
-          <FaChevronRight className="text-primary-400" />
-        </button>
-      </div>
-    );
+    setPersonalPage(Math.min(personalTotalPages - 1, personalPage + 1));
   };
 
   return (

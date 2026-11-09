@@ -1,11 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
-interface HeaderProps {
-  onLogoClick: () => void;
-}
-
-export default function Header({ onLogoClick }: HeaderProps) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -13,7 +9,6 @@ export default function Header({ onLogoClick }: HeaderProps) {
     { path: '/', label: 'Home' },
     { path: '/about/', label: 'About' },
     { path: '/projects/', label: 'Projects' },
-    { path: '/news/', label: 'News' },
     { path: '/blog/', label: 'Blog' },
     { path: '/contact/', label: 'Contact' },
   ];
@@ -21,27 +16,29 @@ export default function Header({ onLogoClick }: HeaderProps) {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50 backdrop-blur-sm bg-opacity-90">
+    <header className="sticky top-0 z-50 border-b border-gray-800 bg-gray-950/80 backdrop-blur-md">
       <nav className="section-container py-4">
         <div className="flex justify-between items-center">
           {/* Logo/Brand */}
-          <Link 
-            to="/" 
-            className="text-2xl font-bold text-primary-400 font-mono"
-            onClick={onLogoClick}
+          <Link
+            to="/"
+            className="flex items-center"
+            aria-label="Chase Roohms, home"
           >
-            ./chase-roohms.tsx
+            <span className="text-lg font-semibold tracking-tight text-gray-100">
+              Chase Roohms
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-8">
+          <ul className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`relative transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary-400 after:transition-all after:duration-300 hover:after:w-full ${
+                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                     isActive(item.path)
-                      ? 'text-primary-400 font-semibold after:w-full'
+                      ? 'text-primary-400 bg-gray-800/70'
                       : 'text-gray-400 hover:text-primary-400'
                   }`}
                 >
@@ -53,7 +50,7 @@ export default function Header({ onLogoClick }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-gray-400"
+            className="md:hidden p-2 text-gray-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -84,14 +81,14 @@ export default function Header({ onLogoClick }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <ul className="md:hidden mt-4 space-y-2">
+          <ul className="md:hidden mt-4 space-y-1 border-t border-gray-800 pt-3">
             {navItems.map((item) => (
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`block py-2 transition-colors ${
+                  className={`block py-2 font-medium transition-colors ${
                     isActive(item.path)
-                      ? 'text-primary-400 font-semibold'
+                      ? 'text-primary-400'
                       : 'text-gray-400 hover:text-primary-400'
                   }`}
                   onClick={() => setIsMenuOpen(false)}

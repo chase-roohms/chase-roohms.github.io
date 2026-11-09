@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/intern-to-staff-engineer.webp"
 description: "What my journey from intern to Staff Engineer taught me about career growth, taking ownership, delivering impact, and being useful."
 topics: ["Career", "Software Engineering", "Professional Growth"]
+series: "career"
 slug: "intern-to-staff-engineer"
 icon: "FaArrowTrendUp"
 ---

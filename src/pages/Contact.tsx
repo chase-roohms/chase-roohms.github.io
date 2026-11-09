@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaCommentDots, FaPaperPlane } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
-import { unlockAchievement } from '../utils/achievements';
 import { getPageTitle } from '../utils/pageTitle';
 
 export default function Contact() {
@@ -28,7 +27,6 @@ export default function Contact() {
       if (response.ok) {
         setFormState('success');
         setFormData({ name: '', email: '', message: '' });
-        unlockAchievement('networker');
       } else {
         setFormState('error');
       }
@@ -99,7 +97,7 @@ export default function Contact() {
         </p>
 
         {/* Contact Form */}
-        <div className="bg-gray-900 border border-gray-800 rounded-lg p-8 mb-16">
+        <div className="surface rounded-2xl p-8 mb-16">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
             <FaPaperPlane className="text-primary-400" />
             Send a Message
@@ -169,7 +167,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={formState === 'submitting'}
-              className="w-full px-6 py-3 bg-primary-600 hover:bg-primary-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full px-6 py-3 bg-primary-400 hover:bg-primary-300 disabled:bg-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed text-gray-950 font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
             >
               {formState === 'submitting' ? (
                 <>Sending...</>
@@ -192,7 +190,7 @@ export default function Contact() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-primary-500 hover:bg-gray-800 transition-all group"
+              className="surface rounded-2xl p-6 hover:border-primary-500 hover:bg-gray-800 transition-all group"
             >
               <div className="flex gap-3 mb-3">
                 <link.icon className="w-12 h-12 text-primary-400 group-hover:scale-110 transition-transform flex-shrink-0" />

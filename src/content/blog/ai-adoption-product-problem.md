@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/access-to-adoption.webp"
 description: "Why successful enterprise AI adoption takes more than buying licenses and granting access."
 topics: ["AI"]
+series: "ai-at-work"
 slug: "ai-adoption-product-problem"
 icon: "FaUsers"
 ---

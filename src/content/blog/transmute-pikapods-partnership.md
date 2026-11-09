@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/pikapods-transmute-partnership.webp"
 description: "Why I chose PikaPods as the recommended hosted deployment option for Transmute, and what that means for self-hosted users."
 topics: ["Open Source", "Self-Hosting", "Transmute"]
+series: "transmute"
 slug: "transmute-pikapods"
 icon: "FaCloud"
 ---

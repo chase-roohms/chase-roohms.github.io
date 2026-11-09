@@ -20,6 +20,7 @@ export interface BlogPost {
   date: string;
   description: string;
   topics: string[];
+  series?: string;
   content: string;
   icon?: string;
   author?: string;
@@ -59,6 +60,7 @@ const parsedBlogPosts: ParsedBlogPost[] = Object.entries(blogFiles)
       date: data.date,
       description: data.description,
       topics: data.topics || [],
+      series: data.series,
       content,
       icon: data.icon,
       author: data.author,
@@ -75,6 +77,7 @@ function createListingPost(post: ParsedBlogPost): BlogPost {
     date: post.date,
     description: post.description,
     topics: [...post.topics],
+    series: post.series,
     content: '',
     icon: post.icon,
     author: post.author,
@@ -90,6 +93,7 @@ function createFullPost(post: ParsedBlogPost): BlogPost {
     date: post.date,
     description: post.description,
     topics: [...post.topics],
+    series: post.series,
     content: post.content,
     icon: post.icon,
     author: post.author,

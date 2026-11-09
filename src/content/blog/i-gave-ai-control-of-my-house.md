@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "https://chaseroohms.com/blog-images/ai-house-header.webp"
 description: "I connected Home Assistant to LiteLLM and OpenRouter, then asked my house for a mood instead of a light setting. Here's what happened."
 topics: ["AI", "Automation", "Self-Hosting"]
+series: "self-hosting"
 slug: "i-gave-ai-control-of-my-house"
 icon: "FaHome"
 ---

@@ -78,7 +78,7 @@ export default function Skills({ compact = false }: SkillsProps) {
         return (
           <div
             key={skill.name}
-            className="flex items-center gap-2.5 p-2.5 bg-gray-900 border border-gray-800 rounded-lg hover:bg-gray-800 hover:border-primary-500 transition-all"
+            className="flex items-center gap-2.5 p-2.5 surface rounded-2xl hover:bg-gray-800 hover:border-primary-500 transition-all"
           >
             {/* Circular Progress Ring with Icon */}
             <div className="relative w-8 h-8 flex-shrink-0">

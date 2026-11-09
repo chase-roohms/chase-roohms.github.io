@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 
 const SITE_URL = 'https://chaseroohms.com';
 const BLOG_DIR = path.join(__dirname, '../src/content/blog');
-const NEWS_DATA_PATH = path.join(__dirname, '../src/utils/newsData.ts');
 const OUTPUT_DIR = path.join(__dirname, '../dist');
 
 // Ensure output directory exists
@@ -60,75 +59,10 @@ function generateBlogRSS() {
   console.log('✓ Generated blog-rss.xml');
 }
 
-// Generate News RSS Feed
-function generateNewsRSS() {
-  // Read and parse the newsData.ts file
-  const newsContent = fs.readFileSync(NEWS_DATA_PATH, 'utf-8');
-  
-  // Extract the newsItems array using regex
-  const newsItemsMatch = newsContent.match(/export const newsItems[^=]*=\s*\[([\s\S]*?)\];/);
-  if (!newsItemsMatch) {
-    console.warn('Could not parse newsData.ts');
-    return;
-  }
-
-  // Parse the array content (this is a simplified approach)
-  // In production, you might want to use a proper TypeScript parser
-  const arrayContent = newsItemsMatch[1];
-  const items = [];
-  
-  // Extract individual items using regex - updated to handle string IDs and optional links
-  const itemRegex = /\{[^}]*?id:\s*['"]([^'"]+)['"],[^}]*?fullDate:\s*['"]([^'"]+)['"],[^}]*?title:\s*['"]([^'"]+)['"],[^}]*?description:\s*['"]([^'"]+)['"],[^}]*?(?:link:\s*['"]([^'"]+)['"],[^}]*?)?\}/gs;
-  
-  let match;
-  while ((match = itemRegex.exec(arrayContent)) !== null) {
-    const id = match[1];
-    const date = match[2];
-    const title = match[3];
-    const description = match[4];
-    const link = match[5];
-    
-    items.push({
-      id,
-      date,
-      title,
-      description,
-      link: link || `${SITE_URL}/news#${id}`
-    });
-  }
-
-  // Sort by date (newest first)
-  items.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Chase Roohms - News</title>
-    <link>${SITE_URL}/news</link>
-    <description>Professional updates, achievements, and milestones from Chase Roohms' career in DevOps and software development.</description>
-    <language>en-us</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="${SITE_URL}/news-rss.xml" rel="self" type="application/rss+xml"/>
-${items.map(item => `    <item>
-      <title><![CDATA[${item.title}]]></title>
-      <link>${item.link.startsWith('http') ? item.link : SITE_URL + item.link}</link>
-      <description><![CDATA[${item.description}]]></description>
-      <pubDate>${new Date(item.date).toUTCString()}</pubDate>
-      <author>chaseroohms@gmail.com (Chase Roohms)</author>
-      <guid isPermaLink="true">${item.link.startsWith('http') ? item.link : SITE_URL + item.link}</guid>
-    </item>`).join('\n')}
-  </channel>
-</rss>`;
-
-  fs.writeFileSync(path.join(OUTPUT_DIR, 'news-rss.xml'), rss);
-  console.log('✓ Generated news-rss.xml');
-}
-
-// Run both generators
+// Run generator
 try {
   generateBlogRSS();
-  generateNewsRSS();
-  console.log('\n✓ RSS feeds generated successfully');
+  console.log('\n✓ RSS feed generated successfully');
 } catch (error) {
   console.error('Error generating RSS feeds:', error);
   process.exit(1);

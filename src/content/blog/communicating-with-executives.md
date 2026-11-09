@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/executive-communication-header.webp"
 description: "Communicate with clarity and earn your leadership's trust in the process."
 topics: ["Communication", "Career"]
+series: "career"
 slug: "communicationg-with-executives"
 icon: "FaUserTie"
 ---

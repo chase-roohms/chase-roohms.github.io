@@ -86,8 +86,8 @@ export default function Card({
   const content = (
     <>
       {image && (
-        <div className="bg-gray-800 h-48 rounded-lg mb-4 flex items-center justify-center">
-          <img src={image} alt={imageAlt} loading="lazy" className="h-full w-full object-cover rounded-lg" />
+        <div className="bg-gray-800 h-48 rounded-lg mb-4 overflow-hidden flex items-center justify-center">
+          <img src={image} alt={imageAlt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
         </div>
       )}
 
@@ -197,7 +197,7 @@ export default function Card({
   );
 
   return (
-    <article className={`bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-primary-500 hover:bg-gray-800 transition-all ${wrapInLink ? 'group flex flex-col min-h-[280px]' : ''}`}>
+    <article className={`surface rounded-xl p-5 hover:border-primary-500 transition-all ${wrapInLink ? 'group flex flex-col min-h-[280px]' : ''}`}>
       {wrapInLink && internalLink ? (
         <>
           <Link to={internalLink} className="flex-1 flex flex-col">

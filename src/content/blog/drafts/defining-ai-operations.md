@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/xxx.webp"
 description: "What AI Operations means, how it differs from traditional AIOps, and why organizations need a dedicated operational function for enterprise AI."
 topics: ["AI"]
+series: "ai-at-work"
 slug: "defining-ai-operations"
 icon: "FaGears"
 ---

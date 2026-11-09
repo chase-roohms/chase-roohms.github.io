@@ -15,7 +15,6 @@ const staticPages = [
   { route: '/about', output: 'about/index.html', name: 'About' },
   { route: '/projects', output: 'projects/index.html', name: 'Projects' },
   { route: '/contact', output: 'contact/index.html', name: 'Contact' },
-  { route: '/news', output: 'news/index.html', name: 'News' },
   { route: '/blog', output: 'blog/index.html', name: 'Blog' },
 ];
 

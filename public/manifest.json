@@ -4,8 +4,8 @@
   "description": "Senior Software Engineer on the AI Developer Platform team at SolarWinds, building enterprise AI infrastructure and developer tooling",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#030712",
-  "theme_color": "#ff6200",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
   "orientation": "portrait-primary",
   "icons": [
     {

@@ -5,6 +5,7 @@ author: Chase Roohms
 image: "/blog-images/homelab-header.webp"
 description: "How I built a functional home lab for learning and experimentation without breaking the bank."
 topics: ["Linux", "Docker", "Self-Hosting"]
+series: "self-hosting"
 slug: "home-lab-setup"
 icon: "FaDollarSign"
 ---

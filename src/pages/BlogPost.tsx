@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, isValidElement, type ReactNode } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
-import { getBlogPost, getBlogPostSync, getRelatedPostsSync, type BlogPost } from '../utils/blogLoader';
+import { getBlogPost, getBlogPostSync, getRelatedPostsSync, getAllBlogPostsSync, type BlogPost } from '../utils/blogLoader';
+import { getSeriesNeighbors } from '../utils/blogSeries';
 import { formatDate } from '../utils/dateFormatter';
 import { getPageTitle } from '../utils/pageTitle';
-import { FaUsers, FaRobot, FaCloud, FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock, FaEye, FaDollarSign, FaStar, FaBalanceScale, FaDocker, FaGithub, FaHome, FaExchangeAlt, FaUserTie, FaSyncAlt } from 'react-icons/fa';
+import { FaUsers, FaRobot, FaCloud, FaArrowLeft, FaCalendar, FaCopy, FaCheck, FaClock, FaEye, FaDollarSign, FaStar, FaBalanceScale, FaDocker, FaGithub, FaHome, FaExchangeAlt, FaUserTie, FaSyncAlt, FaArrowRight } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
 
 // Explicit icon map instead of wildcard imports to avoid bundling all 15k+ icons
@@ -24,10 +25,12 @@ function CodeBlock({ children, className }: { children: React.ReactNode; classNa
 
   const handleCopy = async () => {
     // Extract text content for copying
-    const getTextContent = (node: any): string => {
+    const getTextContent = (node: ReactNode): string => {
       if (typeof node === 'string') return node;
       if (Array.isArray(node)) return node.map(getTextContent).join('');
-      if (node?.props?.children) return getTextContent(node.props.children);
+      if (isValidElement<{ children?: ReactNode }>(node) && node.props.children) {
+        return getTextContent(node.props.children);
+      }
       return '';
     };
     
@@ -41,7 +44,7 @@ function CodeBlock({ children, className }: { children: React.ReactNode; classNa
     <div className="relative group not-prose">
       <button
         onClick={handleCopy}
-        className="absolute right-3 top-3 p-1.5 rounded bg-gray-800 hover:bg-gray-700 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 z-10"
+        className="absolute right-3 top-3 p-1.5 rounded-md bg-gray-800 hover:bg-gray-700 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 z-10"
         aria-label="Copy code"
       >
         {copied ? <FaCheck className="w-3.5 h-3.5 text-green-400" /> : <FaCopy className="w-3.5 h-3.5 text-gray-400" />}
@@ -55,42 +58,42 @@ function CodeBlock({ children, className }: { children: React.ReactNode; classNa
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPost | null>(() => (slug ? getBlogPostSync(slug) : null));
-  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>(() => (slug ? getRelatedPostsSync(slug, 3) : []));
-  const [error, setError] = useState<string | null>(null);
+  const syncPost = useMemo(() => (slug ? getBlogPostSync(slug) : null), [slug]);
+  const seriesInfo = useMemo(() => (slug ? getSeriesNeighbors(getAllBlogPostsSync(), slug) : null), [slug]);
+  const relatedPosts = useMemo(() => {
+    if (!slug) return [];
+    // Skip posts already linked by the series prev/next navigation
+    const linked = new Set([seriesInfo?.prev?.slug, seriesInfo?.next?.slug]);
+    return getRelatedPostsSync(slug, 5).filter(p => !linked.has(p.slug)).slice(0, 2);
+  }, [slug, seriesInfo]);
+  // Async results are keyed by slug so stale results from a previous post are ignored
+  const [loaded, setLoaded] = useState<{ slug: string; post: BlogPost } | null>(null);
+  const [loadError, setLoadError] = useState<{ slug: string; message: string } | null>(null);
+
+  const post = loaded && loaded.slug === slug ? loaded.post : syncPost;
+  const error = loadError && loadError.slug === slug ? loadError.message : null;
 
   useEffect(() => {
-    if (!slug) {
-      setPost(null);
-      setRelatedPosts([]);
-      return;
-    }
-
-    const syncPost = getBlogPostSync(slug);
-    setPost(syncPost);
-    setRelatedPosts(getRelatedPostsSync(slug, 3));
-    setError(null);
-
-    if (!syncPost) {
+    if (!slug || !syncPost) {
       return;
     }
 
     getBlogPost(slug)
       .then((loadedPost) => {
         if (loadedPost) {
-          setPost(loadedPost);
+          setLoaded({ slug, post: loadedPost });
         }
       })
       .catch(err => {
         console.error('Error loading blog post:', err);
-        setError('Failed to refresh blog metadata');
+        setLoadError({ slug, message: 'Failed to refresh blog metadata' });
       });
-  }, [slug]);
+  }, [slug, syncPost]);
 
   if (error) {
     return (
       <div className="section-container py-8 md:py-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Error Loading Post</h1>
           <p className="text-gray-400 mb-6">{error}</p>
           <Link to="/blog/" className="btn-primary inline-flex items-center gap-2">
@@ -104,7 +107,7 @@ export default function BlogPost() {
   if (!post) {
     return (
       <div className="section-container py-8 md:py-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
           <p className="text-gray-400 mb-6">
             The blog post you're looking for doesn't exist.
@@ -174,10 +177,22 @@ export default function BlogPost() {
         </script>
       </Helmet>
       <div className="section-container py-8 md:py-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
         {/* Post Header */}
         <article>
-          <header className="mb-8">
+          <header className="mb-10">
+            {seriesInfo && (
+              <Link
+                to={`/blog/#series-${seriesInfo.series.id}`}
+                className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-primary-400 transition-colors hover:text-primary-300"
+              >
+                {seriesInfo.series.name}
+                <span className="text-gray-600">·</span>
+                <span>
+                  Part {seriesInfo.part} of {seriesInfo.total}
+                </span>
+              </Link>
+            )}
             <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
               {post.icon && (() => {
                 const IconComponent = blogIconMap[post.icon];
@@ -186,7 +201,7 @@ export default function BlogPost() {
               {post.title}
             </h1>
             
-            <div className="flex items-center gap-4 text-gray-400 mb-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-400 mb-4">
               <span className="flex items-center gap-2">
                 <FaCalendar className="w-4 h-4" />
                 {formatDate(post.date)}
@@ -214,7 +229,7 @@ export default function BlogPost() {
               )}
             </div>
 
-            <p className="text-xl text-gray-400 mb-6">
+            <p className="text-xl text-gray-300 mb-6 max-w-3xl">
               {post.description}
             </p>
 
@@ -240,16 +255,16 @@ export default function BlogPost() {
           </header>
 
           {/* Post Content */}
-          <div className="prose prose-invert prose-lg max-w-none
-            prose-headings:text-gray-100 
-            prose-p:text-gray-300 
-            prose-a:text-primary-400 prose-a:no-underline hover:prose-a:text-primary-300
+          <div className="prose prose-invert prose-lg max-w-[68ch]
+            prose-headings:text-gray-100
+            prose-p:text-gray-300
+            prose-a:text-primary-300 prose-a:no-underline hover:prose-a:text-primary-200
             prose-strong:text-gray-100
-            prose-code:text-primary-400 prose-code:bg-gray-900 prose-code:px-2 prose-code:py-1 prose-code:rounded
+            prose-code:text-primary-300 prose-code:bg-gray-900 prose-code:font-normal prose-code:px-2 prose-code:py-1 prose-code:rounded
             prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800
             prose-ul:text-gray-300 prose-ol:text-gray-300
             prose-li:text-gray-300
-            prose-blockquote:text-gray-400 prose-blockquote:border-primary-600
+            prose-blockquote:text-gray-400 prose-blockquote:border-primary-600 prose-blockquote:font-normal
             prose-img:rounded-lg prose-img:h-auto
             prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-gray-400 prose-figcaption:mt-2
           ">
@@ -257,7 +272,7 @@ export default function BlogPost() {
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw, rehypeHighlight]}
               components={{
-                code({ node, className, children, ...props }: any) {
+                code({ node: _node, className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || '');
                   
                   // If no language match, render as inline code
@@ -268,11 +283,11 @@ export default function BlogPost() {
                   // For code blocks, preserve the syntax-highlighted children
                   return <CodeBlock className={className}>{children}</CodeBlock>;
                 },
-                img({ src, alt, className, ...props }: any) {
+                img({ src, alt, className, ...props }) {
                   const altText = alt || 'Blog post image';
                   return <img src={src} alt={altText} className={className} loading="lazy" {...props} />;
                 },
-                a({ href, children, ...props }: any) {
+                a({ href, children, ...props }) {
                   const isExternal = typeof href === 'string' && /^https?:\/\//i.test(href);
 
                   if (isExternal) {
@@ -285,17 +300,40 @@ export default function BlogPost() {
 
                   return <a href={href} {...props}>{children}</a>;
                 }
-              }}
+              } satisfies Components}
             >
               {post.content}
             </ReactMarkdown>
           </div>
         </article>
 
+        {/* Series navigation */}
+        {seriesInfo && (seriesInfo.prev || seriesInfo.next) && (
+          <nav aria-label={`${seriesInfo.series.name} series`} className="mt-16 pt-8 border-t border-gray-800">
+            <p className="text-sm font-medium text-gray-400 mb-4">
+              More in {seriesInfo.series.name}
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {seriesInfo.prev ? (
+                <Link to={`/blog/${seriesInfo.prev.slug}/`} className="group surface rounded-xl p-5 transition-colors hover:border-primary-500">
+                  <span className="flex items-center gap-2 text-xs text-gray-500"><FaArrowLeft /> Part {seriesInfo.part - 1}</span>
+                  <span className="mt-2 block font-semibold text-gray-100 group-hover:text-primary-400">{seriesInfo.prev.title}</span>
+                </Link>
+              ) : <span className="hidden sm:block" />}
+              {seriesInfo.next && (
+                <Link to={`/blog/${seriesInfo.next.slug}/`} className="group surface rounded-xl p-5 text-right transition-colors hover:border-gray-600">
+                  <span className="flex items-center justify-end gap-2 text-xs text-gray-500">Part {seriesInfo.part + 1} <FaArrowRight /></span>
+                  <span className="mt-2 block font-semibold text-gray-100 group-hover:text-primary-400">{seriesInfo.next.title}</span>
+                </Link>
+              )}
+            </div>
+          </nav>
+        )}
+
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
           <div className="mt-16 pt-8 border-t border-gray-800">
-            <h2 className="text-3xl font-bold mb-8">Related Posts</h2>
+            <h2 className="text-2xl font-bold mb-6">Related posts</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
               {relatedPosts.map(relatedPost => (
                 <BlogPostCard
