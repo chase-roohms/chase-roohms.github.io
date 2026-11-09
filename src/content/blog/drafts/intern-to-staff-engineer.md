@@ -1,6 +1,6 @@
 ---
-title: "From Intern to Staff Engineer in {{TIMEFRAME_TITLE}} Years"
-date: "2026-UNKNOWN"
+title: "From Intern to Staff Engineer in 3 Years"
+date: "2026-04-??"
 author: Chase Roohms
 image: "/blog-images/intern-to-staff-engineer.webp"
 description: "What my journey from intern to Staff Engineer taught me about career growth, taking ownership, delivering impact, and being useful."
@@ -10,11 +10,11 @@ slug: "intern-to-staff-engineer"
 icon: "FaArrowTrendUp"
 ---
 
-# From Intern to Staff Engineer in {{TIMEFRAME_TITLE}} Years
+# From Intern to Staff Engineer in 3 Years
 
 *What an unusually fast career progression taught me about ownership, impact, and being useful.*
 
-In June 2024, I started at SolarWinds as a Security Engineering Intern. A little over {{TIMEFRAME_BODY}} years later, I've accepted a position as a Staff Software Engineer on our AI Developer Platform team.
+In June 2024, I started at SolarWinds as a Security Engineering Intern. A little under 3 years later, I've accepted a position as a Staff Software Engineer on our AI Developer Platform team.
 
 In between, I've held roles in DevOps, AI Operations, and now software engineering. It's been a pretty crazy couple of years, and certainly not a career trajectory I expected when I graduated college.
 
