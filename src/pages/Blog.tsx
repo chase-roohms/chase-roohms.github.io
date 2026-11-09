@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaRss, FaTimes, FaArrowRight, FaPenNib } from 'react-icons/fa';
+import { FaRss, FaTimes, FaPenNib } from 'react-icons/fa';
 import { getAllBlogPosts, getAllBlogPostsSync, type BlogPost } from '../utils/blogLoader';
 import BlogPostCard from '../components/BlogPostCard';
 import SearchBar from '../components/SearchBar';
@@ -9,57 +9,9 @@ import TopicSelect from '../components/TopicSelect';
 import FilterResultsCount from '../components/FilterResultsCount';
 import { useContentFilter } from '../hooks/useContentFilter';
 import { getPageTitle } from '../utils/pageTitle';
-import { groupPostsBySeries, getSeries } from '../utils/blogSeries';
+import { groupPostsBySeries } from '../utils/blogSeries';
+import FeaturedPost from '../components/FeaturedPost';
 import { formatDateShort } from '../utils/dateFormatter';
-
-function firstSentence(text: string) {
-  const match = text.match(/^.*?[.!?](?=\s|$)/);
-  return match ? match[0] : text;
-}
-
-function FeaturedPost({ post }: { post: BlogPost }) {
-  const series = getSeries(post.series);
-  const teaser = firstSentence(post.description);
-  return (
-    <Link
-      to={`/blog/${post.slug}/`}
-      className="group surface grid overflow-hidden rounded-xl transition-colors hover:border-primary-500 md:grid-cols-[1.15fr_1fr]"
-    >
-      {post.image && (
-        <div className="relative aspect-[16/9] md:aspect-auto md:min-h-[22rem] overflow-hidden bg-gray-900">
-          <img
-            src={post.image}
-            alt=""
-            fetchPriority="high"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </div>
-      )}
-      <div className="flex flex-col justify-center gap-3 p-5 sm:p-8 md:gap-4 md:p-10">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm font-semibold text-primary-400">Latest post</span>
-          {series && (
-            <span className="text-sm text-gray-500">· {series.name}</span>
-          )}
-        </div>
-        <h2 className="text-2xl md:text-3xl font-bold leading-tight text-gray-50">
-          {post.title}
-        </h2>
-        <p className="text-gray-300 md:hidden">{teaser}</p>
-        <p className="hidden text-lg text-gray-300 md:block">{post.description}</p>
-        <div className="mt-2 flex items-center justify-between gap-4 text-sm text-gray-400">
-          <span>
-            {formatDateShort(post.date)}
-            {post.readingTime ? ` · ${post.readingTime} min read` : ''}
-          </span>
-          <span className="flex items-center gap-2 font-semibold text-primary-400">
-            Read <FaArrowRight className="transition-transform group-hover:translate-x-1" />
-          </span>
-        </div>
-      </div>
-    </Link>
-  );
-}
 
 function SeriesPostRow({ post, part, isLatest }: { post: BlogPost; part?: number; isLatest: boolean }) {
   return (
@@ -154,7 +106,7 @@ export default function Blog() {
         {/* Latest post, series agnostic. Sits below search on mobile, above it on desktop */}
         {latestPost && !isFiltering && (
           <div className="order-2 md:order-1">
-            <FeaturedPost post={latestPost} />
+            <FeaturedPost post={latestPost} eager />
           </div>
         )}
 

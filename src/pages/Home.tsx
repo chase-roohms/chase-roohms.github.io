@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
-import Skills from '../components/Skills';
-import BiographyText from '../components/BiographyText';
-import BlogPostCard from '../components/BlogPostCard';
+import FeaturedPost from '../components/FeaturedPost';
+import FeatureCard from '../components/FeatureCard';
 import { getFeaturedProject } from '../utils/projectsData';
 import { fetchGitHubStars, fetchDockerHubPulls, fetchGHCRPulls, formatNumber } from '../utils/projectStats';
 import { profileData } from '../utils/profileData';
@@ -13,7 +12,7 @@ import headshot from '../assets/images/headshot.webp';
 import transmuteFeature from '../assets/images/transmute-feature.webp';
 
 export default function Home() {
-  const { name, headline, biography } = profileData;
+  const { name, headline } = profileData;
   const first_name = name.split(" ")[0];
   const last_name = name.split(" ")[1];
   const [primaryHeadline] = headline.split('\n');
@@ -114,92 +113,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Transmute owns the first section after the hero */}
+      {/* Featured project: same card as the latest post, image on the right */}
       {featuredProject && (
         <section className="py-12 md:py-16 border-t border-gray-800">
-          <figure className="grid gap-6 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] md:items-center md:gap-10">
-            <a
-              href={featuredProject.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="order-2 block overflow-hidden rounded-md border border-gray-800 md:order-1"
-            >
-              <img
-                src={transmuteFeature}
-                alt="The Transmute converter: drop a file, pick a format"
-                loading="lazy"
-                className="aspect-[1420/780] w-full object-cover"
-              />
-            </a>
-            <figcaption className="order-1 md:order-2">
-              <p className="text-sm text-gray-400 mb-2">Featured project</p>
-              <h2 className="text-3xl font-bold text-ivory mb-3">{featuredProject.title}</h2>
-              <p className="text-lg text-gray-300 mb-5">{featuredProject.description}</p>
-              {(stars !== undefined || pulls !== undefined) && (
-                <dl className="flex gap-8 mb-6">
-                  {stars !== undefined && (
-                    <div>
-                      <dt className="text-sm text-gray-400">GitHub stars</dt>
-                      <dd className="text-2xl font-semibold tabular-nums text-ivory">{stars.toLocaleString()}</dd>
-                    </div>
-                  )}
-                  {pulls !== undefined && (
-                    <div>
-                      <dt className="text-sm text-gray-400">Image pulls</dt>
-                      <dd className="text-2xl font-semibold tabular-nums text-ivory">{formatNumber(pulls)}</dd>
-                    </div>
-                  )}
-                </dl>
-              )}
-              <div className="flex flex-wrap gap-5 text-sm font-medium">
-                <a href={featuredProject.link} target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-ivory transition-colors">
-                  transmute.sh →
-                </a>
-                <Link to="/projects/" className="text-gray-400 hover:text-ivory transition-colors">
-                  All projects →
-                </Link>
-              </div>
-            </figcaption>
-          </figure>
+          <div className="flex items-baseline justify-between mb-6">
+            <h2 className="text-3xl font-bold">Featured project</h2>
+            <Link to="/projects/" className="text-gray-300 hover:text-ivory transition-colors text-sm font-medium">
+              All projects →
+            </Link>
+          </div>
+          <FeatureCard
+            href={featuredProject.link ?? '/projects/'}
+            external
+            image={transmuteFeature}
+            imageAlt="The Transmute converter: drop a file, pick a format"
+            imageSide="right"
+            eyebrow="Open source"
+            meta="Self-hosted"
+            title={featuredProject.title}
+            description={featuredProject.description}
+            footer={[
+              stars !== undefined ? `${stars.toLocaleString()} GitHub stars` : null,
+              pulls !== undefined ? `${formatNumber(pulls)} pulls` : null,
+            ].filter(Boolean).join(' · ')}
+            action="transmute.sh"
+          />
         </section>
       )}
 
-      {/* About & Blog Post */}
-      <section className="py-12 md:py-16 border-t border-gray-800">
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          <div>
-            <h2 className="text-3xl font-bold mb-6">About Me</h2>
-            <div className="space-y-4 mb-6">
-              <BiographyText paragraphs={biography} className="text-gray-300 text-lg" />
-            </div>
-            <Link to="/about/" className="btn-secondary inline-flex">
-              Learn More About Me
-            </Link>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-bold">Latest Blog Post</h2>
-              <Link to="/blog/" className="text-gray-300 hover:text-ivory transition-colors text-sm font-medium">
-                All Blogs →
-              </Link>
-            </div>
-            {recentPost ? (
-              <BlogPostCard post={recentPost} showTopics={false} />
-            ) : (
-              <div className="surface rounded-2xl p-6">
-                <p className="text-gray-400">Loading...</p>
-              </div>
-            )}
-          </div>
+      {/* A little about me, with a way to read more */}
+      <section className="py-12 md:py-14 border-t border-gray-800">
+        <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:justify-between sm:text-left">
+          <p className="max-w-2xl text-xl text-gray-300 md:text-2xl">
+            A lifelong tinkerer with a habit of turning small ideas into unnecessarily elaborate projects.
+          </p>
+          <Link to="/about/" className="btn-secondary shrink-0">
+            More about me →
+          </Link>
         </div>
       </section>
 
-      {/* Skills */}
-      <section className="py-12 md:py-16 border-t border-gray-800">
-        <h2 className="text-3xl font-bold mb-6">Skills & Technologies</h2>
-        <Skills />
-      </section>
+      {/* Latest writing */}
+      {recentPost && (
+        <section className="py-12 md:py-16 border-t border-gray-800">
+          <div className="flex items-baseline justify-between mb-6">
+            <h2 className="text-3xl font-bold">Latest from the blog</h2>
+            <Link to="/blog/" className="text-gray-300 hover:text-ivory transition-colors text-sm font-medium">
+              All posts →
+            </Link>
+          </div>
+          <FeaturedPost post={recentPost} />
+        </section>
+      )}
       </div>
     </>
   );
