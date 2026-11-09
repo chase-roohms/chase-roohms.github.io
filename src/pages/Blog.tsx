@@ -198,7 +198,7 @@ export default function Blog() {
               </h2>
               <button
                 onClick={() => setShowRssDialog(false)}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-ivory transition-colors"
                 aria-label="Close dialog"
               >
                 <FaTimes size={24} />
@@ -224,7 +224,7 @@ export default function Blog() {
                 href={rssUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors font-semibold text-center"
+                className="flex-1 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-50 rounded-lg transition-colors font-semibold text-center"
               >
                 Open Feed
               </a>

@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,6 +35,7 @@ export default function Header() {
             </span>
           </Link>
 
+          <div className="flex items-center gap-1">
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
@@ -51,6 +53,8 @@ export default function Header() {
               </li>
             ))}
           </ul>
+
+          <ThemeToggle className="md:ml-2" />
 
           {/* Mobile Menu Button */}
           <button
@@ -81,6 +85,7 @@ export default function Header() {
               )}
             </svg>
           </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

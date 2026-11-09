@@ -96,17 +96,17 @@ export default function Home() {
           </div>
 
           <div className="order-1 flex justify-center md:order-2 md:justify-end">
-            <div className="relative w-56 sm:w-64 md:w-full md:max-w-[26rem] aspect-[4/5] overflow-hidden rounded-md shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)]">
+            <div className="relative w-56 sm:w-64 md:w-full md:max-w-[26rem] aspect-[4/5] overflow-hidden rounded-md shadow-[0_30px_60px_-20px_rgba(0,0,0,0.25)] dark:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)]">
               <img
                 src={headshot}
                 alt="Chase Roohms professional headshot"
                 fetchPriority="high"
-                className="h-full w-full object-cover object-[50%_35%] brightness-[0.9]"
+                className="h-full w-full object-cover object-[50%_35%] dark:brightness-[0.9]"
               />
-              {/* Darken the stone at the edges so the portrait sits in the scene */}
+              {/* Dark mode only: darken the stone at the edges so the portrait sits in the scene */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(85%_70%_at_50%_42%,transparent_38%,rgba(15,15,15,0.85)_100%),linear-gradient(to_top,rgba(15,15,15,0.7),transparent_35%),linear-gradient(to_left,rgba(240,180,80,0.10),transparent_40%)]"
+                className="pointer-events-none absolute inset-0 hidden dark:block bg-[radial-gradient(85%_70%_at_50%_42%,transparent_38%,rgba(15,15,15,0.85)_100%),linear-gradient(to_top,rgba(15,15,15,0.7),transparent_35%),linear-gradient(to_left,rgba(240,180,80,0.10),transparent_40%)]"
               />
             </div>
           </div>

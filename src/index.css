@@ -3,6 +3,96 @@
 @tailwind utilities;
 
 @layer base {
+  /* Theme palette. Tailwind's primary/gray/ivory classes read these, so
+     every component re-colors without needing its own light variant.
+     Light mode mirrors the graphite scale: gray-950 is the page, gray-100
+     is the ink. The .dark values are the original palette, unchanged. */
+  :root {
+    color-scheme: light;
+    --primary-50: 51 33 11;
+    --primary-100: 92 61 24;
+    --primary-200: 116 76 26;
+    --primary-300: 138 79 10;
+    --primary-400: 158 92 11;
+    --primary-500: 176 106 16;
+    --primary-600: 196 124 22;
+    --primary-700: 224 176 96;
+    --primary-800: 240 217 168;
+    --primary-900: 251 233 196;
+    --primary-950: 253 245 227;
+    --gray-50: 20 19 17;
+    --gray-100: 31 29 26;
+    --gray-200: 52 49 45;
+    --gray-300: 69 65 60;
+    --gray-400: 95 90 83;
+    --gray-500: 122 117 110;
+    --gray-600: 168 164 158;
+    --gray-700: 209 206 201;
+    --gray-800: 228 226 222;
+    --gray-900: 255 255 255;
+    --gray-950: 246 245 243;
+    --ivory: 26 23 20;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+    --primary-50: 255 250 235;
+    --primary-100: 253 240 200;
+    --primary-200: 251 224 143;
+    --primary-300: 246 202 99;
+    --primary-400: 240 180 80;
+    --primary-500: 220 154 46;
+    --primary-600: 185 122 31;
+    --primary-700: 148 96 27;
+    --primary-800: 116 76 26;
+    --primary-900: 92 61 24;
+    --primary-950: 51 33 11;
+    --gray-50: 245 245 245;
+    --gray-100: 232 232 232;
+    --gray-200: 208 208 208;
+    --gray-300: 176 176 176;
+    --gray-400: 140 140 140;
+    --gray-500: 110 110 110;
+    --gray-600: 85 85 85;
+    --gray-700: 61 61 61;
+    --gray-800: 42 42 42;
+    --gray-900: 26 26 26;
+    --gray-950: 15 15 15;
+    --ivory: 239 232 220;
+  }
+
+  /* No-JS fallback: follow the OS setting */
+  @media (prefers-color-scheme: dark) {
+    :root:not(.light) {
+      color-scheme: dark;
+      --primary-50: 255 250 235;
+      --primary-100: 253 240 200;
+      --primary-200: 251 224 143;
+      --primary-300: 246 202 99;
+      --primary-400: 240 180 80;
+      --primary-500: 220 154 46;
+      --primary-600: 185 122 31;
+      --primary-700: 148 96 27;
+      --primary-800: 116 76 26;
+      --primary-900: 92 61 24;
+      --primary-950: 51 33 11;
+      --gray-50: 245 245 245;
+      --gray-100: 232 232 232;
+      --gray-200: 208 208 208;
+      --gray-300: 176 176 176;
+      --gray-400: 140 140 140;
+      --gray-500: 110 110 110;
+      --gray-600: 85 85 85;
+      --gray-700: 61 61 61;
+      --gray-800: 42 42 42;
+      --gray-900: 26 26 26;
+      --gray-950: 15 15 15;
+      --ivory: 239 232 220;
+    }
+  }
+}
+
+@layer base {
   html, body {
     @apply bg-gray-950 text-gray-100 antialiased overflow-x-hidden;
   }
@@ -136,6 +226,62 @@
     display: none;
   }
 }
+
+/* Light mode: the same slab and glass, toned down for a pale surface */
+:root:not(.dark) .site-bg__speckle {
+  opacity: 0.55;
+}
+
+:root:not(.dark) .site-glass__flutes {
+  opacity: 0.4;
+}
+
+:root:not(.dark) .site-glow {
+  opacity: 0.7;
+}
+
+/* Light mode syntax colors (GitHub light), replacing github-dark tokens */
+:root:not(.dark) .hljs { color: #24292e; background: transparent; }
+:root:not(.dark) .hljs-doctag,
+:root:not(.dark) .hljs-keyword,
+:root:not(.dark) .hljs-meta .hljs-keyword,
+:root:not(.dark) .hljs-template-tag,
+:root:not(.dark) .hljs-template-variable,
+:root:not(.dark) .hljs-type,
+:root:not(.dark) .hljs-variable.language_ { color: #d73a49; }
+:root:not(.dark) .hljs-title,
+:root:not(.dark) .hljs-title.class_,
+:root:not(.dark) .hljs-title.class_.inherited__,
+:root:not(.dark) .hljs-title.function_ { color: #6f42c1; }
+:root:not(.dark) .hljs-attr,
+:root:not(.dark) .hljs-attribute,
+:root:not(.dark) .hljs-literal,
+:root:not(.dark) .hljs-meta,
+:root:not(.dark) .hljs-number,
+:root:not(.dark) .hljs-operator,
+:root:not(.dark) .hljs-variable,
+:root:not(.dark) .hljs-selector-attr,
+:root:not(.dark) .hljs-selector-class,
+:root:not(.dark) .hljs-selector-id { color: #005cc5; }
+:root:not(.dark) .hljs-regexp,
+:root:not(.dark) .hljs-string,
+:root:not(.dark) .hljs-meta .hljs-string { color: #032f62; }
+:root:not(.dark) .hljs-built_in,
+:root:not(.dark) .hljs-symbol { color: #e36209; }
+:root:not(.dark) .hljs-comment,
+:root:not(.dark) .hljs-code,
+:root:not(.dark) .hljs-formula { color: #6a737d; }
+:root:not(.dark) .hljs-name,
+:root:not(.dark) .hljs-quote,
+:root:not(.dark) .hljs-selector-tag,
+:root:not(.dark) .hljs-selector-pseudo { color: #22863a; }
+:root:not(.dark) .hljs-subst,
+:root:not(.dark) .hljs-emphasis,
+:root:not(.dark) .hljs-strong { color: #24292e; }
+:root:not(.dark) .hljs-section { color: #005cc5; }
+:root:not(.dark) .hljs-bullet { color: #735c0f; }
+:root:not(.dark) .hljs-addition { color: #22863a; background-color: #f0fff4; }
+:root:not(.dark) .hljs-deletion { color: #b31d28; background-color: #ffeef0; }
 
 @layer components {
   .btn-primary {

@@ -4,39 +4,20 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // Amber accent
-        primary: {
-          50: '#fffaeb',
-          100: '#fdf0c8',
-          200: '#fbe08f',
-          300: '#f6ca63',
-          400: '#f0b450',
-          500: '#dc9a2e',
-          600: '#b97a1f',
-          700: '#94601b',
-          800: '#744c1a',
-          900: '#5c3d18',
-          950: '#33210b',
-        },
-        // Warm off-white for display text
-        ivory: '#efe8dc',
-        // Neutral graphite
-        gray: {
-          50: '#f5f5f5',
-          100: '#e8e8e8',
-          200: '#d0d0d0',
-          300: '#b0b0b0',
-          400: '#8c8c8c',
-          500: '#6e6e6e',
-          600: '#555555',
-          700: '#3d3d3d',
-          800: '#2a2a2a',
-          900: '#1a1a1a',
-          950: '#0f0f0f',
-        },
+        // Amber accent and graphite neutrals. Values live in CSS variables
+        // (src/index.css) so light and dark themes share the same classes.
+        primary: Object.fromEntries(
+          [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((s) => [s, `rgb(var(--primary-${s}) / <alpha-value>)`])
+        ),
+        // Warm off-white for display text (warm near-black in light mode)
+        ivory: 'rgb(var(--ivory) / <alpha-value>)',
+        gray: Object.fromEntries(
+          [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((s) => [s, `rgb(var(--gray-${s}) / <alpha-value>)`])
+        ),
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],

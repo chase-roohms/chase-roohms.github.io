@@ -225,7 +225,7 @@ export default function BlogPost() {
                   <span className="flex items-center gap-2 group/views relative">
                     <FaEye className="w-4 h-4" />
                     {post.views.toLocaleString()} views
-                    <span className="absolute hidden group-hover/views:block bg-gray-950 text-white text-xs rounded py-1 px-2 -mt-14 left-0 whitespace-nowrap border border-gray-700 z-10">
+                    <span className="absolute hidden group-hover/views:block bg-gray-950 text-gray-50 text-xs rounded py-1 px-2 -mt-14 left-0 whitespace-nowrap border border-gray-700 z-10">
                       Blog views (updates every 6 hours)
                     </span>
                   </span>
@@ -259,7 +259,7 @@ export default function BlogPost() {
           </header>
 
           {/* Post Content */}
-          <div className="prose prose-invert prose-lg max-w-[68ch]
+          <div className="prose dark:prose-invert prose-lg max-w-[68ch]
             prose-headings:text-gray-100
             prose-p:text-gray-300
             prose-a:text-ivory prose-a:underline prose-a:decoration-primary-400/60 prose-a:underline-offset-4 hover:prose-a:decoration-primary-400

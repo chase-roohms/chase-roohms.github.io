@@ -24,11 +24,27 @@
       gtag('config', 'G-CWVDN28C7W');
     </script>
     
+    <!-- Theme: saved choice, else the browser setting. Runs before paint to avoid a flash. -->
+    <script>
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
+        var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var root = document.documentElement;
+        root.classList.remove('dark', 'light');
+        root.classList.add(dark ? 'dark' : 'light');
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', dark ? '#0f0f0f' : '#f6f5f3');
+      })();
+    </script>
     <style>
       html, body {
-        background-color: #0f0f0f;
+        background-color: #f6f5f3;
         margin: 0;
         padding: 0;
+      }
+      html.dark, html.dark body {
+        background-color: #0f0f0f;
       }
     </style>
     <!-- Single Page Apps GitHub Pages redirect script -->
