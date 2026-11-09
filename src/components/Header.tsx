@@ -22,9 +22,13 @@ export default function Header() {
           {/* Logo/Brand */}
           <Link
             to="/"
-            className="flex items-center"
+            className="flex items-center gap-2.5"
             aria-label="Chase Roohms, home"
           >
+            <span
+              aria-hidden="true"
+              className="h-2 w-2 rotate-45 rounded-[1px] bg-primary-400"
+            />
             <span className="text-lg font-semibold tracking-tight text-gray-100">
               Chase Roohms
             </span>
