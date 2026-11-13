@@ -8,14 +8,12 @@ import { fetchGitHubStars, fetchDockerHubPulls, fetchGHCRPulls, formatNumber } f
 import { profileData } from '../utils/profileData';
 import { getPageTitle } from '../utils/pageTitle';
 import { getAllBlogPosts, getAllBlogPostsSync, type BlogPost } from '../utils/blogLoader';
-import headshot from '../assets/images/headshot.webp';
 import transmuteFeature from '../assets/images/transmute-feature.webp';
 
 export default function Home() {
-  const { name, headline } = profileData;
+  const { name } = profileData;
   const first_name = name.split(" ")[0];
   const last_name = name.split(" ")[1];
-  const [primaryHeadline] = headline.split('\n');
   
   const [recentPost, setRecentPost] = useState<BlogPost | null>(() => getAllBlogPostsSync()[0] ?? null);
   const featuredProject = getFeaturedProject();
@@ -61,53 +59,54 @@ export default function Home() {
       </Helmet>
       
       <div className="section-container py-10 md:py-16">
-      {/* Hero: portrait and glass share the right-hand side */}
-      <section className="relative pb-14 md:pb-20">
-        <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:gap-12">
-          <div className="order-2 text-center md:order-1 md:text-left">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-ivory">
-              <a href="https://www.google.com/search?q=Chase+Roohms" target="_blank" rel="noopener noreferrer">
-                {first_name} {last_name}
-              </a>
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-xl mx-auto md:mx-0">
-              <span className="block">{primaryHeadline}</span>
-              <span className="block mt-2">
+      {/* Hero: name set large behind the portrait, title and CTA on the left */}
+      <section className="relative">
+        <div className="relative flex flex-col items-center">
+          <h1 className="hero-name relative z-0 w-full whitespace-nowrap text-center font-bold uppercase leading-[0.85] tracking-[-0.045em] text-[clamp(2rem,11.2vw,8.75rem)]">
+            <span className="hero-name__outline">{first_name}</span>{' '}
+            <span className="text-ivory">{last_name}</span>
+          </h1>
+
+          <img
+            src="/headshot-hero-1000.webp"
+            srcSet="/headshot-hero-600.webp 600w, /headshot-hero-1000.webp 1000w"
+            sizes="(min-width: 768px) 30rem, 82vw"
+            width={1000}
+            height={885}
+            alt="Chase Roohms"
+            fetchPriority="high"
+            className="hero-portrait relative z-10 -mt-[clamp(1rem,4.5vw,3.5rem)] w-[min(82vw,30rem)] select-none"
+          />
+
+          <div className="relative z-20 mt-6 pb-12 text-center lg:absolute lg:bottom-[14%] lg:left-0 lg:mt-0 lg:pb-0 lg:text-left">
+            <p className="text-xl font-semibold text-ivory lg:text-2xl">Senior Software Engineer</p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-400 max-[374px]:text-xs">
+              <span className="block whitespace-nowrap">Building the AI Developer Platform at SolarWinds.</span>
+              <span className="block whitespace-nowrap">
                 Founder of{' '}
                 <a
                   href="https://transmute.sh"
                   target="_blank"
                   rel="noopener noreferrer"
                   referrerPolicy="no-referrer"
-                  className="text-ivory underline decoration-primary-400/60 underline-offset-4 hover:decoration-primary-400 transition-colors"
+                  className="text-gray-200 underline decoration-primary-400/60 underline-offset-4 hover:decoration-primary-400 transition-colors"
                 >
                   Transmute
                 </a>
               </span>
             </p>
-            <div className="flex flex-wrap items-center gap-6 justify-center md:justify-start">
-              <Link to="/projects/" className="btn-primary">
-                My Projects
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+              <Link to="/about/" className="btn-primary border border-transparent text-sm">
+                About Me →
               </Link>
-              <Link to="/contact/" className="font-medium text-gray-200 hover:text-ivory transition-colors">
-                Get in touch →
-              </Link>
-            </div>
-          </div>
-
-          <div className="order-1 flex justify-center md:order-2 md:justify-end">
-            <div className="relative w-56 sm:w-64 md:w-full md:max-w-[26rem] aspect-[4/5] overflow-hidden rounded-md shadow-[0_30px_60px_-20px_rgba(0,0,0,0.25)] dark:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)]">
-              <img
-                src={headshot}
-                alt="Chase Roohms professional headshot"
-                fetchPriority="high"
-                className="h-full w-full object-cover object-[50%_35%] dark:brightness-[0.9]"
-              />
-              {/* Dark mode only: darken the stone at the edges so the portrait sits in the scene */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 hidden dark:block bg-[radial-gradient(85%_70%_at_50%_42%,transparent_38%,rgba(15,15,15,0.85)_100%),linear-gradient(to_top,rgba(15,15,15,0.7),transparent_35%),linear-gradient(to_left,rgba(240,180,80,0.10),transparent_40%)]"
-              />
+              <a
+                href="https://www.google.com/search?q=Chase+Roohms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-sm"
+              >
+                Google Me
+              </a>
             </div>
           </div>
         </div>
@@ -140,18 +139,6 @@ export default function Home() {
           />
         </section>
       )}
-
-      {/* A little about me, with a way to read more */}
-      <section className="py-12 md:py-14 border-t border-gray-800">
-        <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p className="max-w-2xl text-xl text-gray-300 md:text-2xl">
-            A lifelong tinkerer with a habit of turning small ideas into unnecessarily elaborate projects.
-          </p>
-          <Link to="/about/" className="btn-secondary shrink-0">
-            More about me →
-          </Link>
-        </div>
-      </section>
 
       {/* Latest writing */}
       {recentPost && (
