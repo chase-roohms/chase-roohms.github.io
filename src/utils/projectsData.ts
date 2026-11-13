@@ -17,6 +17,7 @@ import marvelPostersHeader from '../assets/images/marvel-posters-header.webp';
 //import cloudflareWorkerHeader from '../assets/images/cloudflare-worker-error-header.webp'
 //import schemaValidatorHeader from '../assets/images/schema-validator-header.webp'
 import transmuteHeader from '../assets/images/transmute-converter.webp'
+import itsmMaturityPlaybookHeader from '../assets/images/itsm-maturity-playbook-header.webp'
 
 export interface Project {
   id: string;
@@ -32,6 +33,15 @@ export interface Project {
 }
 
 export const professionalProjects: Project[] = [
+  {
+    id: 'itsm-maturity-playbook-live',
+    fullDate: '2026-11-24',
+    title: 'Know What Changed',
+    description: 'Change causes most incidents. Live webcast on answering "what changed?" in seconds, not hours.',
+    tech: ['Change Management', 'Leadership'],
+    image: itsmMaturityPlaybookHeader,
+    link: 'https://events.solarwinds.com/itsm-maturity-playbook-live-ep5/',
+  },
   {
     id: 'legendkeeper-mcp',
     fullDate: '2026-10-16',
