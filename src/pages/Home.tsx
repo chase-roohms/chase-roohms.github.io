@@ -69,13 +69,13 @@ export default function Home() {
 
           <img
             src="/headshot-hero-1000.webp"
-            srcSet="/headshot-hero-600.webp 600w, /headshot-hero-1000.webp 1000w"
-            sizes="(min-width: 768px) 30rem, 82vw"
-            width={1000}
+            srcSet="/headshot-hero-600.webp 696w, /headshot-hero-1000.webp 1160w"
+            sizes="(min-width: 768px) 34.8rem, 95vw"
+            width={1160}
             height={885}
             alt="Chase Roohms"
             fetchPriority="high"
-            className="hero-portrait relative z-10 -mt-[clamp(1rem,4.5vw,3.5rem)] w-[min(82vw,30rem)] select-none"
+            className="hero-portrait relative z-10 -mt-[clamp(0.75rem,3.5vw,2.75rem)] w-[min(95vw,34.8rem)] select-none"
           />
 
           <div className="relative z-20 mt-6 pb-12 text-center lg:absolute lg:bottom-[14%] lg:left-0 lg:mt-0 lg:pb-0 lg:text-left">
